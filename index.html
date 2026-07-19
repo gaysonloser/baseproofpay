@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Verify BaseProofPay settlement receipts and payer-controlled spending policies without connecting a wallet.">
+  <meta name="base:app_id" content="6a5c632cf364895c3c606518">
+  <title>BaseProofPay Receipt Viewer</title>
+  <link rel="icon" type="image/png" href="baseproofpay_app_icon_1024.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111827;
+      --muted: #5f6b7a;
+      --line: #d8dee8;
+      --panel: #f7f9fc;
+      --blue: #0052ff;
+      --green: #087f5b;
+      --red: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #fff;
+      color: var(--ink);
+      font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    header { border-bottom: 1px solid var(--line); }
+    .bar, main { width: min(1040px, calc(100% - 32px)); margin: 0 auto; }
+    .bar { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 750; }
+    .mark { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+    .network { color: var(--muted); font-size: 13px; }
+    main { padding: 36px 0 56px; }
+    h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.2; }
+    .lede { margin: 0 0 28px; color: var(--muted); }
+    .search { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-bottom: 22px; }
+    input, button { min-height: 44px; border-radius: 6px; font: inherit; }
+    input { width: 100%; border: 1px solid #aeb8c6; padding: 0 13px; color: var(--ink); }
+    input:focus { outline: 3px solid #dbe7ff; border-color: var(--blue); }
+    button { border: 0; padding: 0 18px; background: var(--blue); color: #fff; font-weight: 700; cursor: pointer; }
+    button:hover { background: #003ec7; }
+    .status { min-height: 22px; margin-bottom: 14px; color: var(--muted); }
+    .status.error { color: var(--red); }
+    .summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .metric { min-height: 92px; padding: 16px; background: var(--panel); border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .label { color: var(--muted); font-size: 12px; text-transform: uppercase; font-weight: 700; }
+    .value { margin-top: 8px; font-size: 17px; font-weight: 700; overflow-wrap: anywhere; }
+    .ok { color: var(--green); }
+    section { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0 0 16px; font-size: 18px; }
+    dl { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 11px 18px; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .empty { padding: 26px; border: 1px dashed #aeb8c6; border-radius: 8px; color: var(--muted); text-align: center; }
+    @media (max-width: 720px) {
+      .search { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      dl { grid-template-columns: 1fr; gap: 4px; }
+      dd { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="brand"><img class="mark" src="baseproofpay_app_icon_1024.png" alt="">BaseProofPay</div>
+      <div class="network">Local read-only proof</div>
+    </div>
+  </header>
+  <main>
+    <h1>Receipt verification</h1>
+    <p class="lede">Inspect a settlement receipt and its policy evidence without connecting a wallet.</p>
+    <form class="search" id="search-form">
+      <input id="payment-id" aria-label="Payment ID" spellcheck="false" value="0x5f2c9e3d8a9d8e476b6dfab11dd30a9b3f59819e8890cb8e568e5d5d1b4a1201">
+      <button type="submit">Verify receipt</button>
+    </form>
+    <div class="status" id="status">Showing bundled local proof data.</div>
+    <div id="result"></div>
+  </main>
+  <script>
+    const sample = {
+      paymentId: "0x5f2c9e3d8a9d8e476b6dfab11dd30a9b3f59819e8890cb8e568e5d5d1b4a1201",
+      state: "Settled",
+      chain: "Base Sepolia (planned proof)",
+      amount: "25.00 test USDC",
+      payer: "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+      payee: "0x1111111111111111111111111111111111111111",
+      asset: "test USDC",
+      policyId: "0x9ac393fe84762d46dc77a85977ea31eafc50f5dcba8a196f6a7d32bf11900188",
+      purposeHash: "0xb52a23e941f39c95a1bc2d5208fa80bc269b71eb814f6c59f9dc754bc0963022",
+      perPayment: "50.00 test USDC",
+      periodBudget: "200.00 test USDC / 24h"
+    };
+
+    const result = document.querySelector("#result");
+    const status = document.querySelector("#status");
+
+    function render(receipt) {
+      result.innerHTML = `
+        <div class="summary">
+          <div class="metric"><div class="label">Status</div><div class="value ok">${receipt.state}</div></div>
+          <div class="metric"><div class="label">Amount</div><div class="value">${receipt.amount}</div></div>
+          <div class="metric"><div class="label">Chain</div><div class="value">${receipt.chain}</div></div>
+          <div class="metric"><div class="label">Custody</div><div class="value">Direct to payee</div></div>
+        </div>
+        <section>
+          <h2>Settlement</h2>
+          <dl>
+            <dt>Payment ID</dt><dd>${receipt.paymentId}</dd>
+            <dt>Payer</dt><dd>${receipt.payer}</dd>
+            <dt>Payee</dt><dd>${receipt.payee}</dd>
+            <dt>Asset</dt><dd>${receipt.asset}</dd>
+            <dt>Purpose hash</dt><dd>${receipt.purposeHash}</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Policy evidence</h2>
+          <dl>
+            <dt>Policy ID</dt><dd>${receipt.policyId}</dd>
+            <dt>Per-payment cap</dt><dd>${receipt.perPayment}</dd>
+            <dt>Period budget</dt><dd>${receipt.periodBudget}</dd>
+          </dl>
+        </section>`;
+    }
+
+    document.querySelector("#search-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const value = document.querySelector("#payment-id").value.trim().toLowerCase();
+      if (value === sample.paymentId.toLowerCase()) {
+        status.className = "status";
+        status.textContent = "Receipt verified against bundled local proof data.";
+        render(sample);
+      } else {
+        status.className = "status error";
+        status.textContent = "No bundled local receipt matches this payment ID.";
+        result.innerHTML = '<div class="empty">No receipt found. No wallet or network request was made.</div>';
+      }
+    });
+
+    render(sample);
+  </script>
+</body>
+</html>
