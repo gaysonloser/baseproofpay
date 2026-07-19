@@ -32,7 +32,9 @@
     .bar { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 750; }
     .mark { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+    .header-actions { display: flex; align-items: center; gap: 18px; }
     .network { color: var(--muted); font-size: 13px; }
+    .pay-link { font-size: 13px; }
     main { padding: 36px 0 56px; }
     h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.2; }
     .lede { margin: 0 0 28px; color: var(--muted); }
@@ -60,6 +62,8 @@
     dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
     .empty { padding: 26px; border: 1px dashed #aeb8c6; border-radius: 8px; color: var(--muted); text-align: center; }
     @media (max-width: 720px) {
+      .bar { align-items: flex-start; flex-direction: column; padding-block: 14px; }
+      .header-actions { align-items: flex-start; flex-direction: column; gap: 6px; }
       .search { grid-template-columns: 1fr; }
       .summary { grid-template-columns: 1fr 1fr; }
       .metric:nth-child(2) { border-right: 0; }
@@ -73,7 +77,10 @@
   <header>
     <div class="bar">
       <div class="brand"><img class="mark" src="baseproofpay_app_icon_1024.png" alt="">BaseProofPay</div>
-      <div class="network">Base Mainnet · read-only proof</div>
+      <div class="header-actions">
+        <div class="network">Base Mainnet · read-only proof</div>
+        <a class="pay-link" href="independent-proof.html">Make a 0.10 USDC proof payment</a>
+      </div>
     </div>
   </header>
   <main>

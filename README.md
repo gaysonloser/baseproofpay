@@ -19,6 +19,10 @@ The public viewer does not connect a wallet, request a signature, send a transac
 
 The payer and payee wallets are controlled by the same owner. This is a technical canary, not independent-user adoption.
 
+## Independent User Proof
+
+`independent-proof.html` provides a separately disclosed Base Account flow for a genuine external user to send exactly `0.10 USDC` to the GAYSON Base Account. It creates unique policy and payment IDs in the browser, requires atomic batch support, preflights balances, allowance, contract code and unused IDs, and postflights the full policy, receipt, balance deltas and zero residual allowance. It has no backend and makes no wallet request until the user clicks Connect. The payment is not an investment, token purchase, donation promise, or refundable deposit.
+
 ## Security
 
 Do not submit private keys, seed phrases, API keys, wallet sessions, or confidential payment data. See `SECURITY.md`.

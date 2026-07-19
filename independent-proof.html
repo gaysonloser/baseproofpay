@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BaseProofPay Independent User Proof</title>
+    <script type="module" crossorigin src="/assets/independent-proof.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/independent-proof.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">BASEPROOFPAY</p>
+        <h1>Independent payment proof</h1>
+        <p id="plan-status" class="status">Loading locked payment</p>
+      </header>
+
+      <section class="notice" aria-label="Payment disclosure">
+        <strong>Real payment</strong>
+        <p>This sends exactly 0.10 USDC to the GAYSON Base Account. It is a product test, not an investment, token purchase, donation promise, or refundable deposit. For independent-user evidence, the payer must not be controlled by GAYSON.</p>
+      </section>
+
+      <section class="facts" aria-label="Payment facts">
+        <dl>
+          <div><dt>Network</dt><dd id="network"></dd></div>
+          <div><dt>Payer</dt><dd id="payer">Not connected</dd></div>
+          <div><dt>Payee</dt><dd id="payee"></dd></div>
+          <div><dt>Asset</dt><dd id="asset"></dd></div>
+          <div><dt>Amount</dt><dd id="amount"></dd></div>
+          <div><dt>Policy Manager</dt><dd id="policy-address"></dd></div>
+          <div><dt>Receipt Registry</dt><dd id="registry-address"></dd></div>
+          <div><dt>ETH value</dt><dd>0 ETH</dd></div>
+        </dl>
+      </section>
+
+      <section class="actions" aria-label="Payment controls">
+        <div class="step">
+          <span>1</span>
+          <button id="connect" type="button" disabled>Connect Base Account</button>
+          <output id="connected-wallet">Not connected</output>
+        </div>
+        <div class="step">
+          <span>2</span>
+          <button id="preflight" type="button" disabled>Run payment preflight</button>
+          <output id="preflight-result">Waiting</output>
+        </div>
+        <div class="step consent-step">
+          <span>3</span>
+          <label class="consent" for="consent">
+            <input id="consent" type="checkbox" disabled />
+            <span>I reviewed the network, recipient, and exact 0.10 USDC amount.</span>
+          </label>
+          <button id="send" type="button" disabled>Open wallet review</button>
+        </div>
+      </section>
+
+      <section class="log" aria-label="Execution log">
+        <div class="log-heading">
+          <h2>Proof log</h2>
+          <a id="explorer-link" href="https://base.blockscout.com" target="_blank" rel="noreferrer">Explorer</a>
+        </div>
+        <pre id="log">No wallet request has been made.</pre>
+      </section>
+    </main>
+  </body>
+</html>
