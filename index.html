@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Verify BaseProofPay settlement receipts and payer-controlled spending policies without connecting a wallet.">
+  <meta name="description" content="Verify a live BaseProofPay settlement receipt and payer-controlled spending policy on Base without connecting a wallet.">
   <meta name="base:app_id" content="6a5c632cf364895c3c606518">
   <meta name="talentapp:project_verification" content="19f0f5e592cf736d2db4c1c85a028266b3f512f0d3e2b62b29db31ba123a588031863bd984f1c91650723903107c139f2af20fa9e064aa3bd4f1844681d63d2e">
   <title>BaseProofPay Receipt Viewer</title>
@@ -50,6 +50,9 @@
     .label { color: var(--muted); font-size: 12px; text-transform: uppercase; font-weight: 700; }
     .value { margin-top: 8px; font-size: 17px; font-weight: 700; overflow-wrap: anywhere; }
     .ok { color: var(--green); }
+    a { color: var(--blue); font-weight: 650; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .notice { margin: 0 0 22px; padding: 14px 16px; border-left: 3px solid var(--blue); background: #eef4ff; color: #334155; }
     section { padding: 26px 0; border-bottom: 1px solid var(--line); }
     h2 { margin: 0 0 16px; font-size: 18px; }
     dl { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 11px 18px; margin: 0; }
@@ -70,32 +73,36 @@
   <header>
     <div class="bar">
       <div class="brand"><img class="mark" src="baseproofpay_app_icon_1024.png" alt="">BaseProofPay</div>
-      <div class="network">Local read-only proof</div>
+      <div class="network">Base Mainnet · read-only proof</div>
     </div>
   </header>
   <main>
     <h1>Receipt verification</h1>
-    <p class="lede">Inspect a settlement receipt and its policy evidence without connecting a wallet.</p>
+    <p class="lede">Inspect a live settlement receipt and its policy evidence without connecting a wallet.</p>
+    <p class="notice">This is a technical canary between two wallets controlled by the same owner. It proves contract behavior, not independent-user adoption.</p>
     <form class="search" id="search-form">
-      <input id="payment-id" aria-label="Payment ID" spellcheck="false" value="0x5f2c9e3d8a9d8e476b6dfab11dd30a9b3f59819e8890cb8e568e5d5d1b4a1201">
+      <input id="payment-id" aria-label="Payment ID" spellcheck="false" value="0x2fa2db9dbcaca4eb9fc71a785633e272637b035551a05386ace4322e76c0e248">
       <button type="submit">Verify receipt</button>
     </form>
-    <div class="status" id="status">Showing bundled local proof data.</div>
+    <div class="status" id="status">Showing verified Base Mainnet proof data.</div>
     <div id="result"></div>
   </main>
   <script>
     const sample = {
-      paymentId: "0x5f2c9e3d8a9d8e476b6dfab11dd30a9b3f59819e8890cb8e568e5d5d1b4a1201",
-      state: "Settled",
-      chain: "Base Sepolia (planned proof)",
-      amount: "25.00 test USDC",
+      paymentId: "0x2fa2db9dbcaca4eb9fc71a785633e272637b035551a05386ace4322e76c0e248",
+      state: "Settled · verified",
+      chain: "Base Mainnet (8453)",
+      amount: "1.00 USDC",
       payer: "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
-      payee: "0x1111111111111111111111111111111111111111",
-      asset: "test USDC",
-      policyId: "0x9ac393fe84762d46dc77a85977ea31eafc50f5dcba8a196f6a7d32bf11900188",
-      purposeHash: "0xb52a23e941f39c95a1bc2d5208fa80bc269b71eb814f6c59f9dc754bc0963022",
-      perPayment: "50.00 test USDC",
-      periodBudget: "200.00 test USDC / 24h"
+      payee: "0x8aAa1fC761A8d7eb03323614f9Ff7fb3218B8889",
+      asset: "USDC · 0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      policyId: "0x7c1d1c28ab42a2a956838565ece6e2d791c41632b5e7b078df46bb238948ecc4",
+      purposeHash: "0x598bd831ee4671bd950dfb5baac44ab3adeeb5c24b30bce53394d34ce4dbe3cc",
+      perPayment: "1.00 USDC",
+      periodBudget: "1.00 USDC / 30 days",
+      transaction: "0x9295affca6214350e9c55d8785354f123ef47bd15e4249efe1b7fbea140f2f1c",
+      policyManager: "0x1bBe5B45757D66Fd97A818A62c89FaBD90cdC1d1",
+      registry: "0xD7CE8ecED9CDda01365b2eAD539581Afd981880B"
     };
 
     const result = document.querySelector("#result");
@@ -126,6 +133,14 @@
             <dt>Per-payment cap</dt><dd>${receipt.perPayment}</dd>
             <dt>Period budget</dt><dd>${receipt.periodBudget}</dd>
           </dl>
+        </section>
+        <section>
+          <h2>Onchain proof</h2>
+          <dl>
+            <dt>Transaction</dt><dd><a href="https://base.blockscout.com/tx/${receipt.transaction}" target="_blank" rel="noreferrer">${receipt.transaction}</a></dd>
+            <dt>Policy Manager</dt><dd><a href="https://base.blockscout.com/address/${receipt.policyManager}" target="_blank" rel="noreferrer">${receipt.policyManager}</a></dd>
+            <dt>Receipt Registry</dt><dd><a href="https://base.blockscout.com/address/${receipt.registry}" target="_blank" rel="noreferrer">${receipt.registry}</a></dd>
+          </dl>
         </section>`;
     }
 
@@ -134,7 +149,7 @@
       const value = document.querySelector("#payment-id").value.trim().toLowerCase();
       if (value === sample.paymentId.toLowerCase()) {
         status.className = "status";
-        status.textContent = "Receipt verified against bundled local proof data.";
+        status.textContent = "Receipt verified against the completed Base Mainnet canary.";
         render(sample);
       } else {
         status.className = "status error";
