@@ -116,6 +116,23 @@ test("health endpoint is public and never verifies or settles", async () => {
   assert.equal(facilitator.calls.settle, 0);
 });
 
+test("independent payer client is served same-origin and inert before a click", async () => {
+  const pageResponse = await fetch(`${baseUrl}/payer`);
+  const page = await pageResponse.text();
+  assert.equal(pageResponse.status, 200);
+  assert.match(page, /Prepared, no wallet request/);
+  assert.match(page, /exactly 0\.01 USDC/);
+  assert.match(page, /\/payer-assets\/x402-independent-payer\.js/);
+
+  const assetResponse = await fetch(`${baseUrl}/payer-assets/x402-independent-payer.js`);
+  const asset = await assetResponse.text();
+  assert.equal(assetResponse.status, 200);
+  assert.match(asset, /bc_iscm570t/);
+  assert.match(asset, /eth_requestAccounts/);
+  assert.equal(facilitator.calls.verify, 0);
+  assert.equal(facilitator.calls.settle, 0);
+});
+
 test("mainnet challenge declares exact USDC and required payment identifier", () => {
   assert.equal(challenge.x402Version, 2);
   assert.equal(challenge.accepts[0].network, "eip155:8453");

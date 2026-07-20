@@ -44,6 +44,10 @@ export async function createX402ProductionCandidate(options = {}) {
   const facilitator = options.facilitator ?? createCdpFacilitatorFromEnvironment(options.environment);
   const store = options.store ?? new MemoryPaymentIdempotencyStore(config.paymentIdentifier);
   const counters = { protectedResource: 0 };
+  const independentClientDirectory = options.independentClientDirectory ?? path.join(
+    projectDirectory,
+    "x402-independent-payer-client-dist"
+  );
 
   if (config.mode !== "production_mainnet_candidate" || config.network !== "eip155:8453") {
     throw new Error("Production candidate must use Base Mainnet eip155:8453.");
@@ -89,6 +93,14 @@ export async function createX402ProductionCandidate(options = {}) {
       network: config.network,
       paymentRequired: true
     });
+  });
+  app.use("/payer-assets", express.static(path.join(independentClientDirectory, "payer-assets")));
+  app.get("/payer", (_request, response, next) => {
+    response.sendFile(
+      path.join(independentClientDirectory, "x402-independent-payer-client.html"),
+      { headers: { "Cache-Control": "no-store" } },
+      error => error ? next(error) : undefined
+    );
   });
   app.use(createPaymentIdempotencyMiddleware({
     store,

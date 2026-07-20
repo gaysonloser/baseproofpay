@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BaseProofPay Independent x402 Payment</title>
+    <script type="module" crossorigin src="/payer-assets/x402-independent-payer.js"></script>
+    <link rel="modulepreload" crossorigin href="/payer-assets/utils.js">
+    <link rel="modulepreload" crossorigin href="/payer-assets/secp256k1.js">
+    <link rel="modulepreload" crossorigin href="/payer-assets/localBatchGatewayRequest.js">
+    <link rel="stylesheet" crossorigin href="/payer-assets/x402-independent-payer-client.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">BASEPROOFPAY</p>
+        <h1>Independent x402 payment</h1>
+        <p class="status" id="status">Prepared, no wallet request</p>
+      </header>
+
+      <section class="notice" aria-label="Payment disclosure">
+        <strong>One voluntary payment</strong>
+        <p>This page signs one EIP-3009 authorization for exactly 0.01 USDC. It never requests token approval, native ETH, swap, bridge, deploy, or a wallet transaction.</p>
+      </section>
+
+      <section class="facts" aria-label="Locked payment facts">
+        <dl>
+          <div><dt>Network</dt><dd id="network"></dd></div>
+          <div><dt>Payer</dt><dd id="payer">Connect an independent EOA</dd></div>
+          <div><dt>Payee</dt><dd id="payee"></dd></div>
+          <div><dt>Asset</dt><dd id="asset"></dd></div>
+          <div><dt>Exact amount</dt><dd id="amount"></dd></div>
+          <div><dt>Allowance</dt><dd>0 USDC</dd></div>
+          <div><dt>ETH value</dt><dd>0 ETH</dd></div>
+          <div><dt>Payment identifier</dt><dd id="payment-id"></dd></div>
+          <div><dt>Builder Code</dt><dd id="builder-code"></dd></div>
+          <div><dt>Client</dt><dd>Coinbase Wallet EOA / EIP-712</dd></div>
+        </dl>
+      </section>
+
+      <section class="actions" aria-label="Payment controls">
+        <div class="step">
+          <span>1</span>
+          <button id="connect" type="button">Connect independent Coinbase Wallet EOA</button>
+          <output id="connected-wallet">Not connected</output>
+        </div>
+        <div class="step">
+          <span>2</span>
+          <button id="preflight" type="button" disabled>Run unpaid preflight</button>
+          <output id="preflight-result">Waiting</output>
+        </div>
+        <div class="step consent-step">
+          <span>3</span>
+          <label class="consent" for="consent">
+            <input id="consent" type="checkbox" disabled />
+            <span>I independently control this wallet and voluntarily approve one exact 0.01 USDC payment after reviewing every field above.</span>
+          </label>
+          <button id="pay" type="button" disabled>Sign once and submit once</button>
+        </div>
+      </section>
+
+      <section class="log" aria-label="Execution log">
+        <div class="log-heading">
+          <h2>Payment log</h2>
+          <a id="explorer-link" href="https://base.blockscout.com" target="_blank" rel="noreferrer">Explorer</a>
+        </div>
+        <pre id="log">No wallet request has been made.</pre>
+      </section>
+    </main>
+  </body>
+</html>
