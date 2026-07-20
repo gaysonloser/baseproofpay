@@ -1,0 +1,33 @@
+{
+  "schema": "gayson.baseproofpay.x402_production_candidate",
+  "version": 1,
+  "mode": "production_mainnet_candidate",
+  "route": "GET /api/reconciliation-evidence",
+  "network": "eip155:8453",
+  "scheme": "exact",
+  "price": "$0.01",
+  "payTo": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+  "description": "BaseProofPay reconciliation evidence for verified agent payments",
+  "mimeType": "application/json",
+  "serviceName": "BaseProofPay",
+  "facilitator": {
+    "provider": "coinbase_cdp",
+    "url": "https://api.cdp.coinbase.com/platform/v2/x402",
+    "credentials": [
+      "CDP_API_KEY_ID",
+      "CDP_API_KEY_SECRET"
+    ]
+  },
+  "paymentIdentifier": {
+    "required": true,
+    "ttlSeconds": 86400,
+    "maxEntries": 10000
+  },
+  "safety": {
+    "startWithoutCredentials": false,
+    "persistCredentials": false,
+    "walletConnection": false,
+    "automaticPayment": false,
+    "automaticSettlementTest": false
+  }
+}

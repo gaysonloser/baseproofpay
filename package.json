@@ -1,0 +1,20 @@
+{
+  "name": "baseproofpay-public",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start:x402-production": "node scripts/x402_production_candidate_server.mjs"
+  },
+  "dependencies": {
+    "@coinbase/x402": "2.1.0",
+    "@x402/core": "2.19.0",
+    "@x402/evm": "2.19.0",
+    "@x402/express": "2.19.0",
+    "@x402/extensions": "2.19.0",
+    "express": "5.2.1"
+  }
+}
