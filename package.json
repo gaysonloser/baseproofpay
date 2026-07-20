@@ -7,7 +7,11 @@
     "node": ">=20"
   },
   "scripts": {
-    "start:x402-production": "node scripts/x402_production_candidate_server.mjs"
+    "start:x402-production": "node scripts/x402_production_candidate_server.mjs",
+    "test:x402-production": "node --test scripts/test_x402_production_candidate.mjs",
+    "audit:x402-production": "node scripts/audit_x402_production_candidate.mjs",
+    "test:x402-builder-attribution": "node scripts/test_x402_builder_attribution.mjs",
+    "audit:x402-builder-attribution": "node scripts/audit_x402_builder_attribution.mjs"
   },
   "dependencies": {
     "@coinbase/x402": "2.1.0",

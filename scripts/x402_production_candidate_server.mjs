@@ -13,6 +13,11 @@ import {
   paymentIdentifierResourceServerExtension
 } from "@x402/extensions/payment-identifier";
 import {
+  BUILDER_CODE,
+  builderCodeResourceServerExtension,
+  declareBuilderCodeExtension
+} from "@x402/extensions/builder-code";
+import {
   MemoryPaymentIdempotencyStore,
   createPaymentIdempotencyMiddleware
 } from "./x402_idempotency_guard.mjs";
@@ -43,10 +48,14 @@ export async function createX402ProductionCandidate(options = {}) {
   if (config.mode !== "production_mainnet_candidate" || config.network !== "eip155:8453") {
     throw new Error("Production candidate must use Base Mainnet eip155:8453.");
   }
+  if (!/^bc_[a-z0-9_]+$/.test(config.builderCode ?? "")) {
+    throw new Error("Production candidate requires a valid BaseProofPay Builder Code.");
+  }
 
   const resourceServer = new x402ResourceServer(facilitator)
     .register(config.network, new ExactEvmScheme())
-    .registerExtension(paymentIdentifierResourceServerExtension);
+    .registerExtension(paymentIdentifierResourceServerExtension)
+    .registerExtension(builderCodeResourceServerExtension);
 
   const routeConfig = {
     accepts: {
@@ -59,7 +68,8 @@ export async function createX402ProductionCandidate(options = {}) {
     mimeType: config.mimeType,
     serviceName: config.serviceName,
     extensions: {
-      [PAYMENT_IDENTIFIER]: declarePaymentIdentifierExtension(true)
+      [PAYMENT_IDENTIFIER]: declarePaymentIdentifierExtension(true),
+      [BUILDER_CODE]: declareBuilderCodeExtension(config.builderCode)
     },
     unpaidResponseBody: () => ({
       contentType: "application/json",

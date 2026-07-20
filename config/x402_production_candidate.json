@@ -1,6 +1,6 @@
 {
   "schema": "gayson.baseproofpay.x402_production_candidate",
-  "version": 1,
+  "version": 2,
   "mode": "production_mainnet_candidate",
   "route": "GET /api/reconciliation-evidence",
   "network": "eip155:8453",
@@ -10,6 +10,7 @@
   "description": "BaseProofPay reconciliation evidence for verified agent payments",
   "mimeType": "application/json",
   "serviceName": "BaseProofPay",
+  "builderCode": "bc_iscm570t",
   "facilitator": {
     "provider": "coinbase_cdp",
     "url": "https://api.cdp.coinbase.com/platform/v2/x402",
