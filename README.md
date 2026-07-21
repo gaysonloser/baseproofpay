@@ -19,6 +19,21 @@ The public viewer does not connect a wallet, request a signature, send a transac
 
 The payer and payee wallets are controlled by the same owner. This is a technical canary, not independent-user adoption.
 
+## Production x402 Proof
+
+- Production endpoint: `https://baseproofpay-x402.onrender.com/payer`
+- Builder-attributed canary: `0x3293bae0c55f9dcf49991ae92fa5bfaf740c4b165d5d26df4556ca75b8cc0528`
+- Result: exact `0.01 USDC` EIP-3009 settlement, no allowance, zero ETH value, facilitator-paid gas, and a successful `PAYMENT-RESPONSE`.
+- Attribution: the official ERC-8021 checker recognizes BaseProofPay Builder Code `bc_iscm570t`; transaction calldata also carries facilitator code `cdp_facil1`.
+
+This production payment used a self-controlled technical payer. It proves the x402 transport and Builder attribution path, but it is not independent-user adoption and must not be replayed.
+
+## Ecosystem Indexing
+
+Talent's public BaseProofPay project showed `2` transactions, `2` DAU, and `<0.0001 ETH` gas fees on `2026-07-21`. Both verified Base contracts and the public GitHub repository remain attached as data sources. The public aggregate does not expose transaction hashes, so those metrics are reported as platform indexing evidence rather than assigned to a specific canary.
+
+Base.dev's Base App and Base Chain leaderboards still displayed a `2026-07-19` snapshot at the same review. BaseProofPay therefore waits for the documented refresh instead of generating another transaction.
+
 ## Independent User Proof
 
 `independent-proof.html` provides a separately disclosed Base Account flow for a genuine external user to send exactly `0.10 USDC` to the GAYSON Base Account. It creates unique policy and payment IDs in the browser, requires atomic batch support, preflights balances, allowance, contract code and unused IDs, and postflights the full policy, receipt, balance deltas and zero residual allowance. It has no backend and makes no wallet request until the user clicks Connect. The payment is not an investment, token purchase, donation promise, or refundable deposit.
