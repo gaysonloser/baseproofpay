@@ -11,7 +11,7 @@
       "status": "verified",
       "value": "App ID 6a5c632cf364895c3c606518",
       "url": "https://base.dev/",
-      "boundary": "The existing BaseProofPay registration is proven. The new Enterprise OS Render URL is not registered yet."
+      "boundary": "The existing App ID and Builder Code were retained; the Enterprise OS Render domain is verified as primary and BaseProofPay remains secondary."
     },
     {
       "id": "builder_code",
@@ -57,10 +57,10 @@
     {
       "id": "base_builders",
       "label": "Base builders discovery",
-      "status": "local_nomination_ready_after_publish",
-      "value": "Enterprise OS nomination narrative prepared locally",
-      "url": "https://www.base.org/about",
-      "boundary": "No list membership, application or official endorsement is claimed."
+      "status": "handoff_in_progress_not_submitted",
+      "value": "Nomination package handed to the dedicated X publishing session",
+      "url": "https://x.com/base/status/2079505964516933921",
+      "boundary": "The public reply is not yet submitted. No list membership, application acceptance or official endorsement is claimed."
     },
     {
       "id": "independent_adoption",

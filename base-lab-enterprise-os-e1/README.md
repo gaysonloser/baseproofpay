@@ -7,6 +7,7 @@ Base-native enterprise agent and asset operations. The non-payment heroes are Ag
 - Enterprise OS: available after the separately authorized Render E1 deployment
 - Health: `/healthz`
 - Sample evidence: `/api/v1/evidence`
+- Control readiness: `/api/v1/control-readiness`
 - Topology: `/api/v1/topology`
 - Base ecosystem proof: `/api/v1/ecosystem`
 

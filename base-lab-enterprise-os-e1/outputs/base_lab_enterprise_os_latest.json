@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "evidence_id": "BASE_LAB_ENTERPRISE_OS_LOCAL_V1",
-  "generated_at": "2026-07-22T07:26:27.718Z",
+  "generated_at": "2026-07-22T09:56:34.083Z",
   "status": "read_only_console_deployment_candidate",
   "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
   "coverage": {
@@ -272,5 +272,5 @@
       "gap": "Console VM origin, public deployment, live ERP evidence and reviewer recording"
     }
   ],
-  "evidence_root": "sha256:486f080d5dea784c0d2a89073a81a1af73b533f9256a85395def794926d789eb"
+  "evidence_root": "sha256:890dfef2a82bdb0df42e14dd99799bde062aba5b2d36f8017f847c149c1d7e7c"
 }

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE_LAB_D01_D02_D09_CONTROL_READINESS_V1",
+  "generated_at": "2026-07-22T09:53:48.045Z",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "company": {
+    "name": "AOXPET Base Lab",
+    "abbreviation": "ABL",
+    "currency": "USD",
+    "period": "2026-08"
+  },
+  "overall_status": "fail_closed_before_erp_write",
+  "sequence": [
+    "D01",
+    "D02",
+    "D09"
+  ],
+  "lanes": [
+    {
+      "id": "D01",
+      "label": "Foundation & master isolation",
+      "status": "blocked_with_packet",
+      "decision": "Resolve the accounting-country contract before any master-data write.",
+      "facts": {
+        "company_exists": true,
+        "chart": "Standard",
+        "live_country": "United Kingdom",
+        "contract_country": "United States",
+        "candidate_count_maximum": 14,
+        "write_count": 0
+      },
+      "controls": [
+        "read_before_create",
+        "create_only_missing",
+        "BASE-LAB namespace",
+        "company isolation",
+        "no cross-company reference"
+      ],
+      "blocker": "country_contract_mismatch_unresolved"
+    },
+    {
+      "id": "D02",
+      "label": "Opening baseline preview",
+      "status": "preview_ready",
+      "decision": "Balanced synthetic opening is reproducible but cannot advance until D01 is accepted and opening is separately approved.",
+      "facts": {
+        "currency": "USD",
+        "total_debit_minor": 12500000,
+        "total_credit_minor": 12500000,
+        "difference_minor": 0,
+        "posting_authorized": false,
+        "entry_count": 3
+      },
+      "controls": [
+        "debit_credit_zero_difference",
+        "synthetic_only",
+        "human_review_required",
+        "postable_false",
+        "no_opening_write"
+      ],
+      "blocker": "depends_on_D01_and_separate_opening_confirmation"
+    },
+    {
+      "id": "D09",
+      "label": "Clearing & bank reconciliation",
+      "status": "local_match_ready",
+      "decision": "Reuse existing verified settlement evidence; do not create another payment for reconciliation.",
+      "facts": {
+        "network": "Base Mainnet",
+        "transaction_hash": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+        "amount_display": "0.10 USDC",
+        "reconciliation_status": "matched",
+        "difference_minor": 0,
+        "builder_code": "bc_iscm570t",
+        "independent_customer_claim": false
+      },
+      "controls": [
+        "existing_evidence_only",
+        "no_new_payment",
+        "idempotent_match",
+        "human_review_required",
+        "postable_false"
+      ],
+      "blocker": "depends_on_D01_D02_and_live_Base_Lab_clearing_readback"
+    }
+  ],
+  "controls": {
+    "erp_write_enabled": false,
+    "opening_write_enabled": false,
+    "payment_replay_allowed": false,
+    "wallet_required": false,
+    "chain_action_required": false,
+    "postable": false,
+    "human_review_required": true
+  },
+  "evidence_fingerprint": "sha256:38fe0102e8fd2c57731a5d6f4e6d7680a25ea622f7a13019e25c1fbf2210870a"
+}

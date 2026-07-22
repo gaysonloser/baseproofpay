@@ -8,6 +8,7 @@ const defaultStaticRoot = join(projectRoot, "dist-base-lab-enterprise-os");
 const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_latest.json");
 const topologyPath = join(projectRoot, "config/base_lab_cloud_runtime_topology.json");
 const ecosystemPath = join(projectRoot, "config/base_lab_ecosystem_evidence.json");
+const controlReadinessPath = join(projectRoot, "outputs/base_lab_control_readiness_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -82,6 +83,21 @@ export function sanitizeEcosystem(ecosystem) {
   };
 }
 
+export function sanitizeControlReadiness(readiness) {
+  return {
+    schema_version: readiness.schema_version,
+    evidence_id: readiness.evidence_id,
+    generated_at: readiness.generated_at,
+    product: readiness.product,
+    company: readiness.company,
+    overall_status: readiness.overall_status,
+    sequence: readiness.sequence,
+    lanes: (readiness.lanes || []).map(({ id, label, status, decision, facts, controls, blocker }) => ({ id, label, status, decision, facts, controls, blocker })),
+    controls: readiness.controls,
+    evidence_fingerprint: readiness.evidence_fingerprint
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -99,6 +115,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/healthz") return sendJson(req,res,200,{status:"ok",runtime_mode:runtime.mode,origin_configured:runtime.originConfigured,erp_authority:"managed_erp",wallet:false,writes:false,durable_control_plane:false});
       if (req.url === "/api/v1/evidence") return sendJson(req,res,200,sanitizeEvidence(JSON.parse(await readFile(evidencePath,"utf8"))));
       if (req.url === "/api/v1/ecosystem") return sendJson(req,res,200,sanitizeEcosystem(JSON.parse(await readFile(ecosystemPath,"utf8"))));
+      if (req.url === "/api/v1/control-readiness") return sendJson(req,res,200,sanitizeControlReadiness(JSON.parse(await readFile(controlReadinessPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));
