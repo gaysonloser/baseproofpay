@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "topology_id": "BASE_LAB_CLOUD_RUNTIME_TOPOLOGY_V1",
+  "status": "read_only_console_deployment_candidate",
+  "career_deployment_review": {
+    "review_id": "BASE_LAB_ENTERPRISE_OS_DEPLOYMENT_REVIEW_V1",
+    "verdict": "architecture_aligned_conditionally_approved_for_read_only_deployment",
+    "current_label": "read_only_console_deployment_candidate",
+    "e1_only": true
+  },
+  "request_flow": [
+    "Local deterministic sanitized evidence bundle",
+    "Managed HTTPS read-only Console",
+    "Reviewer receives UI health evidence and topology only"
+  ],
+  "deployment_gates": {
+    "local_preview": "allowed",
+    "e1_read_only_console": "eligible_after_user_platform_region_cost_instruction",
+    "e2_erp_credential": "separate_review_required",
+    "erp_phase_b_write": "separate_confirmation_required",
+    "public_publish": "separate_confirmation_required",
+    "wallet_or_chain": "separate_confirmation_required"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE_LAB_ENTERPRISE_OS_LOCAL_V1",
+  "generated_at": "2026-07-22T07:26:27.718Z",
+  "status": "read_only_console_deployment_candidate",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "coverage": {
+    "implemented": 11,
+    "in_progress": 3,
+    "queued": 0,
+    "total": 14,
+    "domains": [
+      {
+        "id": "D01",
+        "name": "company_configuration_and_master_data",
+        "status": "in_progress",
+        "operating_document": "Base Lab target manifest",
+        "chain_control_or_evidence": "NO_CHAIN release-manifest hash candidate",
+        "erp_ledger_or_reconciliation": "Company/config/master isolation crosswalk queued",
+        "close_or_report_impact": "C0 configuration prerequisite",
+        "next_result": "W1 C0 company and master-data exact live plan"
+      },
+      {
+        "id": "D02",
+        "name": "opening_balances_and_dimensions",
+        "status": "in_progress",
+        "operating_document": "Base Lab synthetic opening package balances locally to zero difference",
+        "chain_control_or_evidence": "NO_CHAIN human-approved opening package",
+        "erp_ledger_or_reconciliation": "opening GL and control-total reconciliation fixture ready; live readback pending",
+        "close_or_report_impact": "C1 opening and report baseline mapped",
+        "next_result": "live foundation only after separate confirmation"
+      },
+      {
+        "id": "D03",
+        "name": "order_to_cash",
+        "status": "implemented",
+        "operating_document": "BASE-LAB Agent order fulfillment invoice and collection-reference fixture",
+        "chain_control_or_evidence": "AGENT_INTENT plus EVIDENCE_HASH; payment component reference only",
+        "erp_ledger_or_reconciliation": "AR Payment Ledger GL and Stock Ledger reconciliation contract",
+        "close_or_report_impact": "revenue cutoff AR aging cash flow and gross margin mapped",
+        "next_result": "local result 1 complete; rotate D04"
+      },
+      {
+        "id": "D04",
+        "name": "procure_to_pay",
+        "status": "implemented",
+        "operating_document": "BASE-LAB purchase intent order receipt quality invoice and AP-reference fixture",
+        "chain_control_or_evidence": "AGENT_INTENT plus EVIDENCE_HASH; payment omitted",
+        "erp_ledger_or_reconciliation": "AP GRNI inventory GL and three-way-match reconciliation contract",
+        "close_or_report_impact": "AP cutoff GRNI quality hold and working-capital impact mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D05",
+        "name": "inventory_and_cost",
+        "status": "implemented",
+        "operating_document": "BASE-LAB synthetic receipt movement sale return and reconciliation packet",
+        "chain_control_or_evidence": "BaseBatchTwin and BaseInventoryRoot local deterministic candidate",
+        "erp_ledger_or_reconciliation": "SLE valuation repost inventory-COGS contract with exact read blocker",
+        "close_or_report_impact": "stock close gross margin and turnover impact mapped",
+        "next_result": "result unit 2 complete; domain locked until portfolio share recovers"
+      },
+      {
+        "id": "D06",
+        "name": "manufacturing_quality_and_subcontracting",
+        "status": "implemented",
+        "operating_document": "BASE-LAB BOM work order issue manufacture WIP scrap and quality fixture",
+        "chain_control_or_evidence": "manufacturing/quality EVIDENCE_HASH and private cost-root candidate",
+        "erp_ledger_or_reconciliation": "SLE valuation repost WIP and manufacturing GL contract; ERP owns cost",
+        "close_or_report_impact": "cost close yield variance and gross-margin bridge mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D07",
+        "name": "assets_and_depreciation",
+        "status": "implemented",
+        "operating_document": "BASE-LAB acquisition capitalization in-service depreciation and disposal-control fixture",
+        "chain_control_or_evidence": "BaseAssetEvidence non-title non-valuation lifecycle candidate",
+        "erp_ledger_or_reconciliation": "Asset register depreciation GL and asset reconciliation contract",
+        "close_or_report_impact": "asset close capex depreciation and utilization mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D08",
+        "name": "projects_expense_and_budget",
+        "status": "implemented",
+        "operating_document": "BASE-LAB project milestone expense budget and forecast-at-completion fixture",
+        "chain_control_or_evidence": "BaseProjectEvidence READ_ONLY_VERIFY plus EVIDENCE_HASH without approval or recognition claim",
+        "erp_ledger_or_reconciliation": "project cost expense GL and budget variance reconciliation contract",
+        "close_or_report_impact": "project profitability budget variance and cutoff mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D09",
+        "name": "treasury_payment_and_bank_reconciliation",
+        "status": "in_progress",
+        "operating_document": "existing BaseProofPay technical settlement evidence only",
+        "chain_control_or_evidence": "B20/x402 payment component frozen to maintenance",
+        "erp_ledger_or_reconciliation": "Base Lab clearing bank and Payment Ledger integration queued",
+        "close_or_report_impact": "cash reconciliation and cash-flow impact queued",
+        "next_result": "W5; no new payment variant"
+      },
+      {
+        "id": "D10",
+        "name": "receivable_financing_and_rwa_evidence",
+        "status": "implemented",
+        "operating_document": "BASE-LAB eligible AR pool exclusions advance-rate and borrowing-base fixture",
+        "chain_control_or_evidence": "BaseFinancingIntent plus EVIDENCE_HASH with no collateral credit approval or funding claim",
+        "erp_ledger_or_reconciliation": "AR aging concentration eligibility and borrowing-base reconciliation contract",
+        "close_or_report_impact": "working-capital liquidity and covenant scenario mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D11",
+        "name": "accounting_tax_and_three_ledgers",
+        "status": "implemented",
+        "operating_document": "BASE-LAB three-ledger control package and synthetic tax boundary",
+        "chain_control_or_evidence": "NO_CHAIN plus READ_ONLY_VERIFY; no accounting or tax recognition claim",
+        "erp_ledger_or_reconciliation": "GL equals Payment Ledger plus Stock Ledger control with zero difference and human posting only",
+        "close_or_report_impact": "trial balance inventory-AR bridge and tax review mapped",
+        "next_result": "local result 1 complete"
+      },
+      {
+        "id": "D12",
+        "name": "close_audit_and_reporting",
+        "status": "implemented",
+        "operating_document": "BASE-LAB 14-step close checklist with four explicit live ERP blockers",
+        "chain_control_or_evidence": "BaseCloseProof candidate only after accepted ERP close evidence",
+        "erp_ledger_or_reconciliation": "AR/AP bank inventory asset TB and period-lock reconciliation contract",
+        "close_or_report_impact": "TB P&L BS CF remain false until live close; audit bundle candidate ready",
+        "next_result": "local result 1 complete; live close not claimed"
+      },
+      {
+        "id": "D13",
+        "name": "fpa_to_decision",
+        "status": "implemented",
+        "operating_document": "BASE-LAB actual forecast gross-margin working-capital and cash scenario fixture",
+        "chain_control_or_evidence": "READ_ONLY_VERIFY plus SCENARIO_INTENT without autonomous approval",
+        "erp_ledger_or_reconciliation": "closed-period actuals to human-approved forecast bridge",
+        "close_or_report_impact": "gross-margin working-capital cash-runway and management decision mapped",
+        "next_result": "local result 1 complete; live actuals pending"
+      },
+      {
+        "id": "D14",
+        "name": "agent_governance_security_and_human_gates",
+        "status": "implemented",
+        "operating_document": "W0 owner isolation and action-gate manifest",
+        "chain_control_or_evidence": "permission design and fail-closed action controls",
+        "erp_ledger_or_reconciliation": "adapter has no submit delete or posting authority",
+        "close_or_report_impact": "human review privacy claims and reproducibility gates",
+        "next_result": "continuous control applied to every wave"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "D03",
+      "domain": "D03_order_to_cash",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-O2C-202608-001"
+    },
+    {
+      "id": "D04",
+      "domain": "D04_procure_to_pay",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-P2P-202608-001"
+    },
+    {
+      "id": "D05",
+      "domain": "D05_inventory_and_cost",
+      "status": "local_complete_live_erp_blocked",
+      "business_event_id": "BASE-LAB-INVENTORY-202608-002"
+    },
+    {
+      "id": "D06",
+      "domain": "D06_manufacturing_quality_and_subcontracting",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-MFG-202608-001"
+    },
+    {
+      "id": "D07",
+      "domain": "D07_assets_and_depreciation",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-ASSET-202608-001"
+    },
+    {
+      "id": "D08",
+      "domain": "D08_projects_expense_and_budget",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-PROJECT-202608-001"
+    },
+    {
+      "id": "D10",
+      "domain": "D10_receivable_financing_and_rwa_evidence",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-FINANCE-202608-001"
+    },
+    {
+      "id": "D11",
+      "domain": "D11_accounting_tax_and_three_ledgers",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-LEDGER-202608-001"
+    },
+    {
+      "id": "D12",
+      "domain": "D12_close_audit_and_reporting",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-CLOSE-202608-001"
+    },
+    {
+      "id": "D13",
+      "domain": "D13_fpa_to_decision",
+      "status": "local_complete_live_erp_pending",
+      "business_event_id": "BASE-LAB-FPA-202608-001"
+    }
+  ],
+  "controls": {
+    "payment_share_percent": 0,
+    "d05_share_percent": 15.38,
+    "erp_business_document_writes": 0,
+    "chain_actions": 0,
+    "deployments": 0,
+    "publications": 0
+  },
+  "gates": [
+    {
+      "gate": "C0",
+      "status": "in_progress",
+      "ready": "live Company AOXPET Base Lab / ABL / USD, Standard chart defaults, dedicated identity, dedicated read-only role and Company User Permission are created and read back",
+      "gap": "Base-Lab fiscal configuration, dimensions, naming series, business-document permissions and immutable Phase B configuration readback"
+    },
+    {
+      "gate": "C1",
+      "status": "queued",
+      "ready": "Base-Lab-specific dimensions masters aliases and zero-difference synthetic opening fixture are ready locally",
+      "gap": "live master records, opening balances and readback; none were created in Phase A"
+    },
+    {
+      "gate": "C2",
+      "status": "in_progress",
+      "ready": "Base-Lab D03-D08 and D10-D13 each span operating document, chain control/evidence, ERP ledger/reconciliation and close/report impact",
+      "gap": "D09 connection to the Base Lab clearing/bank model and live ERP operational documents; no new payment is required"
+    },
+    {
+      "gate": "C3",
+      "status": "queued",
+      "ready": "draft-only least-privilege pattern proven historically",
+      "gap": "Base Lab human-controlled acceptance and balanced vouchers; no adapter posting authority"
+    },
+    {
+      "gate": "C4",
+      "status": "queued",
+      "ready": "inventory and payment crosswalk patterns exist",
+      "gap": "Base Lab GL Payment SLE AR/AP bank inventory manufacturing and asset reconciliations"
+    },
+    {
+      "gate": "C5",
+      "status": "in_progress",
+      "ready": "14-step local close checklist and explicit BaseCloseProof candidate exist",
+      "gap": "live Base Lab operational, bank, inventory, asset, accounting and period-lock evidence"
+    },
+    {
+      "gate": "C6",
+      "status": "in_progress",
+      "ready": "local three-ledger zero-difference control and FP&A scenario connect TB/P&L/BS/CF sources to management outputs",
+      "gap": "live closed-period reports and numeric tie-outs"
+    },
+    {
+      "gate": "C7",
+      "status": "in_progress",
+      "ready": "deterministic evidence bundle, cloud topology and standalone reviewer UI are deployment-ready locally",
+      "gap": "Console VM origin, public deployment, live ERP evidence and reviewer recording"
+    }
+  ],
+  "evidence_root": "sha256:486f080d5dea784c0d2a89073a81a1af73b533f9256a85395def794926d789eb"
+}

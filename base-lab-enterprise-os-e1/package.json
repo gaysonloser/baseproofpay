@@ -1,0 +1,12 @@
+{
+  "name": "catverse-base-lab-enterprise-os-e1",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/base_lab_console_server.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

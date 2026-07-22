@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: catverse-base-lab-enterprise-os
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    autoDeployTrigger: off
+    envVars:
+      - key: BASE_LAB_RUNTIME_MODE
+        value: production
+      - key: BASE_LAB_ALLOW_ERP_WRITE
+        value: "false"
+      - key: BASE_LAB_NAMESPACE
+        value: ABL
+      - key: BASE_LAB_RATE_LIMIT_PER_MINUTE
+        value: "120"

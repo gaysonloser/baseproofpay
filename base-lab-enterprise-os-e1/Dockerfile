@@ -1,0 +1,6 @@
+FROM node:22-alpine
+WORKDIR /app
+ENV NODE_ENV=production HOST=0.0.0.0 BASE_LAB_RUNTIME_MODE=production BASE_LAB_ALLOW_ERP_WRITE=false BASE_LAB_NAMESPACE=ABL BASE_LAB_RATE_LIMIT_PER_MINUTE=120
+COPY . .
+EXPOSE 10000
+CMD ["node","scripts/base_lab_console_server.mjs"]

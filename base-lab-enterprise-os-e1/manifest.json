@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package_id": "BASE_LAB_RENDER_E1_PACKAGE_V1",
+  "status": "ready_for_authorized_source_delivery",
+  "service_name": "catverse-base-lab-enterprise-os",
+  "provider": "Render",
+  "region": "singapore",
+  "plan": "free",
+  "company": {
+    "name": "AOXPET Base Lab",
+    "abbr": "ABL",
+    "currency": "USD"
+  },
+  "namespace": "ABL",
+  "erp_credentials": 0,
+  "erp_writes": 0,
+  "wallets": 0,
+  "chain_actions": 0,
+  "privacy": {
+    "status": "passed",
+    "forbidden_hits": []
+  },
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "2b4523c2aefa09dd6d268e9aaa8f0774965edf695b39a0f173890112d3613cfe",
+      "bytes": 30
+    },
+    {
+      "path": "DEPLOYMENT.md",
+      "sha256": "4b72929b3814029522975b2cf8420e27f0870de59f285fb840245be5d08acbe8",
+      "bytes": 537
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "349d67fcdd152db7fc0d9d8b3837349940f6298c46d35e1102ebfde369b820c6",
+      "bytes": 265
+    },
+    {
+      "path": "config/base_lab_cloud_runtime_topology.json",
+      "sha256": "32a4266fa414ddb189aa2835f1870d333bf03183e2acfc851ef339645351a9de",
+      "bytes": 957
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseproofpay_app_icon_v1-DzZ6Z_ro.png",
+      "sha256": "fc32d95d5ba63fcf28475a23593e81889a3276c6f5176b9a9eb500ce8c645b28",
+      "bytes": 1118711
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-CUHvw_ZO.js",
+      "sha256": "850c7fbfa5619d583fb1d9b1f03060e5daca0d1865f399465c07827e3884f1bf",
+      "bytes": 4741
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-DXDwNFie.css",
+      "sha256": "95d62ce9c01b993931ad80f7278b97e411d11300282605ac5e24a9e9021d68ac",
+      "bytes": 5140
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/enterprise-os.html",
+      "sha256": "d0c9b3afa447847aedf0a1bb69d3f198d4b03cad8c83f49ab105c907a9729526",
+      "bytes": 477
+    },
+    {
+      "path": "outputs/base_lab_enterprise_os_latest.json",
+      "sha256": "8200c0b614c48059d10777bad0d2e789f98d1dfb7c529c3b55ec0b289519f472",
+      "bytes": 13046
+    },
+    {
+      "path": "package.json",
+      "sha256": "5426383ada0d7444b05111944e9374f1559b5444e7a6c2a9047a3c8ce4f70b2c",
+      "bytes": 227
+    },
+    {
+      "path": "render.yaml",
+      "sha256": "5a839e3f27c44a370ef8b2afabebf92d0f5c207bb353f5286809bb464ef948eb",
+      "bytes": 485
+    },
+    {
+      "path": "scripts/base_lab_console_server.mjs",
+      "sha256": "6f1ba158a60ad754332fd7556acc44b7681d06cd0a6271f0c1c2efa48b4e5c88",
+      "bytes": 5704
+    }
+  ],
+  "package_root": "sha256:0ca99369f203378b8e9d18d1053c3cb1912524380ebbe8dd1c2ff37db5da308f"
+}
