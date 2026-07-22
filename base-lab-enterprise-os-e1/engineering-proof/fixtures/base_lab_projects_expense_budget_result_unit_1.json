@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0","result_unit_id":"BASE-LAB-D08-RU-001","domain":"D08_projects_expense_and_budget","status":"local_complete_live_erp_pending","company":"AOXPET Base Lab","period":"2026-08","business_event_id":"BASE-LAB-PROJECT-202608-001","idempotency_key":"BASE-LAB-IDEM-D08-202608-001",
+  "operating_document":{"project":"BASE-LAB-PROJ-CATVERSE-LAUNCH","cost_center":"Base Lab Operations - ABL","milestone":"Pilot acceptance","budget_minor":1200000,"committed_minor":640000,"actual_minor":510000,"forecast_at_completion_minor":1080000,"currency":"USD","documents":["BASE-LAB-DOC-PROJ-202608-001","BASE-LAB-DOC-EXP-202608-001","BASE-LAB-DOC-BUDGET-202608-001"]},
+  "chain_control_or_evidence":{"modes":["READ_ONLY_VERIFY","EVIDENCE_HASH"],"component":"BaseProjectEvidence","budget_approval_claim":false,"expense_recognition_claim":false,"deployment":false},
+  "erp_ledger_or_reconciliation":{"expected_objects":["Project","Timesheet","Expense Claim","Budget","Journal Entry"],"expected_ledgers":["General Ledger"],"erp_owns_recognition":true,"variance_minor":690000,"readback":"project expense and budget variance by cost center"},
+  "close_or_report_impact":{"project_margin_report":true,"budget_variance_report":true,"expense_cutoff_required":true,"recognized":false},
+  "negative_controls":["duplicate milestone","expense above approved budget","wrong company","missing cost center","evidence hash mismatch"],
+  "external_actions":{"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

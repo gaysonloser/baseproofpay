@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "BASE_LAB_ERPNEXT_PUBLIC_ADAPTER_CONTRACT_V1",
+  "company": "AOXPET Base Lab",
+  "namespace": "ABL",
+  "currency": "USD",
+  "stage": "E1_READ_ONLY_CONSOLE",
+  "default_route": "read_only_crosswalk",
+  "credentials_in_release": false,
+  "guards": {
+    "allow_erp_write": false,
+    "submit": false,
+    "cancel": false,
+    "amend": false,
+    "delete": false,
+    "import": false,
+    "export": false,
+    "share": false,
+    "human_review_required": true,
+    "postable": false
+  },
+  "proof_boundary": "ERPNext remains authoritative for documents, GL, Payment Ledger, Stock Ledger, close and reports. This E1 release exposes sanitized evidence only."
+}

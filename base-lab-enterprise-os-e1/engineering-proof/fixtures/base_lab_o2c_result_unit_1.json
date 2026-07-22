@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-LAB-D03-RU-001",
+  "domain": "D03_order_to_cash",
+  "status": "local_complete_live_erp_pending",
+  "company": "AOXPET Base Lab",
+  "period": "2026-08",
+  "business_event_id": "BASE-LAB-O2C-202608-001",
+  "idempotency_key": "BASE-LAB-IDEM-D03-202608-001",
+  "operating_document": {
+    "flow": ["Agent Order Intent", "Sales Order", "Delivery Note", "Sales Invoice", "AR collection reference"],
+    "documents": ["BASE-LAB-DOC-SO-202608-001", "BASE-LAB-DOC-DN-202608-002", "BASE-LAB-DOC-SI-202608-001"],
+    "customer": "BASE-LAB-CUST-CAT-DIST",
+    "item": "BASE-LAB-ITEM-CAT-STAR",
+    "ordered_quantity": 10,
+    "fulfilled_quantity": 10,
+    "invoiced_quantity": 10,
+    "currency": "USD",
+    "invoice_amount_minor": 25000
+  },
+  "chain_control_or_evidence": {
+    "modes": ["AGENT_INTENT", "EVIDENCE_HASH", "READ_ONLY_VERIFY"],
+    "agent_intent": {"scope":"sell exact item and quantity","max_amount_minor":25000,"human_approval_required":true},
+    "fulfillment_evidence": "sha256:240d0ef98163fe85ac19540b0f56e2811543c29e8c5e84f556e0c3b1e90e8f0f",
+    "payment_component": "existing BaseProofPay reference only; no new variant or payment",
+    "transaction_hash": null
+  },
+  "erp_ledger_or_reconciliation": {
+    "expected_objects": ["Sales Order", "Delivery Note", "Sales Invoice", "Payment Entry"],
+    "expected_ledgers": ["Accounts Receivable", "Payment Ledger", "General Ledger", "Stock Ledger"],
+    "quantity_tie_out": "ordered_10_fulfilled_10_invoiced_10",
+    "amount_tie_out": "invoice_25000_minor_collection_unsettled",
+    "ar_status": "open_pending_live_base_lab_documents",
+    "posting_owner": "human ERP reviewer"
+  },
+  "close_or_report_impact": {
+    "close_controls": ["revenue cutoff", "delivery-to-invoice completeness", "AR aging", "unapplied collection", "inventory-to-COGS tie-out"],
+    "reports": ["Accounts Receivable", "Sales Register", "Profit and Loss", "Cash Flow", "Gross Margin Bridge"],
+    "recognized_revenue": false,
+    "reason": "local fixture is not a submitted ERP invoice"
+  },
+  "negative_controls": [
+    {"id":"duplicate_order","expected":"blocked","reason":"DUPLICATE_BUSINESS_EVENT"},
+    {"id":"over_fulfillment","expected":"blocked","reason":"FULFILLMENT_EXCEEDS_ORDER"},
+    {"id":"invoice_quantity_mismatch","expected":"blocked","reason":"INVOICE_FULFILLMENT_MISMATCH"},
+    {"id":"agent_limit_exceeded","expected":"blocked","reason":"AGENT_SPEND_LIMIT_EXCEEDED"},
+    {"id":"unapproved_payment_request","expected":"blocked","reason":"PAYMENT_ACTION_REQUIRES_CONFIRMATION"}
+  ],
+  "external_actions": {"erp_writes":0,"chain_transactions":0,"payments":0,"publications":0}
+}

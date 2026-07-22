@@ -37,6 +37,11 @@
       "bytes": 265
     },
     {
+      "path": "README.md",
+      "sha256": "e4b6822e5399d9d3fbbd090b7da16dd5542359f2f425ab177a909d04c046ac89",
+      "bytes": 2985
+    },
+    {
       "path": "config/base_lab_cloud_runtime_topology.json",
       "sha256": "32a4266fa414ddb189aa2835f1870d333bf03183e2acfc851ef339645351a9de",
       "bytes": 957
@@ -62,6 +67,111 @@
       "bytes": 477
     },
     {
+      "path": "engineering-proof/config/base_enterprise_agent_asset_operations_claim_matrix.json",
+      "sha256": "3e90b96e92bb72adbb319cf3d21768a0077cc6c3380b1710ffed08463d3e737a",
+      "bytes": 6544
+    },
+    {
+      "path": "engineering-proof/config/base_inventory_sle_readonly_mapping.json",
+      "sha256": "1d4a0e1d1a96d745a4885f28c3f933821ed4cd5c157a00f497395c21a6d84da7",
+      "bytes": 2455
+    },
+    {
+      "path": "engineering-proof/config/base_inventory_state_machine.json",
+      "sha256": "b5232c4da68cfc9549c927b15e2dd74140d0467810f047010c543cca312bfa50",
+      "bytes": 1579
+    },
+    {
+      "path": "engineering-proof/config/base_inventory_to_close_crosswalk.json",
+      "sha256": "e1394bfb723877dd95ef133beae8ba6a91bb1eba4e46d03f9e27c51ba8d83630",
+      "bytes": 3686
+    },
+    {
+      "path": "engineering-proof/config/base_inventory_twin_schema.json",
+      "sha256": "e2f568eeb233d3f45044f88482af9cd93c473a49865f6818c0fe87ccc078e8c1",
+      "bytes": 1906
+    },
+    {
+      "path": "engineering-proof/config/base_lab_domain_coverage_matrix.json",
+      "sha256": "1107ede3db53a8684f5573397995bf7fb8e8441ae378c28f8c2b228cfffa962e",
+      "bytes": 7248
+    },
+    {
+      "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
+      "sha256": "338c96a2ad23e1ae76e0c1828d6c02514adcb3bd1077d0ea595b23682bb736c2",
+      "bytes": 2261
+    },
+    {
+      "path": "engineering-proof/config/erp-adapter-public-contract.json",
+      "sha256": "453b0c5015a0030240cf283a3d97be18bd67d99a3e8bf39a603cfb3dde95b49f",
+      "bytes": 702
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_asset_result_unit_1.json",
+      "sha256": "6042499288092dcf272f7ca826dfcdcab5a39d2c5bef59a800472f1cf8146d71",
+      "bytes": 2010
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_close_audit_result_unit_1.json",
+      "sha256": "815a151211fa536a567c3588b56a290e732dd569859ba57f8df106e49e5a7926",
+      "bytes": 1286
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_financing_intent_result_unit_1.json",
+      "sha256": "52e349037001caf73790f90f4aec6bd8a4d04714d84009ced915dba04154fcf3",
+      "bytes": 1501
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_fpa_decision_result_unit_1.json",
+      "sha256": "931108af40c5e266254a7caa94a650d31905f7f6de78dbf113b301700c6e17b6",
+      "bytes": 1449
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_inventory_result_unit_2.json",
+      "sha256": "8ae52156de6e1b8e498770a8ea83b6f1f2043984dd1e040ce8bddfd751482458",
+      "bytes": 2321
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_manufacturing_quality_result_unit_1.json",
+      "sha256": "6a6cf8ed09ec07f1a632ac6b66007eeab27246f11e018689b6c6061905e513b3",
+      "bytes": 2015
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_o2c_result_unit_1.json",
+      "sha256": "88385e55eb442f482bd998fce7912d6364dd7b6ecbb5d8108af553b7c91efaee",
+      "bytes": 2685
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_p2p_result_unit_1.json",
+      "sha256": "a16f83807092b15357e4e75673e6b63fdbaa05a46d8259bc22d78517edbfe35e",
+      "bytes": 2186
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_projects_expense_budget_result_unit_1.json",
+      "sha256": "e13ed5c666f8970c422c863ec3f5320aadf35b3f9cf70fdf7b2668a3f4a484c7",
+      "bytes": 1520
+    },
+    {
+      "path": "engineering-proof/fixtures/base_lab_three_ledger_result_unit_1.json",
+      "sha256": "f2053cca8db15be5eb00a283ac9679f15b3b38f8ddff78bed0b4680ed0d985e0",
+      "bytes": 1445
+    },
+    {
+      "path": "engineering-proof/fixtures/catverse_base_inventory_vertical_slice.json",
+      "sha256": "9a612b5b6d3d2f0eea33529bf539b170b3b7798139f8db88ff47173121a4050d",
+      "bytes": 10341
+    },
+    {
+      "path": "engineering-proof/fixtures/catverse_inventory_reviewer_trace.json",
+      "sha256": "95d278fc0d381d6520f32217391f4e9b3fa8d36a3baeb0aefe12072521fd3ab6",
+      "bytes": 2015
+    },
+    {
+      "path": "engineering-proof/tests/validate-proof.mjs",
+      "sha256": "99119c7ed7cbff5e6925d07f121c5ff65db90a9468de8c6f0b49827e70b9522f",
+      "bytes": 1322
+    },
+    {
       "path": "outputs/base_lab_enterprise_os_latest.json",
       "sha256": "8200c0b614c48059d10777bad0d2e789f98d1dfb7c529c3b55ec0b289519f472",
       "bytes": 13046
@@ -82,5 +192,5 @@
       "bytes": 5704
     }
   ],
-  "package_root": "sha256:0ca99369f203378b8e9d18d1053c3cb1912524380ebbe8dd1c2ff37db5da308f"
+  "package_root": "sha256:7a05f95cb998a70cf847ce4f4f3d145eaa2dda37966bacc0e86422f5675b9c77"
 }

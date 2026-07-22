@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0","result_unit_id":"BASE-LAB-D13-RU-001","domain":"D13_fpa_to_decision","status":"local_complete_live_erp_pending","company":"AOXPET Base Lab","period":"2026-08","business_event_id":"BASE-LAB-FPA-202608-001","idempotency_key":"BASE-LAB-IDEM-D13-202608-001",
+  "operating_document":{"scenario":"BASE-LAB-SCENARIO-202608-BASE","currency":"USD","revenue_actual_minor":2100000,"gross_margin_actual_minor":760000,"opex_actual_minor":510000,"cash_actual_minor":820000,"revenue_forecast_minor":2450000,"gross_margin_forecast_minor":910000,"cash_forecast_minor":940000},
+  "chain_control_or_evidence":{"modes":["READ_ONLY_VERIFY","SCENARIO_INTENT"],"component":"BaseFPAScenario","budget_approval_claim":false,"autonomous_decision":false,"deployment":false},
+  "erp_ledger_or_reconciliation":{"sources":["Trial Balance","Profit and Loss","Balance Sheet","Cash Flow","AR/AP aging","Stock Ledger reports"],"actuals_authority":"ERPNext closed period","forecast_authority":"human-approved FP&A model","live_actuals_available":false},
+  "close_or_report_impact":{"gross_margin_bridge":true,"working_capital_bridge":true,"cash_runway_scenario":true,"management_decision_pending":true},
+  "negative_controls":["unclosed actuals","scenario presented as actual","wrong currency","unapproved budget","missing source report","cross-company data"],
+  "external_actions":{"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

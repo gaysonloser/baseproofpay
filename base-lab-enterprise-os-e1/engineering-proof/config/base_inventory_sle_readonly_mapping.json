@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "id": "BASE_INVENTORY_SLE_READONLY_MAPPING_V1",
+  "mode": "READ_ONLY_FAIL_CLOSED",
+  "system_of_record": "ERPNext Stock Ledger Entry",
+  "mapping": [
+    {"erp_field": "item_code", "canonical_field": "item_identity", "public_representation": "item_alias", "required": true},
+    {"erp_field": "batch_no", "canonical_field": "batch_identity", "public_representation": "batch_alias", "required": true, "gap": "Confirm exact live-site representation when Serial and Batch Bundle is enabled."},
+    {"erp_field": "warehouse", "canonical_field": "warehouse_identity", "public_representation": "warehouse_alias", "required": true},
+    {"erp_field": "actual_qty", "canonical_field": "movement_quantity", "public_representation": "quantity", "required": true},
+    {"erp_field": "qty_after_transaction", "canonical_field": "resulting_quantity", "public_representation": "state-root input only", "required": true},
+    {"erp_field": "stock_uom", "canonical_field": "uom", "public_representation": "uom", "required": true, "gap": "Confirm field availability on the live site; otherwise resolve from Item master read-only."},
+    {"erp_field": "voucher_type", "canonical_field": "source_document_type", "public_representation": "ERP evidence hash only", "required": true},
+    {"erp_field": "voucher_no", "canonical_field": "source_document_id", "public_representation": "ERP evidence hash only", "required": true},
+    {"erp_field": "posting_date", "canonical_field": "event_date", "public_representation": "timestamp or evidence hash", "required": true},
+    {"erp_field": "posting_time", "canonical_field": "event_time", "public_representation": "timestamp or evidence hash", "required": true},
+    {"erp_field": "valuation_rate", "canonical_field": "erp_valuation_rate", "public_representation": "PRIVATE_NEVER_PUBLIC", "required": false},
+    {"erp_field": "stock_value_difference", "canonical_field": "erp_stock_value_difference", "public_representation": "PRIVATE_NEVER_PUBLIC", "required": false},
+    {"erp_field": "serial_and_batch_bundle", "canonical_field": "bundle_reference", "public_representation": "ERP evidence hash only", "required": false, "gap": "Version-sensitive; verify installed ERPNext behavior before live read mapping."}
+  ],
+  "write_operations": [],
+  "unresolved_policy": "Missing required mapping, UOM ambiguity, batch representation ambiguity or live-version mismatch blocks candidate preparation."
+}

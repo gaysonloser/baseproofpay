@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0","result_unit_id":"BASE-LAB-D11-RU-001","domain":"D11_accounting_tax_and_three_ledgers","status":"local_complete_live_erp_pending","company":"AOXPET Base Lab","period":"2026-08","business_event_id":"BASE-LAB-LEDGER-202608-001","idempotency_key":"BASE-LAB-IDEM-D11-202608-001",
+  "operating_document":{"control_package":"BASE-LAB-CTRL-THREE-LEDGER-202608","currency":"USD","gl_control_minor":2480000,"payment_ledger_control_minor":950000,"stock_ledger_value_minor":1530000,"combined_subledger_minor":2480000,"difference_minor":0,"tax_status":"synthetic_boundary_unrecognized"},
+  "chain_control_or_evidence":{"modes":["NO_CHAIN","READ_ONLY_VERIFY"],"component":"BaseLedgerTieOut","accounting_recognition_claim":false,"tax_claim":false,"deployment":false},
+  "erp_ledger_or_reconciliation":{"expected_ledgers":["General Ledger","Payment Ledger Entry","Stock Ledger Entry"],"tie_out_formula":"GL control = Payment Ledger control + Stock Ledger value","difference_minor":0,"human_posting_only":true,"direct_ledger_write":false},
+  "close_or_report_impact":{"trial_balance_candidate":true,"inventory_ar_bridge":true,"tax_review_required":true,"period_closed":false},
+  "negative_controls":["ledger imbalance","cross-company entry","direct GL write","missing period","unapproved tax classification","duplicate control package"],
+  "external_actions":{"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

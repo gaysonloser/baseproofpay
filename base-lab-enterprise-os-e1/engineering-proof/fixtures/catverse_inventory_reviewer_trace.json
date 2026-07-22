@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "trace_id": "BASE-CATVERSE-BATCH-TRACE-202608-V1",
+  "account_set": {"company": "AOXPET", "functional_currency": "USD", "period": "2026-08"},
+  "synthetic": true,
+  "batch_alias": "derived_at_bundle_build",
+  "stages": [
+    {"sequence": 1, "stage": "receipt", "business_event_id": "base:inventory:receipt:catverse:202608:001", "erp_expected": ["Purchase Receipt", "Batch", "Stock Ledger Entry"], "base_expected": ["receipt evidence hash", "BaseBatchTwin candidate"], "status": "local_fixture_available_erp_read_blocked"},
+    {"sequence": 2, "stage": "movement", "business_event_id": "base:inventory:transfer:catverse:202608:001", "erp_expected": ["Stock Entry", "paired Stock Ledger Entry"], "base_expected": ["movement evidence", "BaseInventoryRoot candidate"], "status": "schema_ready_period_fixture_missing"},
+    {"sequence": 3, "stage": "return_and_exception", "business_event_id": "base:inventory:return:catverse:202608:001", "erp_expected": ["return source document", "Stock Ledger Entry", "Quality or expiry state"], "base_expected": ["return/hold/expiry evidence", "exception reason"], "status": "negative_controls_ready_period_fixture_missing"},
+    {"sequence": 4, "stage": "valuation_and_repost", "business_event_id": "base:inventory:valuation:catverse:202608:001", "erp_expected": ["Stock Ledger valuation", "Repost Item Valuation", "inventory GL"], "base_expected": ["private status hash only"], "status": "read_permission_denied_no_cost_calculation"},
+    {"sequence": 5, "stage": "close_and_reports", "business_event_id": "base:inventory:close:catverse:202608:001", "erp_expected": ["Stock Reconciliation", "close checklist", "Stock Balance", "Gross Profit", "Gross Margin Bridge"], "base_expected": ["BaseCloseProof candidate after human close"], "status": "blocked_closed_period_not_complete"}
+  ],
+  "reviewer_boundary": "This trace shows required evidence continuity and blockers. It does not claim ERP posting, valuation, close, reports or token deployment."
+}

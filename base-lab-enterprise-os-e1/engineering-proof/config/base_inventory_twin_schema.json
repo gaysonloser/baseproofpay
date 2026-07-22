@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gayson.local/schemas/base-inventory-twin-v1.json",
+  "title": "BaseBatchTwin and BaseInventoryRoot local evidence schema",
+  "description": "Synthetic, non-title inventory evidence. ERP Stock Ledger remains authoritative.",
+  "type": "object",
+  "required": ["schema_version", "event_id", "item_alias", "batch_alias", "warehouse_alias", "event_type", "quantity", "uom", "erp_evidence_hash", "state", "evidence_version"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "pattern": "^BASE-INV-"},
+    "item_alias": {"type": "string", "pattern": "^item_[a-f0-9]{16}$"},
+    "batch_alias": {"type": "string", "pattern": "^batch_[a-f0-9]{16}$"},
+    "warehouse_alias": {"type": "string", "pattern": "^wh_[a-f0-9]{16}$"},
+    "event_type": {"enum": ["RECEIPT", "TRANSFER", "ISSUE", "SALE", "RETURN", "COUNT_ADJUSTMENT", "QUALITY_HOLD", "EXPIRY", "REVOKE", "CLOSE"]},
+    "quantity": {"type": "number"},
+    "uom": {"type": "string", "minLength": 1},
+    "erp_evidence_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "predecessor_evidence_hash": {"type": ["string", "null"]},
+    "state": {"type": "string"},
+    "evidence_version": {"type": "integer", "minimum": 1},
+    "token_semantics": {"const": "NON_TITLE_EVIDENCE_TWIN"}
+  },
+  "additionalProperties": false,
+  "privacy": {
+    "public_allow": ["anonymous item alias", "batch alias", "warehouse alias", "quantity", "uom", "event type", "state", "ERP evidence hash", "timestamp", "state root", "predecessor evidence"],
+    "public_deny": ["supplier", "customer", "price", "unit cost", "recipe", "warehouse address", "approver identity", "invoice original", "attachment original"],
+    "legal_boundary": "This schema does not establish title, audited inventory, accounting value or collateral eligibility."
+  }
+}

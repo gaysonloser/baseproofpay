@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0","result_unit_id":"BASE-LAB-D12-RU-001","domain":"D12_close_audit_and_reporting","status":"local_complete_live_erp_pending","company":"AOXPET Base Lab","period":"2026-08","business_event_id":"BASE-LAB-CLOSE-202608-001","idempotency_key":"BASE-LAB-IDEM-D12-202608-001",
+  "operating_document":{"close_package":"BASE-LAB-CLOSE-PACK-202608","checklist_total":14,"checklist_local_pass":10,"live_erp_pending":4,"exception_count":4,"human_close_required":true},
+  "chain_control_or_evidence":{"modes":["STATE_ROOT","READ_ONLY_VERIFY"],"component":"BaseCloseProof","candidate_only":true,"erp_close_evidence_required":true,"deployment":false},
+  "erp_ledger_or_reconciliation":{"required":["AR/AP tie-out","bank and clearing reconciliation","inventory and COGS tie-out","asset register to GL","trial balance equality","period lock"],"erp_close_performed":false,"adapter_can_close":false},
+  "close_or_report_impact":{"trial_balance":false,"profit_and_loss":false,"balance_sheet":false,"cash_flow":false,"audit_bundle_candidate":true},
+  "negative_controls":["open exception","unreconciled clearing","inventory repost pending","unreviewed adjustment","period not locked"],
+  "external_actions":{"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

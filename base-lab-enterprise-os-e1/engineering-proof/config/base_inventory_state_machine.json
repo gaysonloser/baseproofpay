@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "id": "BASE_TOKENIZED_INVENTORY_STATE_MACHINE_V1",
+  "states": ["erp_item_batch_created", "physical_receipt_accepted", "stock_ledger_posted", "token_candidate_prepared", "human_token_approval", "evidence_twin_recorded", "movement_or_return_synced", "count_or_expiry_exception", "revoked_or_closed"],
+  "transitions": {
+    "erp_item_batch_created": ["physical_receipt_accepted"],
+    "physical_receipt_accepted": ["stock_ledger_posted"],
+    "stock_ledger_posted": ["token_candidate_prepared", "count_or_expiry_exception"],
+    "token_candidate_prepared": ["human_token_approval", "count_or_expiry_exception"],
+    "human_token_approval": ["evidence_twin_recorded", "count_or_expiry_exception"],
+    "evidence_twin_recorded": ["movement_or_return_synced", "count_or_expiry_exception", "revoked_or_closed"],
+    "movement_or_return_synced": ["movement_or_return_synced", "count_or_expiry_exception", "revoked_or_closed"],
+    "count_or_expiry_exception": ["movement_or_return_synced", "revoked_or_closed"],
+    "revoked_or_closed": []
+  },
+  "guards": {
+    "token_candidate_prepared": ["accepted physical event", "SLE readback exists", "quantity conservation", "non-negative balance", "quality released", "not expired", "no duplicate"],
+    "evidence_twin_recorded": ["human token approval", "all candidate guards"],
+    "revoked_or_closed": ["human lifecycle decision or fail-closed exception"]
+  },
+  "prohibited_automation": ["token deploy", "mint", "transfer", "burn", "ERP Stock Entry write", "ERP SLE write", "valuation write", "GL write"]
+}

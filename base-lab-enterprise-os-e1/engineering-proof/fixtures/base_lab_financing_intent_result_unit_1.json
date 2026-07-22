@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0","result_unit_id":"BASE-LAB-D10-RU-001","domain":"D10_receivable_financing_and_rwa_evidence","status":"local_complete_live_erp_pending","company":"AOXPET Base Lab","period":"2026-08","business_event_id":"BASE-LAB-FINANCE-202608-001","idempotency_key":"BASE-LAB-IDEM-D10-202608-001",
+  "operating_document":{"pool":"BASE-LAB-AR-POOL-202608-A","gross_receivables_minor":950000,"eligible_receivables_minor":720000,"concentration_excluded_minor":130000,"overdue_excluded_minor":100000,"advance_rate_bps":7000,"borrowing_base_minor":504000,"currency":"USD"},
+  "chain_control_or_evidence":{"modes":["FINANCING_INTENT","EVIDENCE_HASH"],"component":"BaseFinancingIntent","intent_only":true,"collateral_claim":false,"credit_approval_claim":false,"funding_claim":false,"deployment":false},
+  "erp_ledger_or_reconciliation":{"expected_objects":["Sales Invoice","Customer","Payment Entry","Journal Entry"],"expected_ledgers":["Payment Ledger Entry","General Ledger"],"erp_owns_receivable_and_aging":true,"reconciliation":"eligible pool to AR aging and customer concentration"},
+  "close_or_report_impact":{"working_capital_scenario":true,"liquidity_headroom_minor":504000,"covenant_report_candidate":true,"recognized_financing":false},
+  "negative_controls":["duplicate invoice","overdue receivable","concentration breach","wrong company","unapproved financing state","evidence mismatch"],
+  "external_actions":{"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

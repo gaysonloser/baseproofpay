@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-LAB-D05-RU-002",
+  "domain": "D05_inventory_and_cost",
+  "status": "local_complete_live_erp_blocked",
+  "company": "AOXPET Base Lab",
+  "period": "2026-08",
+  "business_event_id": "BASE-LAB-INVENTORY-202608-002",
+  "idempotency_key": "BASE-LAB-IDEM-D05-202608-002",
+  "operating_document": {
+    "type": "synthetic_inventory_movement_packet",
+    "source_documents": ["BASE-LAB-DOC-PR-202608-001", "BASE-LAB-DOC-SE-202608-001", "BASE-LAB-DOC-DN-202608-001", "BASE-LAB-DOC-SR-202608-001"],
+    "item_alias": "item_76f1467a19909819",
+    "batch_alias": "batch_f1c51d11682b5944",
+    "warehouse_alias": "wh_5bd725166d942eb2",
+    "uom": "Box",
+    "quantity_flow": {"receipt":100,"transfer":0,"issue_or_sale":20,"return":5,"expiry_or_revoke":0,"ending":85,"conservation_difference":0}
+  },
+  "chain_control_or_evidence": {
+    "mode": "LOCAL_DEPLOYMENT_READY_CANDIDATE_ONLY",
+    "components": ["BaseBatchTwin", "BaseInventoryRoot"],
+    "token_semantics": "NON_TITLE_EVIDENCE_TWIN",
+    "state_root_input": "sanitized event aliases and accepted quantities only",
+    "transaction_hash": null,
+    "deployment": false
+  },
+  "erp_ledger_or_reconciliation": {
+    "system_of_record": "ERPNext Stock Ledger Entry",
+    "expected_objects": ["Purchase Receipt", "Stock Entry", "Delivery Note", "Stock Reconciliation", "Stock Ledger Entry", "Repost Item Valuation"],
+    "expected_ledgers": ["Stock Ledger", "General Ledger"],
+    "quantity_tie_out": "local_pass_100_minus_20_plus_5_equals_85",
+    "valuation_owner": "ERPNext",
+    "cost_calculated_by_base": false,
+    "live_readback": "blocked_with_existing_read_permission_packet"
+  },
+  "close_or_report_impact": {
+    "close_controls": ["inventory cutoff", "negative stock", "repost completion", "stock-to-GL tie-out", "obsolete and expired review"],
+    "reports": ["Stock Ledger", "Stock Balance", "Gross Profit", "Inventory Turnover", "Gross Margin Bridge"],
+    "base_close_proof_allowed": false,
+    "reason": "human ERP close and report tie-outs do not yet exist"
+  },
+  "negative_controls_reused": ["quantity conservation", "excessive return", "expiry", "duplicate", "unauthorized revoke", "ERP write forbidden"],
+  "external_actions": {"erp_writes":0,"chain_transactions":0,"deployments":0,"publications":0}
+}

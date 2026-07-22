@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "fixture_type": "synthetic_control_fixture",
+  "company": "AOXPET",
+  "functional_currency": "USD",
+  "target_period": "2026-08",
+  "closed_period_gate": "C2_LOCAL_PREVIEW_ONLY",
+  "traceability_status": "ERP source/voucher/ledger/close/report crosswalk not yet complete",
+  "source": "CAREER CATVERSE synthetic master data",
+  "cases": [
+    {
+      "id": "receipt_ready_candidate",
+      "event_id": "BASE-INV-CAT-20260722-001",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "RECEIPT",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 100, "qty_before_transaction": 0, "qty_after_transaction": 100, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0001", "posting_date": "2026-07-22", "posting_time": "09:00:00", "valuation_rate": 12.5, "stock_value_difference": 1250},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": true, "reason_codes": []}
+    },
+    {
+      "id": "premature_candidate_blocked",
+      "event_id": "BASE-INV-CAT-20260722-002",
+      "current_state": "erp_item_batch_created",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "RECEIPT",
+      "erp_sle": null,
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": false, "quality_status": "PENDING", "expired": false, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["ILLEGAL_STATE_TRANSITION", "MISSING_SLE", "PHYSICAL_EVENT_NOT_ACCEPTED", "QUALITY_NOT_RELEASED"]}
+    },
+    {
+      "id": "duplicate_event_blocked",
+      "event_id": "BASE-INV-CAT-20260722-003",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "RECEIPT",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 100, "qty_before_transaction": 0, "qty_after_transaction": 100, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0001", "posting_date": "2026-07-22", "posting_time": "09:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": true, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["DUPLICATE_EVENT"]}
+    },
+    {
+      "id": "negative_inventory_blocked",
+      "event_id": "BASE-INV-CAT-20260722-004",
+      "current_state": "movement_or_return_synced",
+      "requested_state": "movement_or_return_synced",
+      "event_type": "SALE",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": -120, "qty_before_transaction": 100, "qty_after_transaction": -20, "stock_uom": "Box", "voucher_type": "Delivery Note", "voucher_no": "CAT-DN-SYN-0001", "posting_date": "2026-07-22", "posting_time": "10:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": true, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["NEGATIVE_RESULTING_QUANTITY"]}
+    },
+    {
+      "id": "quantity_conservation_blocked",
+      "event_id": "BASE-INV-CAT-20260722-005",
+      "current_state": "movement_or_return_synced",
+      "requested_state": "movement_or_return_synced",
+      "event_type": "TRANSFER",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": -20, "qty_before_transaction": 100, "qty_after_transaction": 85, "stock_uom": "Box", "voucher_type": "Stock Entry", "voucher_no": "CAT-SE-SYN-0001", "posting_date": "2026-07-22", "posting_time": "11:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": true, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["QUANTITY_CONSERVATION_FAILED"]}
+    },
+    {
+      "id": "quality_hold_blocked",
+      "event_id": "BASE-INV-CAT-20260722-006",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "QUALITY_HOLD",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 100, "qty_before_transaction": 0, "qty_after_transaction": 100, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0001", "posting_date": "2026-07-22", "posting_time": "09:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "HOLD", "expired": false, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["QUALITY_NOT_RELEASED"]}
+    },
+    {
+      "id": "expiry_blocked",
+      "event_id": "BASE-INV-CAT-20260722-007",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "EXPIRY",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-MOON-S-003", "batch_no": "BATCH-CAT-MOON-20250101-A", "warehouse": "WH-CAT-WEST-001", "actual_qty": 40, "qty_before_transaction": 0, "qty_after_transaction": 40, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0002", "posting_date": "2025-01-01", "posting_time": "09:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": true, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["BATCH_EXPIRED"]}
+    },
+    {
+      "id": "sensitive_public_field_blocked",
+      "event_id": "BASE-INV-CAT-20260722-008",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "RECEIPT",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 100, "qty_before_transaction": 0, "qty_after_transaction": 100, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0001", "posting_date": "2026-07-22", "posting_time": "09:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": false},
+      "public_input": {"unit_cost": 12.5},
+      "expected": {"allowed": false, "reason_codes": ["SENSITIVE_PUBLIC_FIELD"]}
+    },
+    {
+      "id": "erp_write_attempt_blocked",
+      "event_id": "BASE-INV-CAT-20260722-009",
+      "current_state": "stock_ledger_posted",
+      "requested_state": "token_candidate_prepared",
+      "event_type": "RECEIPT",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-20260722-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 100, "qty_before_transaction": 0, "qty_after_transaction": 100, "stock_uom": "Box", "voucher_type": "Purchase Receipt", "voucher_no": "CAT-PR-SYN-0001", "posting_date": "2026-07-22", "posting_time": "09:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": false, "erp_write_requested": true},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["ERP_WRITE_FORBIDDEN"]}
+    },
+    {
+      "id": "return_exceeds_issued_blocked",
+      "event_id": "BASE-INV-CAT-20260815-010",
+      "current_state": "movement_or_return_synced",
+      "requested_state": "movement_or_return_synced",
+      "event_type": "RETURN",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-202608-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 30, "qty_before_transaction": 80, "qty_after_transaction": 110, "stock_uom": "Box", "voucher_type": "Delivery Note", "voucher_no": "CAT-DN-RETURN-SYN-0001", "posting_date": "2026-08-15", "posting_time": "12:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": true, "human_lifecycle_approval": false, "return_quantity": 30, "original_issued_quantity": 20, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["RETURN_EXCEEDS_ISSUED_QUANTITY"]}
+    },
+    {
+      "id": "revoke_without_human_approval_blocked",
+      "event_id": "BASE-INV-CAT-20260831-011",
+      "current_state": "evidence_twin_recorded",
+      "requested_state": "revoked_or_closed",
+      "event_type": "REVOKE",
+      "erp_sle": {"item_code": "SKU-CAT-GLD-STAR-S-001", "batch_no": "BATCH-CAT-STAR-202608-A", "warehouse": "WH-CAT-EAST-001", "actual_qty": 0, "qty_before_transaction": 80, "qty_after_transaction": 80, "stock_uom": "Box", "voucher_type": "Stock Reconciliation", "voucher_no": "CAT-SR-SYN-0001", "posting_date": "2026-08-31", "posting_time": "17:00:00"},
+      "controls": {"sle_read_mode": "read_only", "physical_event_accepted": true, "quality_status": "RELEASED", "expired": false, "duplicate_event": false, "human_token_approval": true, "human_lifecycle_approval": false, "erp_write_requested": false},
+      "public_input": {},
+      "expected": {"allowed": false, "reason_codes": ["HUMAN_LIFECYCLE_APPROVAL_REQUIRED"]}
+    }
+  ]
+}

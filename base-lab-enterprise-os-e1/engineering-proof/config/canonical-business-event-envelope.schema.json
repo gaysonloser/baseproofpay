@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://catverse.example/schemas/base-lab-canonical-business-event-envelope-v1.json",
+  "title": "Base Lab Canonical Business Event Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rail",
+    "namespace",
+    "business_event_id",
+    "event_type",
+    "occurred_at",
+    "source_evidence",
+    "control",
+    "erp_handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "rail": {
+      "const": "base"
+    },
+    "namespace": {
+      "const": "ABL"
+    },
+    "business_event_id": {
+      "type": "string",
+      "pattern": "^BASE-LAB-"
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_evidence": {
+      "type": "object",
+      "required": [
+        "kind",
+        "fingerprint"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "synthetic_fixture",
+            "read_only_chain_evidence",
+            "read_only_erp_evidence"
+          ]
+        },
+        "fingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "control": {
+      "type": "object",
+      "required": [
+        "idempotency_key",
+        "human_review_required",
+        "postable"
+      ],
+      "properties": {
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^BASE-LAB-"
+        },
+        "human_review_required": {
+          "const": true
+        },
+        "postable": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "erp_handoff": {
+      "type": "object",
+      "required": [
+        "company",
+        "currency",
+        "mode"
+      ],
+      "properties": {
+        "company": {
+          "const": "AOXPET Base Lab"
+        },
+        "currency": {
+          "const": "USD"
+        },
+        "mode": {
+          "enum": [
+            "read_only_crosswalk",
+            "draft_candidate",
+            "no_chain"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
