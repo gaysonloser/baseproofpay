@@ -7,6 +7,7 @@ const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const defaultStaticRoot = join(projectRoot, "dist-base-lab-enterprise-os");
 const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_latest.json");
 const topologyPath = join(projectRoot, "config/base_lab_cloud_runtime_topology.json");
+const ecosystemPath = join(projectRoot, "config/base_lab_ecosystem_evidence.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -66,6 +67,21 @@ export function sanitizeTopology(topology) {
   };
 }
 
+export function sanitizeEcosystem(ecosystem) {
+  return {
+    schema_version:ecosystem.schema_version,
+    evidence_id:ecosystem.evidence_id,
+    as_of:ecosystem.as_of,
+    product:ecosystem.product,
+    rail:ecosystem.rail,
+    entries:(ecosystem.entries || []).map(({id,label,status,value,url,secondary_url,boundary})=>({id,label,status,value,url,secondary_url,boundary})),
+    official_sources:ecosystem.official_sources,
+    external_writes:ecosystem.external_writes,
+    wallet_actions:ecosystem.wallet_actions,
+    chain_actions:ecosystem.chain_actions
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -82,6 +98,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.method !== "GET" && req.method !== "HEAD") return sendJson(req,res,405,{error:"read_only_runtime"},{allow:"GET, HEAD"});
       if (req.url === "/healthz") return sendJson(req,res,200,{status:"ok",runtime_mode:runtime.mode,origin_configured:runtime.originConfigured,erp_authority:"managed_erp",wallet:false,writes:false,durable_control_plane:false});
       if (req.url === "/api/v1/evidence") return sendJson(req,res,200,sanitizeEvidence(JSON.parse(await readFile(evidencePath,"utf8"))));
+      if (req.url === "/api/v1/ecosystem") return sendJson(req,res,200,sanitizeEcosystem(JSON.parse(await readFile(ecosystemPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));

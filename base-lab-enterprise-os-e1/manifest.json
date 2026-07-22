@@ -38,8 +38,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e4b6822e5399d9d3fbbd090b7da16dd5542359f2f425ab177a909d04c046ac89",
-      "bytes": 2985
+      "sha256": "1d3675b51b33231abe8fac4f909bc8255de94f88bb1d37cc13bbf41eb86d16d8",
+      "bytes": 4315
     },
     {
       "path": "config/base_lab_cloud_runtime_topology.json",
@@ -47,29 +47,34 @@
       "bytes": 957
     },
     {
+      "path": "config/base_lab_ecosystem_evidence.json",
+      "sha256": "a2ac433369775bffb7160e5c715877b18bdba2020fad99daadb237fd578bfd49",
+      "bytes": 3446
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/baseproofpay_app_icon_v1-DzZ6Z_ro.png",
       "sha256": "fc32d95d5ba63fcf28475a23593e81889a3276c6f5176b9a9eb500ce8c645b28",
       "bytes": 1118711
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-CUHvw_ZO.js",
-      "sha256": "850c7fbfa5619d583fb1d9b1f03060e5daca0d1865f399465c07827e3884f1bf",
-      "bytes": 4741
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-C0ZFxeyF.js",
+      "sha256": "d2f70644b44690ed597f82a886d162b0c47708fc29ae44494fe15749ab825324",
+      "bytes": 5830
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-DXDwNFie.css",
-      "sha256": "95d62ce9c01b993931ad80f7278b97e411d11300282605ac5e24a9e9021d68ac",
-      "bytes": 5140
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-F3itmG7G.css",
+      "sha256": "01e33445e3ac2a77336fa8387534958a78510685a590f5f56663ab96035b9bf3",
+      "bytes": 6701
     },
     {
       "path": "dist-base-lab-enterprise-os/enterprise-os.html",
-      "sha256": "d0c9b3afa447847aedf0a1bb69d3f198d4b03cad8c83f49ab105c907a9729526",
-      "bytes": 477
+      "sha256": "6ef93f1bcc5a89d82a09d162c1446b3d651fb41ea41b2bf74ec1948305ec1102",
+      "bytes": 915
     },
     {
       "path": "engineering-proof/config/base_enterprise_agent_asset_operations_claim_matrix.json",
-      "sha256": "3e90b96e92bb72adbb319cf3d21768a0077cc6c3380b1710ffed08463d3e737a",
-      "bytes": 6544
+      "sha256": "c2c57833739cfbf9c73749c63e56f987a1c8fa436920876c84aa9d18a9b2d018",
+      "bytes": 8443
     },
     {
       "path": "engineering-proof/config/base_inventory_sle_readonly_mapping.json",
@@ -95,6 +100,11 @@
       "path": "engineering-proof/config/base_lab_domain_coverage_matrix.json",
       "sha256": "1107ede3db53a8684f5573397995bf7fb8e8441ae378c28f8c2b228cfffa962e",
       "bytes": 7248
+    },
+    {
+      "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
+      "sha256": "a2ac433369775bffb7160e5c715877b18bdba2020fad99daadb237fd578bfd49",
+      "bytes": 3446
     },
     {
       "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
@@ -167,6 +177,11 @@
       "bytes": 2015
     },
     {
+      "path": "engineering-proof/tests/validate-ecosystem-proof.mjs",
+      "sha256": "9aa7d51f20ee4f34cfd704bb0fdf95e80fb20674109f9da229b37d6e3680fc9d",
+      "bytes": 1462
+    },
+    {
       "path": "engineering-proof/tests/validate-proof.mjs",
       "sha256": "99119c7ed7cbff5e6925d07f121c5ff65db90a9468de8c6f0b49827e70b9522f",
       "bytes": 1322
@@ -188,9 +203,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "6f1ba158a60ad754332fd7556acc44b7681d06cd0a6271f0c1c2efa48b4e5c88",
-      "bytes": 5704
+      "sha256": "a532645e343cede35bca844c2fc41ac6a905ca6cfd6b33629e97573e77a15d35",
+      "bytes": 6496
     }
   ],
-  "package_root": "sha256:7a05f95cb998a70cf847ce4f4f3d145eaa2dda37966bacc0e86422f5675b9c77"
+  "package_root": "sha256:365e80f38bce6200d10e0429cc8ea4b61cbc7889430b7b2857d1f4be1d61abca"
 }

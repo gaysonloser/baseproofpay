@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE_LAB_ECOSYSTEM_PROOF_V1",
+  "as_of": "2026-07-22",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "rail": "Base",
+  "entries": [
+    {
+      "id": "base_dashboard_app",
+      "label": "Base Dashboard App",
+      "status": "verified",
+      "value": "App ID 6a5c632cf364895c3c606518",
+      "url": "https://base.dev/",
+      "boundary": "The existing BaseProofPay registration is proven. The new Enterprise OS Render URL is not registered yet."
+    },
+    {
+      "id": "builder_code",
+      "label": "Builder Code / ERC-8021",
+      "status": "verified",
+      "value": "bc_iscm570t",
+      "url": "https://docs.base.org/apps/builder-codes/builder-codes",
+      "boundary": "Official checker and calldata prove attribution transport; Base.dev indexing is a separate asynchronous result."
+    },
+    {
+      "id": "verified_contracts",
+      "label": "Verified Base contracts",
+      "status": "verified",
+      "value": "SpendingPolicyManager + PaymentReceiptRegistry",
+      "url": "https://base.blockscout.com/address/0x1bBe5B45757D66Fd97A818A62c89FaBD90cdC1d1",
+      "secondary_url": "https://base.blockscout.com/address/0xD7CE8ecED9CDda01365b2eAD539581Afd981880B",
+      "boundary": "These contracts support the Treasury/Payment component, not the entire fourteen-domain Enterprise OS."
+    },
+    {
+      "id": "x402_runtime",
+      "label": "Production x402",
+      "status": "verified_technical_use",
+      "value": "Base Mainnet seller, replay controls and Builder extension",
+      "url": "https://baseproofpay-x402.onrender.com/",
+      "boundary": "Completed self-controlled canaries prove technical usage, not independent adoption."
+    },
+    {
+      "id": "talent_project",
+      "label": "Talent project",
+      "status": "indexed_aggregate",
+      "value": "2 transactions / 2 DAU observed 2026-07-21",
+      "url": "https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b",
+      "boundary": "Talent does not expose the counted hashes; the aggregate cannot prove which transactions were indexed or independent adoption."
+    },
+    {
+      "id": "base_dev_indexing",
+      "label": "Base.dev attribution",
+      "status": "pending_refresh",
+      "value": "Public ranking snapshot predates the latest evidence",
+      "url": "https://base.dev/",
+      "boundary": "Indexing delay never authorizes a replacement transaction or repeated payment."
+    },
+    {
+      "id": "base_builders",
+      "label": "Base builders discovery",
+      "status": "local_nomination_ready_after_publish",
+      "value": "Enterprise OS nomination narrative prepared locally",
+      "url": "https://www.base.org/about",
+      "boundary": "No list membership, application or official endorsement is claimed."
+    },
+    {
+      "id": "independent_adoption",
+      "label": "Independent adoption",
+      "status": "missing_p0",
+      "value": "One genuinely independent voluntary user remains required",
+      "url": "https://baseproofpay-x402.onrender.com/payer",
+      "boundary": "Self-controlled wallets, synthetic ERP records and platform aggregates cannot satisfy this gate."
+    }
+  ],
+  "official_sources": [
+    "https://docs.base.org/apps/builder-codes/builder-codes",
+    "https://docs.base.org/apps/guides/migrate-to-standard-web-app",
+    "https://www.base.org/about"
+  ],
+  "external_writes": 0,
+  "wallet_actions": 0,
+  "chain_actions": 0
+}
