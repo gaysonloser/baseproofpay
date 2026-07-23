@@ -62,13 +62,13 @@
       "bytes": 8092
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-iI2hf9Bj.js",
-      "sha256": "5cd3fd367db1397882820d65c2bb4ad3f93479e4442373328295fad6c21c5d2b",
-      "bytes": 7016
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-CkoBRw5p.js",
+      "sha256": "93f1891bff826cd9d043b7ddbbe853072a5e9844c7eb2a74110484e232e6c544",
+      "bytes": 7102
     },
     {
       "path": "dist-base-lab-enterprise-os/enterprise-os.html",
-      "sha256": "95396851cdf54c319205b63567cdd3f7b76e46aec6e2a408923f928483dab964",
+      "sha256": "e7f10e00d61b3a9dd12d461998af099afff7678eef4e7ddf4728ad87b120030e",
       "bytes": 915
     },
     {
@@ -148,8 +148,8 @@
     },
     {
       "path": "engineering-proof/fixtures/base_lab_o2c_result_unit_1.json",
-      "sha256": "88385e55eb442f482bd998fce7912d6364dd7b6ecbb5d8108af553b7c91efaee",
-      "bytes": 2685
+      "sha256": "55349645e97287613436b4ded2d37948e5f95adb3bf81c75b0534a54515e0a85",
+      "bytes": 3070
     },
     {
       "path": "engineering-proof/fixtures/base_lab_p2p_result_unit_1.json",
@@ -188,13 +188,13 @@
     },
     {
       "path": "outputs/base_lab_control_readiness_latest.json",
-      "sha256": "53e181b0e3e5f6dbc144abf8e4ec75774ca9bed2eaea200863dfde73461d47c1",
-      "bytes": 3066
+      "sha256": "501ed043da919ff1b28bbc6b9b345012a406125981b218914a23e29d41738a32",
+      "bytes": 3134
     },
     {
       "path": "outputs/base_lab_enterprise_os_latest.json",
-      "sha256": "1b6b7701eb9e536add9a54ceade04500b7ea90686ddab22a0c3979931eb65534",
-      "bytes": 13046
+      "sha256": "cdb6167d97a1cf4c61e6662ed7127f4a12407b44ad45c65d82f30e60fa640f54",
+      "bytes": 13897
     },
     {
       "path": "package.json",
@@ -208,9 +208,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "bf0225909ce1bd3d5fcedc454ac24fa0bfa9301525113024acecd6ff282f4999",
-      "bytes": 7357
+      "sha256": "c7d37ac7668e3b4136950711a1423dfbd0bc2a1ec91d742fa8f142aa8986c93d",
+      "bytes": 7954
     }
   ],
-  "package_root": "sha256:0ba7ef3dc4dbb9a63f129795f27d59c27ed7e446bd44fcdb8e0d95dad97901a6"
+  "package_root": "sha256:314118351092d400d2c758614c5538c8df9242938e818678052fcdb273cfe32e"
 }

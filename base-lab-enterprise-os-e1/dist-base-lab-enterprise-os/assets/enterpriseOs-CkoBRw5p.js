@@ -2,7 +2,7 @@
   <header class="topbar"><div class="brand"><img src="${e}" alt=""><div><strong>AOXPET Base Lab</strong><span>Enterprise Agent & Asset Operations</span></div></div><div class="period"><span>Control period</span><strong>2026-08 · USD</strong></div></header>
   <main>
     <section class="overview band"><div class="section-head"><div><p class="eyebrow">CATVERSE ENTERPRISE FINANCE OS</p><h1>Operating evidence to ERP control</h1></div><span class="runtime-state">Deployment candidate</span></div>
-      <div class="metrics">${d(`Domains`,`${a.coverage.implemented}/${a.coverage.total}`,`implemented locally`)}${d(`Evidence units`,a.modules.length,`cross-domain results`)}${d(`Payment share`,`0%`,`maintenance frozen`)}${d(`Business writes`,`0`,`Phase B gated`)}</div>
+      <div class="metrics">${d(`Domains`,`${a.coverage.implemented}/${a.coverage.total}`,`implemented or live`)}${d(`Evidence units`,a.modules.length,`cross-domain results`)}${d(`Submitted ERP docs`,a.controls.erp_submitted_documents||0,`D02/D03 accepted`)}${d(`Chain anchors`,a.controls.live_chain_actions||0,`confirmation gated`)}</div>
     </section>
     <section class="architecture band"><div class="section-head"><div><p class="eyebrow">RUNTIME TOPOLOGY</p><h2>Three isolated operating zones</h2></div></div>
       <div class="flow"><div><span>Local workstation</span><strong>Build, test, preview</strong><small>Never production runtime</small></div><i>→</i><div><span>Managed HTTPS Console</span><strong>Read-only E1 sidecar</strong><small>Platform-generated URL</small></div><i>→</i><div><span>Managed ERP</span><strong>Ledger authority</strong><small>AOXPET Base Lab · ABL</small></div></div>
@@ -20,6 +20,6 @@
     </section>
     <section class="close band"><div class="section-head"><div><p class="eyebrow">C0–C7 ACCEPTANCE</p><h2>Close and evidence gates</h2></div></div><div class="gate-grid">${a.gates.map(p).join(``)}</div></section>
   </main>
-  <footer><span>Evidence root</span><code>${a.evidence_root}</code><span>No wallet · No ERP posting · No chain action</span></footer>`;function g(e){let t=c.get(e),n=l.get(e);document.querySelectorAll(`.domain-row`).forEach(t=>t.setAttribute(`aria-pressed`,String(t.dataset.domain===e))),document.querySelector(`#domain-detail`).innerHTML=`<div class="detail-header"><span>${e}</span><strong>${t.name.replaceAll(`_`,` `)}</strong></div>
+  <footer><span>Evidence root</span><code>${a.evidence_root}</code><span>ERP readback accepted · No wallet custody · Chain action gated</span></footer>`;function g(e){let t=c.get(e),n=l.get(e);document.querySelectorAll(`.domain-row`).forEach(t=>t.setAttribute(`aria-pressed`,String(t.dataset.domain===e))),document.querySelector(`#domain-detail`).innerHTML=`<div class="detail-header"><span>${e}</span><strong>${t.name.replaceAll(`_`,` `)}</strong></div>
     <dl><dt>Operating document</dt><dd>${t.operating_document}</dd><dt>Base control</dt><dd>${t.chain_control_or_evidence}</dd><dt>ERP reconciliation</dt><dd>${t.erp_ledger_or_reconciliation}</dd><dt>Close impact</dt><dd>${t.close_or_report_impact}</dd></dl>
     <div class="event"><span>Business event</span><code>${n?.business_event_id||`Pending`}</code></div>`}document.querySelectorAll(`.domain-row`).forEach(e=>e.addEventListener(`click`,()=>g(e.dataset.domain))),g(`D08`);

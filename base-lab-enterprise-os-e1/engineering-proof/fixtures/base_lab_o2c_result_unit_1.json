@@ -2,7 +2,9 @@
   "schema_version": "1.0",
   "result_unit_id": "BASE-LAB-D03-RU-001",
   "domain": "D03_order_to_cash",
-  "status": "local_complete_live_erp_pending",
+  "status": "superseded_by_d03_o2c_event_v2",
+  "superseded_by": "config/base_lab_d03_o2c_event_20260722.json",
+  "supersession_reason": "The original fixture used USD 250 total revenue against USD 2,500 inventory cost. D03 v2 is the sole current O2C authority and uses 10 Box x USD 350 revenue against 10 Box x USD 250 cost.",
   "company": "AOXPET Base Lab",
   "period": "2026-08",
   "business_event_id": "BASE-LAB-O2C-202608-001",
@@ -16,11 +18,14 @@
     "fulfilled_quantity": 10,
     "invoiced_quantity": 10,
     "currency": "USD",
-    "invoice_amount_minor": 25000
+    "unit_price_minor": 35000,
+    "invoice_amount_minor": 350000,
+    "inventory_cost_minor": 250000,
+    "gross_margin_minor": 100000
   },
   "chain_control_or_evidence": {
     "modes": ["AGENT_INTENT", "EVIDENCE_HASH", "READ_ONLY_VERIFY"],
-    "agent_intent": {"scope":"sell exact item and quantity","max_amount_minor":25000,"human_approval_required":true},
+    "agent_intent": {"scope":"sell exact item and quantity","max_amount_minor":350000,"human_approval_required":true},
     "fulfillment_evidence": "sha256:240d0ef98163fe85ac19540b0f56e2811543c29e8c5e84f556e0c3b1e90e8f0f",
     "payment_component": "existing BaseProofPay reference only; no new variant or payment",
     "transaction_hash": null
@@ -29,7 +34,7 @@
     "expected_objects": ["Sales Order", "Delivery Note", "Sales Invoice", "Payment Entry"],
     "expected_ledgers": ["Accounts Receivable", "Payment Ledger", "General Ledger", "Stock Ledger"],
     "quantity_tie_out": "ordered_10_fulfilled_10_invoiced_10",
-    "amount_tie_out": "invoice_25000_minor_collection_unsettled",
+    "amount_tie_out": "invoice_350000_minor_collection_unsettled",
     "ar_status": "open_pending_live_base_lab_documents",
     "posting_owner": "human ERP reviewer"
   },

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "evidence_id": "BASE_LAB_D01_D02_D09_CONTROL_READINESS_V1",
-  "generated_at": "2026-07-22T09:53:48.045Z",
+  "generated_at": "2026-07-22T10:15:18.596Z",
   "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
   "company": {
     "name": "AOXPET Base Lab",
@@ -19,13 +19,13 @@
     {
       "id": "D01",
       "label": "Foundation & master isolation",
-      "status": "blocked_with_packet",
-      "decision": "Resolve the accounting-country contract before any master-data write.",
+      "status": "action_confirmation_required",
+      "decision": "Country contract is aligned. Create only missing whitelisted masters after a separate action-time ERP write confirmation.",
       "facts": {
         "company_exists": true,
         "chart": "Standard",
         "live_country": "United Kingdom",
-        "contract_country": "United States",
+        "contract_country": "United Kingdom",
         "candidate_count_maximum": 14,
         "write_count": 0
       },
@@ -36,7 +36,7 @@
         "company isolation",
         "no cross-company reference"
       ],
-      "blocker": "country_contract_mismatch_unresolved"
+      "blocker": "action_time_erp_write_confirmation_missing"
     },
     {
       "id": "D02",
@@ -93,5 +93,5 @@
     "postable": false,
     "human_review_required": true
   },
-  "evidence_fingerprint": "sha256:38fe0102e8fd2c57731a5d6f4e6d7680a25ea622f7a13019e25c1fbf2210870a"
+  "evidence_fingerprint": "sha256:d44645cb656062902ef74bd9027cf01d0cd793e20720e1e29b8ce5c8d3421c45"
 }

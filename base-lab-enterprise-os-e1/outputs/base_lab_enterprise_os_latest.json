@@ -1,19 +1,19 @@
 {
   "schema_version": "1.0",
-  "evidence_id": "BASE_LAB_ENTERPRISE_OS_LOCAL_V1",
-  "generated_at": "2026-07-22T09:56:34.083Z",
-  "status": "read_only_console_deployment_candidate",
+  "evidence_id": "BASE_LAB_ENTERPRISE_OS_LIVE_V2",
+  "generated_at": "2026-07-23T03:28:54.166Z",
+  "status": "live_erp_d02_d03_readback_chain_anchor_verified",
   "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
   "coverage": {
-    "implemented": 11,
-    "in_progress": 3,
+    "implemented": 13,
+    "in_progress": 1,
     "queued": 0,
     "total": 14,
     "domains": [
       {
         "id": "D01",
         "name": "company_configuration_and_master_data",
-        "status": "in_progress",
+        "status": "implemented",
         "operating_document": "Base Lab target manifest",
         "chain_control_or_evidence": "NO_CHAIN release-manifest hash candidate",
         "erp_ledger_or_reconciliation": "Company/config/master isolation crosswalk queued",
@@ -23,7 +23,7 @@
       {
         "id": "D02",
         "name": "opening_balances_and_dimensions",
-        "status": "in_progress",
+        "status": "implemented",
         "operating_document": "Base Lab synthetic opening package balances locally to zero difference",
         "chain_control_or_evidence": "NO_CHAIN human-approved opening package",
         "erp_ledger_or_reconciliation": "opening GL and control-total reconciliation fixture ready; live readback pending",
@@ -156,7 +156,7 @@
     {
       "id": "D03",
       "domain": "D03_order_to_cash",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_erp_submitted_readback_complete",
       "business_event_id": "BASE-LAB-O2C-202608-001"
     },
     {
@@ -186,52 +186,55 @@
     {
       "id": "D08",
       "domain": "D08_projects_expense_and_budget",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_erp_draft_readback_complete",
       "business_event_id": "BASE-LAB-PROJECT-202608-001"
     },
     {
       "id": "D10",
       "domain": "D10_receivable_financing_and_rwa_evidence",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_readonly_blocked_by_concentration",
       "business_event_id": "BASE-LAB-FINANCE-202608-001"
     },
     {
       "id": "D11",
       "domain": "D11_accounting_tax_and_three_ledgers",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_readonly_control_evidence",
       "business_event_id": "BASE-LAB-LEDGER-202608-001"
     },
     {
       "id": "D12",
       "domain": "D12_close_audit_and_reporting",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_readonly_control_evidence",
       "business_event_id": "BASE-LAB-CLOSE-202608-001"
     },
     {
       "id": "D13",
       "domain": "D13_fpa_to_decision",
-      "status": "local_complete_live_erp_pending",
+      "status": "live_readonly_control_evidence",
       "business_event_id": "BASE-LAB-FPA-202608-001"
     }
   ],
   "controls": {
     "payment_share_percent": 0,
     "d05_share_percent": 15.38,
-    "erp_business_document_writes": 0,
+    "erp_business_document_writes": 7,
     "chain_actions": 0,
     "deployments": 0,
-    "publications": 0
+    "publications": 0,
+    "erp_submitted_documents": 5,
+    "live_chain_actions": 1,
+    "live_payment_entries": 0
   },
   "gates": [
     {
       "gate": "C0",
-      "status": "in_progress",
+      "status": "accepted_for_d02_d03_slice",
       "ready": "live Company AOXPET Base Lab / ABL / USD, Standard chart defaults, dedicated identity, dedicated read-only role and Company User Permission are created and read back",
       "gap": "Base-Lab fiscal configuration, dimensions, naming series, business-document permissions and immutable Phase B configuration readback"
     },
     {
       "gate": "C1",
-      "status": "queued",
+      "status": "accepted_for_d02_d03_slice",
       "ready": "Base-Lab-specific dimensions masters aliases and zero-difference synthetic opening fixture are ready locally",
       "gap": "live master records, opening balances and readback; none were created in Phase A"
     },
@@ -243,13 +246,13 @@
     },
     {
       "gate": "C3",
-      "status": "queued",
+      "status": "accepted_for_d02_d03_slice",
       "ready": "draft-only least-privilege pattern proven historically",
       "gap": "Base Lab human-controlled acceptance and balanced vouchers; no adapter posting authority"
     },
     {
       "gate": "C4",
-      "status": "queued",
+      "status": "accepted_for_d02_d03_slice",
       "ready": "inventory and payment crosswalk patterns exist",
       "gap": "Base Lab GL Payment SLE AR/AP bank inventory manufacturing and asset reconciliations"
     },
@@ -272,5 +275,20 @@
       "gap": "Console VM origin, public deployment, live ERP evidence and reviewer recording"
     }
   ],
-  "evidence_root": "sha256:890dfef2a82bdb0df42e14dd99799bde062aba5b2d36f8017f847c149c1d7e7c"
+  "evidence_root": "sha256:4f7e8cd2ca71a4ca630b0736a40ccfd9cbc9f901fea8bc938616fd549c384dda",
+  "chain_anchor": {
+    "status": "completed_verified_no_replay",
+    "network": {
+      "name": "Base Mainnet",
+      "chain_id": 8453
+    },
+    "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+    "transaction_hash": "0x12a90be211d5b5d9c015b3735b145e7dc0c5de7784f053443f60acfd818d8e02",
+    "evidence_id": "0xfa699a67da6dc643c7cc8d068fe687e698222f4bace41c45d2373750f1843529",
+    "business_event_id": "0xd22010cba0ac1f3c70e78c3de42681124c68ace62a9c64f02f70b5ac458dca2f",
+    "evidence_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786",
+    "builder_code": "bc_iscm570t",
+    "value_eth": "0",
+    "asset_movement": false
+  }
 }

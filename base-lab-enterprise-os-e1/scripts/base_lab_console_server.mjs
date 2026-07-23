@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const defaultStaticRoot = join(projectRoot, "dist-base-lab-enterprise-os");
-const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_latest.json");
+const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_live_latest.json");
 const topologyPath = join(projectRoot, "config/base_lab_cloud_runtime_topology.json");
 const ecosystemPath = join(projectRoot, "config/base_lab_ecosystem_evidence.json");
 const controlReadinessPath = join(projectRoot, "outputs/base_lab_control_readiness_latest.json");
@@ -48,7 +48,19 @@ export function sanitizeEvidence(evidence) {
     modules:(evidence.modules || []).map(({id,domain,status,business_event_id})=>({id,domain,status,business_event_id})),
     controls:evidence.controls,
     gates:evidence.gates,
-    evidence_root:evidence.evidence_root
+    evidence_root:evidence.evidence_root,
+    chain_anchor:evidence.chain_anchor ? {
+      status:evidence.chain_anchor.status,
+      network:evidence.chain_anchor.network,
+      registry:evidence.chain_anchor.registry,
+      transaction_hash:evidence.chain_anchor.transaction_hash,
+      evidence_id:evidence.chain_anchor.evidence_id,
+      business_event_id:evidence.chain_anchor.business_event_id,
+      evidence_root:evidence.chain_anchor.evidence_root,
+      builder_code:evidence.chain_anchor.builder_code,
+      value_eth:evidence.chain_anchor.value_eth,
+      asset_movement:evidence.chain_anchor.asset_movement
+    } : null
   };
 }
 
