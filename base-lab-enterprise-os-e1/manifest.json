@@ -208,9 +208,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "c7d37ac7668e3b4136950711a1423dfbd0bc2a1ec91d742fa8f142aa8986c93d",
-      "bytes": 7954
+      "sha256": "f1998e146878c326f91aac5133b0e84aec31f716fa114fbffa17fd403c79a2d9",
+      "bytes": 7949
     }
   ],
-  "package_root": "sha256:314118351092d400d2c758614c5538c8df9242938e818678052fcdb273cfe32e"
+  "package_root": "sha256:834fb7e683720a13158a0a1870607885bc98a181e9f9d33d13f09063ec6cc328"
 }

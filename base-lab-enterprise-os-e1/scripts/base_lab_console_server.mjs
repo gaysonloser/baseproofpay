@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const defaultStaticRoot = join(projectRoot, "dist-base-lab-enterprise-os");
-const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_live_latest.json");
+const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_latest.json");
 const topologyPath = join(projectRoot, "config/base_lab_cloud_runtime_topology.json");
 const ecosystemPath = join(projectRoot, "config/base_lab_ecosystem_evidence.json");
 const controlReadinessPath = join(projectRoot, "outputs/base_lab_control_readiness_latest.json");
