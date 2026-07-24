@@ -13,6 +13,7 @@ const baseXerp01Path = join(projectRoot, "outputs/base_xerp_01_evidence_latest.j
 const baseAssetEvidencePath = join(projectRoot, "outputs/base_asset_evidence_result_latest.json");
 const baseInventoryRootPath = join(projectRoot, "outputs/base_inventory_root_result_latest.json");
 const baseXerpO2cPath = join(projectRoot, "outputs/base_xerp_o2c_result_latest.json");
+const baseAppInteractionLabPath = join(projectRoot, "outputs/base_app_interaction_lab_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -24,6 +25,11 @@ const securityHeaders = {
   "cross-origin-resource-policy":"same-origin",
   "cross-origin-opener-policy":"same-origin",
   "vary":"Origin"
+};
+const interactionSecurityHeaders = {
+  ...securityHeaders,
+  "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://baseproofpay.onrender.com; connect-src 'self' https://mainnet.base.org https://rpc.wallet.coinbase.com https://as.coinbase.com https://cca-lite.coinbase.com; frame-src https://keys.coinbase.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
+  "cross-origin-opener-policy":"same-origin-allow-popups"
 };
 
 function assertRuntime(env) {
@@ -145,6 +151,43 @@ export function sanitizeBaseAssetEvidence(evidence) {
   };
 }
 
+export function sanitizeBaseAppInteractionLab(lab) {
+  return {
+    schema_version: lab.schema_version,
+    evidence_id: lab.evidence_id,
+    generated_at: lab.generated_at,
+    product: lab.product,
+    dashboard_snapshot: lab.dashboard_snapshot,
+    verified_result_units: lab.verified_result_units,
+    scenarios: lab.scenarios,
+    next_interaction: {
+      confirmation_id: lab.next_interaction.confirmation_id,
+      status: lab.next_interaction.status,
+      authorized_at: lab.next_interaction.authorized_at,
+      network: lab.next_interaction.network,
+      chain_id: lab.next_interaction.chain_id,
+      wallet: lab.next_interaction.wallet,
+      registry: lab.next_interaction.registry,
+      function: lab.next_interaction.function,
+      business_event_id: lab.next_interaction.business_event_id,
+      evidence_id: lab.next_interaction.evidence_id,
+      evidence_root: lab.next_interaction.evidence_root,
+      parent_root: lab.next_interaction.parent_root,
+      calldata: lab.next_interaction.calldata,
+      calldata_hash: lab.next_interaction.calldata_hash,
+      builder_code: lab.next_interaction.builder_code,
+      data_suffix: lab.next_interaction.data_suffix,
+      value_eth: lab.next_interaction.value_eth,
+      gas_ceiling_eth: lab.next_interaction.gas_ceiling_eth,
+      purpose: lab.next_interaction.purpose,
+      adoption_boundary: lab.next_interaction.adoption_boundary,
+      replay_policy: lab.next_interaction.replay_policy
+    },
+    controls: lab.controls,
+    output_fingerprint_sha256: lab.output_fingerprint_sha256
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -167,6 +210,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/base-asset-evidence") return sendJson(req,res,200,sanitizeBaseAssetEvidence(JSON.parse(await readFile(baseAssetEvidencePath,"utf8"))));
       if (req.url === "/api/v1/base-inventory-root") return sendJson(req,res,200,sanitizeBaseAssetEvidence(JSON.parse(await readFile(baseInventoryRootPath,"utf8"))));
       if (req.url === "/api/v1/base-xerp-o2c") return sendJson(req,res,200,sanitizeBaseXerp01(JSON.parse(await readFile(baseXerpO2cPath,"utf8"))));
+      if (req.url === "/api/v1/interaction-lab") return sendJson(req,res,200,sanitizeBaseAppInteractionLab(JSON.parse(await readFile(baseAppInteractionLabPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));
@@ -177,7 +221,8 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (!filePath.startsWith(staticRoot)) return sendJson(req,res,403,{error:"invalid_path"});
       await stat(filePath);
       const body=await readFile(filePath);
-      res.writeHead(200,{...securityHeaders,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
+      const headers = rawPath === "/base-app-interaction-lab.html" ? interactionSecurityHeaders : securityHeaders;
+      res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
       if (req.method === "HEAD") return res.end();
       res.end(body);
     } catch {

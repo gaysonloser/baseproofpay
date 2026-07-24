@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE_APP_INTERACTION_LAB_V1",
+  "generated_at": "2026-07-24T08:20:00.000Z",
+  "product": "CATVERSE Base Lab OS",
+  "dashboard_snapshot": {
+    "as_of": "2026-07-24",
+    "period": "Last week",
+    "total_daily_transacting_users": 2,
+    "base_app": {
+      "daily_transacting_users": 0,
+      "transactions": 0,
+      "gas_eth": "0",
+      "opens": 0,
+      "session_time": 0
+    },
+    "other": {
+      "daily_transacting_users": 2,
+      "transactions": 8,
+      "gas_eth": "0.0000198",
+      "paymaster_subsidies_eth": "0.00000792"
+    },
+    "interpretation": "Builder attribution is working under Other. Base App launch and transaction usage remain unobserved."
+  },
+  "verified_result_units": [
+    {
+      "result_unit_id": "BASE-XERP-O2C-01",
+      "status": "completed_verified",
+      "fingerprint": "79d856797a69decf274ac20ea705576ed3254331d72541cc03537a6537ded5b4",
+      "transaction_hash": "0x12a90be211d5b5d9c015b3735b145e7dc0c5de7784f053443f60acfd818d8e02",
+      "business_event_id": "BASE-LAB-O2C-202608-001"
+    },
+    {
+      "result_unit_id": "BASE-XERP-INVENTORY-01",
+      "status": "completed_verified",
+      "fingerprint": "e92929fc0ffe856fe52f53a116f83850bb0227f850e9931e45c358cf649ebc8c",
+      "transaction_hash": "0xee8bc9b3e8bc77ecd88e3e0c2de2521f821b1512da88916515cf19344fa2bd95",
+      "business_event_id": "BASE-LAB-INVENTORY-202608-003"
+    },
+    {
+      "result_unit_id": "BASE-XERP-ASSET-01",
+      "status": "completed_verified",
+      "fingerprint": "e519d2e1e9a728f9c97aea0a990106d5a0ecaf071f9b0e352cf5c9b8b276144e",
+      "transaction_hash": "0x9a631135429e13d2d59155d4cfc8fe98bcac89f36ebf48fbe4a03cf378960c7b",
+      "business_event_id": "BASE-LAB-ASSET-202608-001"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SCN-O2C",
+      "label": "Agent Commerce fulfillment",
+      "evidence_class": "verified_chain_plus_erp",
+      "status": "completed_no_replay",
+      "metric": "10 Box / 3,500 USD / 1,000 USD gross margin"
+    },
+    {
+      "id": "SCN-INVENTORY",
+      "label": "Tokenized inventory control",
+      "evidence_class": "verified_chain_plus_erp",
+      "status": "completed_no_replay",
+      "metric": "90 Box / 22,500 USD closing inventory"
+    },
+    {
+      "id": "SCN-ASSET",
+      "label": "Asset lifecycle evidence",
+      "evidence_class": "verified_chain_plus_erp",
+      "status": "completed_no_replay",
+      "metric": "12,000 USD gross / 200 USD depreciation"
+    },
+    {
+      "id": "SCN-REVIEW",
+      "label": "Cross-result review acceptance",
+      "evidence_class": "prepared_technical_owner_canary",
+      "status": "authorized_for_single_execution",
+      "metric": "1 Base App transaction / 0 ETH value"
+    }
+  ],
+  "next_interaction": {
+    "confirmation_id": "BASE-APP-INTERACTION-LAB-1",
+    "status": "authorized_for_single_execution",
+    "authorized_at": "2026-07-24T10:15:00+08:00",
+    "network": "Base Mainnet",
+    "chain_id": 8453,
+    "wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+    "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+    "function": "anchorEvidence(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)",
+    "business_event_id": "BASE-LAB-REVIEW-202608-001",
+    "evidence_id": "0x60100f6e615dd02cbbbf3c9cb326de09c312ef534e8a453ff909d9d2cf23633e",
+    "evidence_root": "0x1b2105096ee618f877ef6ec3ac5f63969009bf561c303cdb7533a27f1436bad7",
+    "parent_root": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+    "calldata": "0xb76e93cb60100f6e615dd02cbbbf3c9cb326de09c312ef534e8a453ff909d9d2cf23633e7668d59252541a86a43b7ccd871aa58c9b026f496c2b95934bed37cf2ba319f2b90b7b2d26e1e35e5135cd43c477e0f3a51f9000bf94255cadd9b03d4ec4de5a1b2105096ee618f877ef6ec3ac5f63969009bf561c303cdb7533a27f1436bad73fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbde8ccb242d9e8186ef8931d2e109699038db782f3c61a5f738ad0e093dc8cf47c",
+    "calldata_hash": "0xd792b31e234481e3597305c25cd7c0781385e2ae01cdf2c203d9ae5323872e31",
+    "builder_code": "bc_iscm570t",
+    "data_suffix": "0x62635f6973636d353730740b0080218021802180218021802180218021",
+    "value_eth": "0",
+    "gas_ceiling_eth": "0.00002",
+    "purpose": "Create one Base App-originated, Builder-attributed review acceptance linked to three completed cross-system result units.",
+    "adoption_boundary": "Self-controlled technical use; does not satisfy independent adoption.",
+    "replay_policy": "Evidence ID must be empty before execution; no automatic retry."
+  },
+  "controls": {
+    "automatic_wallet_request": false,
+    "automatic_transaction": false,
+    "empty_transfer_spam": false,
+    "duplicate_anchor": false,
+    "synthetic_data_counts_as_dashboard_usage": false,
+    "action_time_confirmation_required": true,
+    "action_time_confirmation_recorded": true
+  },
+  "output_fingerprint_sha256": "fbcc22535abf2f3b6d2837139a3e7889e18f4e874e68fa1dcfc50f7fbe5fc7de"
+}

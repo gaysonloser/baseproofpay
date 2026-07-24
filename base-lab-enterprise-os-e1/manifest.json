@@ -34,8 +34,10 @@
   ],
   "erp_credentials": 0,
   "erp_writes": 0,
-  "wallets": 0,
-  "chain_actions": 0,
+  "wallets": 1,
+  "wallet_auto_connect": false,
+  "chain_actions": 1,
+  "chain_action_scope": "single_confirmed_registry_anchor",
   "privacy": {
     "status": "passed",
     "forbidden_hits": []
@@ -68,13 +70,23 @@
     },
     {
       "path": "config/base_lab_ecosystem_evidence.json",
-      "sha256": "8b933909eb24fe55fe6377fbb150d5df000988fa2dbe0f34bce6fb4bb30db400",
-      "bytes": 3561
+      "sha256": "6ecb3478bce99371d359d92fc7e58363efa489e415a450965dec17214a53c420",
+      "bytes": 3902
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/base-asset-evidence-D8niYjg0.css",
       "sha256": "ccf3d7ea0b0dfdd994caeb0d68f66a16df67a8750fee930b0e5e1d0bea97a040",
       "bytes": 2283
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-B35GEw7S.js",
+      "sha256": "e8b8de9eba1e9b779b1239c313af473ec73dd7872a3e20b76ede268df72980f1",
+      "bytes": 471695
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CG91EQdq.css",
+      "sha256": "0378ae6175b7d947371cf10fc1542b53e546be6cec03696b800610960c8af26e",
+      "bytes": 4235
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/baseAssetEvidence-BG75eG1o.js",
@@ -107,19 +119,54 @@
       "bytes": 1118711
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-BUUHv-jm.css",
-      "sha256": "e0514a58e1b55186e1f07692f19fac47f2ddb0dd5ac7522038a3b39f25035e70",
-      "bytes": 8912
+      "path": "dist-base-lab-enterprise-os/assets/brotli_wasm_bg-NfWIZley.wasm",
+      "sha256": "9ef0a025046bf7d87b7cdb8eac3f73a5c8fea2f1adb848cc9768345573fcd8a9",
+      "bytes": 1056860
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-C8ipnVRw.js",
-      "sha256": "7f58d136682a5ffdf71ad43b94a7a59cdc51d80f4d08a51240a655b7459ba5c6",
-      "bytes": 7952
+      "path": "dist-base-lab-enterprise-os/assets/ccip-DoXPHqbw.js",
+      "sha256": "251d15e40978e52f523495773233a1a1fa01d1dde04dbd91b4a14ae53383966f",
+      "bytes": 2863
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-BsnZoLl1.css",
+      "sha256": "3dc887a996bc87f423684b3f1fa23c3ebbfee79681af4f0c9e0a18694c35ed0f",
+      "bytes": 9249
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-F0le4SWK.js",
+      "sha256": "07ff39df6eb67f7cf0c2740599682cf2c441fe9bd32e15af7d12a38d63943dee",
+      "bytes": 8967
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/localBatchGatewayRequest-C3tAqpQf.js",
+      "sha256": "ac3af5bfe56de47e2afa85b745ebf2b6032f74d92fe7b89bc0c8bc6f7fcee78f",
+      "bytes": 106991
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/modulepreload-polyfill-Dezn_h7o.js",
       "sha256": "785597bca2e7dd97a652a20a197c077079e635a5663433448e0e1d9fd8c98a64",
       "bytes": 698
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/secp256k1-BFZmfEgw.js",
+      "sha256": "95bb1e3d5c17c8f99cf2c602ada9f592e88cbfb320440f8516b152eeac725cb8",
+      "bytes": 67
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/secp256k1-Dozl9sDg.js",
+      "sha256": "9a19f0f67ae9ef94bf1daedd7542c107a8c3d5a89191d207bed5072a35623d69",
+      "bytes": 34318
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/utils-De7E53Fk.js",
+      "sha256": "6a357355c6ce095d695ee399955d28610a2db4dd51e440f76b7c387e55db3a60",
+      "bytes": 4083
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-app-interaction-lab.html",
+      "sha256": "41f7181b0c4da9d58d671ff5a57a86609b2fb0f8d16a60446e690e169bf1bc5b",
+      "bytes": 934
     },
     {
       "path": "dist-base-lab-enterprise-os/base-asset-evidence.html",
@@ -138,7 +185,7 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/enterprise-os.html",
-      "sha256": "0ee5d2716e39d1b50c45eef7781d452e2662570e24cbcddc8dfe358c6da5f539",
+      "sha256": "2a5cfc27c3177227717cc1e38dab6e5dfc52c2cf2b23ec121044df5e68d24b06",
       "bytes": 1008
     },
     {
@@ -173,8 +220,8 @@
     },
     {
       "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
-      "sha256": "8b933909eb24fe55fe6377fbb150d5df000988fa2dbe0f34bce6fb4bb30db400",
-      "bytes": 3561
+      "sha256": "6ecb3478bce99371d359d92fc7e58363efa489e415a450965dec17214a53c420",
+      "bytes": 3902
     },
     {
       "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
@@ -248,13 +295,18 @@
     },
     {
       "path": "engineering-proof/tests/validate-ecosystem-proof.mjs",
-      "sha256": "b3fcf9c16595f47e3b67cca44327b7b0636a0a10b9738cb7b755ef7b569c0aa3",
-      "bytes": 1480
+      "sha256": "d8e9c702d6c26dbe9cb88da5ca317ecf018e16a863d649344145971a9063275e",
+      "bytes": 1850
     },
     {
       "path": "engineering-proof/tests/validate-proof.mjs",
       "sha256": "99119c7ed7cbff5e6925d07f121c5ff65db90a9468de8c6f0b49827e70b9522f",
       "bytes": 1322
+    },
+    {
+      "path": "outputs/base_app_interaction_lab_latest.json",
+      "sha256": "74209a865327920069d21af92e27ec032b2f7a38ed059f2507f4390dc979c950",
+      "bytes": 4913
     },
     {
       "path": "outputs/base_asset_evidence_result_latest.json",
@@ -293,9 +345,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "249f74c0f5b23ba9dc735aa74db9590f41519fcef121e0d967c162ba5c81d81b",
-      "bytes": 10078
+      "sha256": "04d3114462362d6c1042ffef46394ce1f0ad2c2b78e5178a53b16a54ecdf7e3d",
+      "bytes": 12561
     }
   ],
-  "package_root": "sha256:12d8b8f3537cbbdeb4ff9fb81c14eaf22a74020974023b14cb3b39eae7fdcabd"
+  "package_root": "sha256:71ea328aced4d91be38b2dff0cac0654588718a83629ffb88be16bd5604edaac"
 }
