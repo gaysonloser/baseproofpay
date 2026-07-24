@@ -70,14 +70,14 @@
     {
       "id": "SCN-REVIEW",
       "label": "Cross-result review acceptance",
-      "evidence_class": "prepared_technical_owner_canary",
-      "status": "authorized_for_single_execution",
+      "evidence_class": "verified_chain_plus_erp",
+      "status": "completed_verified_no_replay",
       "metric": "1 Base App transaction / 0 ETH value"
     }
   ],
   "next_interaction": {
     "confirmation_id": "BASE-APP-INTERACTION-LAB-1",
-    "status": "authorized_for_single_execution",
+    "status": "completed_verified_no_replay",
     "authorized_at": "2026-07-24T10:15:00+08:00",
     "network": "Base Mainnet",
     "chain_id": 8453,
@@ -94,6 +94,14 @@
     "data_suffix": "0x62635f6973636d353730740b0080218021802180218021802180218021",
     "value_eth": "0",
     "gas_ceiling_eth": "0.00002",
+    "transaction_hash": "0xd08e8202b53c48757428ac6c6a6367c281a5ebb0e4718051d1d677f8b741a69d",
+    "block_number": 49047484,
+    "calls_id": "0x0612ca00d883e70bb7e6dea8fed33c687244750b2f047f42d108e4c3ff45e0480000000000000000000000000000000000000000000000000000000000002105",
+    "gas_used": "260573",
+    "effective_gas_price_wei": "6000000",
+    "actual_fee_eth": "0.000001563438",
+    "registry_readback_verified": true,
+    "event_verified": true,
     "purpose": "Create one Base App-originated, Builder-attributed review acceptance linked to three completed cross-system result units.",
     "adoption_boundary": "Self-controlled technical use; does not satisfy independent adoption.",
     "replay_policy": "Evidence ID must be empty before execution; no automatic retry."
@@ -105,7 +113,8 @@
     "duplicate_anchor": false,
     "synthetic_data_counts_as_dashboard_usage": false,
     "action_time_confirmation_required": true,
-    "action_time_confirmation_recorded": true
+    "action_time_confirmation_recorded": true,
+    "execution_locked_after_first_attempt": true
   },
-  "output_fingerprint_sha256": "fbcc22535abf2f3b6d2837139a3e7889e18f4e874e68fa1dcfc50f7fbe5fc7de"
+  "output_fingerprint_sha256": "27ef9b4bdd449d4597e5fade6f4ca9341851c577bc02c15533ff77d514b36f56"
 }

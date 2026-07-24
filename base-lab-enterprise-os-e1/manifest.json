@@ -79,14 +79,14 @@
       "bytes": 2283
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-B35GEw7S.js",
-      "sha256": "e8b8de9eba1e9b779b1239c313af473ec73dd7872a3e20b76ede268df72980f1",
-      "bytes": 471695
-    },
-    {
       "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CG91EQdq.css",
       "sha256": "0378ae6175b7d947371cf10fc1542b53e546be6cec03696b800610960c8af26e",
       "bytes": 4235
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CVpbIrms.js",
+      "sha256": "27e0998a07a8b93adaf6edcad2f6e6190ef467ca8da04a5ca31d79f91b4ac0ed",
+      "bytes": 472262
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/baseAssetEvidence-BG75eG1o.js",
@@ -165,7 +165,7 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/base-app-interaction-lab.html",
-      "sha256": "41f7181b0c4da9d58d671ff5a57a86609b2fb0f8d16a60446e690e169bf1bc5b",
+      "sha256": "0745cde34f4fa4a2d3ef7dd2f464f9d5234cdf6bbc3fdab0c34c65db5b894d7c",
       "bytes": 934
     },
     {
@@ -305,8 +305,8 @@
     },
     {
       "path": "outputs/base_app_interaction_lab_latest.json",
-      "sha256": "74209a865327920069d21af92e27ec032b2f7a38ed059f2507f4390dc979c950",
-      "bytes": 4913
+      "sha256": "8348a1a2228120629842572b580516147b74c3eb60435c660894d2ac16eb5cab",
+      "bytes": 5399
     },
     {
       "path": "outputs/base_asset_evidence_result_latest.json",
@@ -345,9 +345,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "04d3114462362d6c1042ffef46394ce1f0ad2c2b78e5178a53b16a54ecdf7e3d",
-      "bytes": 12561
+      "sha256": "70938ed763bce30a452daee3050e5d7eda0a83035d833f6eb2eeeaec49280712",
+      "bytes": 13051
     }
   ],
-  "package_root": "sha256:71ea328aced4d91be38b2dff0cac0654588718a83629ffb88be16bd5604edaac"
+  "package_root": "sha256:319146024debd3477163317975a02352918198be2dbbe5aeedf65b7f707bcbe4"
 }
