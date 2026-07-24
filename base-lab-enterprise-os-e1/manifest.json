@@ -84,9 +84,9 @@
       "bytes": 4235
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CVpbIrms.js",
-      "sha256": "27e0998a07a8b93adaf6edcad2f6e6190ef467ca8da04a5ca31d79f91b4ac0ed",
-      "bytes": 472262
+      "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CSOr9MKh.js",
+      "sha256": "fbba164cacfc83b5b466bc568e313e6e6c2e7af1421959f9469b00d495c09e65",
+      "bytes": 472301
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/baseAssetEvidence-BG75eG1o.js",
@@ -165,7 +165,7 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/base-app-interaction-lab.html",
-      "sha256": "0745cde34f4fa4a2d3ef7dd2f464f9d5234cdf6bbc3fdab0c34c65db5b894d7c",
+      "sha256": "f337bcb2ab26cefa609300a9c0496b7d800190c79fc2ed35e6aecb49c45d0cef",
       "bytes": 934
     },
     {
@@ -349,5 +349,5 @@
       "bytes": 13051
     }
   ],
-  "package_root": "sha256:319146024debd3477163317975a02352918198be2dbbe5aeedf65b7f707bcbe4"
+  "package_root": "sha256:a2d2b0f0e59f271c80e4407e414ce07322da90ee7a620dd96d0c473f0383a14a"
 }
