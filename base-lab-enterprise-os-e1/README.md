@@ -10,13 +10,17 @@ Base-native enterprise agent and asset operations. The non-payment heroes are Ag
 - Control readiness: `/api/v1/control-readiness`
 - Topology: `/api/v1/topology`
 - Base ecosystem proof: `/api/v1/ecosystem`
+- Agent Commerce / O2C: `/base-xerp-o2c.html`
+- Tokenized Inventory Evidence: `/base-inventory-root.html`
+- Asset Evidence: `/base-asset-evidence.html`
 
 ## Three-minute Walkthrough
 
 1. Inspect D01-D14 and C0-C7 without connecting a wallet.
-2. Follow a CATVERSE batch through receipt, movement, exception, ERP Stock Ledger crosswalk and close/report impact.
-3. Verify the Builder Code, Base contracts, x402 runtime and Talent aggregate in Ecosystem Proof.
-4. Confirm that Base.dev indexing, Base Builders nomination and independent adoption remain explicitly pending.
+2. Open the three verified result units: Agent Commerce/O2C, Tokenized Inventory Evidence and Asset Evidence.
+3. Follow the CATVERSE batch through receipt, movement, exception, ERP Stock Ledger crosswalk and close/report impact.
+4. Verify the Builder Code, Base contracts, x402 runtime and Talent aggregate in Ecosystem Proof.
+5. Confirm that Base.dev indexing, Base Builders nomination and independent adoption remain explicitly pending.
 
 ## Architecture
 

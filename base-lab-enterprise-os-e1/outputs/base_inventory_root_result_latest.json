@@ -1,0 +1,207 @@
+{
+  "schema_id": "gayson.base.enterprise.inventory_root_candidate",
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-XERP-INVENTORY-01",
+  "generated_at": "2026-07-24T00:57:19.000Z",
+  "status": "completed_verified",
+  "classification": "cross_system_product_result",
+  "lanes": {
+    "chain_fact": {
+      "status": "anchored_verified",
+      "network": "Base Mainnet",
+      "chain_id": 8453,
+      "wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+      "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+      "function": "anchorEvidence(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)",
+      "evidence_id": "0x24bfd30b1eb85393f16f237b46a6a4fdf51d0b77dd6de18c0cebf062963ed0c1",
+      "evidence_root": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+      "parent_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786",
+      "calldata": "0xb76e93cb24bfd30b1eb85393f16f237b46a6a4fdf51d0b77dd6de18c0cebf062963ed0c16647d713fe4590e8860557e61e34b350de43590a597f4a59e4737c4a6ed6a3702da41e2fccbf78c94e5d978ccc7daf0f74bf6d5d5a39e0a1734932285f1a3f2a3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d30987865c153c4c16217b83f783a05bf9892862fd3456b73376998ae49ed15855140bb2",
+      "calldata_hash": "0x84fb72889cf4a66eec016f9750ce3223713fcb0e84eeb5e728a51f7a39315c44",
+      "value_eth": "0",
+      "gas_ceiling_eth": "0.00002",
+      "builder_code": "bc_iscm570t",
+      "title_claim": false,
+      "deployment": false,
+      "rpc": {
+        "status": "passed",
+        "code_present": true,
+        "owner": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+        "estimate_gas": 163321,
+        "gas_price_wei": "6000000",
+        "estimated_cost_wei": "979926000000"
+      },
+      "transaction_hash": "0xee8bc9b3e8bc77ecd88e3e0c2de2521f821b1512da88916515cf19344fa2bd95",
+      "block_number": 49032646,
+      "block_hash": "0x5d91224c6c35a898be29e32bc50cfbe227836212a67f0fb2e2533d2b60846ef2",
+      "receipt": {
+        "status": 1,
+        "gas_used": "466112",
+        "effective_gas_price_wei": "6000000",
+        "l1_fee_wei": "10189670739",
+        "total_cost_wei": "2806861670739",
+        "total_cost_eth": "0.000002806861670739"
+      },
+      "account_abstraction": {
+        "outer_from": "0x501ef174b66883ba40f92e6fb24bfb49331d4d4c",
+        "outer_to": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+        "logical_wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25"
+      },
+      "builder_attribution": {
+        "code": "bc_iscm570t",
+        "suffix_present": true,
+        "verified": true
+      },
+      "registry_event": {
+        "log_index": 442,
+        "removed": false,
+        "evidence_id": "0x24bfd30b1eb85393f16f237b46a6a4fdf51d0b77dd6de18c0cebf062963ed0c1",
+        "evidence_root": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+        "parent_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786"
+      },
+      "readback": {
+        "verified": true,
+        "anchored_at": 1784854639,
+        "chain_id": 8453,
+        "period_hash": "0x5c153c4c16217b83f783a05bf9892862fd3456b73376998ae49ed15855140bb2"
+      },
+      "gas_settlement": {
+        "business_token_transfer": false,
+        "infrastructure_token_events": true,
+        "wallet_involved": false,
+        "weth_amount": "0.0000001",
+        "usdc_amount": "0.000186",
+        "classification": "entrypoint_infrastructure_fee_settlement"
+      }
+    },
+    "canonical_event": {
+      "schema_version": "1.0",
+      "rail": "base",
+      "namespace": "ABL",
+      "business_event_id": "BASE-LAB-INVENTORY-202608-003",
+      "event_type": "base_inventory_root_evidence",
+      "period": "2026-08",
+      "source_documents": {
+        "opening_stock": "MAT-RECO-2026-00001",
+        "delivery_note": "MAT-DN-2026-00001",
+        "replacement_sales_invoice": "ACC-SINV-2026-00003"
+      },
+      "inventory": {
+        "item": "BASE-LAB-CATVERSE-BOX",
+        "uom": "Box",
+        "opening_quantity": 100,
+        "issued_quantity": 10,
+        "closing_quantity": 90,
+        "opening_value_usd": 25000,
+        "cogs_usd": 2500,
+        "closing_value_usd": 22500,
+        "valuation_owner": "ERPNext"
+      },
+      "controls": {
+        "idempotency_key": "BASE-LAB-IDEM-D05-202608-003",
+        "evidence_only": true,
+        "token_semantics": "NON_TITLE_EVIDENCE_TWIN",
+        "title_claim": false,
+        "human_review_required": true
+      },
+      "payload_hash": "sha256:3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd"
+    },
+    "erp_inventory_readback": {
+      "status": "submitted_sle_gl_readback_reused",
+      "source_documents": {
+        "opening_stock": "MAT-RECO-2026-00001",
+        "delivery_note": "MAT-DN-2026-00001",
+        "replacement_sales_invoice": "ACC-SINV-2026-00003"
+      },
+      "opening_quantity": 100,
+      "issued_quantity": 10,
+      "closing_quantity": 90,
+      "opening_value_usd": 25000,
+      "cogs_usd": 2500,
+      "closing_value_usd": 22500,
+      "valuation_owner": "ERPNext",
+      "base_calculates_cost": false,
+      "opening_sle_count": 1,
+      "delivery_sle_count": 1,
+      "delivery_gl_balanced": true
+    },
+    "close_and_report": {
+      "status": "preclose_inventory_and_margin_readback",
+      "closing_inventory_quantity": 90,
+      "closing_inventory_value_usd": 22500,
+      "revenue_usd": 3500,
+      "cogs_usd": 2500,
+      "gross_margin_usd": 1000,
+      "period_closed": false,
+      "close_claim": "preclose evidence only"
+    },
+    "console_fingerprint": {
+      "status": "local_result_ready_not_published",
+      "endpoint": "/api/v1/base-inventory-root",
+      "page": "/base-inventory-root.html",
+      "publication": false,
+      "source_candidate_fingerprint": "8c040f51ed54d85f02fe19113ba8326653e3e9dc5519e6a47b9cbb563d77011e",
+      "local_evidence_fingerprint_sha256": "dc5e3f202209ddda5a1f302c2a38e020442737ecae7d8d00cd659bc3d3d58806"
+    },
+    "negative_controls": [
+      {
+        "id": "wrong_chain",
+        "passed": true,
+        "expected": "WRONG_CHAIN",
+        "observed": "WRONG_CHAIN"
+      },
+      {
+        "id": "title_claim",
+        "passed": true,
+        "expected": "TITLE_OR_DEPLOY_CLAIM_FORBIDDEN",
+        "observed": "TITLE_OR_DEPLOY_CLAIM_FORBIDDEN"
+      },
+      {
+        "id": "quantity_loss",
+        "passed": true,
+        "expected": "QUANTITY_CONSERVATION_FAILED",
+        "observed": "QUANTITY_CONSERVATION_FAILED"
+      },
+      {
+        "id": "value_loss",
+        "passed": true,
+        "expected": "VALUE_CONSERVATION_FAILED",
+        "observed": "VALUE_CONSERVATION_FAILED"
+      },
+      {
+        "id": "base_cost_override",
+        "passed": true,
+        "expected": "VALUATION_OWNERSHIP_MISMATCH",
+        "observed": "VALUATION_OWNERSHIP_MISMATCH"
+      },
+      {
+        "id": "wrong_delivery",
+        "passed": true,
+        "expected": "SOURCE_DOCUMENT_MISMATCH",
+        "observed": "SOURCE_DOCUMENT_MISMATCH"
+      },
+      {
+        "id": "premature_close",
+        "passed": true,
+        "expected": "PREMATURE_CLOSE_CLAIM",
+        "observed": "PREMATURE_CLOSE_CLAIM"
+      }
+    ]
+  },
+  "execution": {
+    "confirmation_id": "BASE-XERP-INVENTORY-01-ANCHOR-1",
+    "transaction_hash": "0xee8bc9b3e8bc77ecd88e3e0c2de2521f821b1512da88916515cf19344fa2bd95",
+    "no_replay": true,
+    "completed_at": "2026-07-24T00:57:19.000Z"
+  },
+  "boundaries": {
+    "token_semantics": "NON_TITLE_EVIDENCE_TWIN",
+    "title_claim": false,
+    "base_calculates_cost": false,
+    "period_close_claim": false,
+    "deployment": false,
+    "token_transfer": false,
+    "payment": false
+  },
+  "result_fingerprint_sha256": "e92929fc0ffe856fe52f53a116f83850bb0227f850e9931e45c358cf649ebc8c"
+}

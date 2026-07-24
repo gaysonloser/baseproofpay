@@ -1,0 +1,288 @@
+{
+  "schema_id": "gayson.base.enterprise.asset_cross_system_result",
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-XERP-ASSET-01",
+  "generated_at": "2026-07-23T17:39:22.353Z",
+  "status": "completed_verified",
+  "classification": "cross_system_product_result",
+  "lanes": {
+    "chain_fact": {
+      "status": "anchored_verified",
+      "network": "Base Mainnet",
+      "chain_id": 8453,
+      "wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+      "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+      "function": "anchorEvidence(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)",
+      "evidence_id": "0x266e04a85100cc22069a389af87d0cb53b7d9dcc17e5201c871e0ee0653ab0d8",
+      "evidence_root": "0x2b04a30d6b240f9b338d4b61c300fb923dd0cd2f37d5cb6ba145cfe731e00b62",
+      "parent_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786",
+      "calldata_hash": "0xade03b8d2a2baeffe21f4b1ed1d7c97d6b2ccf6ee72803c7dbcc949b255ccdaa",
+      "calldata": "0xb76e93cb266e04a85100cc22069a389af87d0cb53b7d9dcc17e5201c871e0ee0653ab0d86c560e3a5497286599de536c29882d17d3483e62ad29fcff1469288ba1a04484e1d5c4e4da7bec2a17e539d103bb3e6681543f3f0ea2998ad3696df58c251d752b04a30d6b240f9b338d4b61c300fb923dd0cd2f37d5cb6ba145cfe731e00b62821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d30987865c153c4c16217b83f783a05bf9892862fd3456b73376998ae49ed15855140bb2",
+      "value_eth": "0",
+      "gas_ceiling_eth": "0.00002",
+      "builder_code": "bc_iscm570t",
+      "title_claim": false,
+      "deployment": false,
+      "rpc": {
+        "status": "passed",
+        "code_present": true,
+        "owner": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+        "estimate_gas": 163297,
+        "gas_price_wei": "6000000",
+        "estimated_cost_wei": "979782000000"
+      },
+      "transaction_hash": "0x9a631135429e13d2d59155d4cfc8fe98bcac89f36ebf48fbe4a03cf378960c7b",
+      "block_number": 49019402,
+      "receipt": {
+        "status": 1,
+        "gas_used": "560793",
+        "effective_gas_price_wei": "6000000",
+        "l1_fee_wei": "22773129113",
+        "total_cost_wei": "3387531129113",
+        "total_cost_eth": "0.000003387531129113"
+      },
+      "account_abstraction": {
+        "outer_from": "0x501ef174b66883ba40f92e6fb24bfb49331d4d4c",
+        "outer_to": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+        "logical_wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25"
+      },
+      "builder_attribution": {
+        "code": "bc_iscm570t",
+        "suffix_present": true,
+        "verified": true
+      },
+      "registry_event": {
+        "log_index": 148,
+        "evidence_id": "0x266e04a85100cc22069a389af87d0cb53b7d9dcc17e5201c871e0ee0653ab0d8",
+        "evidence_root": "0x2b04a30d6b240f9b338d4b61c300fb923dd0cd2f37d5cb6ba145cfe731e00b62",
+        "parent_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786"
+      },
+      "readback_verified": true
+    },
+    "canonical_event": {
+      "schema_version": "1.0",
+      "rail": "base",
+      "namespace": "ABL",
+      "business_event_id": "BASE-LAB-ASSET-202608-001",
+      "event_type": "base_asset_acquisition_in_service_evidence",
+      "occurred_at": "2026-08-15T00:00:00.000Z",
+      "source_evidence": {
+        "kind": "read_only_erp_evidence",
+        "fingerprint": "sha256:1e2f943448ccfc24fcb7bf76d04209d9189f975fd1e1689e7fb5baba1a327079"
+      },
+      "control": {
+        "idempotency_key": "BASE-LAB-IDEM-D07-202608-001",
+        "human_review_required": true,
+        "postable": false
+      },
+      "erp_handoff": {
+        "company": "AOXPET Base Lab",
+        "currency": "USD",
+        "mode": "read_only_crosswalk",
+        "purchase_invoice": "ACC-PINV-2026-00001",
+        "asset": "ACC-ASS-2026-00001"
+      },
+      "semantics": {
+        "evidence_only": true,
+        "title_claim": false,
+        "valuation_owner": "ERPNext and human controller",
+        "depreciation_owner": "ERPNext"
+      },
+      "economics": {
+        "gross_asset_usd": 12000,
+        "in_service_date": "2026-08-15",
+        "depreciation_method": "Straight Line",
+        "depreciation_periods": 60,
+        "first_depreciation_date": "2026-08-31",
+        "first_depreciation_usd": 200,
+        "expected_accumulated_depreciation_usd": 200,
+        "expected_net_book_value_usd": 11800
+      },
+      "payload_hash": "sha256:2b04a30d6b240f9b338d4b61c300fb923dd0cd2f37d5cb6ba145cfe731e00b62"
+    },
+    "erp_asset_result": {
+      "status": "submitted_and_readback",
+      "purchase_invoice": "ACC-PINV-2026-00001",
+      "asset": {
+        "name": "ACC-ASS-2026-00001",
+        "docstatus": 1,
+        "gross_usd": 12000,
+        "accumulated_depreciation_usd": 200,
+        "net_book_value_usd": 11800
+      },
+      "schedule": {
+        "name": "ACC-ADS-2026-00001",
+        "asset": "ACC-ASS-2026-00001",
+        "docstatus": 1,
+        "status": "Active"
+      },
+      "movement": {
+        "name": "ACC-ASM-2026-00001",
+        "docstatus": 1,
+        "purpose": "Receipt",
+        "company": "AOXPET Base Lab",
+        "reference_doctype": "Purchase Invoice",
+        "reference_name": "ACC-PINV-2026-00001",
+        "transaction_date": "2026-08-15 12:00:00"
+      },
+      "activity": {
+        "submitted_count": 1,
+        "submitted_activity": {
+          "name": "3515vuh9st",
+          "asset": "ACC-ASS-2026-00001",
+          "subject": "Asset submitted"
+        }
+      },
+      "human_review_required": true
+    },
+    "ledger_and_report": {
+      "status": "balanced_gl_and_preclose_readback",
+      "acquisition_source": "ACC-PINV-2026-00001",
+      "acquisition_gl": {
+        "debit_usd": 12000,
+        "credit_usd": 12000,
+        "rows": [
+          {
+            "name": "ACC-GLE-2026-00018",
+            "posting_date": "2026-08-15",
+            "account": "Creditors - ABL",
+            "debit": 0,
+            "credit": 12000,
+            "voucher_type": "Purchase Invoice",
+            "voucher_no": "ACC-PINV-2026-00001",
+            "is_cancelled": 0
+          },
+          {
+            "name": "ACC-GLE-2026-00019",
+            "posting_date": "2026-08-15",
+            "account": "CWIP Account - ABL",
+            "debit": 12000,
+            "credit": 0,
+            "voucher_type": "Purchase Invoice",
+            "voucher_no": "ACC-PINV-2026-00001",
+            "is_cancelled": 0
+          }
+        ]
+      },
+      "depreciation_journal": {
+        "name": "ACC-JV-2026-00009",
+        "docstatus": 1,
+        "debit_usd": 200,
+        "credit_usd": 200
+      },
+      "depreciation_gl": {
+        "debit_usd": 200,
+        "credit_usd": 200,
+        "rows": [
+          {
+            "name": "3ce11935b9",
+            "posting_date": "2026-08-31",
+            "account": "Depreciation - ABL",
+            "debit": 200,
+            "credit": 0,
+            "voucher_type": "Journal Entry",
+            "voucher_no": "ACC-JV-2026-00009",
+            "is_cancelled": 0
+          },
+          {
+            "name": "4411226af2",
+            "posting_date": "2026-08-31",
+            "account": "Accumulated Depreciation - ABL",
+            "debit": 0,
+            "credit": 200,
+            "voucher_type": "Journal Entry",
+            "voucher_no": "ACC-JV-2026-00009",
+            "is_cancelled": 0
+          }
+        ]
+      },
+      "preclose_report": {
+        "revenue_usd": 3500,
+        "expense_usd": 2700,
+        "net_income_usd": 800,
+        "period_closed": false
+      },
+      "close_claim": "preclose_report_impact_only; no Period Closing Voucher in this result unit"
+    },
+    "console_fingerprint": {
+      "status": "local_result_ready_not_published",
+      "endpoint": "/api/v1/base-asset-evidence",
+      "page": "/base-asset-evidence.html",
+      "publication": false,
+      "source_candidate_fingerprint": "1da26ccb1b40d28503f1d8a066aebcfe616941633edeae260739f5e894836033",
+      "local_evidence_fingerprint_sha256": "52a34504d4e487616b18af6f0eac03c8a490d4a07fa2a2ce9528784fe0480272"
+    },
+    "negative_controls": [
+      {
+        "id": "duplicate_asset",
+        "passed": true,
+        "expected": "DUPLICATE_ASSET",
+        "observed": "DUPLICATE_ASSET"
+      },
+      {
+        "id": "missing_invoice",
+        "passed": true,
+        "expected": "PURCHASE_INVOICE_MISMATCH",
+        "observed": "PURCHASE_INVOICE_MISMATCH"
+      },
+      {
+        "id": "wrong_chain",
+        "passed": true,
+        "expected": "WRONG_CHAIN",
+        "observed": "WRONG_CHAIN"
+      },
+      {
+        "id": "title_claim",
+        "passed": true,
+        "expected": "TITLE_CLAIM_FORBIDDEN",
+        "observed": "TITLE_CLAIM_FORBIDDEN"
+      },
+      {
+        "id": "autonomous_depreciation",
+        "passed": true,
+        "expected": "HUMAN_REVIEW_REQUIRED",
+        "observed": "HUMAN_REVIEW_REQUIRED"
+      },
+      {
+        "id": "premature_close",
+        "passed": true,
+        "expected": "PREMATURE_CLOSE_CLAIM",
+        "observed": "PREMATURE_CLOSE_CLAIM"
+      }
+    ]
+  },
+  "execution": {
+    "sequence": [
+      "ERP exact preflight and duplicate lock",
+      "temporarily install only the reviewed Asset/Depreciation/Journal submit permissions",
+      "update and submit the existing Asset, create and submit one first-depreciation Journal Entry",
+      "read back Asset Register, Asset GL, depreciation GL and 2026-08 pre-close reports",
+      "restore every temporary permission in finally",
+      "only after ERP postflight passes, anchor the fixed BaseAssetEvidence canonical root once",
+      "read back registry event and render the final Console fingerprint"
+    ],
+    "confirmation_id": "BASE-XERP-ASSET-01-V16-RETRY-2",
+    "erp_execution_fingerprint": "78cbd60d03006eb8c01dc102300ecbb486208f0a918b92e0b7f59340535035ac",
+    "chain_transaction": "0x9a631135429e13d2d59155d4cfc8fe98bcac89f36ebf48fbe4a03cf378960c7b"
+  },
+  "boundaries": {
+    "erp_writes": "authorized_asset_submit_and_first_depreciation",
+    "chain_transactions": 1,
+    "wallet_connections": 1,
+    "deployments": 0,
+    "publications": 0,
+    "period_closing_vouchers": 0,
+    "automatic_retries": 0,
+    "period_closing_voucher": false,
+    "new_purchase_invoice": false,
+    "new_asset": false,
+    "payment_entry": false,
+    "token_transfer": false,
+    "approve": false,
+    "deploy": false,
+    "delete_or_cancel": false,
+    "automatic_retry": false,
+    "git_or_render_publish": false
+  },
+  "result_fingerprint_sha256": "e519d2e1e9a728f9c97aea0a990106d5a0ecaf071f9b0e352cf5c9b8b276144e"
+}

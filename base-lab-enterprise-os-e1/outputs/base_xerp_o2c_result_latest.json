@@ -1,0 +1,191 @@
+{
+  "schema_id": "gayson.base.enterprise.cross_system_product_result",
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-XERP-O2C-01",
+  "generated_at": "2026-07-23T18:18:44.420Z",
+  "status": "completed_verified",
+  "classification": "cross_system_product_result",
+  "lanes": {
+    "chain_fact": {
+      "status": "anchored_verified_no_replay",
+      "network": "Base Mainnet",
+      "chain_id": 8453,
+      "transaction_hash": "0x12a90be211d5b5d9c015b3735b145e7dc0c5de7784f053443f60acfd818d8e02",
+      "block_number": 48977206,
+      "receipt_status": 1,
+      "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+      "logical_wallet": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+      "evidence_id": "0xfa699a67da6dc643c7cc8d068fe687e698222f4bace41c45d2373750f1843529",
+      "evidence_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786",
+      "readback_exact": true,
+      "builder_attribution": {
+        "standard": "ERC-8021 data suffix",
+        "code": "bc_iscm570t",
+        "verified": true
+      }
+    },
+    "canonical_event": {
+      "schema_version": "1.0",
+      "event_type": "base_agent_commerce_o2c_fulfillment",
+      "business_event_id": "BASE-LAB-O2C-202608-001",
+      "company": "AOXPET Base Lab",
+      "sales_order": "SAL-ORD-2026-00001",
+      "delivery_note": "MAT-DN-2026-00001",
+      "sales_invoice": "ACC-SINV-2026-00003",
+      "quantity": 10,
+      "revenue_usd": 3500,
+      "cogs_usd": 2500,
+      "evidence_root": "0x821455e4a9ec4d0e11e60d7a4e6ac087d892fcf7c57d53726b44c031d3098786",
+      "payload_hash": "sha256:32455e8f3c7092afdcc2c55a6459cff6019aa50ebb0c0f18c6dee13e6f109089",
+      "idempotency_key": "BASE-LAB-O2C-202608-001",
+      "evidence_assurance": "verified_base_anchor_plus_submitted_erp_readback"
+    },
+    "erp_operating_documents": {
+      "status": "submitted_and_readback",
+      "company": "AOXPET Base Lab",
+      "sales_order": {
+        "name": "SAL-ORD-2026-00001",
+        "docstatus": 1,
+        "quantity": 10,
+        "rate_usd": 350,
+        "total_usd": 3500
+      },
+      "delivery_note": {
+        "name": "MAT-DN-2026-00001",
+        "docstatus": 1,
+        "posting_date": "2026-08-10",
+        "quantity": 10,
+        "rate_usd": 350
+      },
+      "original_sales_invoice": {
+        "name": "ACC-SINV-2026-00001",
+        "docstatus": 1,
+        "posting_date": "2026-07-22",
+        "cutoff_status": "credited"
+      },
+      "cutoff_credit_note": {
+        "name": "ACC-SINV-2026-00002",
+        "docstatus": 1,
+        "total_usd": -3500
+      },
+      "replacement_sales_invoice": {
+        "name": "ACC-SINV-2026-00003",
+        "docstatus": 1,
+        "posting_date": "2026-08-10",
+        "quantity": 10,
+        "rate_usd": 350,
+        "total_usd": 3500
+      },
+      "duplicate_delivery_note_deleted": true,
+      "human_review_required": true
+    },
+    "ledger_and_reconciliation": {
+      "status": "sle_gl_ar_and_preclose_verified",
+      "delivery_sle": {
+        "count": 1,
+        "quantity_change": -10,
+        "quantity_after": 90,
+        "value_difference_usd": -2500
+      },
+      "delivery_gl": {
+        "debit_usd": 2500,
+        "credit_usd": 2500,
+        "balanced": true
+      },
+      "invoice_gl": {
+        "debit_usd": 3500,
+        "credit_usd": 3500,
+        "balanced": true
+      },
+      "payment_ledger_rows": 1,
+      "outstanding_ar_usd": 3500,
+      "preclose_report": {
+        "revenue_usd": 3500,
+        "cogs_usd": 2500,
+        "gross_margin_usd": 1000,
+        "closing_inventory_quantity": 90,
+        "closing_inventory_value_usd": 22500,
+        "period_closed": false
+      },
+      "cutoff_control": "credit_and_rebill_verified_in_target_period"
+    },
+    "console_bidirectional_evidence": {
+      "status": "local_result_ready_not_published",
+      "chain_to_erp": true,
+      "erp_to_chain": true,
+      "local_endpoint": "/api/v1/base-xerp-o2c",
+      "local_page": "/base-xerp-o2c.html",
+      "public_url": "https://catverse-base-lab-enterprise-os.onrender.com",
+      "git_commit": "e792c2235ef5492f92db20ff9ccd329b6c19f2a7",
+      "online_evidence_root": "sha256:4f7e8cd2ca71a4ca630b0736a40ccfd9cbc9f901fea8bc938616fd549c384dda",
+      "release_fingerprint_exact": true,
+      "publication_status": "existing_release_bound; BASE-XERP-O2C-01 remains local"
+    },
+    "negative_controls": [
+      {
+        "id": "wrong_chain",
+        "passed": true,
+        "expected": "WRONG_CHAIN",
+        "observed": "WRONG_CHAIN"
+      },
+      {
+        "id": "wrong_root",
+        "passed": true,
+        "expected": "ROOT_MISMATCH",
+        "observed": "ROOT_MISMATCH"
+      },
+      {
+        "id": "duplicate_delivery",
+        "passed": true,
+        "expected": "QUANTITY_MISMATCH",
+        "observed": "QUANTITY_MISMATCH"
+      },
+      {
+        "id": "quantity_not_conserved",
+        "passed": true,
+        "expected": "SLE_QUANTITY_MISMATCH",
+        "observed": "SLE_QUANTITY_MISMATCH"
+      },
+      {
+        "id": "valuation_mismatch",
+        "passed": true,
+        "expected": "SLE_VALUE_MISMATCH",
+        "observed": "SLE_VALUE_MISMATCH"
+      },
+      {
+        "id": "cutoff_regression",
+        "passed": true,
+        "expected": "GROSS_MARGIN_MISMATCH",
+        "observed": "GROSS_MARGIN_MISMATCH"
+      },
+      {
+        "id": "release_unbound",
+        "passed": true,
+        "expected": "RELEASE_FINGERPRINT_MISMATCH",
+        "observed": "RELEASE_FINGERPRINT_MISMATCH"
+      }
+    ]
+  },
+  "controls": {
+    "source_http_methods": [
+      "local_verified_evidence"
+    ],
+    "new_erp_writes": 0,
+    "new_chain_transactions": 0,
+    "wallet_connections": 0,
+    "git_pushes": 0,
+    "render_deploys": 0,
+    "publication": false,
+    "credentials_emitted": false,
+    "period_close_actions": 0,
+    "replay_allowed": false
+  },
+  "boundaries": {
+    "no_new_business_document": true,
+    "no_new_anchor": true,
+    "no_payment": true,
+    "no_period_close_claim": true,
+    "payment_component_is_not_umbrella": true
+  },
+  "result_fingerprint_sha256": "79d856797a69decf274ac20ea705576ed3254331d72541cc03537a6537ded5b4"
+}

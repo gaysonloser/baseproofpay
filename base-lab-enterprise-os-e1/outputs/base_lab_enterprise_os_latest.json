@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "evidence_id": "BASE_LAB_ENTERPRISE_OS_LIVE_V2",
-  "generated_at": "2026-07-23T03:28:54.166Z",
+  "generated_at": "2026-07-23T07:38:45.159Z",
   "status": "live_erp_d02_d03_readback_chain_anchor_verified",
   "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
   "coverage": {
@@ -204,24 +204,24 @@
     {
       "id": "D12",
       "domain": "D12_close_audit_and_reporting",
-      "status": "live_readonly_control_evidence",
+      "status": "live_readonly_preclose_cutoff_remediated",
       "business_event_id": "BASE-LAB-CLOSE-202608-001"
     },
     {
       "id": "D13",
       "domain": "D13_fpa_to_decision",
-      "status": "live_readonly_control_evidence",
+      "status": "live_readonly_preclose_actuals_not_closed_forecast",
       "business_event_id": "BASE-LAB-FPA-202608-001"
     }
   ],
   "controls": {
     "payment_share_percent": 0,
     "d05_share_percent": 15.38,
-    "erp_business_document_writes": 7,
+    "erp_business_document_writes": 9,
     "chain_actions": 0,
     "deployments": 0,
     "publications": 0,
-    "erp_submitted_documents": 5,
+    "erp_submitted_documents": 7,
     "live_chain_actions": 1,
     "live_payment_entries": 0
   },
@@ -259,23 +259,23 @@
     {
       "gate": "C5",
       "status": "in_progress",
-      "ready": "14-step local close checklist and explicit BaseCloseProof candidate exist",
-      "gap": "live Base Lab operational, bank, inventory, asset, accounting and period-lock evidence"
+      "ready": "live GET-only ABL trial balance, inventory, AR and Payment Ledger controls verified",
+      "gap": "PERIOD_NOT_HUMAN_CLOSED, BANK_RECONCILIATION_NOT_EVIDENCED, ASSET_REGISTER_NOT_LIVE"
     },
     {
       "gate": "C6",
       "status": "in_progress",
-      "ready": "local three-ledger zero-difference control and FP&A scenario connect TB/P&L/BS/CF sources to management outputs",
-      "gap": "live closed-period reports and numeric tie-outs"
+      "ready": "live balanced pre-close trial balance and exact inventory/AR controls available",
+      "gap": "Revenue cutoff is remediated; closed-period Cash Flow and final FP&A tie-outs remain gated by bank, asset and period close controls"
     },
     {
       "gate": "C7",
-      "status": "in_progress",
-      "ready": "deterministic evidence bundle, cloud topology and standalone reviewer UI are deployment-ready locally",
-      "gap": "Console VM origin, public deployment, live ERP evidence and reviewer recording"
+      "status": "accepted_for_d03_chain_erp_public_slice",
+      "ready": "D03 Base anchor, submitted ERP records and public release fingerprint are cross-referenced",
+      "gap": "full-domain audit package and reviewer recording remain"
     }
   ],
-  "evidence_root": "sha256:4f7e8cd2ca71a4ca630b0736a40ccfd9cbc9f901fea8bc938616fd549c384dda",
+  "evidence_root": "sha256:e142a7f5278d0e477aabd8aa77d936aba54f33caa2b289b3f77da7bb109fd6d1",
   "chain_anchor": {
     "status": "completed_verified_no_replay",
     "network": {

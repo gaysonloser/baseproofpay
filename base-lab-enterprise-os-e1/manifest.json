@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0",
-  "package_id": "BASE_LAB_RENDER_E1_PACKAGE_V1",
+  "schema_version": "1.1",
+  "package_id": "BASE_LAB_RENDER_E1_PACKAGE_V2",
   "status": "ready_for_authorized_source_delivery",
   "service_name": "catverse-base-lab-enterprise-os",
   "provider": "Render",
@@ -12,6 +12,26 @@
     "currency": "USD"
   },
   "namespace": "ABL",
+  "product_results": [
+    {
+      "id": "BASE-XERP-ASSET-01",
+      "status": "completed_verified",
+      "fingerprint": "e519d2e1e9a728f9c97aea0a990106d5a0ecaf071f9b0e352cf5c9b8b276144e",
+      "page": "/base-asset-evidence.html"
+    },
+    {
+      "id": "BASE-XERP-O2C-01",
+      "status": "completed_verified",
+      "fingerprint": "79d856797a69decf274ac20ea705576ed3254331d72541cc03537a6537ded5b4",
+      "page": "/base-xerp-o2c.html"
+    },
+    {
+      "id": "BASE-XERP-INVENTORY-01",
+      "status": "completed_verified",
+      "fingerprint": "e92929fc0ffe856fe52f53a116f83850bb0227f850e9931e45c358cf649ebc8c",
+      "page": "/base-inventory-root.html"
+    }
+  ],
   "erp_credentials": 0,
   "erp_writes": 0,
   "wallets": 0,
@@ -38,8 +58,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "776a0dba0cf2950306ade642ca2c7390eaed8bdfad654b702abae47fa050ae0b",
-      "bytes": 4363
+      "sha256": "0d2cc767d3a5bd0d8ff46b9da16ae5f1f4d619058f19e58aee0938922e2213a2",
+      "bytes": 4627
     },
     {
       "path": "config/base_lab_cloud_runtime_topology.json",
@@ -52,24 +72,74 @@
       "bytes": 3561
     },
     {
+      "path": "dist-base-lab-enterprise-os/assets/base-asset-evidence-D8niYjg0.css",
+      "sha256": "ccf3d7ea0b0dfdd994caeb0d68f66a16df67a8750fee930b0e5e1d0bea97a040",
+      "bytes": 2283
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseAssetEvidence-BG75eG1o.js",
+      "sha256": "7b540646d5641313b57d43086ff20d62b3f79516c3412511f04e427cfde3042f",
+      "bytes": 2820
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseInventoryRoot-Cg2vNHFa.js",
+      "sha256": "a7f659acfd9e7c0657c989dd19ecb8fdb3f334ad993a17627b219b381c7b633f",
+      "bytes": 2938
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseInventoryRoot-CzMCIgt8.css",
+      "sha256": "c844608fdfa6d0b9deed1e8d5d1cd3ce64c740832111e7955bce6e764eec93d2",
+      "bytes": 630
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseXerpO2c-B45HciRX.css",
+      "sha256": "f189af4e38923428fedd6241d6f028cfb5e8ba91457e0381667860d95efd44e9",
+      "bytes": 3349
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/baseXerpO2c-DTho2iED.js",
+      "sha256": "70074bd96221ecaf5442e0659cc8b34c55efd299fa9d416a2c829cb6f92ba4cf",
+      "bytes": 3676
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/baseproofpay_app_icon_v1-DzZ6Z_ro.png",
       "sha256": "fc32d95d5ba63fcf28475a23593e81889a3276c6f5176b9a9eb500ce8c645b28",
       "bytes": 1118711
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-BTJjv2P0.css",
-      "sha256": "bc8c0a4df513ac9907c815b1420203d546d29d620822d4bfdfe78345d60fa136",
-      "bytes": 8092
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-BUUHv-jm.css",
+      "sha256": "e0514a58e1b55186e1f07692f19fac47f2ddb0dd5ac7522038a3b39f25035e70",
+      "bytes": 8912
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-CkoBRw5p.js",
-      "sha256": "93f1891bff826cd9d043b7ddbbe853072a5e9844c7eb2a74110484e232e6c544",
-      "bytes": 7102
+      "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-C8ipnVRw.js",
+      "sha256": "7f58d136682a5ffdf71ad43b94a7a59cdc51d80f4d08a51240a655b7459ba5c6",
+      "bytes": 7952
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/modulepreload-polyfill-Dezn_h7o.js",
+      "sha256": "785597bca2e7dd97a652a20a197c077079e635a5663433448e0e1d9fd8c98a64",
+      "bytes": 698
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-asset-evidence.html",
+      "sha256": "6dfecd4f7bdc35267f5ed26e5d89de56bedaeb81994ffa7bce19aa7ae8f2cfd3",
+      "bytes": 609
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-inventory-root.html",
+      "sha256": "8f4247ff3e208f5aec726cb7467b2fab57ddb856764bd1480f72a001d4726a05",
+      "bytes": 693
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-xerp-o2c.html",
+      "sha256": "660fe9678301fdc96cf20e89d44856239b338bad336eb3d528a331ec17bce5eb",
+      "bytes": 568
     },
     {
       "path": "dist-base-lab-enterprise-os/enterprise-os.html",
-      "sha256": "e7f10e00d61b3a9dd12d461998af099afff7678eef4e7ddf4728ad87b120030e",
-      "bytes": 915
+      "sha256": "0ee5d2716e39d1b50c45eef7781d452e2662570e24cbcddc8dfe358c6da5f539",
+      "bytes": 1008
     },
     {
       "path": "engineering-proof/config/base_enterprise_agent_asset_operations_claim_matrix.json",
@@ -187,14 +257,29 @@
       "bytes": 1322
     },
     {
+      "path": "outputs/base_asset_evidence_result_latest.json",
+      "sha256": "e4db6b130453f764d0db90c752f99217d039f679f31afebb55dde7f884c32bde",
+      "bytes": 10485
+    },
+    {
+      "path": "outputs/base_inventory_root_result_latest.json",
+      "sha256": "e2772b2eab8c71dc893d7003e56a4f71d534a3b61b5e68514b830f10a36dfee0",
+      "bytes": 7810
+    },
+    {
       "path": "outputs/base_lab_control_readiness_latest.json",
       "sha256": "501ed043da919ff1b28bbc6b9b345012a406125981b218914a23e29d41738a32",
       "bytes": 3134
     },
     {
       "path": "outputs/base_lab_enterprise_os_latest.json",
-      "sha256": "cdb6167d97a1cf4c61e6662ed7127f4a12407b44ad45c65d82f30e60fa640f54",
-      "bytes": 13897
+      "sha256": "1f44d3d17203f43b6978c4e282b69df49d856a8232e396886339b140f1e2e7c7",
+      "bytes": 13980
+    },
+    {
+      "path": "outputs/base_xerp_o2c_result_latest.json",
+      "sha256": "a6f281d341c0c0573b10b8ea5548e183a2a7bd27a471225288c84c40af7a46bb",
+      "bytes": 6125
     },
     {
       "path": "package.json",
@@ -208,9 +293,9 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "f1998e146878c326f91aac5133b0e84aec31f716fa114fbffa17fd403c79a2d9",
-      "bytes": 7949
+      "sha256": "249f74c0f5b23ba9dc735aa74db9590f41519fcef121e0d967c162ba5c81d81b",
+      "bytes": 10078
     }
   ],
-  "package_root": "sha256:834fb7e683720a13158a0a1870607885bc98a181e9f9d33d13f09063ec6cc328"
+  "package_root": "sha256:12d8b8f3537cbbdeb4ff9fb81c14eaf22a74020974023b14cb3b39eae7fdcabd"
 }

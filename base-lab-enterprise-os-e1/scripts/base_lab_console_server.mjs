@@ -1,6 +1,6 @@
 import { createServer as createHttpServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
-import { extname, join, normalize } from "node:path";
+import { extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = fileURLToPath(new URL("../", import.meta.url));
@@ -9,6 +9,10 @@ const evidencePath = join(projectRoot, "outputs/base_lab_enterprise_os_latest.js
 const topologyPath = join(projectRoot, "config/base_lab_cloud_runtime_topology.json");
 const ecosystemPath = join(projectRoot, "config/base_lab_ecosystem_evidence.json");
 const controlReadinessPath = join(projectRoot, "outputs/base_lab_control_readiness_latest.json");
+const baseXerp01Path = join(projectRoot, "outputs/base_xerp_01_evidence_latest.json");
+const baseAssetEvidencePath = join(projectRoot, "outputs/base_asset_evidence_result_latest.json");
+const baseInventoryRootPath = join(projectRoot, "outputs/base_inventory_root_result_latest.json");
+const baseXerpO2cPath = join(projectRoot, "outputs/base_xerp_o2c_result_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -110,6 +114,37 @@ export function sanitizeControlReadiness(readiness) {
   };
 }
 
+export function sanitizeBaseXerp01(evidence) {
+  return {
+    schema_id: evidence.schema_id,
+    schema_version: evidence.schema_version,
+    result_unit_id: evidence.result_unit_id,
+    generated_at: evidence.generated_at,
+    status: evidence.status,
+    classification: evidence.classification,
+    contract_summary: evidence.contract_summary,
+    lanes: evidence.lanes,
+    controls: evidence.controls,
+    boundaries: evidence.boundaries,
+    result_fingerprint_sha256: evidence.result_fingerprint_sha256
+  };
+}
+
+export function sanitizeBaseAssetEvidence(evidence) {
+  return {
+    schema_id: evidence.schema_id,
+    schema_version: evidence.schema_version,
+    result_unit_id: evidence.result_unit_id,
+    generated_at: evidence.generated_at,
+    status: evidence.status,
+    classification: evidence.classification,
+    lanes: evidence.lanes,
+    execution: evidence.execution,
+    boundaries: evidence.boundaries,
+    result_fingerprint_sha256: evidence.result_fingerprint_sha256
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -128,6 +163,10 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/evidence") return sendJson(req,res,200,sanitizeEvidence(JSON.parse(await readFile(evidencePath,"utf8"))));
       if (req.url === "/api/v1/ecosystem") return sendJson(req,res,200,sanitizeEcosystem(JSON.parse(await readFile(ecosystemPath,"utf8"))));
       if (req.url === "/api/v1/control-readiness") return sendJson(req,res,200,sanitizeControlReadiness(JSON.parse(await readFile(controlReadinessPath,"utf8"))));
+      if (req.url === "/api/v1/xerp-01") return sendJson(req,res,200,sanitizeBaseXerp01(JSON.parse(await readFile(baseXerp01Path,"utf8"))));
+      if (req.url === "/api/v1/base-asset-evidence") return sendJson(req,res,200,sanitizeBaseAssetEvidence(JSON.parse(await readFile(baseAssetEvidencePath,"utf8"))));
+      if (req.url === "/api/v1/base-inventory-root") return sendJson(req,res,200,sanitizeBaseAssetEvidence(JSON.parse(await readFile(baseInventoryRootPath,"utf8"))));
+      if (req.url === "/api/v1/base-xerp-o2c") return sendJson(req,res,200,sanitizeBaseXerp01(JSON.parse(await readFile(baseXerpO2cPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));
@@ -150,6 +189,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
 if (import.meta.url === `file://${process.argv[1]}`) {
   const host=process.env.HOST || "0.0.0.0";
   const port=Number(process.env.PORT || 8080);
-  const server=createBaseLabConsoleServer();
+  const staticRoot=process.env.BASE_LAB_STATIC_ROOT ? resolve(process.env.BASE_LAB_STATIC_ROOT) : defaultStaticRoot;
+  const server=createBaseLabConsoleServer({staticRoot});
   server.listen(port,host,()=>console.log(JSON.stringify({status:"listening",host,port,runtime:process.env.BASE_LAB_RUNTIME_MODE||"local_preview"})));
 }
