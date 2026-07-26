@@ -2,7 +2,7 @@
   "schema_id": "gayson.base.enterprise.b20_inventory_agentic_candidate",
   "schema_version": "1.0",
   "result_unit_id": "BASE-LAB-B20-INVENTORY-AGENT-01",
-  "generated_at": "2026-07-26T09:53:34.317Z",
+  "generated_at": "2026-07-26T15:20:28.194Z",
   "status": "base_sepolia_creation_verified_mainnet_controls_pending",
   "activation": {
     "target": "Base Mainnet",
@@ -26,6 +26,7 @@
     "initial_supply": "0",
     "supply_cap_units": 1000000,
     "deployed_address": null,
+    "base_sepolia_deployed_address": "0xb2000000000000000000003b2762e0CC35C5684B",
     "legal_semantics": "NON_TITLE_OPERATIONAL_ENTITLEMENT",
     "erp_authority": {
       "quantity": "ERPNext Stock Ledger",
@@ -257,14 +258,18 @@
   },
   "boundaries": {
     "wallet_auto_connect": false,
-    "token_deployed": false,
+    "token_deployed_mainnet": false,
+    "token_deployed_base_sepolia": true,
     "token_minted": false,
     "token_transferred": false,
     "x402_paid": false,
     "erp_write": false,
     "git_push": false,
     "render_deploy": false,
-    "public_claim": "deployment-ready candidate only"
+    "public_claim": "one Base Sepolia B20 creation verified; mainnet remains a candidate only",
+    "testnet_creation_transaction": "0x372adf93e94252e9bb43d8d960ff264f576a983965e593687568b555a2cc0c0a",
+    "testnet_initial_supply_atomic": "0",
+    "testnet_mint_or_policy_activation": false
   },
-  "result_fingerprint_sha256": "0f58934f765f1e55d0cc3587d050d6b53f1a9acb8183faa76f3a84512bf61204"
+  "result_fingerprint_sha256": "05015d08345fb03657eaa1b32a67ff25afd82842cef8e6609dee14b1335607c2"
 }

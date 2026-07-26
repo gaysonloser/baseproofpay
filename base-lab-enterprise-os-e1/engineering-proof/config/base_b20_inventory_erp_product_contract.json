@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "product_slice_id": "BASE-LAB-B20-INVENTORY-AGENT-01",
-  "status": "deployment_ready_candidate_no_token_deployed",
+  "status": "base_sepolia_b20_created_mainnet_controls_pending",
   "product": "CATVERSE Enterprise Finance OS",
   "component": "B20 Inventory Entitlement & Agent Commerce",
   "company": "AOXPET Base Lab",
@@ -27,6 +27,7 @@
     "initial_supply": "0",
     "supply_cap_units": 1000000,
     "deployed_address": null,
+    "base_sepolia_deployed_address": "0xb2000000000000000000003b2762e0CC35C5684B",
     "legal_semantics": "NON_TITLE_OPERATIONAL_ENTITLEMENT",
     "erp_authority": {
       "quantity": "ERPNext Stock Ledger",
@@ -146,13 +147,14 @@
   },
   "boundaries": {
     "wallet_auto_connect": false,
-    "token_deployed": false,
+    "token_deployed_mainnet": false,
+    "token_deployed_base_sepolia": true,
     "token_minted": false,
     "token_transferred": false,
     "x402_paid": false,
     "erp_write": false,
     "git_push": false,
     "render_deploy": false,
-    "public_claim": "deployment-ready candidate only"
+    "public_claim": "one Base Sepolia B20 creation verified; mainnet remains a candidate only"
   }
 }
