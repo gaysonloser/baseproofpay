@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "product_slice_id": "BASE-LAB-B20-INVENTORY-AGENT-01",
+  "status": "deployment_ready_candidate_no_token_deployed",
+  "product": "CATVERSE Enterprise Finance OS",
+  "component": "B20 Inventory Entitlement & Agent Commerce",
+  "company": "AOXPET Base Lab",
+  "network": {
+    "target": "Base Mainnet",
+    "chain_id": 8453,
+    "activation_registry": "0x8453000000000000000000000000000000000001",
+    "asset_feature": "base.b20_asset",
+    "asset_feature_hash": "0xcdcc772fe4cbdb1029f822861176d09e646db96723d4c1e82ddfdeb8163ef54c",
+    "asset_active": true,
+    "stablecoin_feature": "base.b20_stablecoin",
+    "stablecoin_feature_hash": "0xecfa0def2c10020caaf65e6155aa69c84b24892aaef76eeac52e0e2b3a0b8601",
+    "stablecoin_active": true,
+    "checked_at": "2026-07-24",
+    "check_method": "read_only_eth_call"
+  },
+  "token_candidate": {
+    "variant": "Asset",
+    "factory": "0xB20f000000000000000000000000000000000000",
+    "name": "CATVERSE Batch Unit",
+    "symbol": "CATBOX",
+    "decimals": 6,
+    "initial_supply": "0",
+    "supply_cap_units": 1000000,
+    "deployed_address": null,
+    "legal_semantics": "NON_TITLE_OPERATIONAL_ENTITLEMENT",
+    "erp_authority": {
+      "quantity": "ERPNext Stock Ledger",
+      "valuation": "ERPNext",
+      "cogs": "ERPNext General Ledger",
+      "period_close": "ERPNext"
+    }
+  },
+  "role_policy": {
+    "freeze_contract": "config/base_b20_catbox_role_policy_freeze_v1.json",
+    "sepolia_controller": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+    "default_admin": "sepolia_single_controller_only_mainnet_requires_multisig_or_role_separation",
+    "mint_role": "sepolia_controller_granted",
+    "burn_role": "sepolia_controller_granted",
+    "pause_role": "sepolia_controller_granted",
+    "unpause_role": "sepolia_controller_granted",
+    "metadata_role": "sepolia_controller_granted",
+    "burn_blocked_role": "ungranted",
+    "operator_role": "ungranted_until_business_need",
+    "bootstrap_transfer_policy": "ALWAYS_BLOCK_all_three_transfer_scopes",
+    "bootstrap_mint_policy": "ALWAYS_BLOCK_mint_receiver",
+    "policy_activation_boundary": "separate_reviewed_transaction_after_erp_release_controls_exist",
+    "permit_boundary": "ERC-2612 ECDSA only; do not assume ERC-1271 contract signatures"
+  },
+  "workflow": [
+    {
+      "step": 1,
+      "lane": "ERP",
+      "action": "Accept Purchase Receipt or Opening Stock and read back SLE",
+      "state_after": "ERP_RECEIPT_ACCEPTED"
+    },
+    {
+      "step": 2,
+      "lane": "B20",
+      "action": "mintWithMemo only for accepted quantity",
+      "state_after": "B20_ACTIVE"
+    },
+    {
+      "step": 3,
+      "lane": "x402",
+      "action": "Agent buys an inspection or reconciliation report in USDC",
+      "state_after": "REPORT_ACCESS_GRANTED"
+    },
+    {
+      "step": 4,
+      "lane": "Agentic",
+      "action": "Agent validates policy, quantity and report before requesting a transfer",
+      "state_after": "TRANSFER_REVIEW"
+    },
+    {
+      "step": 5,
+      "lane": "B20",
+      "action": "transferWithMemo binds Sales Order or Delivery Note",
+      "state_after": "TRANSFERRED"
+    },
+    {
+      "step": 6,
+      "lane": "ERP",
+      "action": "Read back Delivery Note, SLE, COGS and GL",
+      "state_after": "ERP_FULFILLED"
+    },
+    {
+      "step": 7,
+      "lane": "B20",
+      "action": "burnWithMemo after delivery, consumption, expiry or accepted return",
+      "state_after": "CLOSED"
+    },
+    {
+      "step": 8,
+      "lane": "Evidence",
+      "action": "Anchor InventoryRoot reconciliation in EnterpriseEvidenceRegistry",
+      "state_after": "RECONCILED"
+    }
+  ],
+  "x402": {
+    "payment_asset": "USDC",
+    "network": "eip155:8453",
+    "price_usdc": "0.01",
+    "resource": "batch inspection and ERP reconciliation report",
+    "b20_used_as_payment": false,
+    "controls": [
+      "exact amount",
+      "required payment identifier",
+      "single-use idempotency",
+      "payer and recipient verification",
+      "payment response persistence",
+      "human approval before paid request"
+    ]
+  },
+  "agentic": {
+    "supported_clients": [
+      "Base MCP",
+      "Agentic Wallet",
+      "independent x402 client"
+    ],
+    "allowed_without_new_confirmation": [
+      "read token policy",
+      "read B20 balance and supply",
+      "read ERP-sanitized evidence",
+      "discover x402 requirements",
+      "simulate contract call"
+    ],
+    "confirmation_required": [
+      "x402 payment",
+      "B20 deployment",
+      "mint",
+      "transfer",
+      "burn",
+      "policy change",
+      "pause or unpause"
+    ]
+  },
+  "smart_contracts": {
+    "existing_registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+    "new_generic_contract_required": false,
+    "rationale": "Use native B20 roles, policy scopes and memo events first; add a narrow controller only if ERP authorization cannot be expressed safely offchain."
+  },
+  "boundaries": {
+    "wallet_auto_connect": false,
+    "token_deployed": false,
+    "token_minted": false,
+    "token_transferred": false,
+    "x402_paid": false,
+    "erp_write": false,
+    "git_push": false,
+    "render_deploy": false,
+    "public_claim": "deployment-ready candidate only"
+  }
+}

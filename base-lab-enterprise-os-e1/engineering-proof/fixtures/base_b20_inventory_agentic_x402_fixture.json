@@ -1,0 +1,42 @@
+{
+  "fixture_id": "BASE-LAB-B20-FIXTURE-202608-001",
+  "synthetic": true,
+  "business_event_id": "BASE-LAB-B20-INVENTORY-202608-001",
+  "item": "BASE-LAB-CATVERSE-BOX",
+  "batch": "BASE-LAB-BATCH-202608-001",
+  "warehouse": "Stores - ABL",
+  "uom": "Box",
+  "erp": {
+    "opening_stock": "MAT-RECO-2026-00001",
+    "delivery_note": "MAT-DN-2026-00001",
+    "opening_quantity": 100,
+    "issued_quantity": 10,
+    "closing_quantity": 90,
+    "opening_value_usd": 25000,
+    "cogs_usd": 2500,
+    "closing_value_usd": 22500
+  },
+  "b20": {
+    "symbol": "CATBOX",
+    "decimals": 6,
+    "mint_units": 100,
+    "transfer_units": 10,
+    "burn_units": 10,
+    "closing_supply_units": 90,
+    "mint_memo": "BASE-LAB-B20-MINT-202608-001",
+    "transfer_memo": "BASE-LAB-B20-DN-202608-001",
+    "burn_memo": "BASE-LAB-B20-BURN-202608-001"
+  },
+  "x402": {
+    "resource": "CATVERSE batch inspection report",
+    "price_usdc": "0.01",
+    "payment_identifier": "bpp_catbox_report_202608_001",
+    "status": "preview_only_not_paid"
+  },
+  "expected": {
+    "quantity_conserved": true,
+    "supply_matches_erp_closing_quantity": true,
+    "erp_remains_valuation_owner": true,
+    "title_claim": false
+  }
+}

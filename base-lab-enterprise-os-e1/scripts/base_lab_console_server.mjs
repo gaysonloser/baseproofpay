@@ -14,6 +14,7 @@ const baseAssetEvidencePath = join(projectRoot, "outputs/base_asset_evidence_res
 const baseInventoryRootPath = join(projectRoot, "outputs/base_inventory_root_result_latest.json");
 const baseXerpO2cPath = join(projectRoot, "outputs/base_xerp_o2c_result_latest.json");
 const baseAppInteractionLabPath = join(projectRoot, "outputs/base_app_interaction_lab_latest.json");
+const baseB20InventoryAgentPath = join(projectRoot, "outputs/base_b20_inventory_agentic_candidate_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -196,6 +197,23 @@ export function sanitizeBaseAppInteractionLab(lab) {
   };
 }
 
+export function sanitizeBaseB20InventoryAgent(candidate) {
+  return {
+    schema_id: candidate.schema_id,
+    schema_version: candidate.schema_version,
+    result_unit_id: candidate.result_unit_id,
+    generated_at: candidate.generated_at,
+    status: candidate.status,
+    activation: candidate.activation,
+    token: candidate.token,
+    six_lanes: candidate.six_lanes,
+    state_machine: candidate.state_machine,
+    deployment_gate: candidate.deployment_gate,
+    boundaries: candidate.boundaries,
+    result_fingerprint_sha256: candidate.result_fingerprint_sha256
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -219,6 +237,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/base-inventory-root") return sendJson(req,res,200,sanitizeBaseAssetEvidence(JSON.parse(await readFile(baseInventoryRootPath,"utf8"))));
       if (req.url === "/api/v1/base-xerp-o2c") return sendJson(req,res,200,sanitizeBaseXerp01(JSON.parse(await readFile(baseXerpO2cPath,"utf8"))));
       if (req.url === "/api/v1/interaction-lab") return sendJson(req,res,200,sanitizeBaseAppInteractionLab(JSON.parse(await readFile(baseAppInteractionLabPath,"utf8"))));
+      if (req.url === "/api/v1/b20-inventory-agent") return sendJson(req,res,200,sanitizeBaseB20InventoryAgent(JSON.parse(await readFile(baseB20InventoryAgentPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));

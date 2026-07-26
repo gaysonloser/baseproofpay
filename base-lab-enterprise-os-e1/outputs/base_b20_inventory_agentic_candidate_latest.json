@@ -1,0 +1,270 @@
+{
+  "schema_id": "gayson.base.enterprise.b20_inventory_agentic_candidate",
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-LAB-B20-INVENTORY-AGENT-01",
+  "generated_at": "2026-07-26T09:53:34.317Z",
+  "status": "base_sepolia_creation_verified_mainnet_controls_pending",
+  "activation": {
+    "target": "Base Mainnet",
+    "chain_id": 8453,
+    "activation_registry": "0x8453000000000000000000000000000000000001",
+    "asset_feature": "base.b20_asset",
+    "asset_feature_hash": "0xcdcc772fe4cbdb1029f822861176d09e646db96723d4c1e82ddfdeb8163ef54c",
+    "asset_active": true,
+    "stablecoin_feature": "base.b20_stablecoin",
+    "stablecoin_feature_hash": "0xecfa0def2c10020caaf65e6155aa69c84b24892aaef76eeac52e0e2b3a0b8601",
+    "stablecoin_active": true,
+    "checked_at": "2026-07-24",
+    "check_method": "read_only_eth_call"
+  },
+  "token": {
+    "variant": "Asset",
+    "factory": "0xB20f000000000000000000000000000000000000",
+    "name": "CATVERSE Batch Unit",
+    "symbol": "CATBOX",
+    "decimals": 6,
+    "initial_supply": "0",
+    "supply_cap_units": 1000000,
+    "deployed_address": null,
+    "legal_semantics": "NON_TITLE_OPERATIONAL_ENTITLEMENT",
+    "erp_authority": {
+      "quantity": "ERPNext Stock Ledger",
+      "valuation": "ERPNext",
+      "cogs": "ERPNext General Ledger",
+      "period_close": "ERPNext"
+    },
+    "mint_atomic": "100000000",
+    "transfer_atomic": "10000000",
+    "burn_atomic": "10000000",
+    "closing_supply_atomic": "90000000"
+  },
+  "six_lanes": {
+    "operating_document": {
+      "opening_stock": "MAT-RECO-2026-00001",
+      "delivery_note": "MAT-DN-2026-00001",
+      "item": "BASE-LAB-CATVERSE-BOX",
+      "batch": "BASE-LAB-BATCH-202608-001"
+    },
+    "chain_control": {
+      "b20_factory": "0xB20f000000000000000000000000000000000000",
+      "variant": "Asset",
+      "lifecycle": [
+        "mintWithMemo",
+        "transferWithMemo",
+        "burnWithMemo"
+      ],
+      "evidence_registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+      "current_inventory_root": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd"
+    },
+    "canonical_event": {
+      "business_event_id": "BASE-LAB-B20-INVENTORY-202608-001",
+      "payload_hash": "sha256:30b9e7cf0208018f201ebc1ed76f5574354a19842c0fdb300bac03f1c3b9c417",
+      "memo_binding": [
+        "BASE-LAB-B20-MINT-202608-001",
+        "BASE-LAB-B20-DN-202608-001",
+        "BASE-LAB-B20-BURN-202608-001"
+      ]
+    },
+    "erp_reconciliation": {
+      "opening_quantity": 100,
+      "issued_quantity": 10,
+      "closing_quantity": 90,
+      "b20_closing_supply_units": 90,
+      "quantity_conserved": true,
+      "valuation_owner": "ERPNext",
+      "closing_value_usd": 22500,
+      "cogs_usd": 2500
+    },
+    "agent_x402": {
+      "payment_asset": "USDC",
+      "price_usdc": "0.01",
+      "resource": "batch inspection and ERP reconciliation report",
+      "payment_identifier": "bpp_catbox_report_202608_001",
+      "status": "preview_only_not_paid",
+      "approval_required": true,
+      "b20_used_as_payment": false
+    },
+    "negative_control": [
+      {
+        "id": "mint_without_erp_receipt",
+        "passed": true,
+        "observed": "ERP_RECEIPT_REQUIRED"
+      },
+      {
+        "id": "duplicate_business_memo",
+        "passed": true,
+        "observed": "DUPLICATE_MEMO_BLOCKED"
+      },
+      {
+        "id": "supply_erp_mismatch",
+        "passed": true,
+        "observed": "MATCHED"
+      },
+      {
+        "id": "agent_auto_payment",
+        "passed": true,
+        "observed": "HUMAN_APPROVAL_REQUIRED"
+      },
+      {
+        "id": "b20_as_accounting_value",
+        "passed": true,
+        "observed": "ERP_VALUATION_AUTHORITY"
+      },
+      {
+        "id": "erc1271_permit_assumption",
+        "passed": true,
+        "observed": "ECDSA_ONLY"
+      },
+      {
+        "id": "title_claim",
+        "passed": true,
+        "observed": "NON_TITLE"
+      }
+    ]
+  },
+  "state_machine": {
+    "initial": "ERP_RECEIPT_ACCEPTED",
+    "states": [
+      "ERP_RECEIPT_ACCEPTED",
+      "B20_MINT_REVIEW",
+      "B20_ACTIVE",
+      "REPORT_402",
+      "REPORT_ACCESS_GRANTED",
+      "TRANSFER_REVIEW",
+      "TRANSFERRED",
+      "ERP_FULFILLED",
+      "BURN_REVIEW",
+      "CLOSED",
+      "RECONCILED",
+      "POLICY_HOLD",
+      "SUPPLY_MISMATCH",
+      "DUPLICATE_MEMO"
+    ],
+    "transitions": [
+      [
+        "ERP_RECEIPT_ACCEPTED",
+        "B20_MINT_REVIEW",
+        "accepted ERP receipt and SLE readback"
+      ],
+      [
+        "B20_MINT_REVIEW",
+        "B20_ACTIVE",
+        "human approval and mintWithMemo receipt"
+      ],
+      [
+        "B20_ACTIVE",
+        "REPORT_402",
+        "agent requests protected report"
+      ],
+      [
+        "REPORT_402",
+        "REPORT_ACCESS_GRANTED",
+        "verified x402 USDC payment response"
+      ],
+      [
+        "REPORT_ACCESS_GRANTED",
+        "TRANSFER_REVIEW",
+        "agent policy and quantity checks pass"
+      ],
+      [
+        "TRANSFER_REVIEW",
+        "TRANSFERRED",
+        "human approval and transferWithMemo receipt"
+      ],
+      [
+        "TRANSFERRED",
+        "ERP_FULFILLED",
+        "Delivery Note, SLE and GL readback"
+      ],
+      [
+        "ERP_FULFILLED",
+        "BURN_REVIEW",
+        "delivery, consumption, expiry or accepted return"
+      ],
+      [
+        "BURN_REVIEW",
+        "CLOSED",
+        "human approval and burnWithMemo receipt"
+      ],
+      [
+        "CLOSED",
+        "RECONCILED",
+        "supply equals ERP closing quantity and InventoryRoot anchored"
+      ]
+    ]
+  },
+  "deployment_gate": {
+    "base_forge_available": true,
+    "standard_forge_is_not_sufficient": true,
+    "base_sepolia_first": true,
+    "mainnet_deploy_confirmation_required": true,
+    "current_testnet_rehearsal": {
+      "execution_id": "CATBOX-B20-EOA9903-BASE-SEPOLIA-CREATE-1",
+      "status": "created_on_base_sepolia_verified",
+      "network": {
+        "name": "Base Sepolia",
+        "chain_id": 84532,
+        "chain_id_hex": "0x14a34",
+        "rpc": "https://sepolia.base.org"
+      },
+      "deployer": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+      "factory": "0xB20f000000000000000000000000000000000000",
+      "function": "createB20(uint8,bytes32,bytes,bytes[])",
+      "predicted_address": "0xb2000000000000000000003b2762e0CC35C5684B",
+      "calldata_hash": "0xf9f3c6a2356d12a4714746ea091afbceaeac0e2db76042e9a5e4a2e602bd88b0",
+      "value_wei": "0",
+      "estimated_fee_test_eth": "0.000006262938",
+      "fee_ceiling_test_eth": "0.00002",
+      "confirmed_creation": {
+        "tx_hash": "0x372adf93e94252e9bb43d8d960ff264f576a983965e593687568b555a2cc0c0a",
+        "block_number_hex": "0x2a93c10",
+        "status": "0x1",
+        "from": "0x9903e1e8c871321ee2ed80cea8a5899f0992ba9e",
+        "to": "0xb20f000000000000000000000000000000000000",
+        "gas_used_hex": "0x5f0b9",
+        "effective_gas_price_hex": "0x5b8d80",
+        "initial_supply_atomic": "0",
+        "mint_bundled": false,
+        "activation_bundled": false,
+        "explorer_url": "https://sepolia-explorer.base.org/tx/0x372adf93e94252e9bb43d8d960ff264f576a983965e593687568b555a2cc0c0a"
+      },
+      "forbidden_in_this_action": [
+        "mint",
+        "transfer",
+        "approve",
+        "activation",
+        "x402 payment",
+        "ERP write",
+        "mainnet action",
+        "automatic retry"
+      ]
+    },
+    "testnet_creation": {
+      "verified": true,
+      "network": "Base Sepolia",
+      "chain_id": 84532,
+      "token_address": "0xb2000000000000000000003b2762e0CC35C5684B",
+      "tx_hash": "0x372adf93e94252e9bb43d8d960ff264f576a983965e593687568b555a2cc0c0a",
+      "receipt_status": "0x1",
+      "initial_supply_atomic": "0",
+      "no_mint_bundled": true,
+      "no_activation_bundled": true
+    },
+    "mainnet_roles_unresolved": true,
+    "mainnet_policy_configuration_unresolved": true,
+    "exact_supply_cap_review_required": true,
+    "mainnet_no_action_taken": true
+  },
+  "boundaries": {
+    "wallet_auto_connect": false,
+    "token_deployed": false,
+    "token_minted": false,
+    "token_transferred": false,
+    "x402_paid": false,
+    "erp_write": false,
+    "git_push": false,
+    "render_deploy": false,
+    "public_claim": "deployment-ready candidate only"
+  },
+  "result_fingerprint_sha256": "0f58934f765f1e55d0cc3587d050d6b53f1a9acb8183faa76f3a84512bf61204"
+}

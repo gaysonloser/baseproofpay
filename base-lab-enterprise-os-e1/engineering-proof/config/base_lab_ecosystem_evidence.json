@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "evidence_id": "BASE_LAB_ECOSYSTEM_PROOF_V1",
-  "as_of": "2026-07-22",
+  "as_of": "2026-07-24",
   "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
   "rail": "Base",
   "entries": [
@@ -42,7 +42,7 @@
       "id": "talent_project",
       "label": "Talent project",
       "status": "indexed_aggregate",
-      "value": "2 transactions / 2 DAU observed 2026-07-21",
+      "value": "2 transactions / 2 DAU / <0.0001 ETH, activity through yesterday and Updated today on 2026-07-24",
       "url": "https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b",
       "boundary": "Talent does not expose the counted hashes; the aggregate cannot prove which transactions were indexed or independent adoption."
     },
@@ -50,17 +50,18 @@
       "id": "base_dev_indexing",
       "label": "Base.dev attribution",
       "status": "pending_refresh",
-      "value": "Public ranking snapshot predates the latest evidence",
+      "value": "Base App and Base Chain public snapshots are dated 2026-07-19; CATVERSE was absent from both searches on 2026-07-24",
       "url": "https://base.dev/",
       "boundary": "Indexing delay never authorizes a replacement transaction or repeated payment."
     },
     {
       "id": "base_builders",
       "label": "Base builders discovery",
-      "status": "handoff_in_progress_not_submitted",
-      "value": "Nomination package handed to the dedicated X publishing session",
-      "url": "https://x.com/base/status/2079505964516933921",
-      "boundary": "The public reply is not yet submitted. No list membership, application acceptance or official endorsement is claimed."
+      "status": "nomination_v5_submitted_membership_unverified",
+      "value": "Official X list displayed 69 members / 26 followers; v5 was submitted from @GaysonLoser and read back; list membership remains unverified",
+      "url": "https://x.com/GaysonLoser/status/2080562746739871870",
+      "secondary_url": "https://x.com/base/status/2079505964516933921",
+      "boundary": "The public self-nomination is submitted, but no list membership, application acceptance, official endorsement, funding or reward is claimed. Do not post a duplicate nomination."
     },
     {
       "id": "independent_adoption",
@@ -76,7 +77,7 @@
     "https://docs.base.org/apps/guides/migrate-to-standard-web-app",
     "https://www.base.org/about"
   ],
-  "external_writes": 0,
+  "external_writes": 1,
   "wallet_actions": 0,
   "chain_actions": 0
 }

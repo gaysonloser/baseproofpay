@@ -10,8 +10,10 @@ assert(entries.builder_code.status==="verified","Builder Code must be verified")
 assert(entries.verified_contracts.status==="verified","Base contracts must be verified");
 assert(entries.talent_project.status==="indexed_aggregate","Talent aggregate must not become adoption");
 assert(entries.base_dev_indexing.status==="pending_refresh","Base.dev must remain pending until read back");
-assert(entries.base_builders.status==="handoff_in_progress_not_submitted","Builders nomination must remain handed off but unsubmitted");
+assert(entries.base_builders.status==="nomination_v5_submitted_membership_unverified","Builders nomination must be submitted while membership remains unverified");
+assert(entries.base_builders.url==="https://x.com/GaysonLoser/status/2080562746739871870","Builders nomination URL must match readback");
+assert(/membership.*unverified|未验证/i.test(`${entries.base_builders.value} ${entries.base_builders.boundary}`),"Builders membership boundary must remain explicit");
 assert(entries.independent_adoption.status==="missing_p0","Independent adoption gap must remain explicit");
-assert(ecosystem.external_writes===0&&ecosystem.wallet_actions===0&&ecosystem.chain_actions===0,"Local ecosystem proof cannot create external actions");
+assert(ecosystem.external_writes===1&&ecosystem.wallet_actions===0&&ecosystem.chain_actions===0,"Ecosystem proof must record exactly the confirmed X write and no wallet or chain action");
 
 console.log(JSON.stringify({status:"passed",entries:ecosystem.entries.length,builder_code:entries.builder_code.value,talent:entries.talent_project.status,base_dev:entries.base_dev_indexing.status,adoption:entries.independent_adoption.status}));
