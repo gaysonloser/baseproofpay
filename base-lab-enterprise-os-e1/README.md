@@ -13,6 +13,7 @@ Base-native enterprise agent and asset operations. The non-payment heroes are Ag
 - Agent Commerce / O2C: `/base-xerp-o2c.html`
 - Tokenized Inventory Evidence: `/base-inventory-root.html`
 - Asset Evidence: `/base-asset-evidence.html`
+- Verified x402 catalog anchor: `/api/v1/x402-catalog-anchor`
 
 ## Three-minute Walkthrough
 
@@ -34,6 +35,7 @@ The Render service is isolated from Arc. It shares no runtime, credentials, Comp
 - Builder Code / ERC-8021: `bc_iscm570t`
 - Verified contracts: [SpendingPolicyManager](https://base.blockscout.com/address/0x1bBe5B45757D66Fd97A818A62c89FaBD90cdC1d1) and [PaymentReceiptRegistry](https://base.blockscout.com/address/0xD7CE8ecED9CDda01365b2eAD539581Afd981880B)
 - Production x402: [BaseProofPay x402](https://baseproofpay-x402.onrender.com/)
+- Agent Commerce catalog anchor: Base Mainnet transaction `0xd258fd6882499054e8ffd103c4ba2c09f8f79b0fede1dcf6ca1eaef78aa53fce` anchors the public x402 resource catalog to the existing InventoryRoot through EnterpriseEvidenceRegistry. Receipt, event and Registry storage match; it is a 0 ETH evidence-control call, not a payment or ERP write.
 - Talent: [public project](https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b), with `2 transactions / 2 DAU` observed on `2026-07-21`
 - Base.dev: latest reviewed public snapshot predates the current evidence; no indexing claim is made
 - Base builders: nomination narrative is local and not submitted
