@@ -62,6 +62,12 @@ export async function createX402ProductionCandidate(options = {}) {
   if (!/^0x[0-9a-f]{64}$/i.test(inventory.inventoryRoot ?? "")) {
     throw new Error("Inventory entitlement route requires a bytes32 inventory root.");
   }
+  const b20Policy = config.agentCommerceB20Policy;
+  if (!b20Policy || b20Policy.route !== "GET /api/catbox-policy-evidence" ||
+    b20Policy.network !== "eip155:84532" || !/^0x[0-9a-f]{40}$/i.test(b20Policy.token ?? "") ||
+    b20Policy.transferPolicy !== "ALWAYS_BLOCK") {
+    throw new Error("Production candidate requires a fail-closed Base Sepolia B20 policy evidence route.");
+  }
   const publicEvidenceAnchor = config.publicEvidenceAnchor;
   if (!publicEvidenceAnchor || publicEvidenceAnchor.chainId !== 8453 ||
     !/^0x[0-9a-f]{64}$/i.test(publicEvidenceAnchor.evidenceRoot ?? "") ||
@@ -97,9 +103,14 @@ export async function createX402ProductionCandidate(options = {}) {
     ...routeConfig,
     description: inventory.description
   };
+  const b20PolicyRouteConfig = {
+    ...routeConfig,
+    description: b20Policy.description
+  };
   const routes = {
     [config.route]: routeConfig,
-    [inventory.route]: inventoryRouteConfig
+    [inventory.route]: inventoryRouteConfig,
+    [b20Policy.route]: b20PolicyRouteConfig
   };
   const httpServer = new x402HTTPResourceServer(resourceServer, routes);
   await httpServer.initialize();
@@ -143,6 +154,17 @@ export async function createX402ProductionCandidate(options = {}) {
           businessEventClass: inventory.businessEventClass,
           inventoryRoot: inventory.inventoryRoot,
           ledgerHandoff: inventory.ledgerHandoff
+        },
+        {
+          id: "catbox-policy-evidence",
+          route: b20Policy.route,
+          access: "x402_exact_payment",
+          description: b20Policy.description,
+          evidenceType: b20Policy.evidenceType,
+          proofNetwork: b20Policy.network,
+          token: b20Policy.token,
+          transferPolicy: b20Policy.transferPolicy,
+          ledgerHandoff: b20Policy.ledgerHandoff
         }
       ],
       boundaries: {
@@ -173,7 +195,7 @@ export async function createX402ProductionCandidate(options = {}) {
   });
   app.use(createPaymentIdempotencyMiddleware({
     store,
-    routePath: ["/api/reconciliation-evidence", "/api/inventory-entitlement-evidence"],
+    routePath: ["/api/reconciliation-evidence", "/api/inventory-entitlement-evidence", "/api/catbox-policy-evidence"],
     method: "GET",
     required: true
   }));
@@ -195,6 +217,26 @@ export async function createX402ProductionCandidate(options = {}) {
       inventoryRoot: inventory.inventoryRoot,
       businessEventClass: inventory.businessEventClass,
       ledgerHandoff: inventory.ledgerHandoff
+    });
+  });
+  app.get("/api/catbox-policy-evidence", (_request, response) => {
+    counters.protectedResource += 1;
+    response.json({
+      status: "settled",
+      evidenceType: b20Policy.evidenceType,
+      proofNetwork: b20Policy.network,
+      token: b20Policy.token,
+      policyCreationTx: b20Policy.policyCreationTx,
+      mintTx: b20Policy.mintTx,
+      amount: b20Policy.amount,
+      transferPolicy: b20Policy.transferPolicy,
+      ledgerHandoff: b20Policy.ledgerHandoff,
+      boundaries: {
+        mainnetToken: false,
+        transfer: false,
+        inventoryValuation: "ERPNext",
+        erpWrite: false
+      }
     });
   });
 

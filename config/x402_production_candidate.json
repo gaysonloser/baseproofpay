@@ -32,6 +32,18 @@
     "businessEventClass": "BASE-XERP-INVENTORY-01",
     "ledgerHandoff": "read_only_evidence"
   },
+  "agentCommerceB20Policy": {
+    "route": "GET /api/catbox-policy-evidence",
+    "description": "CATBOX Base Sepolia allowlist-only B20 policy and mint lifecycle evidence for agent review",
+    "evidenceType": "catbox_policy_gated_b20",
+    "network": "eip155:84532",
+    "token": "0xb2000000000000000000003b2762e0CC35C5684B",
+    "policyCreationTx": "0xe21558da7d3dc4bbdcbd9e3211af0973fa3337fcf245b731b01be8a5b284289c",
+    "mintTx": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8",
+    "amount": "100 CATBOX",
+    "transferPolicy": "ALWAYS_BLOCK",
+    "ledgerHandoff": "testnet_policy_evidence_only"
+  },
   "publicEvidenceAnchor": {
     "network": "Base Mainnet",
     "chainId": 8453,

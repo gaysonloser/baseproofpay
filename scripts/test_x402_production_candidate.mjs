@@ -59,6 +59,7 @@ let baseUrl;
 let challenge;
 let paymentHeader;
 let inventoryChallenge;
+let b20PolicyChallenge;
 
 before(async () => {
   facilitator = new SimulatedMainnetFacilitator();
@@ -84,6 +85,10 @@ before(async () => {
     headers: { accept: "application/json" }
   });
   inventoryChallenge = decodePaymentRequiredHeader(inventoryResponse.headers.get("payment-required"));
+  const b20PolicyResponse = await fetch(`${baseUrl}/api/catbox-policy-evidence`, {
+    headers: { accept: "application/json" }
+  });
+  b20PolicyChallenge = decodePaymentRequiredHeader(b20PolicyResponse.headers.get("payment-required"));
 });
 
 after(() => server ? new Promise(resolve => server.close(resolve)) : undefined);
@@ -134,10 +139,14 @@ test("agent commerce resource catalog is public, explicit, and never settles", a
   assert.equal(catalog.paymentTerms.builderCode, "bc_iscm570t");
   assert.deepEqual(catalog.resources.map(resource => resource.id), [
     "reconciliation-evidence",
-    "inventory-entitlement-evidence"
+    "inventory-entitlement-evidence",
+    "catbox-policy-evidence"
   ]);
   assert.equal(catalog.resources[1].businessEventClass, "BASE-XERP-INVENTORY-01");
   assert.equal(catalog.resources[1].ledgerHandoff, "read_only_evidence");
+  assert.equal(catalog.resources[2].proofNetwork, "eip155:84532");
+  assert.equal(catalog.resources[2].transferPolicy, "ALWAYS_BLOCK");
+  assert.equal(catalog.resources[2].ledgerHandoff, "testnet_policy_evidence_only");
   assert.deepEqual(catalog.boundaries, {
     walletConnection: false,
     automaticPayment: false,
@@ -193,6 +202,13 @@ test("agent inventory route declares the same exact Base x402 terms", () => {
   assert.equal(inventoryChallenge.accepts[0].amount, "10000");
   assert.equal(inventoryChallenge.accepts[0].payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
   assert.equal(inventoryChallenge.extensions["builder-code"].info.a, candidate.config.builderCode);
+});
+
+test("CATBOX policy route declares the same exact Base x402 terms while preserving testnet boundaries", () => {
+  assert.equal(b20PolicyChallenge.x402Version, 2);
+  assert.equal(b20PolicyChallenge.accepts[0].network, "eip155:8453");
+  assert.equal(b20PolicyChallenge.accepts[0].amount, "10000");
+  assert.equal(b20PolicyChallenge.extensions["payment-identifier"].info.required, true);
 });
 
 test("builder-code extension produces BaseProofPay plus facilitator Schema 2 attribution", () => {
