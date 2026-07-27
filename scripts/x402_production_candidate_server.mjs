@@ -108,6 +108,45 @@ export async function createX402ProductionCandidate(options = {}) {
       paymentRequired: true
     });
   });
+  app.get("/api/agent-commerce-resources", (_request, response) => {
+    response.set("Cache-Control", "no-store");
+    response.json({
+      service: config.serviceName,
+      network: config.network,
+      paymentTerms: {
+        scheme: config.scheme,
+        price: config.price,
+        asset: "USDC",
+        payTo: config.payTo,
+        paymentIdentifierRequired: true,
+        builderCode: config.builderCode
+      },
+      resources: [
+        {
+          id: "reconciliation-evidence",
+          route: config.route,
+          access: "x402_exact_payment",
+          description: config.description,
+          ledgerHandoff: "read_only_evidence"
+        },
+        {
+          id: "inventory-entitlement-evidence",
+          route: inventory.route,
+          access: "x402_exact_payment",
+          description: inventory.description,
+          businessEventClass: inventory.businessEventClass,
+          inventoryRoot: inventory.inventoryRoot,
+          ledgerHandoff: inventory.ledgerHandoff
+        }
+      ],
+      boundaries: {
+        walletConnection: false,
+        automaticPayment: false,
+        erpWrite: false,
+        inventoryValuation: "ERPNext"
+      }
+    });
+  });
   app.use("/payer-assets", express.static(path.join(independentClientDirectory, "payer-assets")));
   app.get("/payer", (_request, response, next) => {
     response.sendFile(

@@ -121,6 +121,33 @@ test("health endpoint is public and never verifies or settles", async () => {
   assert.equal(facilitator.calls.settle, 0);
 });
 
+test("agent commerce resource catalog is public, explicit, and never settles", async () => {
+  const response = await fetch(`${baseUrl}/api/agent-commerce-resources`, {
+    headers: { accept: "application/json" }
+  });
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  const catalog = await response.json();
+  assert.equal(catalog.network, "eip155:8453");
+  assert.equal(catalog.paymentTerms.price, "$0.01");
+  assert.equal(catalog.paymentTerms.payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
+  assert.equal(catalog.paymentTerms.builderCode, "bc_iscm570t");
+  assert.deepEqual(catalog.resources.map(resource => resource.id), [
+    "reconciliation-evidence",
+    "inventory-entitlement-evidence"
+  ]);
+  assert.equal(catalog.resources[1].businessEventClass, "BASE-XERP-INVENTORY-01");
+  assert.equal(catalog.resources[1].ledgerHandoff, "read_only_evidence");
+  assert.deepEqual(catalog.boundaries, {
+    walletConnection: false,
+    automaticPayment: false,
+    erpWrite: false,
+    inventoryValuation: "ERPNext"
+  });
+  assert.equal(facilitator.calls.verify, 0);
+  assert.equal(facilitator.calls.settle, 0);
+});
+
 test("independent payer client is served same-origin and inert before a click", async () => {
   const pageResponse = await fetch(`${baseUrl}/payer`);
   const page = await pageResponse.text();

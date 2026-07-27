@@ -34,6 +34,8 @@ This production payment used a self-controlled technical payer. It proves the x4
 
 The public `/payer` client now lets a voluntary external EOA choose either reconciliation evidence or CATVERSE InventoryRoot entitlement evidence before connecting. The selected route is then locked into the unpaid challenge, EIP-712 authorization, payment identifier, Builder Code assertion and one-time settlement check. It never auto-connects a wallet, requests token approval, or permits a self-controlled GAYSON wallet to stand in for independent adoption.
 
+`GET /api/agent-commerce-resources` is the read-only discovery surface for agents and reviewers. It publishes the two available x402 resources, exact Base USDC terms, Builder Code, the inventory `BASE-XERP-INVENTORY-01` classification, and the fail-closed ERP boundary before any wallet connection or payment request.
+
 ## Ecosystem Indexing
 
 Talent's public BaseProofPay project showed `2` transactions, `2` DAU, and `<0.0001 ETH` gas fees on `2026-07-21`. Both verified Base contracts and the public GitHub repository remain attached as data sources. The public aggregate does not expose transaction hashes, so those metrics are reported as platform indexing evidence rather than assigned to a specific canary.
