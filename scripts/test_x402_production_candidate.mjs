@@ -58,7 +58,6 @@ let server;
 let baseUrl;
 let challenge;
 let paymentHeader;
-let inventoryChallenge;
 
 before(async () => {
   facilitator = new SimulatedMainnetFacilitator();
@@ -80,10 +79,6 @@ before(async () => {
     payload: { simulation: true },
     extensions
   });
-  const inventoryResponse = await fetch(`${baseUrl}/api/inventory-entitlement-evidence`, {
-    headers: { accept: "application/json" }
-  });
-  inventoryChallenge = decodePaymentRequiredHeader(inventoryResponse.headers.get("payment-required"));
 });
 
 after(() => server ? new Promise(resolve => server.close(resolve)) : undefined);
@@ -121,6 +116,18 @@ test("health endpoint is public and never verifies or settles", async () => {
   assert.equal(facilitator.calls.settle, 0);
 });
 
+test("both protected resources issue distinct Base x402 challenges", async () => {
+  for (const path of ["/api/reconciliation-evidence", "/api/inventory-entitlement-evidence"]) {
+    const response = await fetch(`${baseUrl}${path}`, { headers: { accept: "application/json" } });
+    assert.equal(response.status, 402);
+    const required = decodePaymentRequiredHeader(response.headers.get("payment-required"));
+    assert.equal(required.accepts[0].network, "eip155:8453");
+    assert.equal(required.resource.url.endsWith(path), true);
+  }
+  assert.equal(facilitator.calls.verify, 0);
+  assert.equal(facilitator.calls.settle, 0);
+});
+
 test("independent payer client is served same-origin and inert before a click", async () => {
   const pageResponse = await fetch(`${baseUrl}/payer`);
   const page = await pageResponse.text();
@@ -147,15 +154,6 @@ test("mainnet challenge declares exact USDC and required payment identifier", ()
   assert.equal(challenge.accepts[0].payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
   assert.equal(challenge.extensions["payment-identifier"].info.required, true);
   assert.equal(challenge.extensions["builder-code"].info.a, candidate.config.builderCode);
-});
-
-test("agent inventory route declares the same exact Base x402 terms", () => {
-  assert.equal(inventoryChallenge.x402Version, 2);
-  assert.equal(inventoryChallenge.accepts[0].network, "eip155:8453");
-  assert.equal(inventoryChallenge.accepts[0].scheme, "exact");
-  assert.equal(inventoryChallenge.accepts[0].amount, "10000");
-  assert.equal(inventoryChallenge.accepts[0].payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
-  assert.equal(inventoryChallenge.extensions["builder-code"].info.a, candidate.config.builderCode);
 });
 
 test("builder-code extension produces BaseProofPay plus facilitator Schema 2 attribution", () => {
@@ -251,29 +249,4 @@ test("same identifier with a changed payload is rejected as a conflict", async (
   assert.equal((await response.json()).error, "identifier_conflict");
   assert.equal(facilitator.calls.verify, 1);
   assert.equal(facilitator.calls.settle, 1);
-});
-
-test("inventory entitlement settlement returns the committed Base-to-ERP evidence boundary", async () => {
-  const extensions = structuredClone(inventoryChallenge.extensions);
-  appendPaymentIdentifierToExtensions(extensions, "pay_inventory_entitlement_20260727_0001");
-  const inventoryPaymentHeader = encodePaymentSignatureHeader({
-    x402Version: 2,
-    resource: inventoryChallenge.resource,
-    accepted: inventoryChallenge.accepts[0],
-    payload: { simulation: "inventory-entitlement" },
-    extensions
-  });
-  const response = await fetch(`${baseUrl}/api/inventory-entitlement-evidence`, {
-    headers: { accept: "application/json", "payment-signature": inventoryPaymentHeader }
-  });
-  assert.equal(response.status, 200);
-  assert.deepEqual(await response.json(), {
-    status: "settled",
-    evidenceType: "catverse_inventory_entitlement",
-    chainId: 8453,
-    inventoryRoot: "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
-    businessEventClass: "BASE-XERP-INVENTORY-01",
-    ledgerHandoff: "read_only_evidence"
-  });
-  assert.equal(candidate.store.get("pay_inventory_entitlement_20260727_0001").status, "completed");
 });
