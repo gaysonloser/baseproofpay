@@ -14,6 +14,7 @@ Base-native enterprise agent and asset operations. The non-payment heroes are Ag
 - Tokenized Inventory Evidence: `/base-inventory-root.html`
 - Asset Evidence: `/base-asset-evidence.html`
 - Verified x402 catalog anchor: `/api/v1/x402-catalog-anchor`
+- Agent Commerce Catalog: `/agent-commerce-catalog.html`
 
 ## Three-minute Walkthrough
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071427" />
+    <meta name="base:app_id" content="6a5c632cf364895c3c606518" />
+    <meta name="description" content="CATVERSE Agent Commerce catalog for BaseProofPay evidence, tokenized inventory policy controls and ERP handoff boundaries." />
+    <title>CATVERSE Agent Commerce Catalog</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#071427; color:#e7efff; }
+      * { box-sizing:border-box; } body { margin:0; background:#071427; } main { width:min(1100px, calc(100% - 32px)); margin:0 auto; padding:32px 0 64px; }
+      .eyebrow { color:#6ca6ff; font-weight:700; font-size:13px; letter-spacing:0; } h1 { font-size:clamp(32px, 5vw, 58px); line-height:1.04; margin:12px 0 16px; } p { color:#b4c4df; line-height:1.6; max-width:760px; }
+      .status { display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid #285a9a; background:#0d2240; color:#9cc4ff; font-size:14px; } .dot { width:8px; height:8px; border-radius:50%; background:#32d996; }
+      .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin-top:30px; } .card { border:1px solid #1d426f; background:#0b1b32; padding:20px; min-height:228px; } .card h2 { font-size:18px; margin:0 0 10px; } .tag { color:#6ce1ff; font-size:12px; font-weight:700; } .card code,.proof code { display:block; margin:12px 0; overflow-wrap:anywhere; color:#b8d7ff; font-size:12px; } a { color:#77b5ff; } .proof { margin-top:14px; border:1px solid #225a8e; background:#0a2038; padding:20px; } .proof h2 { margin:0 0 8px; font-size:20px; } ul { color:#bfd0e9; line-height:1.7; padding-left:20px; } .boundary { margin-top:14px; padding:14px 16px; border-left:3px solid #ffbf5d; background:#2a2112; color:#ffe2aa; } footer { margin-top:40px; color:#7290bb; font-size:13px; } @media(max-width:760px){ main{width:min(100% - 24px,1100px);padding-top:24px}.grid{grid-template-columns:1fr} }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">CATVERSE BASE LAB / AGENT COMMERCE</div>
+      <h1>Evidence agents can discover, verify, and hand off safely.</h1>
+      <p>Three x402 resources connect Base-native payment challenges and policy evidence to an explicit ERPNext read-only boundary. The catalog never opens a wallet, sends a payment, or writes an ERP document by itself.</p>
+      <div class="status"><span class="dot"></span> Live on Base Mainnet x402 terms: exact 0.01 USDC</div>
+      <section class="grid" aria-label="Agent commerce resources">
+        <article class="card"><div class="tag">01 / RECONCILIATION</div><h2>Payment Evidence</h2><p>Returns settled reconciliation evidence only after a valid exact Base USDC x402 flow.</p><code>GET /api/reconciliation-evidence</code><a href="https://baseproofpay-x402.onrender.com/api/reconciliation-evidence">Protected resource</a></article>
+        <article class="card"><div class="tag">02 / INVENTORY</div><h2>Inventory Entitlement</h2><p>Connects the verified InventoryRoot to a controlled, read-only ERP handoff.</p><code>GET /api/inventory-entitlement-evidence</code><a href="https://baseproofpay-x402.onrender.com/api/inventory-entitlement-evidence">Protected resource</a></article>
+        <article class="card"><div class="tag">03 / B20 POLICY</div><h2>CATBOX Policy Proof</h2><p>Shares Base Sepolia allowlist-only mint policy evidence. Transfers remain permanently blocked in this proof.</p><code>GET /api/catbox-policy-evidence</code><a href="https://baseproofpay-x402.onrender.com/api/catbox-policy-evidence">Protected resource</a></article>
+      </section>
+      <section class="proof"><h2>Verified catalog anchor</h2><p>The public x402 catalog is anchored to the existing InventoryRoot through EnterpriseEvidenceRegistry. Receipt, event, and contract storage agree.</p><code>Base tx: 0xd258fd6882499054e8ffd103c4ba2c09f8f79b0fede1dcf6ca1eaef78aa53fce</code><code>Registry: 0x17fD9e593320461204887Bb2644e2F013FeF55bD</code><code>Parent InventoryRoot: 0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd</code><a href="/api/v1/x402-catalog-anchor">Read the sanitized anchor evidence</a></section>
+      <section class="boundary"><strong>Control boundary:</strong> evidence discovery is not payment authorization, token transfer, inventory valuation, or ERP posting. Those actions remain separately gated and human-reviewed.</section>
+      <footer>Builder Code bc_iscm570t · <a href="/enterprise-os.html">Enterprise OS</a> · <a href="https://baseproofpay-x402.onrender.com/api/agent-commerce-resources">Machine-readable catalog</a></footer>
+    </main>
+  </body>
+</html>
