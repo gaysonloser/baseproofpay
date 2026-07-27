@@ -62,6 +62,12 @@ export async function createX402ProductionCandidate(options = {}) {
   if (!/^0x[0-9a-f]{64}$/i.test(inventory.inventoryRoot ?? "")) {
     throw new Error("Inventory entitlement route requires a bytes32 inventory root.");
   }
+  const publicEvidenceAnchor = config.publicEvidenceAnchor;
+  if (!publicEvidenceAnchor || publicEvidenceAnchor.chainId !== 8453 ||
+    !/^0x[0-9a-f]{64}$/i.test(publicEvidenceAnchor.evidenceRoot ?? "") ||
+    !/^0x[0-9a-f]{64}$/i.test(publicEvidenceAnchor.parentInventoryRoot ?? "")) {
+    throw new Error("Production candidate requires a verified Base evidence anchor.");
+  }
 
   const resourceServer = new x402ResourceServer(facilitator)
     .register(config.network, new ExactEvmScheme())
@@ -144,6 +150,16 @@ export async function createX402ProductionCandidate(options = {}) {
         automaticPayment: false,
         erpWrite: false,
         inventoryValuation: "ERPNext"
+      },
+      publicEvidenceAnchor: {
+        businessEventId: publicEvidenceAnchor.businessEventId,
+        transactionHash: publicEvidenceAnchor.transactionHash,
+        registry: publicEvidenceAnchor.registry,
+        evidenceId: publicEvidenceAnchor.evidenceId,
+        evidenceRoot: publicEvidenceAnchor.evidenceRoot,
+        parentInventoryRoot: publicEvidenceAnchor.parentInventoryRoot,
+        releaseCommit: publicEvidenceAnchor.releaseCommit,
+        verification: publicEvidenceAnchor.verification
       }
     });
   });

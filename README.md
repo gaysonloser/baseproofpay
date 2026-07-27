@@ -36,6 +36,8 @@ The public `/payer` client now lets a voluntary external EOA choose either recon
 
 `GET /api/agent-commerce-resources` is the read-only discovery surface for agents and reviewers. It publishes the two available x402 resources, exact Base USDC terms, Builder Code, the inventory `BASE-XERP-INVENTORY-01` classification, and the fail-closed ERP boundary before any wallet connection or payment request.
 
+The same catalog now exposes its verified Base Mainnet evidence anchor: `BASE-LAB-X402-CATALOG-20260727-001`, transaction `0xd258fd6882499054e8ffd103c4ba2c09f8f79b0fede1dcf6ca1eaef78aa53fce`, Registry `0x17fD9e593320461204887Bb2644e2F013FeF55bD`, the catalog evidence root, and the existing InventoryRoot parent. This is a 0 ETH evidence-control call, not an x402 settlement, ERC-20 approval, or ERP write.
+
 ## Ecosystem Indexing
 
 Talent's public BaseProofPay project showed `2` transactions, `2` DAU, and `<0.0001 ETH` gas fees on `2026-07-21`. Both verified Base contracts and the public GitHub repository remain attached as data sources. The public aggregate does not expose transaction hashes, so those metrics are reported as platform indexing evidence rather than assigned to a specific canary.

@@ -144,6 +144,16 @@ test("agent commerce resource catalog is public, explicit, and never settles", a
     erpWrite: false,
     inventoryValuation: "ERPNext"
   });
+  assert.deepEqual(catalog.publicEvidenceAnchor, {
+    businessEventId: "BASE-LAB-X402-CATALOG-20260727-001",
+    transactionHash: "0xd258fd6882499054e8ffd103c4ba2c09f8f79b0fede1dcf6ca1eaef78aa53fce",
+    registry: "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+    evidenceId: "0x1c9f0a0ae6f05e2367d7b2c9b2ca62ab24f90ce3344b526f60fb8e0d15fd40eb",
+    evidenceRoot: "0xf991b7669131729a47790779d778d3faa1834afb06532edbad98be3c580064c7",
+    parentInventoryRoot: "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+    releaseCommit: "5775948d14912b45524f30ceadb915ec64ad7e67",
+    verification: "receipt_event_registry_storage_match"
+  });
   assert.equal(facilitator.calls.verify, 0);
   assert.equal(facilitator.calls.settle, 0);
 });
