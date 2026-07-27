@@ -33,8 +33,8 @@
     },
     {
       "id": "BASE-LAB-B20-INVENTORY-AGENT-01",
-      "status": "base_sepolia_creation_verified_mainnet_controls_pending",
-      "fingerprint": "05015d08345fb03657eaa1b32a67ff25afd82842cef8e6609dee14b1335607c2",
+      "status": "base_sepolia_policy_gated_mint_verified_mainnet_controls_pending",
+      "fingerprint": "748703b13a67e69dc77c73c1554d974ae81951521d28bc62e76b097d0a68b4f9",
       "page": "/base-b20-inventory-agent.html"
     }
   ],
@@ -42,8 +42,8 @@
   "erp_writes": 0,
   "wallets": 1,
   "wallet_auto_connect": false,
-  "chain_actions": 2,
-  "chain_action_scope": "verified_mainnet_registry_anchor_and_base_sepolia_b20_create",
+  "chain_actions": 3,
+  "chain_action_scope": "verified_mainnet_registry_anchor_and_base_sepolia_b20_create_and_policy_gated_mint",
   "privacy": {
     "status": "passed",
     "forbidden_hits": []
@@ -211,8 +211,8 @@
     },
     {
       "path": "engineering-proof/config/base_b20_inventory_erp_product_contract.json",
-      "sha256": "7e72db98484cbe256d18019eb073feeae0659ca6bc123ee7841a515c0a0e6c40",
-      "bytes": 5383
+      "sha256": "3a179fed7d6d08820f81ac6e8876810d43fae8a1dea11d4a29f858d6c16f3dd5",
+      "bytes": 5520
     },
     {
       "path": "engineering-proof/config/base_enterprise_agent_asset_operations_claim_matrix.json",
@@ -346,8 +346,8 @@
     },
     {
       "path": "outputs/base_b20_inventory_agentic_candidate_latest.json",
-      "sha256": "87e0352c7f0c7619708138dd884bd2e9f1ffb5b355c0971eaebbd2675e574f6d",
-      "bytes": 8720
+      "sha256": "b5c0b3df039200f916e92042b65c76eb441663d11ff23234a7205949e4f001aa",
+      "bytes": 9751
     },
     {
       "path": "outputs/base_inventory_root_result_latest.json",
@@ -385,5 +385,5 @@
       "bytes": 13916
     }
   ],
-  "package_root": "sha256:b1fa6f89910112ecd22f2e575c339451ce967bd632957e312dce2bb5ec345d51"
+  "package_root": "sha256:c50391019a7e90accdff2bca1501e17522c993ce502869cbcabb29851ca21c16"
 }

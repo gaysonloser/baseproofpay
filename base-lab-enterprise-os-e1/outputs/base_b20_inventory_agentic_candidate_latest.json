@@ -1,9 +1,9 @@
 {
   "schema_id": "gayson.base.enterprise.b20_inventory_agentic_candidate",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "result_unit_id": "BASE-LAB-B20-INVENTORY-AGENT-01",
-  "generated_at": "2026-07-26T15:20:28.194Z",
-  "status": "base_sepolia_creation_verified_mainnet_controls_pending",
+  "generated_at": "2026-07-27T01:09:14.304Z",
+  "status": "base_sepolia_policy_gated_mint_verified_mainnet_controls_pending",
   "activation": {
     "target": "Base Mainnet",
     "chain_id": 8453,
@@ -37,7 +37,9 @@
     "mint_atomic": "100000000",
     "transfer_atomic": "10000000",
     "burn_atomic": "10000000",
-    "closing_supply_atomic": "90000000"
+    "closing_supply_atomic": "90000000",
+    "base_sepolia_current_supply_atomic": "100000000",
+    "base_sepolia_current_supply_display": "100 CATBOX"
   },
   "six_lanes": {
     "operating_document": {
@@ -251,6 +253,23 @@
       "no_mint_bundled": true,
       "no_activation_bundled": true
     },
+    "verified_policy_gated_mint": {
+      "execution_id": "CATBOX-B20-BASE-SEPOLIA-LIFECYCLE-1",
+      "allowlist_policy_id_decimal": "72057594037928012",
+      "mint_tx_hash": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8",
+      "block_number_hex": "0x2a9a7c0",
+      "receipt_status": "0x1",
+      "from": "0x9903e1e8c871321ee2ed80cea8a5899f0992ba9e",
+      "to": "0xb2000000000000000000003b2762e0cc35c5684b",
+      "value_wei": "0",
+      "amount_atomic": "100000000",
+      "memo": "0xa5a43bc133aac20e795895702169c501d7ac56aedd954b5077834af1b58fc7ec",
+      "memo_event_log_index": "0xd1",
+      "transfer_event_log_index": "0xd0",
+      "transfer_scopes_remain_always_block": true,
+      "erp_write": false,
+      "mainnet_action": false
+    },
     "mainnet_roles_unresolved": true,
     "mainnet_policy_configuration_unresolved": true,
     "exact_supply_cap_review_required": true,
@@ -260,16 +279,17 @@
     "wallet_auto_connect": false,
     "token_deployed_mainnet": false,
     "token_deployed_base_sepolia": true,
-    "token_minted": false,
+    "token_minted": true,
     "token_transferred": false,
     "x402_paid": false,
     "erp_write": false,
     "git_push": false,
     "render_deploy": false,
-    "public_claim": "one Base Sepolia B20 creation verified; mainnet remains a candidate only",
+    "public_claim": "one Base Sepolia B20 creation and one policy-gated 100 CATBOX mint verified; mainnet remains a candidate only",
     "testnet_creation_transaction": "0x372adf93e94252e9bb43d8d960ff264f576a983965e593687568b555a2cc0c0a",
     "testnet_initial_supply_atomic": "0",
-    "testnet_mint_or_policy_activation": false
+    "testnet_mint_or_policy_activation": true,
+    "testnet_mint_transaction": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8"
   },
-  "result_fingerprint_sha256": "05015d08345fb03657eaa1b32a67ff25afd82842cef8e6609dee14b1335607c2"
+  "result_fingerprint_sha256": "748703b13a67e69dc77c73c1554d974ae81951521d28bc62e76b097d0a68b4f9"
 }
