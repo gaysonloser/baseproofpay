@@ -193,6 +193,9 @@ test("mainnet challenge declares exact USDC and required payment identifier", ()
   assert.equal(challenge.accepts[0].payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
   assert.equal(challenge.extensions["payment-identifier"].info.required, true);
   assert.equal(challenge.extensions["builder-code"].info.a, candidate.config.builderCode);
+  assert.equal(challenge.extensions.bazaar.info.input.type, "http");
+  assert.equal(challenge.extensions.bazaar.info.input.method, "GET");
+  assert.equal(challenge.extensions.bazaar.info.output.example.evidenceType, "baseproofpay_reconciliation");
 });
 
 test("agent inventory route declares the same exact Base x402 terms", () => {
@@ -202,6 +205,8 @@ test("agent inventory route declares the same exact Base x402 terms", () => {
   assert.equal(inventoryChallenge.accepts[0].amount, "10000");
   assert.equal(inventoryChallenge.accepts[0].payTo, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
   assert.equal(inventoryChallenge.extensions["builder-code"].info.a, candidate.config.builderCode);
+  assert.equal(inventoryChallenge.extensions.bazaar.info.output.example.inventoryRoot,
+    "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd");
 });
 
 test("CATBOX policy route declares the same exact Base x402 terms while preserving testnet boundaries", () => {
@@ -209,6 +214,8 @@ test("CATBOX policy route declares the same exact Base x402 terms while preservi
   assert.equal(b20PolicyChallenge.accepts[0].network, "eip155:8453");
   assert.equal(b20PolicyChallenge.accepts[0].amount, "10000");
   assert.equal(b20PolicyChallenge.extensions["payment-identifier"].info.required, true);
+  assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.proofNetwork, "eip155:84532");
+  assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.transferPolicy, "ALWAYS_BLOCK");
 });
 
 test("builder-code extension produces BaseProofPay plus facilitator Schema 2 attribution", () => {

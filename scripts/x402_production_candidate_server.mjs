@@ -18,6 +18,10 @@ import {
   declareBuilderCodeExtension
 } from "@x402/extensions/builder-code";
 import {
+  bazaarResourceServerExtension,
+  declareDiscoveryExtension
+} from "@x402/extensions/bazaar";
+import {
   MemoryPaymentIdempotencyStore,
   createPaymentIdempotencyMiddleware
 } from "./x402_idempotency_guard.mjs";
@@ -78,7 +82,15 @@ export async function createX402ProductionCandidate(options = {}) {
   const resourceServer = new x402ResourceServer(facilitator)
     .register(config.network, new ExactEvmScheme())
     .registerExtension(paymentIdentifierResourceServerExtension)
-    .registerExtension(builderCodeResourceServerExtension);
+    .registerExtension(builderCodeResourceServerExtension)
+    .registerExtension(bazaarResourceServerExtension);
+
+  const discoveryExtension = output => declareDiscoveryExtension({
+    method: "GET",
+    output: {
+      example: output
+    }
+  });
 
   const routeConfig = {
     accepts: {
@@ -92,7 +104,12 @@ export async function createX402ProductionCandidate(options = {}) {
     serviceName: config.serviceName,
     extensions: {
       [PAYMENT_IDENTIFIER]: declarePaymentIdentifierExtension(true),
-      [BUILDER_CODE]: declareBuilderCodeExtension(config.builderCode)
+      [BUILDER_CODE]: declareBuilderCodeExtension(config.builderCode),
+      ...discoveryExtension({
+        status: "settled",
+        evidenceType: "baseproofpay_reconciliation",
+        chainId: 8453
+      })
     },
     unpaidResponseBody: () => ({
       contentType: "application/json",
@@ -101,11 +118,35 @@ export async function createX402ProductionCandidate(options = {}) {
   };
   const inventoryRouteConfig = {
     ...routeConfig,
-    description: inventory.description
+    description: inventory.description,
+    extensions: {
+      [PAYMENT_IDENTIFIER]: declarePaymentIdentifierExtension(true),
+      [BUILDER_CODE]: declareBuilderCodeExtension(config.builderCode),
+      ...discoveryExtension({
+        status: "settled",
+        evidenceType: inventory.evidenceType,
+        chainId: 8453,
+        inventoryRoot: inventory.inventoryRoot,
+        businessEventClass: inventory.businessEventClass,
+        ledgerHandoff: inventory.ledgerHandoff
+      })
+    }
   };
   const b20PolicyRouteConfig = {
     ...routeConfig,
-    description: b20Policy.description
+    description: b20Policy.description,
+    extensions: {
+      [PAYMENT_IDENTIFIER]: declarePaymentIdentifierExtension(true),
+      [BUILDER_CODE]: declareBuilderCodeExtension(config.builderCode),
+      ...discoveryExtension({
+        status: "settled",
+        evidenceType: b20Policy.evidenceType,
+        proofNetwork: b20Policy.network,
+        token: b20Policy.token,
+        transferPolicy: b20Policy.transferPolicy,
+        ledgerHandoff: b20Policy.ledgerHandoff
+      })
+    }
   };
   const routes = {
     [config.route]: routeConfig,
