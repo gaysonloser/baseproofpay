@@ -55,13 +55,20 @@ export async function createX402ProductionCandidate(options = {}) {
   if (!/^bc_[a-z0-9_]+$/.test(config.builderCode ?? "")) {
     throw new Error("Production candidate requires a valid BaseProofPay Builder Code.");
   }
+  const inventory = config.agentCommerceInventory;
+  if (!inventory || inventory.route !== "GET /api/inventory-entitlement-evidence") {
+    throw new Error("Production candidate requires the fixed inventory-entitlement route.");
+  }
+  if (!/^0x[0-9a-f]{64}$/i.test(inventory.inventoryRoot ?? "")) {
+    throw new Error("Inventory entitlement route requires a bytes32 inventory root.");
+  }
 
   const resourceServer = new x402ResourceServer(facilitator)
     .register(config.network, new ExactEvmScheme())
     .registerExtension(paymentIdentifierResourceServerExtension)
     .registerExtension(builderCodeResourceServerExtension);
 
-  const reconciliationRoute = {
+  const routeConfig = {
     accepts: {
       scheme: config.scheme,
       price: config.price,
@@ -80,15 +87,13 @@ export async function createX402ProductionCandidate(options = {}) {
       body: { error: "payment_required", network: config.network }
     })
   };
-  const inventoryRoute = {
-    ...reconciliationRoute,
-    description: "CATVERSE InventoryRoot entitlement evidence for Base-native agent commerce"
+  const inventoryRouteConfig = {
+    ...routeConfig,
+    description: inventory.description
   };
-  const reconciliationPath = "/api/reconciliation-evidence";
-  const inventoryPath = "/api/inventory-entitlement-evidence";
   const routes = {
-    [`GET ${reconciliationPath}`]: reconciliationRoute,
-    [`GET ${inventoryPath}`]: inventoryRoute
+    [config.route]: routeConfig,
+    [inventory.route]: inventoryRouteConfig
   };
   const httpServer = new x402HTTPResourceServer(resourceServer, routes);
   await httpServer.initialize();
@@ -113,13 +118,7 @@ export async function createX402ProductionCandidate(options = {}) {
   });
   app.use(createPaymentIdempotencyMiddleware({
     store,
-    routePath: reconciliationPath,
-    method: "GET",
-    required: true
-  }));
-  app.use(createPaymentIdempotencyMiddleware({
-    store,
-    routePath: inventoryPath,
+    routePath: ["/api/reconciliation-evidence", "/api/inventory-entitlement-evidence"],
     method: "GET",
     required: true
   }));
@@ -136,8 +135,11 @@ export async function createX402ProductionCandidate(options = {}) {
     counters.protectedResource += 1;
     response.json({
       status: "settled",
-      evidenceType: "catverse_inventory_root_entitlement",
-      chainId: 8453
+      evidenceType: inventory.evidenceType,
+      chainId: 8453,
+      inventoryRoot: inventory.inventoryRoot,
+      businessEventClass: inventory.businessEventClass,
+      ledgerHandoff: inventory.ledgerHandoff
     });
   });
 
