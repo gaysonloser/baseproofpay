@@ -86,9 +86,10 @@ export function createPaymentIdempotencyMiddleware({
   required = true
 }) {
   if (!store) throw new Error("Idempotency store is required.");
+  const routes = new Set(Array.isArray(routePath) ? routePath : [routePath]);
 
   return (request, response, next) => {
-    if (request.path !== routePath || request.method.toUpperCase() !== method.toUpperCase()) {
+    if (!routes.has(request.path) || request.method.toUpperCase() !== method.toUpperCase()) {
       return next();
     }
 

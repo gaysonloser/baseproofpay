@@ -24,6 +24,14 @@
     "ttlSeconds": 86400,
     "maxEntries": 10000
   },
+  "agentCommerceInventory": {
+    "route": "GET /api/inventory-entitlement-evidence",
+    "description": "CATVERSE InventoryRoot evidence for agent inventory-entitlement reconciliation",
+    "evidenceType": "catverse_inventory_entitlement",
+    "inventoryRoot": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+    "businessEventClass": "BASE-XERP-INVENTORY-01",
+    "ledgerHandoff": "read_only_evidence"
+  },
   "safety": {
     "startWithoutCredentials": false,
     "persistCredentials": false,

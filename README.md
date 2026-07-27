@@ -28,6 +28,10 @@ The payer and payee wallets are controlled by the same owner. This is a technica
 
 This production payment used a self-controlled technical payer. It proves the x402 transport and Builder attribution path, but it is not independent-user adoption and must not be replayed.
 
+## Agent Commerce Inventory Evidence
+
+`GET /api/inventory-entitlement-evidence` is a second x402-protected resource for CATVERSE inventory-entitlement reconciliation. It returns only after a valid exact Base USDC x402 settlement and exposes the verified BaseInventoryRoot, the `BASE-XERP-INVENTORY-01` business-event class, and a `read_only_evidence` ERP handoff boundary. It neither creates an ERP document nor values inventory onchain. Payment identifiers remain globally replay-locked across both protected resources.
+
 ## Ecosystem Indexing
 
 Talent's public BaseProofPay project showed `2` transactions, `2` DAU, and `<0.0001 ETH` gas fees on `2026-07-21`. Both verified Base contracts and the public GitHub repository remain attached as data sources. The public aggregate does not expose transaction hashes, so those metrics are reported as platform indexing evidence rather than assigned to a specific canary.
