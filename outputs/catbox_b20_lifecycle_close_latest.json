@@ -1,0 +1,38 @@
+{
+  "schema": "gayson.base.catbox.b20_lifecycle_close",
+  "version": 1,
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "token": "0xb2000000000000000000003b2762e0CC35C5684B",
+  "controller": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+  "mint": {
+    "transactionHash": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8",
+    "amountAtomic": "100000000",
+    "amountDisplay": "100 CATBOX"
+  },
+  "burn": {
+    "transactionHash": "0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40",
+    "amountAtomic": "10000000",
+    "amountDisplay": "10 CATBOX",
+    "memo": "BASE-LAB-B20-BURN-202608-001",
+    "memoHash": "0x711378df7b1cac4d4588b62c0f9456481ab0913bb626cf57ae87db40ba9be6ba",
+    "receiptStatus": "0x1",
+    "valueWei": "0",
+    "gasUsed": "39314"
+  },
+  "closing": {
+    "supplyAtomic": "90000000",
+    "supplyDisplay": "90 CATBOX",
+    "controllerBalanceAtomic": "90000000",
+    "controllerBalanceDisplay": "90 CATBOX"
+  },
+  "boundaries": {
+    "mainnetAction": false,
+    "tokenTransfer": false,
+    "approval": false,
+    "x402Payment": false,
+    "erpWrite": false,
+    "inventoryValuationAuthority": "ERPNext"
+  },
+  "conclusion": "Verified Base Sepolia B20 policy-gated mint and burn lifecycle proof. It is not a mainnet token launch, payment, ERP posting, or inventory valuation."
+}

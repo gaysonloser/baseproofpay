@@ -145,6 +145,8 @@ test("agent commerce resource catalog is public, explicit, and never settles", a
   assert.equal(catalog.resources[1].businessEventClass, "BASE-XERP-INVENTORY-01");
   assert.equal(catalog.resources[1].ledgerHandoff, "read_only_evidence");
   assert.equal(catalog.resources[2].proofNetwork, "eip155:84532");
+  assert.equal(catalog.resources[2].burnTx, "0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40");
+  assert.equal(catalog.resources[2].closingSupply, "90 CATBOX");
   assert.equal(catalog.resources[2].transferPolicy, "ALWAYS_BLOCK");
   assert.equal(catalog.resources[2].ledgerHandoff, "testnet_policy_evidence_only");
   assert.deepEqual(catalog.boundaries, {
@@ -215,6 +217,9 @@ test("CATBOX policy route declares the same exact Base x402 terms while preservi
   assert.equal(b20PolicyChallenge.accepts[0].amount, "10000");
   assert.equal(b20PolicyChallenge.extensions["payment-identifier"].info.required, true);
   assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.proofNetwork, "eip155:84532");
+  assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.burnTx,
+    "0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40");
+  assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.closingSupply, "90 CATBOX");
   assert.equal(b20PolicyChallenge.extensions.bazaar.info.output.example.transferPolicy, "ALWAYS_BLOCK");
 });
 

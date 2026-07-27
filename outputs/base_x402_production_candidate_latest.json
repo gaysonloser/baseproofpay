@@ -1,0 +1,326 @@
+{
+  "schema": "gayson.baseproofpay.x402_production_candidate_audit",
+  "version": 1,
+  "generatedAt": "2026-07-27T07:53:11.938Z",
+  "status": "local_builder_attribution_upgrade_ready_publish_pending",
+  "classification": {
+    "mainnet_configuration": true,
+    "cdp_facilitator_endpoint": true,
+    "payment_identifier_required": true,
+    "builder_code_extension_declared": true,
+    "erc8021_schema_2_local_roundtrip": true,
+    "replay_guard": true,
+    "ambiguous_failure_manual_review_lock": true,
+    "payment_response_simulated": true,
+    "payment_response_onchain": false,
+    "real_external_payer": false,
+    "cdp_credentials_present": false,
+    "public_https_endpoint": false,
+    "chain_write": false
+  },
+  "config": {
+    "schema": "gayson.baseproofpay.x402_production_candidate",
+    "version": 3,
+    "mode": "production_mainnet_candidate",
+    "route": "GET /api/reconciliation-evidence",
+    "network": "eip155:8453",
+    "scheme": "exact",
+    "price": "$0.01",
+    "payTo": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+    "description": "BaseProofPay reconciliation evidence for verified agent payments",
+    "mimeType": "application/json",
+    "serviceName": "BaseProofPay",
+    "builderCode": "bc_iscm570t",
+    "facilitator": {
+      "provider": "coinbase_cdp",
+      "url": "https://api.cdp.coinbase.com/platform/v2/x402",
+      "credentials": [
+        "CDP_API_KEY_ID",
+        "CDP_API_KEY_SECRET"
+      ]
+    },
+    "paymentIdentifier": {
+      "required": true,
+      "ttlSeconds": 86400,
+      "maxEntries": 10000
+    },
+    "agentCommerceInventory": {
+      "route": "GET /api/inventory-entitlement-evidence",
+      "description": "CATVERSE InventoryRoot evidence for agent inventory-entitlement reconciliation",
+      "evidenceType": "catverse_inventory_entitlement",
+      "inventoryRoot": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+      "businessEventClass": "BASE-XERP-INVENTORY-01",
+      "ledgerHandoff": "read_only_evidence"
+    },
+    "agentCommerceB20Policy": {
+      "route": "GET /api/catbox-policy-evidence",
+      "description": "CATBOX Base Sepolia allowlist-only B20 policy and mint lifecycle evidence for agent review",
+      "evidenceType": "catbox_policy_gated_b20",
+      "network": "eip155:84532",
+      "token": "0xb2000000000000000000003b2762e0CC35C5684B",
+      "policyCreationTx": "0xe21558da7d3dc4bbdcbd9e3211af0973fa3337fcf245b731b01be8a5b284289c",
+      "mintTx": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8",
+      "burnTx": "0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40",
+      "mintAmount": "100 CATBOX",
+      "burnAmount": "10 CATBOX",
+      "closingSupply": "90 CATBOX",
+      "burnMemoHash": "0x711378df7b1cac4d4588b62c0f9456481ab0913bb626cf57ae87db40ba9be6ba",
+      "transferPolicy": "ALWAYS_BLOCK",
+      "ledgerHandoff": "testnet_policy_evidence_only"
+    },
+    "publicEvidenceAnchor": {
+      "network": "Base Mainnet",
+      "chainId": 8453,
+      "businessEventId": "BASE-LAB-X402-CATALOG-20260727-001",
+      "transactionHash": "0xd258fd6882499054e8ffd103c4ba2c09f8f79b0fede1dcf6ca1eaef78aa53fce",
+      "registry": "0x17fD9e593320461204887Bb2644e2F013FeF55bD",
+      "evidenceId": "0x1c9f0a0ae6f05e2367d7b2c9b2ca62ab24f90ce3344b526f60fb8e0d15fd40eb",
+      "evidenceRoot": "0xf991b7669131729a47790779d778d3faa1834afb06532edbad98be3c580064c7",
+      "parentInventoryRoot": "0x3fab10adf6820c0f387f589faf3faa1f0709a9e23ef6c33b3dbbe2e0a4197dbd",
+      "releaseCommit": "5775948d14912b45524f30ceadb915ec64ad7e67",
+      "verification": "receipt_event_registry_storage_match"
+    },
+    "safety": {
+      "startWithoutCredentials": false,
+      "persistCredentials": false,
+      "walletConnection": false,
+      "automaticPayment": false,
+      "automaticSettlementTest": false
+    }
+  },
+  "observed": {
+    "challenge": {
+      "x402Version": 2,
+      "error": "Payment required",
+      "resource": {
+        "url": "http://127.0.0.1:59479/api/reconciliation-evidence",
+        "description": "BaseProofPay reconciliation evidence for verified agent payments",
+        "mimeType": "application/json",
+        "serviceName": "BaseProofPay"
+      },
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:8453",
+          "amount": "10000",
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "payTo": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+          "maxTimeoutSeconds": 300,
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        }
+      ],
+      "extensions": {
+        "payment-identifier": {
+          "info": {
+            "required": true
+          },
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "boolean"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 16,
+                "maxLength": 128,
+                "pattern": "^[a-zA-Z0-9_-]+$"
+              }
+            },
+            "required": [
+              "required"
+            ]
+          }
+        },
+        "builder-code": {
+          "info": {
+            "a": "bc_iscm570t"
+          },
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string",
+                "pattern": "^[a-z0-9_]{1,32}$",
+                "description": "App builder code"
+              },
+              "w": {
+                "type": "string",
+                "pattern": "^[a-z0-9_]{1,32}$",
+                "description": "Wallet builder code"
+              },
+              "s": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_]{1,32}$"
+                },
+                "description": "Service builder codes"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "bazaar": {
+          "info": {
+            "input": {
+              "type": "http",
+              "method": "GET",
+              "queryParams": {}
+            },
+            "output": {
+              "type": "json",
+              "example": {
+                "status": "settled",
+                "evidenceType": "baseproofpay_reconciliation",
+                "chainId": 8453
+              }
+            }
+          },
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "http"
+                  },
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET"
+                    ]
+                  },
+                  "queryParams": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                },
+                "required": [
+                  "type",
+                  "method"
+                ],
+                "additionalProperties": false
+              },
+              "output": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "example": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            },
+            "required": [
+              "input"
+            ]
+          }
+        }
+      }
+    },
+    "builderAttribution": {
+      "dataSuffix": "0xa261616b62635f6973636d3537307461776a6364705f666163696c31001c0280218021802180218021802180218021",
+      "decoded": {
+        "a": "bc_iscm570t",
+        "w": "cdp_facil1"
+      }
+    },
+    "simulatedPaid": {
+      "statusCode": 200,
+      "body": {
+        "status": "settled",
+        "evidenceType": "baseproofpay_reconciliation",
+        "chainId": 8453
+      },
+      "paymentResponse": {
+        "success": true,
+        "payer": "0x1111111111111111111111111111111111111111",
+        "transaction": "0xabababababababababababababababababababababababababababababababab",
+        "network": "eip155:8453"
+      }
+    },
+    "replay": {
+      "statusCode": 409,
+      "body": {
+        "error": "already_completed",
+        "paymentIdentifier": "pay_baseproofpay_audit_20260720_0001",
+        "replayBlocked": true
+      },
+      "paymentResponse": {
+        "success": true,
+        "payer": "0x1111111111111111111111111111111111111111",
+        "transaction": "0xabababababababababababababababababababababababababababababababab",
+        "network": "eip155:8453"
+      }
+    },
+    "ambiguousFailureRetry": {
+      "accepted": false,
+      "reason": "already_failed",
+      "entry": {
+        "id": "pay_baseproofpay_failure_audit_0001",
+        "fingerprint": "fingerprint-a",
+        "status": "failed",
+        "createdAt": 1785138791938,
+        "expiresAt": 1785225191938,
+        "failedAt": 1785138791938,
+        "failure": {
+          "statusCode": 500,
+          "requiresManualReview": true
+        }
+      }
+    },
+    "counters": {
+      "supported": 1,
+      "verify": 1,
+      "settle": 1,
+      "protectedResource": 1
+    },
+    "idempotency": {
+      "id": "pay_baseproofpay_audit_20260720_0001",
+      "fingerprint": "15b0cc6c5099fac1ce5782aca375d20593af5d8508d04b6e4b8bb9f9a50dbae2",
+      "status": "completed",
+      "createdAt": 1785138791925,
+      "expiresAt": 1785225191925,
+      "paymentResponse": "eyJzdWNjZXNzIjp0cnVlLCJwYXllciI6IjB4MTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMSIsInRyYW5zYWN0aW9uIjoiMHhhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiYWJhYmFiIiwibmV0d29yayI6ImVpcDE1NTo4NDUzIn0=",
+      "completedAt": 1785138791927
+    }
+  },
+  "gates": {
+    "mainnet_network": true,
+    "exact_001_usdc": true,
+    "mainnet_usdc": true,
+    "exact_payee": true,
+    "payment_identifier_required": true,
+    "baseproofpay_builder_code_declared": true,
+    "schema2_app_code_encoded": true,
+    "schema2_facilitator_code_preserved": true,
+    "simulated_paid_status_200": true,
+    "simulated_payment_response": true,
+    "simulated_verify_once": true,
+    "simulated_settle_once": true,
+    "replay_status_409": true,
+    "replay_blocked": true,
+    "replay_payment_response_recovered": true,
+    "ambiguous_failure_locked": true,
+    "no_second_verify_or_settle": true
+  },
+  "blockers": [
+    "The Builder Code extension upgrade is local only and has not been published or deployed.",
+    "No genuinely external payer wallet has been nominated and attested.",
+    "A future independent payment needs a unique identifier and postflight proving Schema 2 app attribution; the completed 8889 canary must not be replayed."
+  ]
+}

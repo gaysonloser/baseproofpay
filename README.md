@@ -36,7 +36,11 @@ The public `/payer` client now lets a voluntary external EOA choose either recon
 
 `GET /api/agent-commerce-resources` is the read-only discovery surface for agents and reviewers. It publishes the two available x402 resources, exact Base USDC terms, Builder Code, the inventory `BASE-XERP-INVENTORY-01` classification, and the fail-closed ERP boundary before any wallet connection or payment request.
 
-`GET /api/catbox-policy-evidence` is the third x402 resource. It exposes the completed Base Sepolia CATBOX allowlist-only policy and exact 100 CATBOX mint evidence for agent review. It labels the token proof as testnet-only, keeps transfer `ALWAYS_BLOCK`, and never presents it as a mainnet asset, inventory valuation, payment, or ERP write.
+`GET /api/catbox-policy-evidence` is the third x402 resource. It exposes the completed Base Sepolia CATBOX allowlist-only policy, the exact 100 CATBOX mint, and the verified 10 CATBOX `burnWithMemo` close event. The current testnet supply is 90 CATBOX and the burn memo hash binds `BASE-LAB-B20-BURN-202608-001`. It labels the lifecycle proof as testnet-only, keeps transfer `ALWAYS_BLOCK`, and never presents it as a mainnet asset, inventory valuation, payment, or ERP write.
+
+- CATBOX burn transaction: `0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40`
+- CATBOX closing supply: `90 CATBOX`
+- Burn memo hash: `0x711378df7b1cac4d4588b62c0f9456481ab0913bb626cf57ae87db40ba9be6ba`
 
 All three paid resources declare the official x402 Bazaar discovery extension in their `PAYMENT-REQUIRED` response. That gives an agent catalog the HTTP method and a schema-backed example result without opening a wallet, changing the exact $0.01 USDC terms, or settling a request.
 

@@ -1,6 +1,6 @@
 {
   "schema": "gayson.baseproofpay.x402_production_candidate",
-  "version": 2,
+  "version": 3,
   "mode": "production_mainnet_candidate",
   "route": "GET /api/reconciliation-evidence",
   "network": "eip155:8453",
@@ -40,7 +40,11 @@
     "token": "0xb2000000000000000000003b2762e0CC35C5684B",
     "policyCreationTx": "0xe21558da7d3dc4bbdcbd9e3211af0973fa3337fcf245b731b01be8a5b284289c",
     "mintTx": "0x15e16c3670c19f4c35582e651d6da39d146e2337b25498cf7dabf5022e949af8",
-    "amount": "100 CATBOX",
+    "burnTx": "0xe1e478bbd25430d0d4f06683ae95e6f3999645995ddebc4afcc7918a003c8d40",
+    "mintAmount": "100 CATBOX",
+    "burnAmount": "10 CATBOX",
+    "closingSupply": "90 CATBOX",
+    "burnMemoHash": "0x711378df7b1cac4d4588b62c0f9456481ab0913bb626cf57ae87db40ba9be6ba",
     "transferPolicy": "ALWAYS_BLOCK",
     "ledgerHandoff": "testnet_policy_evidence_only"
   },

@@ -69,7 +69,9 @@ export async function createX402ProductionCandidate(options = {}) {
   const b20Policy = config.agentCommerceB20Policy;
   if (!b20Policy || b20Policy.route !== "GET /api/catbox-policy-evidence" ||
     b20Policy.network !== "eip155:84532" || !/^0x[0-9a-f]{40}$/i.test(b20Policy.token ?? "") ||
-    b20Policy.transferPolicy !== "ALWAYS_BLOCK") {
+    !/^0x[0-9a-f]{64}$/i.test(b20Policy.burnTx ?? "") ||
+    !/^0x[0-9a-f]{64}$/i.test(b20Policy.burnMemoHash ?? "") ||
+    b20Policy.closingSupply !== "90 CATBOX" || b20Policy.transferPolicy !== "ALWAYS_BLOCK") {
     throw new Error("Production candidate requires a fail-closed Base Sepolia B20 policy evidence route.");
   }
   const publicEvidenceAnchor = config.publicEvidenceAnchor;
@@ -143,6 +145,8 @@ export async function createX402ProductionCandidate(options = {}) {
         evidenceType: b20Policy.evidenceType,
         proofNetwork: b20Policy.network,
         token: b20Policy.token,
+        burnTx: b20Policy.burnTx,
+        closingSupply: b20Policy.closingSupply,
         transferPolicy: b20Policy.transferPolicy,
         ledgerHandoff: b20Policy.ledgerHandoff
       })
@@ -204,6 +208,8 @@ export async function createX402ProductionCandidate(options = {}) {
           evidenceType: b20Policy.evidenceType,
           proofNetwork: b20Policy.network,
           token: b20Policy.token,
+          burnTx: b20Policy.burnTx,
+          closingSupply: b20Policy.closingSupply,
           transferPolicy: b20Policy.transferPolicy,
           ledgerHandoff: b20Policy.ledgerHandoff
         }
@@ -269,7 +275,11 @@ export async function createX402ProductionCandidate(options = {}) {
       token: b20Policy.token,
       policyCreationTx: b20Policy.policyCreationTx,
       mintTx: b20Policy.mintTx,
-      amount: b20Policy.amount,
+      burnTx: b20Policy.burnTx,
+      mintAmount: b20Policy.mintAmount,
+      burnAmount: b20Policy.burnAmount,
+      closingSupply: b20Policy.closingSupply,
+      burnMemoHash: b20Policy.burnMemoHash,
       transferPolicy: b20Policy.transferPolicy,
       ledgerHandoff: b20Policy.ledgerHandoff,
       boundaries: {
