@@ -7,6 +7,7 @@ import { createFacilitatorConfig } from "@coinbase/x402";
 import { HTTPFacilitatorClient, x402HTTPResourceServer, x402ResourceServer } from "@x402/core/server";
 import { paymentMiddlewareFromHTTPServer } from "@x402/express";
 import { ExactEvmScheme } from "@x402/evm/exact/server";
+import { verifyOfferReceipt, receiptEvidenceEnvelope } from "./x402_offer_receipt_verifier.mjs";
 import {
   PAYMENT_IDENTIFIER,
   declarePaymentIdentifierExtension,
@@ -242,6 +243,10 @@ export async function createX402ProductionCandidate(options = {}) {
       network: config.network,
       paymentRequired: true
     });
+  });
+  app.post("/api/x402-offer-receipt/verify", async (request, response) => {
+    const result = await verifyOfferReceipt(request.body?.receipt);
+    response.status(result.valid ? 200 : 400).json(receiptEvidenceEnvelope(result));
   });
   app.get("/api/base-verify/status", (_request, response) => {
     response.json(baseVerifyPublicStatus(options.environment ?? process.env));
