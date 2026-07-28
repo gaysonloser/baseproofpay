@@ -44,35 +44,7 @@ function requiredResources(policy) {
 }
 
 function getSiweField(message, field) {
-  const match = message.match(new RegExp(`^${field}:\\s*(.+)import fs from "node:fs/promises";
-import http from "node:http";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import express from "express";
-import { createFacilitatorConfig } from "@coinbase/x402";
-import { HTTPFacilitatorClient, x402HTTPResourceServer, x402ResourceServer } from "@x402/core/server";
-import { paymentMiddlewareFromHTTPServer } from "@x402/express";
-import { ExactEvmScheme } from "@x402/evm/exact/server";
-import {
-  PAYMENT_IDENTIFIER,
-  declarePaymentIdentifierExtension,
-  paymentIdentifierResourceServerExtension
-} from "@x402/extensions/payment-identifier";
-import {
-  BUILDER_CODE,
-  builderCodeResourceServerExtension,
-  declareBuilderCodeExtension
-} from "@x402/extensions/builder-code";
-import {
-  bazaarResourceServerExtension,
-  declareDiscoveryExtension
-} from "@x402/extensions/bazaar";
-import {
-  MemoryPaymentIdempotencyStore,
-  createPaymentIdempotencyMiddleware
-} from "./x402_idempotency_guard.mjs";
-
-, "m"));
+  const match = message.match(new RegExp(`^${field}:\\s*(.+)$`, "m"));
   return match?.[1]?.trim() ?? null;
 }
 
