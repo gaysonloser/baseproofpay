@@ -13,6 +13,19 @@ npm run test:static-release
 
 BaseProofPay is a read-only public demo for verifying agent-payment settlement receipts and payer-controlled spending policies on Base.
 
+BaseProofPay is the Treasury/Payment component of **CATVERSE Base Lab Enterprise OS**. The Enterprise OS is the umbrella product; BaseProofPay keeps its component name on the static viewer and x402 runtime.
+
+## Cross-platform Identity
+
+- Canonical umbrella product: `CATVERSE Base Lab Enterprise OS`
+- Base Dashboard short alias: `CATVERSE Base Lab OS`
+- Primary Base Account: `gaysonloser.base.eth` / `0xBa36D092dB2999bb1FaBbaf281AC956A97189C25`
+- Linked execution EOA: `base` / `0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e`
+- Base App ID: `6a5c632cf364895c3c606518`
+- Builder Code: `bc_iscm570t`
+
+The execution EOA is used for eligible Coinbase Wallet actions. It does not replace the Base Account as the Basename, Base App, Base Dashboard, Talent or contract/evidence identity.
+
 ## Public Surface
 
 - `index.html`: static receipt viewer with the completed Base Mainnet technical canary.
