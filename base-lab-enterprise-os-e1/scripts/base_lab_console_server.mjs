@@ -44,6 +44,20 @@ function assertRuntime(env) {
   return {mode,originConfigured:Boolean(origin)};
 }
 
+export function releaseIdentity(env = process.env) {
+  const commit = env.RENDER_GIT_COMMIT || "local-uncommitted";
+  return {
+    service: env.RENDER_SERVICE_NAME || "catverse-base-lab-enterprise-os",
+    repository: env.RENDER_GIT_REPO_SLUG || "gaysonloser/baseproofpay",
+    branch: env.RENDER_GIT_BRANCH || "local",
+    commit,
+    source_state: /^[0-9a-f]{40}$/i.test(commit) ? "render_commit_verified" : "local_or_unavailable",
+    runtime: "read_only_enterprise_evidence_console",
+    company: "AOXPET Base Lab",
+    boundaries: { erp_credentials: false, erp_write: false, wallet_auto_connect: false }
+  };
+}
+
 function sendJson(req, res, status, value, extraHeaders={}) {
   res.writeHead(status,{...securityHeaders,"content-type":"application/json; charset=utf-8","cache-control":"no-store",...extraHeaders});
   res.end(req.method === "HEAD" ? undefined : JSON.stringify(value));
@@ -251,6 +265,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if(window.count>limit) return sendJson(req,res,429,{error:"rate_limited"},{"retry-after":String(Math.max(1,Math.ceil((60000-(now-window.startedAt))/1000)))});
       if (req.method !== "GET" && req.method !== "HEAD") return sendJson(req,res,405,{error:"read_only_runtime"},{allow:"GET, HEAD"});
       if (req.url === "/healthz") return sendJson(req,res,200,{status:"ok",runtime_mode:runtime.mode,origin_configured:runtime.originConfigured,erp_authority:"managed_erp",wallet:false,writes:false,durable_control_plane:false});
+      if (req.url === "/api/v1/release") return sendJson(req,res,200,releaseIdentity(env));
       if (req.url === "/api/v1/evidence") return sendJson(req,res,200,sanitizeEvidence(JSON.parse(await readFile(evidencePath,"utf8"))));
       if (req.url === "/api/v1/ecosystem") return sendJson(req,res,200,sanitizeEcosystem(JSON.parse(await readFile(ecosystemPath,"utf8"))));
       if (req.url === "/api/v1/control-readiness") return sendJson(req,res,200,sanitizeControlReadiness(JSON.parse(await readFile(controlReadinessPath,"utf8"))));

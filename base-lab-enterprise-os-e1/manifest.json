@@ -66,8 +66,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "0d2cc767d3a5bd0d8ff46b9da16ae5f1f4d619058f19e58aee0938922e2213a2",
-      "bytes": 4627
+      "sha256": "2cdb6f0b558ddb94b4a3615eb73a4cbd4d60007998438a15ea31d193335fa586",
+      "bytes": 4691
     },
     {
       "path": "config/base_lab_cloud_runtime_topology.json",
@@ -78,6 +78,11 @@
       "path": "config/base_lab_ecosystem_evidence.json",
       "sha256": "6ecb3478bce99371d359d92fc7e58363efa489e415a450965dec17214a53c420",
       "bytes": 3902
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/agent-commerce-catalog.html",
+      "sha256": "d9cc7891b118a1de2d87b4d1d13d13057a25edfc239ce07248787c7a5b26ed47",
+      "bytes": 5340
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/base-asset-evidence-D8niYjg0.css",
@@ -100,14 +105,19 @@
       "bytes": 2820
     },
     {
+      "path": "dist-base-lab-enterprise-os/assets/baseB20InventoryAgent-B2vFtGho.js",
+      "sha256": "3f4fe5c0ee07356f1f9de76e75fb58926b7ca6633f0efcb92e827ead7457e051",
+      "bytes": 5373
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/baseB20InventoryAgent-Dy54EReU.css",
       "sha256": "fc1834e334a9c26b7a25f852c75c4de97d589e799ca83e3ffc01b5dec3900249",
       "bytes": 5703
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/baseB20InventoryAgent-mQpwQSJG.js",
-      "sha256": "b630ee81f1a954ae0649ac83504765b2187684c6d43eec9da49cc664b532447f",
-      "bytes": 5454
+      "sha256": "51db62538e4687fc8d6d658c15ecbaea840b7527606313ba7722085aa6a53e56",
+      "bytes": 5713
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/baseInventoryRoot-Cg2vNHFa.js",
@@ -151,8 +161,8 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/enterpriseOs-NR_vx1id.js",
-      "sha256": "29eebc38802959df605dc3f668f30cc763260bf5b6cc88fd5b690438f4146089",
-      "bytes": 10440
+      "sha256": "7e3c9892c33dbdd6e5a73beb9c54eef534462730bf10bdd20734d057ed17faa4",
+      "bytes": 10464
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/localBatchGatewayRequest-C3tAqpQf.js",
@@ -211,8 +221,8 @@
     },
     {
       "path": "engineering-proof/config/base_b20_inventory_erp_product_contract.json",
-      "sha256": "3a179fed7d6d08820f81ac6e8876810d43fae8a1dea11d4a29f858d6c16f3dd5",
-      "bytes": 5520
+      "sha256": "7e72db98484cbe256d18019eb073feeae0659ca6bc123ee7841a515c0a0e6c40",
+      "bytes": 5383
     },
     {
       "path": "engineering-proof/config/base_enterprise_agent_asset_operations_claim_matrix.json",
@@ -365,14 +375,19 @@
       "bytes": 13980
     },
     {
+      "path": "outputs/base_x402_catalog_anchor_20260727_latest.json",
+      "sha256": "a67ed3aa1da019cf13433024037eaaf5587a5159c9ce172448b5f5e457eabea0",
+      "bytes": 1146
+    },
+    {
       "path": "outputs/base_xerp_o2c_result_latest.json",
       "sha256": "a6f281d341c0c0573b10b8ea5548e183a2a7bd27a471225288c84c40af7a46bb",
       "bytes": 6125
     },
     {
       "path": "package.json",
-      "sha256": "5426383ada0d7444b05111944e9374f1559b5444e7a6c2a9047a3c8ce4f70b2c",
-      "bytes": 227
+      "sha256": "748b25b1e36907c14651d0d385d337c458633911ba61063626a2e63f93a12557",
+      "bytes": 305
     },
     {
       "path": "render.yaml",
@@ -381,9 +396,14 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "8ab596988287af0a4a4e0b08094e5fbd570fcf0c353ccf36c438db0bae78e439",
-      "bytes": 13916
+      "sha256": "923cd18273e591de23b6801dbc6798151ee7a864a2cba83968e804c344fe8db7",
+      "bytes": 15614
+    },
+    {
+      "path": "scripts/test_base_lab_release_identity.mjs",
+      "sha256": "8e686c0655fa79dba037ed43ea563d8835b5cdbe938102bb1cc479e7783a6333",
+      "bytes": 2182
     }
   ],
-  "package_root": "sha256:c50391019a7e90accdff2bca1501e17522c993ce502869cbcabb29851ca21c16"
+  "package_root": "sha256:04d7e21448e40f85b4084b7bc2e13f0a1298693de42dcbe469ffffd83fc41194"
 }

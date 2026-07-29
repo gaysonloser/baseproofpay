@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node scripts/base_lab_console_server.mjs"
+    "start": "node scripts/base_lab_console_server.mjs",
+    "test:release": "node --test scripts/test_base_lab_release_identity.mjs"
   },
   "engines": {
     "node": ">=22"
