@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "evidence_id": "BASE_LAB_ECOSYSTEM_PROOF_V1",
-  "as_of": "2026-07-24",
-  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "as_of": "2026-07-29",
+  "product": "CATVERSE Base Lab Enterprise OS",
   "rail": "Base",
   "entries": [
     {
@@ -11,7 +11,32 @@
       "status": "verified",
       "value": "App ID 6a5c632cf364895c3c606518",
       "url": "https://base.dev/",
-      "boundary": "The existing App ID and Builder Code were retained; the Enterprise OS Render domain is verified as primary and BaseProofPay remains secondary."
+      "boundary": "Last confirmed configuration uses the short platform alias CATVERSE Base Lab OS. The canonical umbrella product is CATVERSE Base Lab Enterprise OS; BaseProofPay remains its Treasury/Payment component."
+    },
+    {
+      "id": "wallet_alignment",
+      "label": "Base App wallet alignment",
+      "status": "verified_owner_registry",
+      "value": "Primary Base Account gaysonloser.base.eth / 0xBa36D092dB2999bb1FaBbaf281AC956A97189C25; linked execution EOA base / 0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+      "url": "https://www.base.org/name/gaysonloser",
+      "boundary": "The EOA is an execution wallet and does not replace the Base Account as the Basename, Base App, Base Dashboard, Talent or contract/evidence identity."
+    },
+    {
+      "id": "git_render_release",
+      "label": "GitHub and Render release alignment",
+      "status": "verified_before_alignment_release",
+      "value": "main 966e2a347f7ff0aab7f36b31d2d65457ed494e7c serves BaseProofPay static + x402; base-lab-e1-render 24d15b7faec711f2dc3cbecc5bddb86fece9b0ad serves Enterprise OS before this alignment release",
+      "url": "https://github.com/gaysonloser/baseproofpay",
+      "secondary_url": "https://catverse-base-lab-enterprise-os.onrender.com/api/v1/release",
+      "boundary": "BaseProofPay is the component surface on main. The Enterprise OS is the umbrella surface on the isolated Base Lab branch and Render service."
+    },
+    {
+      "id": "base_org_profile",
+      "label": "Base.org public profile",
+      "status": "verified_live_2026_07_29",
+      "value": "Onchain score 47/100; Builder Score 12; 55 transactions; 33 unique active days; 31-day current and longest streak; 4 swaps",
+      "url": "https://www.base.org/name/gaysonloser",
+      "boundary": "The public profile still reports zero bridge, lend/borrow/stake, ENS and contract-deploy categories. No replacement transaction is authorized by a scoring or indexing delay."
     },
     {
       "id": "builder_code",
@@ -42,9 +67,9 @@
       "id": "talent_project",
       "label": "Talent project",
       "status": "indexed_aggregate",
-      "value": "2 transactions / 2 DAU / <0.0001 ETH, activity through yesterday and Updated today on 2026-07-24",
+      "value": "Last confirmed project ec69c95f-9bde-48bb-8ff9-e75df213db4b: CATVERSE Enterprise Finance OS (BaseProofPay), 2 transactions / 2 DAU / <0.0001 ETH",
       "url": "https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b",
-      "boundary": "Talent does not expose the counted hashes; the aggregate cannot prove which transactions were indexed or independent adoption."
+      "boundary": "Talent's 2026-07-29 live refresh was blocked by its browser security checkpoint. The last confirmed aggregate is retained without being promoted to current activity or independent adoption."
     },
     {
       "id": "base_dev_indexing",

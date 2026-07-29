@@ -1,6 +1,16 @@
-# CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab
+# CATVERSE Base Lab Enterprise OS
 
 Base-native enterprise agent and asset operations. The non-payment heroes are Agent Commerce, BaseBatchTwin/BaseInventoryRoot, Manufacturing and Quality Evidence, BaseAssetEvidence, BaseFinancingIntent and BaseCloseProof. BaseProofPay is only the Treasury/Payment component.
+
+## Cross-platform Identity
+
+- Canonical umbrella product: `CATVERSE Base Lab Enterprise OS`
+- Base Dashboard short alias: `CATVERSE Base Lab OS`
+- Treasury/Payment component: `BaseProofPay`
+- Primary Base Account: `gaysonloser.base.eth` / `0xBa36D092dB2999bb1FaBbaf281AC956A97189C25`
+- Linked execution EOA: `base` / `0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e`
+
+The execution EOA does not replace the Base Account as the Basename, Base App, Base Dashboard, Talent or contract/evidence identity.
 
 ## Live Demo
 
@@ -39,6 +49,7 @@ The Render service is isolated from Arc. It shares no runtime, credentials, Comp
 - Base.dev: latest reviewed public snapshot predates the current evidence; no indexing claim is made
 - Base builders: nomination narrative is local and not submitted
 - Independent adoption: still missing; self-controlled canaries and aggregates do not satisfy it
+- Base.org live profile on `2026-07-29`: `47/100` Onchain Score, Builder Score `12`, `55` transactions, `33` unique active days and a `31` day current streak
 
 Official Base guidance confirms Builder Codes are the attribution path used for analytics and discovery surfaces. A valid suffix proves transport; Base.dev indexing remains a separate asynchronous result.
 

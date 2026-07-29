@@ -66,8 +66,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "2cdb6f0b558ddb94b4a3615eb73a4cbd4d60007998438a15ea31d193335fa586",
-      "bytes": 4691
+      "sha256": "7b9d53127b6a9354700395b7090c8d926bc6a6d1debc10eab41d6830ee29540a",
+      "bytes": 5315
     },
     {
       "path": "config/base_lab_cloud_runtime_topology.json",
@@ -76,8 +76,8 @@
     },
     {
       "path": "config/base_lab_ecosystem_evidence.json",
-      "sha256": "6ecb3478bce99371d359d92fc7e58363efa489e415a450965dec17214a53c420",
-      "bytes": 3902
+      "sha256": "e5749b701d833f48906597fd14a8c4402758eb84bd6da779d23818c13ec93146",
+      "bytes": 5772
     },
     {
       "path": "dist-base-lab-enterprise-os/agent-commerce-catalog.html",
@@ -216,8 +216,8 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/enterprise-os.html",
-      "sha256": "a1539b09f26221ce066e5431388dafd896f63f1e98ef4ba9d988e13e635a04ba",
-      "bytes": 1008
+      "sha256": "4581dda7ec9f0f6d959b5f716ceba43df55fc4bd45f9d5437f03a4263b0fdf43",
+      "bytes": 1010
     },
     {
       "path": "engineering-proof/config/base_b20_inventory_erp_product_contract.json",
@@ -256,8 +256,8 @@
     },
     {
       "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
-      "sha256": "6ecb3478bce99371d359d92fc7e58363efa489e415a450965dec17214a53c420",
-      "bytes": 3902
+      "sha256": "e5749b701d833f48906597fd14a8c4402758eb84bd6da779d23818c13ec93146",
+      "bytes": 5772
     },
     {
       "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
@@ -405,5 +405,5 @@
       "bytes": 2182
     }
   ],
-  "package_root": "sha256:04d7e21448e40f85b4084b7bc2e13f0a1298693de42dcbe469ffffd83fc41194"
+  "package_root": "sha256:db936556532743b332c78fdcc72e9c1ea4be13a711b09a9c2b47038ba965130a"
 }
