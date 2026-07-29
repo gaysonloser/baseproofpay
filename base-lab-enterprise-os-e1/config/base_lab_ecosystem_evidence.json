@@ -24,11 +24,11 @@
     {
       "id": "git_render_release",
       "label": "GitHub and Render release alignment",
-      "status": "verified_before_alignment_release",
-      "value": "main 966e2a347f7ff0aab7f36b31d2d65457ed494e7c serves BaseProofPay static + x402; base-lab-e1-render 24d15b7faec711f2dc3cbecc5bddb86fece9b0ad serves Enterprise OS before this alignment release",
+      "status": "verified_by_live_release_endpoints",
+      "value": "BaseProofPay static + x402 track main; Enterprise OS tracks base-lab-e1-render. Each running service exposes its exact immutable commit through its release endpoint.",
       "url": "https://github.com/gaysonloser/baseproofpay",
       "secondary_url": "https://catverse-base-lab-enterprise-os.onrender.com/api/v1/release",
-      "boundary": "BaseProofPay is the component surface on main. The Enterprise OS is the umbrella surface on the isolated Base Lab branch and Render service."
+      "boundary": "BaseProofPay is the component surface on main. The Enterprise OS is the umbrella surface on the isolated Base Lab branch and Render service; release endpoints are authoritative for the currently deployed commit."
     },
     {
       "id": "base_org_profile",

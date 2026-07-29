@@ -76,8 +76,8 @@
     },
     {
       "path": "config/base_lab_ecosystem_evidence.json",
-      "sha256": "e5749b701d833f48906597fd14a8c4402758eb84bd6da779d23818c13ec93146",
-      "bytes": 5772
+      "sha256": "e6029ba67b4fc56ccd3ad09a237eb0ed2e475831f995211c83e2463d02395dc3",
+      "bytes": 5818
     },
     {
       "path": "dist-base-lab-enterprise-os/agent-commerce-catalog.html",
@@ -256,8 +256,8 @@
     },
     {
       "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
-      "sha256": "e5749b701d833f48906597fd14a8c4402758eb84bd6da779d23818c13ec93146",
-      "bytes": 5772
+      "sha256": "e6029ba67b4fc56ccd3ad09a237eb0ed2e475831f995211c83e2463d02395dc3",
+      "bytes": 5818
     },
     {
       "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
@@ -405,5 +405,5 @@
       "bytes": 2182
     }
   ],
-  "package_root": "sha256:db936556532743b332c78fdcc72e9c1ea4be13a711b09a9c2b47038ba965130a"
+  "package_root": "sha256:ed8487bab124dea94a48e5237e1cf517426b95c68c13c58dc7f8cc37a0d3ed44"
 }
