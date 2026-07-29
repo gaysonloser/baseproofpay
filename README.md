@@ -1,5 +1,16 @@
 # BaseProofPay
 
+## Release integrity
+
+Every running surface exposes or generates its exact Render source fingerprint from the official `RENDER_GIT_COMMIT`: static viewer `/release.json`, x402 runtime `/api/release`, and Enterprise OS `/api/v1/release`. Each response identifies the repository, branch and deployed commit without exposing credentials or write capabilities. A deployment is accepted only when that fingerprint equals the intended Git commit; correction-only deployments are not counted as new product updates.
+
+```bash
+npm run test:x402-production
+npm run test:base-verify
+npm run test:x402-offer-receipt
+npm run test:static-release
+```
+
 BaseProofPay is a read-only public demo for verifying agent-payment settlement receipts and payer-controlled spending policies on Base.
 
 ## Public Surface

@@ -126,6 +126,25 @@ test("health endpoint is public and never verifies or settles", async () => {
   assert.equal(facilitator.calls.settle, 0);
 });
 
+test("release endpoint exposes the exact Render source without secrets or write claims", async () => {
+  const response = await fetch(`${baseUrl}/api/release`, {
+    headers: { accept: "application/json" }
+  });
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("access-control-allow-origin"), null);
+  const release = await response.json();
+  assert.equal(release.network, "eip155:8453");
+  assert.equal(release.boundaries.walletAutoConnect, false);
+  assert.equal(release.boundaries.erpWrite, false);
+  assert.equal(release.boundaries.receiptVerification, "read_only");
+  assert.equal(JSON.stringify(release).includes("CDP_API_KEY"), false);
+  assert.equal(facilitator.calls.verify, 0);
+  assert.equal(facilitator.calls.settle, 0);
+});
+
 test("agent commerce resource catalog is public, explicit, and never settles", async () => {
   const response = await fetch(`${baseUrl}/api/agent-commerce-resources`, {
     headers: { accept: "application/json" }

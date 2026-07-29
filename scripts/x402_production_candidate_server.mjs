@@ -29,6 +29,34 @@ import {
 
 const BASE_CHAIN_ID = "8453";
 
+const RELEASE_SECURITY_HEADERS = Object.freeze({
+  "content-security-policy": "default-src 'none'; frame-ancestors 'none'; base-uri 'none'",
+  "cross-origin-opener-policy": "same-origin",
+  "cross-origin-resource-policy": "same-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+  "referrer-policy": "no-referrer",
+  "strict-transport-security": "max-age=31536000; includeSubDomains",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY"
+});
+
+export function releaseIdentity(environment = process.env) {
+  const commit = environment.RENDER_GIT_COMMIT ?? "local-uncommitted";
+  return {
+    service: environment.RENDER_SERVICE_NAME ?? "baseproofpay-x402",
+    repository: environment.RENDER_GIT_REPO_SLUG ?? "gaysonloser/baseproofpay",
+    branch: environment.RENDER_GIT_BRANCH ?? "local",
+    commit,
+    sourceState: /^[0-9a-f]{40}$/i.test(commit) ? "render_commit_verified" : "local_or_unavailable",
+    network: "eip155:8453",
+    boundaries: {
+      walletAutoConnect: false,
+      erpWrite: false,
+      receiptVerification: "read_only"
+    }
+  };
+}
+
 const BASE_VERIFY_OPERATOR_POLICY = Object.freeze({
   provider: "coinbase",
   action: "catverse_operator_review",
@@ -235,6 +263,12 @@ export async function createX402ProductionCandidate(options = {}) {
 
   const app = express();
   app.disable("x-powered-by");
+  app.use((_request, response, next) => {
+    for (const [name, value] of Object.entries(RELEASE_SECURITY_HEADERS)) {
+      response.set(name, value);
+    }
+    next();
+  });
   app.use(express.json({ limit: "8kb", type: "application/json" }));
   app.get("/healthz", (_request, response) => {
     response.json({
@@ -247,6 +281,10 @@ export async function createX402ProductionCandidate(options = {}) {
   app.post("/api/x402-offer-receipt/verify", async (request, response) => {
     const result = await verifyOfferReceipt(request.body?.receipt);
     response.status(result.valid ? 200 : 400).json(receiptEvidenceEnvelope(result));
+  });
+  app.get("/api/release", (_request, response) => {
+    response.set("Cache-Control", "no-store");
+    response.json(releaseIdentity(options.environment ?? process.env));
   });
   app.get("/api/base-verify/status", (_request, response) => {
     response.json(baseVerifyPublicStatus(options.environment ?? process.env));

@@ -7,18 +7,26 @@
     "node": ">=20"
   },
   "scripts": {
+    "build:static-release": "node scripts/build_static_release.mjs",
     "start:x402-production": "node scripts/x402_production_candidate_server.mjs",
     "test:x402-production": "node --test scripts/test_x402_production_candidate.mjs",
+    "test:base-verify": "node --test scripts/test_base_verify_operator_gate.mjs",
+    "test:x402-offer-receipt": "node --test scripts/test_x402_offer_receipt_verifier.mjs",
+    "test:static-release": "node --test scripts/test_static_release.mjs",
+    "audit:x402-offer-receipt-live": "node scripts/audit_live_x402_offer_receipt.mjs",
     "audit:x402-production": "node scripts/audit_x402_production_candidate.mjs",
     "test:x402-builder-attribution": "node scripts/test_x402_builder_attribution.mjs",
     "audit:x402-builder-attribution": "node scripts/audit_x402_builder_attribution.mjs"
   },
   "dependencies": {
     "@coinbase/x402": "2.1.0",
-    "@x402/core": "2.19.0",
-    "@x402/evm": "2.19.0",
-    "@x402/express": "2.19.0",
-    "@x402/extensions": "2.19.0",
+    "@x402/core": "2.20.0",
+    "@x402/evm": "2.20.0",
+    "@x402/express": "2.20.0",
+    "@x402/extensions": "2.20.0",
     "express": "5.2.1"
+  },
+  "overrides": {
+    "axios": "1.18.1"
   }
 }
