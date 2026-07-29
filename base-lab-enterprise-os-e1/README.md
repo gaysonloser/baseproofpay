@@ -45,7 +45,7 @@ The Render service is isolated from Arc. It shares no runtime, credentials, Comp
 - Builder Code / ERC-8021: `bc_iscm570t`
 - Verified contracts: [SpendingPolicyManager](https://base.blockscout.com/address/0x1bBe5B45757D66Fd97A818A62c89FaBD90cdC1d1) and [PaymentReceiptRegistry](https://base.blockscout.com/address/0xD7CE8ecED9CDda01365b2eAD539581Afd981880B)
 - Production x402: [BaseProofPay x402](https://baseproofpay-x402.onrender.com/)
-- Talent: [public project](https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b), with `2 transactions / 2 DAU` observed on `2026-07-21`
+- Talent: [public project](https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b), live as `CATVERSE Base Lab OS` with the Enterprise OS website and Base ecosystem; the public page currently reports no contracts tracked
 - Base.dev: latest reviewed public snapshot predates the current evidence; no indexing claim is made
 - Base builders: nomination narrative is local and not submitted
 - Independent adoption: still missing; self-controlled canaries and aggregates do not satisfy it

@@ -66,8 +66,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "7b9d53127b6a9354700395b7090c8d926bc6a6d1debc10eab41d6830ee29540a",
-      "bytes": 5315
+      "sha256": "1ea57eca4fddf611bce76aab116857b70967b666c1e5d81793f7675339e645fb",
+      "bytes": 5397
     },
     {
       "path": "config/base_lab_cloud_runtime_topology.json",
@@ -76,8 +76,8 @@
     },
     {
       "path": "config/base_lab_ecosystem_evidence.json",
-      "sha256": "e6029ba67b4fc56ccd3ad09a237eb0ed2e475831f995211c83e2463d02395dc3",
-      "bytes": 5818
+      "sha256": "c41b2436dc6281f132de1f268a6ba1e6c912893bad629b3ef1deb35f3777f3f5",
+      "bytes": 5917
     },
     {
       "path": "dist-base-lab-enterprise-os/agent-commerce-catalog.html",
@@ -256,8 +256,8 @@
     },
     {
       "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
-      "sha256": "e6029ba67b4fc56ccd3ad09a237eb0ed2e475831f995211c83e2463d02395dc3",
-      "bytes": 5818
+      "sha256": "c41b2436dc6281f132de1f268a6ba1e6c912893bad629b3ef1deb35f3777f3f5",
+      "bytes": 5917
     },
     {
       "path": "engineering-proof/config/canonical-business-event-envelope.schema.json",
@@ -336,8 +336,8 @@
     },
     {
       "path": "engineering-proof/tests/validate-ecosystem-proof.mjs",
-      "sha256": "d8e9c702d6c26dbe9cb88da5ca317ecf018e16a863d649344145971a9063275e",
-      "bytes": 1850
+      "sha256": "993ff03b59a9dd28e910f2482925d4e2a107aff4be5edf08160c4e27fd214a64",
+      "bytes": 1870
     },
     {
       "path": "engineering-proof/tests/validate-proof.mjs",
@@ -405,5 +405,5 @@
       "bytes": 2182
     }
   ],
-  "package_root": "sha256:ed8487bab124dea94a48e5237e1cf517426b95c68c13c58dc7f8cc37a0d3ed44"
+  "package_root": "sha256:7dbb10fe281d396765b0608d8fe3799e9da1e8ebf19ea5aec9ca55c4e13ff7fe"
 }

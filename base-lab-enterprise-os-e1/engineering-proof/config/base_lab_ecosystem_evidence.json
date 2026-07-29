@@ -66,10 +66,10 @@
     {
       "id": "talent_project",
       "label": "Talent project",
-      "status": "indexed_aggregate",
-      "value": "Last confirmed project ec69c95f-9bde-48bb-8ff9-e75df213db4b: CATVERSE Enterprise Finance OS (BaseProofPay), 2 transactions / 2 DAU / <0.0001 ETH",
+      "status": "verified_public_project_live",
+      "value": "Project ec69c95f-9bde-48bb-8ff9-e75df213db4b: CATVERSE Base Lab OS; Base ecosystem; Enterprise OS Render website; public page currently reports no contracts tracked",
       "url": "https://talent.app/~/projects/ec69c95f-9bde-48bb-8ff9-e75df213db4b",
-      "boundary": "Talent's 2026-07-29 live refresh was blocked by its browser security checkpoint. The last confirmed aggregate is retained without being promoted to current activity or independent adoption."
+      "boundary": "The public project and description are aligned with the Base Dashboard alias and canonical product. Historical 2 transaction / 2 DAU aggregate is not promoted to current activity; the current no-contract display remains an explicit indexing/data-source gap."
     },
     {
       "id": "base_dev_indexing",

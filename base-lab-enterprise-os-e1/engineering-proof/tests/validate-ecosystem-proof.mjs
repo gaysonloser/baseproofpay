@@ -8,7 +8,7 @@ const assert=(value,message)=>{if(!value) throw new Error(message);};
 assert(entries.base_dashboard_app.status==="verified","Base Dashboard App must be verified");
 assert(entries.builder_code.status==="verified","Builder Code must be verified");
 assert(entries.verified_contracts.status==="verified","Base contracts must be verified");
-assert(entries.talent_project.status==="indexed_aggregate","Talent aggregate must not become adoption");
+assert(entries.talent_project.status==="verified_public_project_live","Talent public project must match the live readback");
 assert(entries.base_dev_indexing.status==="pending_refresh","Base.dev must remain pending until read back");
 assert(entries.base_builders.status==="nomination_v5_submitted_membership_unverified","Builders nomination must be submitted while membership remains unverified");
 assert(entries.base_builders.url==="https://x.com/GaysonLoser/status/2080562746739871870","Builders nomination URL must match readback");
