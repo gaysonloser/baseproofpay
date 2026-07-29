@@ -251,8 +251,8 @@
     },
     {
       "path": "engineering-proof/config/base_lab_domain_coverage_matrix.json",
-      "sha256": "1107ede3db53a8684f5573397995bf7fb8e8441ae378c28f8c2b228cfffa962e",
-      "bytes": 7248
+      "sha256": "625b2e562d95fc74fcc2195d396fe06c4cef07dd498c03d8b6923f94c06670ad",
+      "bytes": 7217
     },
     {
       "path": "engineering-proof/config/base_lab_ecosystem_evidence.json",
@@ -366,13 +366,13 @@
     },
     {
       "path": "outputs/base_lab_control_readiness_latest.json",
-      "sha256": "501ed043da919ff1b28bbc6b9b345012a406125981b218914a23e29d41738a32",
-      "bytes": 3134
+      "sha256": "d2c556ddd1cde9c933cc436170fae38584b6df3f688ade8f57d6f9e1bc88d533",
+      "bytes": 3103
     },
     {
       "path": "outputs/base_lab_enterprise_os_latest.json",
-      "sha256": "1f44d3d17203f43b6978c4e282b69df49d856a8232e396886339b140f1e2e7c7",
-      "bytes": 13980
+      "sha256": "29ea940697228052b79eaea1277d5e186921ebd7636611b6e6b72cdb0d1e8bbb",
+      "bytes": 13949
     },
     {
       "path": "outputs/base_x402_catalog_anchor_20260727_latest.json",
@@ -405,5 +405,5 @@
       "bytes": 2182
     }
   ],
-  "package_root": "sha256:7dbb10fe281d396765b0608d8fe3799e9da1e8ebf19ea5aec9ca55c4e13ff7fe"
+  "package_root": "sha256:02a1ecbb86e82f4ab8b1a870d91c22e8020023783e4aa8032568251a37cea403"
 }

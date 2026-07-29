@@ -3,7 +3,7 @@
   "evidence_id": "BASE_LAB_ENTERPRISE_OS_LIVE_V2",
   "generated_at": "2026-07-23T07:38:45.159Z",
   "status": "live_erp_d02_d03_readback_chain_anchor_verified",
-  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "product": "CATVERSE Base Lab Enterprise OS",
   "coverage": {
     "implemented": 13,
     "in_progress": 1,

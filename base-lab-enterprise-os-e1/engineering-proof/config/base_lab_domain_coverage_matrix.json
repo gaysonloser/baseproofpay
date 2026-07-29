@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "contract_id": "BASE_LAB_D01_D14_COVERAGE_V1",
   "owner": "GAYSON/02_Base",
-  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "product": "CATVERSE Base Lab Enterprise OS",
   "allowed_statuses": ["implemented", "in_progress", "blocked_with_packet", "queued"],
   "domains": [
     {"id":"D01","name":"company_configuration_and_master_data","status":"in_progress","operating_document":"Base Lab target manifest","chain_control_or_evidence":"NO_CHAIN release-manifest hash candidate","erp_ledger_or_reconciliation":"Company/config/master isolation crosswalk queued","close_or_report_impact":"C0 configuration prerequisite","next_result":"W1 C0 company and master-data exact live plan"},
