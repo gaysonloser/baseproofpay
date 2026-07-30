@@ -27,7 +27,7 @@
       <footer id="release">Release identity unavailable.</footer>
     </main>
     <script>
-      const laneLabels = { o2c: "O2C evidence", inventory: "InventoryRoot", asset: "AssetEvidence", agent_commerce: "Agent commerce", base_account: "Base Account lifecycle" };
+      const laneLabels = { o2c: "O2C evidence", inventory: "InventoryRoot", asset: "AssetEvidence", agent_commerce: "Agent commerce", base_account: "Base Account lifecycle", b20_inventory: "CATBOX B20 lifecycle" };
       const fingerprint = (lane) => lane?.result_fingerprint_sha256 || lane?.evidence_fingerprint_sha256 || lane?.evidence_root || lane?.transaction_hash || "No immutable fingerprint";
       fetch("/api/v1/review-pack", { credentials: "omit" })
         .then((response) => response.ok ? response.json() : Promise.reject(new Error("Evidence unavailable")))
