@@ -8,7 +8,7 @@ const config = JSON.parse(await fs.readFile(
 ));
 const evidence = buildX402BuilderAttributionEvidence(config);
 
-assert.equal(config.version, 2);
+assert.equal(config.version, 3);
 assert.equal(config.builderCode, "bc_iscm570t");
 assert.equal(evidence.declared.info.a, "bc_iscm570t");
 assert.equal(evidence.paymentPayload.extensions["builder-code"].info.a, "bc_iscm570t");

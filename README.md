@@ -26,6 +26,10 @@ BaseProofPay is the Treasury/Payment component of **CATVERSE Base Lab Enterprise
 
 The execution EOA is used for eligible Coinbase Wallet actions. It does not replace the Base Account as the Basename, Base App, Base Dashboard, Talent or contract/evidence identity.
 
+## Cloud-first development
+
+Builds and tests run in ephemeral GitHub-hosted runners through [BaseProofPay Cloud CI](.github/workflows/cloud-ci.yml). Render owns the public runtime, Frappe Cloud owns ERPNext records, and the local Mac is reserved for source editing and final wallet review. See [Cloud Development Runtime](docs/cloud-development-runtime.md).
+
 ## Public Surface
 
 - `index.html`: static receipt viewer with the completed Base Mainnet technical canary.

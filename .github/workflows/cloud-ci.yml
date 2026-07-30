@@ -1,0 +1,78 @@
+name: BaseProofPay Cloud CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - base-lab-e1-render
+  push:
+    branches:
+      - main
+      - base-lab-e1-render
+
+permissions:
+  contents: read
+
+concurrency:
+  group: baseproofpay-cloud-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: "true"
+      BASE_LAB_ALLOW_ERP_WRITE: "false"
+    steps:
+      - name: Check out exact source
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Build static release when present
+        shell: bash
+        run: |
+          if npm pkg get scripts.build:static-release | grep -qv null; then
+            npm run build:static-release
+          fi
+
+      - name: Run every declared test script
+        shell: bash
+        run: |
+          node -e "const p=require('./package.json'); for (const name of Object.keys(p.scripts || {}).filter((name) => name.startsWith('test:')).sort()) console.log(name)" > "$RUNNER_TEMP/test-scripts.txt"
+          while IFS= read -r script; do
+            [ -n "$script" ] && npm run "$script"
+          done < "$RUNNER_TEMP/test-scripts.txt"
+
+      - name: Validate Enterprise OS evidence when present
+        shell: bash
+        run: |
+          if [ -d base-lab-enterprise-os-e1/engineering-proof/tests ]; then
+            find base-lab-enterprise-os-e1/engineering-proof/tests -type f -name '*.mjs' -print0 \
+              | sort -z \
+              | while IFS= read -r -d '' test_file; do node "$test_file"; done
+          fi
+          if [ -f base-lab-enterprise-os-e1/scripts/test_base_lab_release_identity.mjs ]; then
+            node base-lab-enterprise-os-e1/scripts/test_base_lab_release_identity.mjs
+          fi
+
+      - name: Upload deterministic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseproofpay-${{ github.sha }}
+          if-no-files-found: ignore
+          retention-days: 7
+          path: |
+            release.json
+            outputs/**/*latest.json
+            base-lab-enterprise-os-e1/outputs/**/*latest.json
