@@ -246,7 +246,7 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/base-subaccount-agent-anchor.html",
-      "sha256": "d5113e4425ba7e06ff8a03404e9513c316533cfa861828a217b4025332e75fd3",
+      "sha256": "29e76d8e5a098781a44897af82ba4c0cc7c5432d5de092269bf2b2eeff915706",
       "bytes": 1443
     },
     {
@@ -445,5 +445,5 @@
       "bytes": 2828
     }
   ],
-  "package_root": "sha256:433f64b4b3c6ae47d045e8839e87a63830aaedf64da3c2a5e9eb082441ed9795"
+  "package_root": "sha256:ccb8d14c28cbe992dd63769d7efe7b3c8a594fd73d2ceeb08803a5b437d300aa"
 }
