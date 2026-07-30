@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CATVERSE Review Pack</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #08111f; color: #edf4ff; }
+      body { margin: 0; min-width: 320px; background: #08111f; }
+      main { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+      h1 { font-size: clamp(30px, 5vw, 48px); margin: 0 0 12px; letter-spacing: 0; }
+      p { color: #aec0dc; line-height: 1.6; }
+      .status { display: inline-block; padding: 6px 10px; border: 1px solid #2d69cf; border-radius: 4px; color: #9bc4ff; font-weight: 700; }
+      .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 28px; }
+      article { border: 1px solid #203452; background: #0d1a2d; border-radius: 8px; padding: 18px; }
+      h2 { margin: 0 0 8px; font-size: 17px; }
+      code { display: block; overflow-wrap: anywhere; color: #c8dcff; font-size: 12px; }
+      footer { margin-top: 30px; color: #8093b1; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="status" id="status">Loading read-only evidence</p>
+      <h1>CATVERSE Review Pack</h1>
+      <p>One reviewer surface for Base receipt-backed business evidence. This console cannot connect a wallet, sign, write to Base, or write to ERP.</p>
+      <section class="grid" id="lanes"></section>
+      <footer id="release">Release identity unavailable.</footer>
+    </main>
+    <script>
+      const laneLabels = { o2c: "O2C evidence", inventory: "InventoryRoot", asset: "AssetEvidence", agent_commerce: "Agent commerce", base_account: "Base Account lifecycle" };
+      const fingerprint = (lane) => lane?.result_fingerprint_sha256 || lane?.evidence_fingerprint_sha256 || lane?.evidence_root || lane?.transaction_hash || "No immutable fingerprint";
+      fetch("/api/v1/review-pack", { credentials: "omit" })
+        .then((response) => response.ok ? response.json() : Promise.reject(new Error("Evidence unavailable")))
+        .then((pack) => {
+          document.querySelector("#status").textContent = pack.review_status.replaceAll("_", " ");
+          document.querySelector("#lanes").replaceChildren(...Object.entries(pack.lanes).map(([id, lane]) => {
+            const card = document.createElement("article");
+            const title = document.createElement("h2");
+            const state = document.createElement("p");
+            const proof = document.createElement("code");
+            title.textContent = laneLabels[id];
+            state.textContent = lane?.status || lane?.classification || "read-only evidence";
+            proof.textContent = fingerprint(lane);
+            card.append(title, state, proof);
+            return card;
+          }));
+          document.querySelector("#release").textContent = `${pack.release.repository}@${pack.release.commit} | GET/HEAD only`;
+        })
+        .catch((error) => { document.querySelector("#status").textContent = error.message; });
+    </script>
+  </body>
+</html>

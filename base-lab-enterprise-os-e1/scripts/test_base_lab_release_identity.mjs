@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
-import { createBaseLabConsoleServer, releaseIdentity } from "./base_lab_console_server.mjs";
+import { buildReviewPack, createBaseLabConsoleServer, releaseIdentity } from "./base_lab_console_server.mjs";
 
 let server;
 let baseUrl;
@@ -66,4 +66,14 @@ test("Base Account lifecycle evidence is sanitized and locked", async () => {
   assert.equal(evidence.lifecycle.reviewed_anchor.replay_policy, "forbidden");
   assert.equal(evidence.controls.wallet_auto_retry, false);
   assert.equal(evidence.controls.erp_write, false);
+});
+
+test("review pack combines Base lanes without adding a write surface", () => {
+  const lane = {schema_id:"e",status:"verified",result_fingerprint_sha256:"0xproof"};
+  const catalog = {schema_version:"1",result_unit_id:"catalog",status:"verified",network:"base",chain_id:8453,transaction_hash:"0xtx",block_number:1,registry:"0xregistry",business_event_id:"event",evidence_id:"evidence",evidence_root:"0xroot",parent_inventory_root:"0xparent",release_commit:"abc",builder_code:"bc",verification:{},boundaries:{}};
+  const lifecycle = {schema_version:"1",evidence_id:"lifecycle",generated_at:"now",product:"CATVERSE",status:"locked",parent_account:"0xparent",application_account:"0xchild",network:"base",lifecycle:{},controls:{},operator_next_step:"manual",evidence_fingerprint_sha256:"0xlifecycle"};
+  const pack = buildReviewPack({xerp01:lane,inventory:lane,asset:lane,catalog,lifecycle,release:{commit:"abc"}});
+  assert.equal(pack.review_status,"ready_for_read_only_review");
+  assert.deepEqual(pack.scope,{wallet_connect:false,wallet_signing:false,chain_write:false,erp_write:false});
+  assert.equal(pack.lanes.base_account.status,"locked");
 });
