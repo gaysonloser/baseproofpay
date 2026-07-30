@@ -85,14 +85,14 @@
       "bytes": 5738
     },
     {
-      "path": "dist-base-lab-enterprise-os/assets/base-agent-subaccount-console-BXYPxO4h.js",
-      "sha256": "e5037e01e203ca0d287308eaebadfe501d05f28849565c71b880d5a8a43372b1",
-      "bytes": 609483
-    },
-    {
       "path": "dist-base-lab-enterprise-os/assets/base-agent-subaccount-console-CGvIk-ce.css",
       "sha256": "d28799491c3ab5bc567414d3662c92aa34b3d5d3dd9d62186d7780ddc0e427bc",
       "bytes": 2900
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/base-agent-subaccount-console-DHWgjUuM.js",
+      "sha256": "18544670960b487d5b9434e4cbdc59c4decd5955cfc5d299d74c177384331000",
+      "bytes": 609555
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/base-asset-evidence-D8niYjg0.css",
@@ -206,7 +206,7 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/base-agent-subaccount-console.html",
-      "sha256": "0ba003fcafe23dd43c7784ce6670f3d5fd6b2ba8491015fdba0bf87a4ecac863",
+      "sha256": "479b3040893ad1fefba5a5c280416297a9e5e9dc659572846472cc3cfd7ae798",
       "bytes": 2071
     },
     {
@@ -425,5 +425,5 @@
       "bytes": 2828
     }
   ],
-  "package_root": "sha256:cd3ade529675cf08833f0ada7ad26d4343a63301d2a13d0fb465446afe39d8c9"
+  "package_root": "sha256:7147020bc4cd3ceb37a3055593278d507aa909a45adeeb841ab582002c3881f4"
 }
