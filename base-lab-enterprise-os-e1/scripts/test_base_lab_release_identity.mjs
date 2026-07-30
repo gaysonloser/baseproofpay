@@ -77,3 +77,14 @@ test("review pack combines Base lanes without adding a write surface", () => {
   assert.deepEqual(pack.scope,{wallet_connect:false,wallet_signing:false,chain_write:false,erp_write:false});
   assert.equal(pack.lanes.base_account.status,"locked");
 });
+
+test("review pack serves each lane and denies writes", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/review-pack`);
+  assert.equal(response.status, 200);
+  const pack = await response.json();
+  assert.equal(pack.review_status, "ready_for_read_only_review");
+  assert.equal(pack.scope.chain_write, false);
+  assert.equal(pack.lanes.o2c.result_unit_id, "BASE-XERP-01");
+  const write = await fetch(`${baseUrl}/api/v1/review-pack`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
