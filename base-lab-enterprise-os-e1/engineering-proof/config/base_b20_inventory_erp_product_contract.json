@@ -38,7 +38,7 @@
   },
   "role_policy": {
     "freeze_contract": "config/base_b20_catbox_role_policy_freeze_v1.json",
-    "sepolia_controller": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+    "sepolia_controller": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
     "default_admin": "sepolia_single_controller_only_mainnet_requires_multisig_or_role_separation",
     "mint_role": "sepolia_controller_granted",
     "burn_role": "sepolia_controller_granted",
