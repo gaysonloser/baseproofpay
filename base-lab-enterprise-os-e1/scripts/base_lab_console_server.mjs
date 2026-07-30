@@ -287,9 +287,10 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       await stat(filePath);
       const body=await readFile(filePath);
       const headers = [
-        "/base-app-interaction-lab.html",
-        "/base-agent-subaccount-console.html"
-      ].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
+  "/base-app-interaction-lab.html",
+  "/base-agent-subaccount-console.html",
+  "/base-subaccount-agent-anchor.html"
+].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
       res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
       if (req.method === "HEAD") return res.end();
       res.end(body);

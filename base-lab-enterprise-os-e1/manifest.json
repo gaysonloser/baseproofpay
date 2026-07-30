@@ -100,6 +100,16 @@
       "bytes": 2283
     },
     {
+      "path": "dist-base-lab-enterprise-os/assets/base-subaccount-agent-anchor-CGvIk-ce.css",
+      "sha256": "d28799491c3ab5bc567414d3662c92aa34b3d5d3dd9d62186d7780ddc0e427bc",
+      "bytes": 2900
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/base-subaccount-agent-anchor-DT-8uqby.js",
+      "sha256": "028c73824df0eb2733052bfb354c2fe01bd1589edec0d3a09b10d53854095ac9",
+      "bytes": 612975
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/baseAppInteractionLab-CG91EQdq.css",
       "sha256": "0378ae6175b7d947371cf10fc1542b53e546be6cec03696b800610960c8af26e",
       "bytes": 4235
@@ -165,6 +175,11 @@
       "bytes": 2854
     },
     {
+      "path": "dist-base-lab-enterprise-os/assets/ccip-BN0NJHzw.js",
+      "sha256": "43bb6ab86bad4d12edc321724a7a2a30e2e2fc5c35271684f86144b0584ae3ef",
+      "bytes": 2853
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/ccip-DoXPHqbw.js",
       "sha256": "251d15e40978e52f523495773233a1a1fa01d1dde04dbd91b4a14ae53383966f",
       "bytes": 2863
@@ -228,6 +243,11 @@
       "path": "dist-base-lab-enterprise-os/base-inventory-root.html",
       "sha256": "8f4247ff3e208f5aec726cb7467b2fab57ddb856764bd1480f72a001d4726a05",
       "bytes": 693
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-subaccount-agent-anchor.html",
+      "sha256": "d5113e4425ba7e06ff8a03404e9513c316533cfa861828a217b4025332e75fd3",
+      "bytes": 1443
     },
     {
       "path": "dist-base-lab-enterprise-os/base-xerp-o2c.html",
@@ -416,8 +436,8 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "228d0dea86160d8399fc64afbb74a1c36833cddb6716191094fbc9b3bb1123ab",
-      "bytes": 15685
+      "sha256": "f52d691af0cc3312b529768c37c588baa7c5d43805710610a26fd5a224d89736",
+      "bytes": 15707
     },
     {
       "path": "scripts/test_base_lab_release_identity.mjs",
@@ -425,5 +445,5 @@
       "bytes": 2828
     }
   ],
-  "package_root": "sha256:d9cf5996405a781546b01a3f4515c4a12f5177217989338138c00f09111d5aee"
+  "package_root": "sha256:433f64b4b3c6ae47d045e8839e87a63830aaedf64da3c2a5e9eb082441ed9795"
 }
