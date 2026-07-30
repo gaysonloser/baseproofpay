@@ -55,3 +55,14 @@ test("release endpoint is read-only and carries security headers", async () => {
   assert.equal(write.status, 405);
   assert.equal((await write.json()).error, "read_only_runtime");
 });
+
+test("Base Account console keeps popup access without widening the rest of the site", async () => {
+  const walletConsole = await fetch(`${baseUrl}/base-agent-subaccount-console.html`);
+  assert.equal(walletConsole.status, 200);
+  assert.equal(walletConsole.headers.get("cross-origin-opener-policy"), "same-origin-allow-popups");
+  assert.match(walletConsole.headers.get("content-security-policy"), /https:\/\/keys\.coinbase\.com/);
+
+  const ordinaryConsole = await fetch(`${baseUrl}/enterprise-os.html`);
+  assert.equal(ordinaryConsole.status, 200);
+  assert.equal(ordinaryConsole.headers.get("cross-origin-opener-policy"), "same-origin");
+});

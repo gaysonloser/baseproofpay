@@ -416,14 +416,14 @@
     },
     {
       "path": "scripts/base_lab_console_server.mjs",
-      "sha256": "923cd18273e591de23b6801dbc6798151ee7a864a2cba83968e804c344fe8db7",
-      "bytes": 15614
+      "sha256": "228d0dea86160d8399fc64afbb74a1c36833cddb6716191094fbc9b3bb1123ab",
+      "bytes": 15685
     },
     {
       "path": "scripts/test_base_lab_release_identity.mjs",
-      "sha256": "8e686c0655fa79dba037ed43ea563d8835b5cdbe938102bb1cc479e7783a6333",
-      "bytes": 2182
+      "sha256": "50578eec8ffa8ee353c34cb9478e00ca3c65751388252a2b7f9cc8e10db98849",
+      "bytes": 2828
     }
   ],
-  "package_root": "sha256:8a8d6f1b9189dae520205ef2d15d5f818405cf3b53dc953e5a98535a1d9dd430"
+  "package_root": "sha256:cd3ade529675cf08833f0ada7ad26d4343a63301d2a13d0fb465446afe39d8c9"
 }

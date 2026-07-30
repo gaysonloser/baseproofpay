@@ -286,7 +286,10 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (!filePath.startsWith(staticRoot)) return sendJson(req,res,403,{error:"invalid_path"});
       await stat(filePath);
       const body=await readFile(filePath);
-      const headers = rawPath === "/base-app-interaction-lab.html" ? interactionSecurityHeaders : securityHeaders;
+      const headers = [
+        "/base-app-interaction-lab.html",
+        "/base-agent-subaccount-console.html"
+      ].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
       res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
       if (req.method === "HEAD") return res.end();
       res.end(body);
