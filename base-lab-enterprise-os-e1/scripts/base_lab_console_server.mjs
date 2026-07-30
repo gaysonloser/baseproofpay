@@ -16,6 +16,7 @@ const baseXerpO2cPath = join(projectRoot, "outputs/base_xerp_o2c_result_latest.j
 const baseAppInteractionLabPath = join(projectRoot, "outputs/base_app_interaction_lab_latest.json");
 const baseB20InventoryAgentPath = join(projectRoot, "outputs/base_b20_inventory_agentic_candidate_latest.json");
 const baseX402CatalogAnchorPath = join(projectRoot, "outputs/base_x402_catalog_anchor_20260727_latest.json");
+const baseAccountLifecycleRecoveryPath = join(projectRoot, "outputs/base_account_lifecycle_recovery_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -250,6 +251,23 @@ export function sanitizeBaseX402CatalogAnchor(anchor) {
   };
 }
 
+export function sanitizeBaseAccountLifecycleRecovery(evidence) {
+  return {
+    schema_version: evidence.schema_version,
+    evidence_id: evidence.evidence_id,
+    generated_at: evidence.generated_at,
+    product: evidence.product,
+    status: evidence.status,
+    parent_account: evidence.parent_account,
+    application_account: evidence.application_account,
+    network: evidence.network,
+    lifecycle: evidence.lifecycle,
+    controls: evidence.controls,
+    operator_next_step: evidence.operator_next_step,
+    evidence_fingerprint_sha256: evidence.evidence_fingerprint_sha256
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -276,6 +294,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/interaction-lab") return sendJson(req,res,200,sanitizeBaseAppInteractionLab(JSON.parse(await readFile(baseAppInteractionLabPath,"utf8"))));
       if (req.url === "/api/v1/b20-inventory-agent") return sendJson(req,res,200,sanitizeBaseB20InventoryAgent(JSON.parse(await readFile(baseB20InventoryAgentPath,"utf8"))));
       if (req.url === "/api/v1/x402-catalog-anchor") return sendJson(req,res,200,sanitizeBaseX402CatalogAnchor(JSON.parse(await readFile(baseX402CatalogAnchorPath,"utf8"))));
+      if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));
@@ -287,10 +306,10 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       await stat(filePath);
       const body=await readFile(filePath);
       const headers = [
-  "/base-app-interaction-lab.html",
-  "/base-agent-subaccount-console.html",
-  "/base-subaccount-agent-anchor.html"
-].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
+        "/base-app-interaction-lab.html",
+        "/base-agent-subaccount-console.html",
+        "/base-subaccount-agent-anchor.html"
+      ].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
       res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
       if (req.method === "HEAD") return res.end();
       res.end(body);

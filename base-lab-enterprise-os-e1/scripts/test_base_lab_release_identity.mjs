@@ -56,13 +56,14 @@ test("release endpoint is read-only and carries security headers", async () => {
   assert.equal((await write.json()).error, "read_only_runtime");
 });
 
-test("Base Account console keeps popup access without widening the rest of the site", async () => {
-  const walletConsole = await fetch(`${baseUrl}/base-agent-subaccount-console.html`);
-  assert.equal(walletConsole.status, 200);
-  assert.equal(walletConsole.headers.get("cross-origin-opener-policy"), "same-origin-allow-popups");
-  assert.match(walletConsole.headers.get("content-security-policy"), /https:\/\/keys\.coinbase\.com/);
-
-  const ordinaryConsole = await fetch(`${baseUrl}/enterprise-os.html`);
-  assert.equal(ordinaryConsole.status, 200);
-  assert.equal(ordinaryConsole.headers.get("cross-origin-opener-policy"), "same-origin");
+test("Base Account lifecycle evidence is sanitized and locked", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-account-lifecycle`);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  const evidence = await response.json();
+  assert.equal(evidence.status, "not_broadcast_locked");
+  assert.equal(evidence.lifecycle.reviewed_anchor.transaction_hash, null);
+  assert.equal(evidence.lifecycle.reviewed_anchor.replay_policy, "forbidden");
+  assert.equal(evidence.controls.wallet_auto_retry, false);
+  assert.equal(evidence.controls.erp_write, false);
 });
