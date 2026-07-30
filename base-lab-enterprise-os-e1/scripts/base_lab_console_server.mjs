@@ -268,8 +268,8 @@ export function sanitizeBaseAccountLifecycleRecovery(evidence) {
   };
 }
 
-export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, release}) {
-  const sources = [xerp01, inventory, asset, catalog, lifecycle];
+export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, release}) {
+  const sources = [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent];
   const missing = sources.filter((value) => !value).length;
   return {
     review_pack_id: "CATVERSE_BASE_REVIEW_PACK_V1",
@@ -286,7 +286,8 @@ export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, r
       inventory: sanitizeBaseAssetEvidence(inventory),
       asset: sanitizeBaseAssetEvidence(asset),
       agent_commerce: sanitizeBaseX402CatalogAnchor(catalog),
-      base_account: sanitizeBaseAccountLifecycleRecovery(lifecycle)
+      base_account: sanitizeBaseAccountLifecycleRecovery(lifecycle),
+      b20_inventory: sanitizeBaseB20InventoryAgent(b20InventoryAgent)
     },
     reviewer_controls: {
       immutable_fingerprints: true,
@@ -325,12 +326,13 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/x402-catalog-anchor") return sendJson(req,res,200,sanitizeBaseX402CatalogAnchor(JSON.parse(await readFile(baseX402CatalogAnchorPath,"utf8"))));
       if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
       if (req.url === "/api/v1/review-pack") {
-        const [xerp01, inventory, asset, catalog, lifecycle] = await Promise.all([
+        const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([
           readFile(baseXerp01Path,"utf8"),
           readFile(baseInventoryRootPath,"utf8"),
           readFile(baseAssetEvidencePath,"utf8"),
           readFile(baseX402CatalogAnchorPath,"utf8"),
-          readFile(baseAccountLifecycleRecoveryPath,"utf8")
+          readFile(baseAccountLifecycleRecoveryPath,"utf8"),
+          readFile(baseB20InventoryAgentPath,"utf8")
         ]);
         return sendJson(req,res,200,buildReviewPack({
           xerp01: JSON.parse(xerp01),
@@ -338,6 +340,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
           asset: JSON.parse(asset),
           catalog: JSON.parse(catalog),
           lifecycle: JSON.parse(lifecycle),
+          b20InventoryAgent: JSON.parse(b20InventoryAgent),
           release: releaseIdentity(env)
         }));
       }
