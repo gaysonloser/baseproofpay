@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CATVERSE Base Agent Sub Account</title>
+    <script type="module" crossorigin src="/assets/base-agent-subaccount-console-BXYPxO4h.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/base-agent-subaccount-console-CGvIk-ce.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">CATVERSE BASE LAB</p>
+        <h1>Agent sub-account console</h1>
+        <p class="status">Manual funding only. No spend permission.</p>
+      </header>
+      <section class="facts" aria-label="Sub-account scope">
+        <dl>
+          <div><dt>Network</dt><dd>Base Mainnet (8453)</dd></div>
+          <div><dt>Parent account</dt><dd id="parent-account">0xBa36...9C25</dd></div>
+          <div><dt>Scope</dt><dd>Inventory and receipt evidence reading</dd></div>
+          <div><dt>Funding mode</dt><dd>Manual</dd></div>
+          <div><dt>Spend permission</dt><dd>Not requested</dd></div>
+          <div><dt>Chain action</dt><dd>None until a separately reviewed operation</dd></div>
+        </dl>
+      </section>
+      <section class="actions" aria-label="Sub-account controls">
+        <div class="step"><span>1</span><button id="connect" type="button">Connect Base Account</button><output id="connected-account">Not connected</output></div>
+        <div class="step"><span>2</span><button id="inspect" type="button" disabled>Check this app's sub-account</button><output id="subaccount-status">Waiting</output></div>
+        <div class="step"><span>3</span><button id="create" type="button" disabled>Create manual agent sub-account</button><output id="created-subaccount">No account created</output></div>
+      </section>
+      <section class="log" aria-label="Execution log">
+        <div class="log-heading"><h2>Execution log</h2><a href="/enterprise-os.html">Enterprise OS</a></div>
+        <pre id="log">No wallet request has been made.</pre>
+      </section>
+    </main>
+  </body>
+</html>

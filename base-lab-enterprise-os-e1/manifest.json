@@ -81,8 +81,18 @@
     },
     {
       "path": "dist-base-lab-enterprise-os/agent-commerce-catalog.html",
-      "sha256": "d9cc7891b118a1de2d87b4d1d13d13057a25edfc239ce07248787c7a5b26ed47",
-      "bytes": 5340
+      "sha256": "5e43eae2f61c6bf8c1c2812ea9b08aab237c3befb9198b5b610fb5bdd501b2dc",
+      "bytes": 5738
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/base-agent-subaccount-console-BXYPxO4h.js",
+      "sha256": "e5037e01e203ca0d287308eaebadfe501d05f28849565c71b880d5a8a43372b1",
+      "bytes": 609483
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/assets/base-agent-subaccount-console-CGvIk-ce.css",
+      "sha256": "d28799491c3ab5bc567414d3662c92aa34b3d5d3dd9d62186d7780ddc0e427bc",
+      "bytes": 2900
     },
     {
       "path": "dist-base-lab-enterprise-os/assets/base-asset-evidence-D8niYjg0.css",
@@ -150,6 +160,11 @@
       "bytes": 1056860
     },
     {
+      "path": "dist-base-lab-enterprise-os/assets/ccip-B90V0D0p.js",
+      "sha256": "0c8581b3f6046f6aa1de7cdbfafdd1674349a386c5504248efeb5ff5143a4f6a",
+      "bytes": 2854
+    },
+    {
       "path": "dist-base-lab-enterprise-os/assets/ccip-DoXPHqbw.js",
       "sha256": "251d15e40978e52f523495773233a1a1fa01d1dde04dbd91b4a14ae53383966f",
       "bytes": 2863
@@ -188,6 +203,11 @@
       "path": "dist-base-lab-enterprise-os/assets/utils-De7E53Fk.js",
       "sha256": "6a357355c6ce095d695ee399955d28610a2db4dd51e440f76b7c387e55db3a60",
       "bytes": 4083
+    },
+    {
+      "path": "dist-base-lab-enterprise-os/base-agent-subaccount-console.html",
+      "sha256": "0ba003fcafe23dd43c7784ce6670f3d5fd6b2ba8491015fdba0bf87a4ecac863",
+      "bytes": 2071
     },
     {
       "path": "dist-base-lab-enterprise-os/base-app-interaction-lab.html",
@@ -405,5 +425,5 @@
       "bytes": 2182
     }
   ],
-  "package_root": "sha256:02a1ecbb86e82f4ab8b1a870d91c22e8020023783e4aa8032568251a37cea403"
+  "package_root": "sha256:8a8d6f1b9189dae520205ef2d15d5f818405cf3b53dc953e5a98535a1d9dd430"
 }
