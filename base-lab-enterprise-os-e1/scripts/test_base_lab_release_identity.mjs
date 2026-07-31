@@ -68,10 +68,13 @@ test("Smart Wallet review surface permits only the required Base connections", a
 });
 
 test("Smart Wallet review release binds the existing app account before a call", async () => {
-  const [planText, source] = await Promise.all([
+  const [planText, page] = await Promise.all([
     readFile(new URL("../dist-base-lab-enterprise-os/base-smart-wallet-review-surface-plan.json", import.meta.url), "utf8"),
-    readFile(new URL("../dist-base-lab-enterprise-os/assets/base-smart-wallet-review-surface-pr83xb2J.js", import.meta.url), "utf8")
+    readFile(new URL("../dist-base-lab-enterprise-os/base-smart-wallet-review-surface.html", import.meta.url), "utf8")
   ]);
+  const entry = page.match(/src="\/assets\/(base-smart-wallet-review-surface-[^"]+\.js)"/);
+  assert.ok(entry, "review surface must reference its generated JavaScript entry asset");
+  const source = await readFile(new URL(`../dist-base-lab-enterprise-os/assets/${entry[1]}`, import.meta.url), "utf8");
   const plan = JSON.parse(planText);
   assert.equal(plan.plan_id, "CATVERSE_SMART_WALLET_SESSION_BINDING_20260731_V2");
   assert.equal(plan.record.value_wei, "0");
