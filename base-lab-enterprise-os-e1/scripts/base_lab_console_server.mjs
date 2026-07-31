@@ -37,7 +37,7 @@ const securityHeaders = {
 };
 const interactionSecurityHeaders = {
   ...securityHeaders,
-  "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://baseproofpay.onrender.com; connect-src 'self' https://mainnet.base.org https://rpc.wallet.coinbase.com https://as.coinbase.com https://cca-lite.coinbase.com; frame-src https://keys.coinbase.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
+  "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://baseproofpay.onrender.com; connect-src 'self' https://mainnet.base.org https://rpc.wallet.coinbase.com https://chain-proxy.wallet.coinbase.com https://as.coinbase.com https://cca-lite.coinbase.com; frame-src https://keys.coinbase.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
   "cross-origin-opener-policy":"same-origin-allow-popups"
 };
 
