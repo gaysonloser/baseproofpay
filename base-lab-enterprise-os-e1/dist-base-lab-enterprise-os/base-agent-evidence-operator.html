@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CATVERSE Agent Evidence Operator</title>
-    <script type="module" crossorigin src="/assets/base-agent-evidence-operator-CixbfEjP.js"></script>
+    <script type="module" crossorigin src="/assets/base-agent-evidence-operator-rDe3Mv75.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/utils-De7E53Fk.js">
     <link rel="modulepreload" crossorigin href="/assets/localBatchGatewayRequest-C3tAqpQf.js">
     <link rel="modulepreload" crossorigin href="/assets/secp256k1-Dozl9sDg.js">
@@ -34,6 +34,19 @@
         <div class="step"><span>4</span><button id="fund" type="button" disabled>Review manual operating funding</button><output>0.00001 ETH to app account</output></div>
         <div class="step"><span>5</span><button id="record" type="button" disabled>Review inventory evidence record</button><output>0 ETH value · One immutable record</output></div>
         <div class="step"><span>6</span><button id="status" type="button" disabled>Read submitted call status</button><output>Read-only · never replays a call</output></div>
+      </section>
+      <section id="review-packet" class="facts" aria-label="Record review packet" hidden>
+        <h2>Inventory evidence review packet</h2>
+        <dl>
+          <div><dt>Base Account signer</dt><dd id="review-parent">Not connected</dd></div>
+          <div><dt>Application execution account</dt><dd id="review-child">Not resolved</dd></div>
+          <div><dt>Target</dt><dd id="review-target">Not resolved</dd></div>
+          <div><dt>Action</dt><dd>Record one immutable inventory evidence root</dd></div>
+          <div><dt>ETH value</dt><dd>0 ETH</dd></div>
+          <div><dt>Calldata hash</dt><dd id="review-calldata">Not resolved</dd></div>
+          <div><dt>Fee ceiling</dt><dd id="review-fee">Not resolved</dd></div>
+          <div><dt>Replay guard</dt><dd>Event root must remain zero before review</dd></div>
+        </dl>
       </section>
       <section class="log" aria-label="Execution log">
         <div class="log-heading"><h2>Execution log</h2><a href="/enterprise-os.html">Enterprise OS</a></div>
