@@ -39,6 +39,14 @@
     "evidence_kind": "0x593b3574cc090312725b839caf32e59997b4118d94106a81b267510e57594fed",
     "notes": "One immutable Base App connected-application evidence record for the CATVERSE production origin; no token transfer, approval, x402 payment or ERP write."
   },
+  "confirmed_record": {
+    "status": "CONFIRMED",
+    "transaction_hash": "0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664",
+    "block_number": 49358671,
+    "receipt_status": 1,
+    "event_root_readback": "0xe0f37588e2381d0988c8e4f72853c364cbd0af66d33ed8869a6077877d3ff338",
+    "replay_lock": "confirmed_event_root_nonzero"
+  },
   "controls": {
     "atomic_batching": false,
     "one_wallet_review_per_operation": true,

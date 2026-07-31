@@ -106,6 +106,9 @@ test("Base App connection operator binds a fresh zero-value evidence event", asy
   assert.equal(plan.record.calldata, `0xffffb390${plan.record.event_id.slice(2)}${plan.record.evidence_root.slice(2)}${plan.record.evidence_kind.slice(2)}`);
   assert.equal(plan.record.to, plan.contract);
   assert.equal(plan.record.from, plan.application_account);
+  assert.equal(plan.confirmed_record.transaction_hash, "0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664");
+  assert.equal(plan.confirmed_record.event_root_readback, plan.record.evidence_root);
+  assert.equal(plan.confirmed_record.replay_lock, "confirmed_event_root_nonzero");
   assert.equal(plan.controls.spend_permission_requested, false);
   assert.equal(plan.controls.erp_write, false);
   assert.match(page, /Review Base App connection evidence/);
@@ -113,6 +116,12 @@ test("Base App connection operator binds a fresh zero-value evidence event", asy
   assert.match(page, new RegExp(plan.record.event_id));
   assert.match(page, new RegExp(plan.record.calldata_hash));
   assert.match(page, /0\.00002 ETH/);
+  assert.match(page, /Confirmed connection evidence/);
+  assert.match(page, /0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664/);
+  assert.match(page, /base-agent-evidence-replay-lock\.js/);
+  const replayLock = await readFile(new URL("../dist-base-lab-enterprise-os/assets/base-agent-evidence-replay-lock.js", import.meta.url), "utf8");
+  assert.match(replayLock, /confirmed_event_root_nonzero/);
+  assert.match(replayLock, /stopImmediatePropagation/);
 });
 
 test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
@@ -201,10 +210,11 @@ test("Smart Wallet evidence pack exposes one confirmed, replay-locked record", a
   assert.equal(pack.confirmed_business_record.duplicate_check, "locked_after_confirmed_receipt");
   assert.equal(pack.confirmed_business_record.value_eth, "0");
   assert.match(pack.confirmed_business_record.scope, /inventory-agent bootstrap/);
-  assert.equal(pack.next_bounded_action.status, "prepared_not_broadcast");
-  assert.equal(pack.next_bounded_action.operation, "record_base_app_connection_evidence");
-  assert.equal(pack.next_bounded_action.value_eth, "0");
-  assert.equal(pack.next_bounded_action.requires.includes("manual final confirmation"), true);
+  assert.equal(pack.confirmed_base_app_connection_record.status, "CONFIRMED");
+  assert.equal(pack.confirmed_base_app_connection_record.operation, "record_base_app_connection_evidence");
+  assert.equal(pack.confirmed_base_app_connection_record.value_eth, "0");
+  assert.equal(pack.confirmed_base_app_connection_record.transaction_hash, "0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664");
+  assert.equal(pack.confirmed_base_app_connection_record.replay_state, "locked_after_confirmed_receipt");
   assert.equal(pack.publication_controls.partial_bundle_counts_as_publication, false);
   assert.equal(pack.publication_controls.required_platforms.includes("x"), false);
   assert.equal(pack.publication_controls.required_platforms.length, 8);

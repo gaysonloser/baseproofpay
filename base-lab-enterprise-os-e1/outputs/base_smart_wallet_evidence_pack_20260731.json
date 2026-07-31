@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "publication_unit_id": "BASE-PUBLICATION-SMART-WALLET-EVIDENCE-PACK-20260731-34",
   "product": "CATVERSE Base Lab Enterprise OS",
-  "status": "chain_record_confirmed_pending_cross_platform_receipts",
+  "status": "two_distinct_chain_records_confirmed_pending_cross_platform_receipts",
   "network": {
     "name": "Base Mainnet",
     "chain_id": 8453
@@ -54,8 +54,8 @@
     "wallet_review_required_for_chain_record": true,
     "chain_receipt_required_before_publication": true
   },
-  "next_bounded_action": {
-    "status": "prepared_not_broadcast",
+  "confirmed_base_app_connection_record": {
+    "status": "CONFIRMED",
     "operation": "record_base_app_connection_evidence",
     "from": "0xc01F74555938B414cF783973fEffcBE98323502e",
     "to": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
@@ -64,20 +64,20 @@
     "calldata_hash": "0x9f2dabadfba4859146c9df5a5ee0a5a0fa9d5d70fa77ffaf5e684ef260c74ad5",
     "value_eth": "0",
     "fee_ceiling_eth": "0.00002",
-    "requires": [
-      "production_origin_application_account_alignment",
-      "fresh_zero-root readback",
-      "one visible wallet review",
-      "manual final confirmation"
-    ],
+    "transaction_hash": "0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664",
+    "block_number": 49358671,
+    "receipt_status": 1,
+    "calls_status": "CONFIRMED",
+    "root_readback": "0xe0f37588e2381d0988c8e4f72853c364cbd0af66d33ed8869a6077877d3ff338",
+    "replay_state": "locked_after_confirmed_receipt",
     "boundaries": "No deployment, token transfer, approval, x402 payment, or ERP write."
   },
   "negative_controls": [
-    "No automatic wallet connection or transaction request from this evidence pack.",
+    "No automatic wallet connection or transaction request is exposed by the read-only evidence API.",
     "No repeated deployment of the existing deterministic contract.",
     "No token, x402, approval, transfer, or ERP write is included.",
     "The pack does not claim Base.dev indexing, Builder admission, or independent adoption.",
     "This confirmed record is replay-locked and cannot be used to justify another equivalent transaction."
   ],
-  "material_fingerprint_sha256": "6801a4efa9f931038c4ec99c93a8e53da79d505ce3c39868eeeebac50525f9cf"
+  "material_fingerprint_sha256": "8bd80fc9c4e114c5745fb28f90e0eb49773e04ca2bba9cfe2d4aa34e5038d8dc"
 }

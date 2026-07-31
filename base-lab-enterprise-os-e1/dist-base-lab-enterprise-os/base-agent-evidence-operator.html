@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CATVERSE Agent Evidence Operator</title>
     <script type="module" crossorigin src="/assets/base-agent-evidence-operator-rDe3Mv75.js"></script>
+    <script type="module" crossorigin src="/assets/base-agent-evidence-replay-lock.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/utils-De7E53Fk.js">
     <link rel="modulepreload" crossorigin href="/assets/localBatchGatewayRequest-C3tAqpQf.js">
     <link rel="modulepreload" crossorigin href="/assets/secp256k1-Dozl9sDg.js">
@@ -38,6 +39,14 @@
           <div><dt>ETH value</dt><dd>0 ETH</dd></div>
           <div><dt>Network fee ceiling</dt><dd>0.00002 ETH</dd></div>
           <div><dt>Replay control</dt><dd>Root must be zero before the wallet review is opened</dd></div>
+        </dl>
+      </section>
+      <section class="facts" aria-label="Confirmed Base App connection evidence">
+        <h2>Confirmed connection evidence</h2>
+        <dl>
+          <div><dt>Transaction</dt><dd><code>0x4e159f5ef8be1aa265e143d3e8747bf8089784cd599c4f2a9cc3ae3ece09a664</code></dd></div>
+          <div><dt>Receipt</dt><dd>Confirmed in Base block 49,358,671</dd></div>
+          <div><dt>Replay state</dt><dd>Locked: event root is non-zero</dd></div>
         </dl>
       </section>
       <section class="actions" aria-label="Application evidence controls">
