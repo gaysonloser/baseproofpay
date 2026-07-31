@@ -35,7 +35,7 @@
     "value_eth": "0",
     "fee_ceiling_eth": "0.00002",
     "duplicate_check": "locked_after_confirmed_receipt",
-    "scope": "one immutable inventory-agent bootstrap evidence record; no token transfer, approval, payment, deploy, or ERP write",
+    "scope": "one immutable Base App connected-application evidence record; no token transfer, approval, payment, deploy, or ERP write",
     "attribution_boundary": "This is a self-controlled technical evidence record, not independent adoption, Base.dev indexing, a payment, or an ERP write."
   },
   "publication_controls": {
@@ -48,8 +48,7 @@
       "base_dev",
       "talent",
       "guild",
-      "basename_base_org",
-      "x"
+      "basename_base_org"
     ],
     "partial_bundle_counts_as_publication": false,
     "wallet_review_required_for_chain_record": true,

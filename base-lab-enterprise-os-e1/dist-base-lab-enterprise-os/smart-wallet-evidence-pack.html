@@ -29,12 +29,12 @@
         <ul>
           <li>Base Mainnet contract <code>0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999</code> has code and its immutable operator resolves to the application account.</li>
           <li>The application account is <code>0xc01F74555938B414cF783973fEffcBE98323502e</code>, with <code>0.00001 ETH</code> of manually funded operating balance. It has no automatic spend permission.</li>
-          <li>The planned event id has an empty onchain root at the release readback, so a later manual record call can be duplicate-checked before review.</li>
+          <li>The planned Base App connection event has an empty onchain root at the release readback, so a later manual record call can be duplicate-checked before review.</li>
         </ul>
       </section>
       <section>
         <h2>Next bounded chain action</h2>
-        <p>Only after a fresh review: manually fund the application account, then make one 0 ETH <code>record</code> call with the exact event root. Neither operation is started by this page, and neither is represented as completed here.</p>
+        <p>Only after a fresh review: the manually funded production application account may make one 0 ETH <code>record</code> call for the connected-app evidence root. The call is not started by this page and is not represented as completed here.</p>
       </section>
       <section>
         <h2>Evidence API</h2>
