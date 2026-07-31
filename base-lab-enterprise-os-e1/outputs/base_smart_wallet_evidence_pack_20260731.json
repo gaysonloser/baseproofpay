@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "publication_unit_id": "BASE-PUBLICATION-SMART-WALLET-EVIDENCE-PACK-20260731-34",
   "product": "CATVERSE Base Lab Enterprise OS",
-  "status": "review_ready_pending_cross_platform_receipts",
+  "status": "chain_record_confirmed_pending_cross_platform_receipts",
   "network": {
     "name": "Base Mainnet",
     "chain_id": 8453
@@ -11,9 +11,9 @@
     "parent_account": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
     "application_account": "0xc01F74555938B414cF783973fEffcBE98323502e",
     "application_account_state": {
-      "balance_wei": "0",
+      "balance_wei": "10000000000000",
       "pending_nonce": "0",
-      "interpretation": "Manual operational funding is required before the application account can submit a business record."
+      "interpretation": "Manual operating funding was completed before the application account recorded this one evidence event."
     }
   },
   "contract": {
@@ -23,16 +23,20 @@
     "code_present": true,
     "deployment_replay": "forbidden_existing_create2_target"
   },
-  "next_business_record": {
+  "confirmed_business_record": {
     "event_id": "0xf4562e3a8244645cb827723788d82addac5377224e86a45bd4fc27da0da481a2",
-    "current_evidence_root": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "evidence_root": "0xd017416655e644cfcb7257ceb41f77ea18c84beb286a715169e4b70d5ee228f6",
     "evidence_kind": "0x692aeccdc3e698892f7a2b2e9c1f2a18972b4915ea7b67abc4bbe1b98ec72a30",
     "calldata_hash": "0x1ca432b6cfceaf57fa0918daaaa1b6422e0863fe57807dee5ae3a11e38bc7232",
+    "transaction_hash": "0x400cf11bb0756a3706aaaa2ca0ede20dd964d402d5c314a8413b48d9cffe5477",
+    "block_number": 49349812,
+    "receipt_status": 1,
+    "calls_status": "CONFIRMED",
     "value_eth": "0",
     "fee_ceiling_eth": "0.00002",
-    "duplicate_check": "clear_at_readback_time",
-    "scope": "one immutable inventory-agent bootstrap evidence record; no token transfer, approval, payment, deploy, or ERP write"
+    "duplicate_check": "locked_after_confirmed_receipt",
+    "scope": "one immutable inventory-agent bootstrap evidence record; no token transfer, approval, payment, deploy, or ERP write",
+    "attribution_boundary": "This is a self-controlled technical evidence record, not independent adoption, Base.dev indexing, a payment, or an ERP write."
   },
   "publication_controls": {
     "same_material_fingerprint_required": true,
@@ -48,13 +52,15 @@
       "x"
     ],
     "partial_bundle_counts_as_publication": false,
-    "wallet_review_required_for_chain_record": true
+    "wallet_review_required_for_chain_record": true,
+    "chain_receipt_required_before_publication": true
   },
   "negative_controls": [
     "No automatic wallet connection or transaction request from this evidence pack.",
     "No repeated deployment of the existing deterministic contract.",
     "No token, x402, approval, transfer, or ERP write is included.",
-    "The pack does not claim Base.dev indexing, Builder admission, independent adoption, or a confirmed business record."
+    "The pack does not claim Base.dev indexing, Builder admission, or independent adoption.",
+    "This confirmed record is replay-locked and cannot be used to justify another equivalent transaction."
   ],
-  "material_fingerprint_sha256": "ccb8f8f40951bd5eeb96e89748d717394cf42de3bc256104edb5ddb0edde89af"
+  "material_fingerprint_sha256": "6801a4efa9f931038c4ec99c93a8e53da79d505ce3c39868eeeebac50525f9cf"
 }

@@ -131,14 +131,16 @@ test("Smart Wallet ERP handoff is draft-only and rejects writes", async () => {
   assert.equal(write.status, 405);
 });
 
-test("Smart Wallet evidence pack exposes a bounded, non-duplicate record plan", async () => {
+test("Smart Wallet evidence pack exposes one confirmed, replay-locked record", async () => {
   const response = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`);
   assert.equal(response.status, 200);
   const pack = await response.json();
   assert.equal(pack.publication_unit_id, "BASE-PUBLICATION-SMART-WALLET-EVIDENCE-PACK-20260731-34");
   assert.equal(pack.contract.deployment_replay, "forbidden_existing_create2_target");
-  assert.equal(pack.next_business_record.current_evidence_root, `0x${"0".repeat(64)}`);
-  assert.equal(pack.next_business_record.value_eth, "0");
+  assert.equal(pack.confirmed_business_record.transaction_hash, "0x400cf11bb0756a3706aaaa2ca0ede20dd964d402d5c314a8413b48d9cffe5477");
+  assert.equal(pack.confirmed_business_record.receipt_status, 1);
+  assert.equal(pack.confirmed_business_record.duplicate_check, "locked_after_confirmed_receipt");
+  assert.equal(pack.confirmed_business_record.value_eth, "0");
   assert.equal(pack.publication_controls.partial_bundle_counts_as_publication, false);
   assert.equal(JSON.stringify(pack).includes("private_key"), false);
   const write = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`, { method: "POST" });

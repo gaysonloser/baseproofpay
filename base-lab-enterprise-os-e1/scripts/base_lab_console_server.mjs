@@ -175,7 +175,7 @@ export function sanitizeBaseSmartWalletEvidencePack(evidence) {
     network: evidence.network,
     smart_wallet: evidence.smart_wallet,
     contract: evidence.contract,
-    next_business_record: evidence.next_business_record,
+    confirmed_business_record: evidence.confirmed_business_record,
     publication_controls: evidence.publication_controls,
     negative_controls: evidence.negative_controls,
     material_fingerprint_sha256: evidence.material_fingerprint_sha256
