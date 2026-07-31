@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE-LAB-LEDGER-SETTLEMENT-MAPPING-20260730-001",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "status": "read_only_design_verified_no_ledger_session",
+  "generated_at": "2026-07-30T23:59:00+08:00",
+  "official_source": "https://docs.base.org/ledgers/how-it-works",
+  "business_event_id": "BASE-LAB-LEDGER-SETTLEMENT-202608-001",
+  "lanes": [
+    {"stage":"deposit","base_fact":"A payer deposits a supported asset through the Base Ledger Portal.","enterprise_control":"Capture payer intent, asset, amount and business reference before creating an ERP settlement draft.","erp_boundary":"No Payment Entry, GL posting or customer balance update occurs from a deposit notification alone."},
+    {"stage":"hold_and_transact","base_fact":"Ledger balances and transfers remain private within the ledger.","enterprise_control":"Keep counterparty-facing payment detail outside the public evidence surface; retain only a canonical business-event hash and review status.","erp_boundary":"ERP remains the accounting authority for receivable, clearing and recognition."},
+    {"stage":"withdraw","base_fact":"A withdrawal is the onchain finality point for an asset and amount.","enterprise_control":"Require receipt, finality readback, idempotency lock and human review before a draft-only ledger handoff.","erp_boundary":"Draft-only is not submitted, posted, cancelled or deleted by this console."}
+  ],
+  "negative_controls": [
+    "no Base Ledger Portal interaction",
+    "no wallet connection or signature",
+    "no onchain deposit, private transfer or withdrawal",
+    "no ERP credential or ERP write",
+    "no claim that a private ledger settlement has occurred"
+  ],
+  "next_gate": "A separate approved, real business settlement lifecycle with payer, asset, amount, receipt/finality and ERP draft-only scope is required before this mapping can become settlement evidence."
+}

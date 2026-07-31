@@ -16,6 +16,7 @@ const baseXerpO2cPath = join(projectRoot, "outputs/base_xerp_o2c_result_latest.j
 const baseAppInteractionLabPath = join(projectRoot, "outputs/base_app_interaction_lab_latest.json");
 const baseB20InventoryAgentPath = join(projectRoot, "outputs/base_b20_inventory_agentic_candidate_latest.json");
 const baseX402CatalogAnchorPath = join(projectRoot, "outputs/base_x402_catalog_anchor_20260727_latest.json");
+const baseLedgerSettlementPath = join(projectRoot, "outputs/base_ledger_settlement_mapping_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -250,6 +251,21 @@ export function sanitizeBaseX402CatalogAnchor(anchor) {
   };
 }
 
+export function sanitizeBaseLedgerSettlement(mapping) {
+  return {
+    schema_version: mapping.schema_version,
+    evidence_id: mapping.evidence_id,
+    product: mapping.product,
+    status: mapping.status,
+    generated_at: mapping.generated_at,
+    official_source: mapping.official_source,
+    business_event_id: mapping.business_event_id,
+    lanes: mapping.lanes,
+    negative_controls: mapping.negative_controls,
+    next_gate: mapping.next_gate
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -276,6 +292,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/interaction-lab") return sendJson(req,res,200,sanitizeBaseAppInteractionLab(JSON.parse(await readFile(baseAppInteractionLabPath,"utf8"))));
       if (req.url === "/api/v1/b20-inventory-agent") return sendJson(req,res,200,sanitizeBaseB20InventoryAgent(JSON.parse(await readFile(baseB20InventoryAgentPath,"utf8"))));
       if (req.url === "/api/v1/x402-catalog-anchor") return sendJson(req,res,200,sanitizeBaseX402CatalogAnchor(JSON.parse(await readFile(baseX402CatalogAnchorPath,"utf8"))));
+      if (req.url === "/api/v1/base-ledger-settlement") return sendJson(req,res,200,sanitizeBaseLedgerSettlement(JSON.parse(await readFile(baseLedgerSettlementPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));

@@ -55,3 +55,13 @@ test("release endpoint is read-only and carries security headers", async () => {
   assert.equal(write.status, 405);
   assert.equal((await write.json()).error, "read_only_runtime");
 });
+
+test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-ledger-settlement`);
+  assert.equal(response.status, 200);
+  const mapping = await response.json();
+  assert.equal(mapping.status, "read_only_design_verified_no_ledger_session");
+  assert.equal(mapping.lanes.length, 3);
+  assert.equal(mapping.negative_controls.includes("no ERP credential or ERP write"), true);
+  assert.equal(JSON.stringify(mapping).includes("private_key"), false);
+});

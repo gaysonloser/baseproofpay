@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="base:app_id" content="6a5c632cf364895c3c606518" />
+    <meta name="description" content="Read-only Base Ledger settlement controls mapped to ERP draft handoff." />
+    <title>Base Ledger Settlement Controls</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#0b1020; color:#e8eefc; }
+      body { margin:0; background:linear-gradient(135deg,#0b1020,#13234a); min-height:100vh; }
+      main { max-width:1040px; margin:auto; padding:48px 22px 72px; }
+      .eyebrow { color:#78a9ff; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+      h1 { font-size:clamp(2rem,5vw,4rem); margin:.45rem 0 1rem; line-height:1.05; }
+      .lede { max-width:740px; color:#b8c6e3; font-size:1.1rem; line-height:1.7; }
+      .status { display:inline-block; border:1px solid #3e6ddb; background:#112a5b; color:#9dbdff; padding:7px 11px; border-radius:6px; font-size:.86rem; }
+      .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:30px; }
+      article, section { border:1px solid #273a67; background:rgba(10,19,43,.84); border-radius:8px; padding:20px; }
+      h2 { font-size:1.1rem; margin:0 0 12px; color:#fff; }
+      p { color:#c4d0e7; line-height:1.55; margin:.45rem 0; }
+      .label { color:#7ca5ff; font-size:.75rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+      ul { padding-left:20px; color:#c4d0e7; line-height:1.6; }
+      code { color:#b9d3ff; overflow-wrap:anywhere; }
+      a { color:#8ab4ff; }
+      .notice { margin-top:14px; border-left:3px solid #f0b75a; background:#2b2115; color:#f6d9a7; padding:15px; }
+      @media (max-width:760px) { main { padding-top:32px; } .grid { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">CATVERSE · AOXPET Base Lab</div>
+      <h1>Base Ledger Settlement Controls</h1>
+      <p class="lede">A read-only operating surface for mapping Base Ledger settlement stages into the enterprise evidence rail. It preserves the separation between private onchain settlement, canonical business events, and human-reviewed ERP drafts.</p>
+      <span class="status">Design verified · No Base Ledger session or payment executed</span>
+      <div class="grid">
+        <article><h2>1. Deposit</h2><p class="label">Base fact</p><p>Portal deposit establishes an onchain asset entry point.</p><p class="label">Enterprise rule</p><p>Capture intent, asset, amount and business reference before draft handoff. A deposit notification alone cannot post accounting.</p></article>
+        <article><h2>2. Hold & transact</h2><p class="label">Base fact</p><p>Transfers remain private within the ledger.</p><p class="label">Enterprise rule</p><p>Publish only a canonical event hash and review state. Counterparty payment detail remains outside the public evidence page.</p></article>
+        <article><h2>3. Withdraw</h2><p class="label">Base fact</p><p>Withdrawal exposes final asset and amount on Base.</p><p class="label">Enterprise rule</p><p>Receipt, finality, idempotency and human review are all required before any draft-only ERP handoff.</p></article>
+      </div>
+      <section style="margin-top:14px">
+        <h2>Boundaries</h2>
+        <ul><li>No wallet connection, signature, deposit, transfer or withdrawal has been requested.</li><li>No ERP credential is present and this console cannot create, submit or post ERP records.</li><li>A real settlement must have a separately approved payer, asset, amount, receipt/finality readback and ERP draft-only scope.</li></ul>
+        <p class="notice">This page is an implementation-ready control map, not evidence that a Base Ledger settlement has happened.</p>
+        <p>Source: <a href="https://docs.base.org/ledgers/how-it-works" target="_blank" rel="noreferrer">Base Ledgers lifecycle</a> · machine-readable contract: <code>/api/v1/base-ledger-settlement</code></p>
+      </section>
+    </main>
+  </body>
+</html>
