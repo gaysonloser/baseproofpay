@@ -4,21 +4,22 @@
   "network": {
     "name": "Base Mainnet",
     "chain_id": 8453,
-    "chain_id_hex": "0x2105"
+    "chain_id_hex": "0x2105",
+    "rpc_url": "https://mainnet.base.org"
   },
   "parent_account": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
   "application_account": "0xc01F74555938B414cF783973fEffcBE98323502e",
   "contract": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
-  "source_fingerprint": "sha256:ad4c6ba8e7b367f26daecb39e852f25d59a3023b2893a04c12c5b44e13772302",
+  "source_fingerprint": "sha256:1d1d9c3667fb6cc853e6a1f525aae0e5ea5682ea7f99a1ecb44d3385329faf03",
   "record": {
     "operation": "record_smart_wallet_review_surface_release",
     "from": "0xc01F74555938B414cF783973fEffcBE98323502e",
     "to": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
     "value_wei": "0",
-    "calldata": "0xffffb390fe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437851186694971316c33cc13fbe89da05518ce3afe4ee6f256bd4f9f847e9d3d6276480afac637210fc426776b943ce2f53047d3b51196877372da91c908040132",
-    "calldata_hash": "0xaad133ce87a7c791730d06c4b975f131250ae08d5cec84b207c9898241a3b8e7",
+    "calldata": "0xffffb390fe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437b65b3e627cd4bea62118b3ffc190aa34b3d9d208189d668ea528ec2349638c5f76480afac637210fc426776b943ce2f53047d3b51196877372da91c908040132",
+    "calldata_hash": "0x7ca85f2db825423c27018776637238774575d54044b71c43049119c01ff689ee",
     "event_id": "0xfe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437",
-    "evidence_root": "0x851186694971316c33cc13fbe89da05518ce3afe4ee6f256bd4f9f847e9d3d62",
+    "evidence_root": "0xb65b3e627cd4bea62118b3ffc190aa34b3d9d208189d668ea528ec2349638c5f",
     "evidence_kind": "0x76480afac637210fc426776b943ce2f53047d3b51196877372da91c908040132",
     "replay_read_calldata": "0x1c11ea9bfe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437",
     "expected_empty_root": "0x0000000000000000000000000000000000000000000000000000000000000000",
