@@ -131,6 +131,20 @@ test("Smart Wallet ERP handoff is draft-only and rejects writes", async () => {
   assert.equal(write.status, 405);
 });
 
+test("Smart Wallet evidence pack exposes a bounded, non-duplicate record plan", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`);
+  assert.equal(response.status, 200);
+  const pack = await response.json();
+  assert.equal(pack.publication_unit_id, "BASE-PUBLICATION-SMART-WALLET-EVIDENCE-PACK-20260731-34");
+  assert.equal(pack.contract.deployment_replay, "forbidden_existing_create2_target");
+  assert.equal(pack.next_business_record.current_evidence_root, `0x${"0".repeat(64)}`);
+  assert.equal(pack.next_business_record.value_eth, "0");
+  assert.equal(pack.publication_controls.partial_bundle_counts_as_publication, false);
+  assert.equal(JSON.stringify(pack).includes("private_key"), false);
+  const write = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
+
 test("review pack combines Base lanes without adding a write surface", () => {
   const lane = {schema_id:"e",status:"verified",result_fingerprint_sha256:"0xproof"};
   const catalog = {schema_version:"1",result_unit_id:"catalog",status:"verified",network:"base",chain_id:8453,transaction_hash:"0xtx",block_number:1,registry:"0xregistry",business_event_id:"event",evidence_id:"evidence",evidence_root:"0xroot",parent_inventory_root:"0xparent",release_commit:"abc",builder_code:"bc",verification:{},boundaries:{}};

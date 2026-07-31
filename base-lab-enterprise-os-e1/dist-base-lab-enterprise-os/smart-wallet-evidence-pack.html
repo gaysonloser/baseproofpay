@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CATVERSE Smart Wallet Evidence Pack</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #071526; color: #e6efff; }
+      body { margin: 0; padding: 32px 18px 56px; background: #071526; }
+      main { max-width: 900px; margin: 0 auto; }
+      .eyebrow { color: #76a9ff; font-weight: 700; letter-spacing: .08em; font-size: .76rem; }
+      h1 { margin: .4rem 0 .7rem; font-size: clamp(2rem, 5vw, 3.25rem); }
+      p { color: #b9c7dc; line-height: 1.6; }
+      section { margin-top: 18px; border: 1px solid #274364; border-radius: 8px; padding: 18px; background: #0b1e35; }
+      h2 { margin-top: 0; font-size: 1.15rem; }
+      code { overflow-wrap: anywhere; color: #9ec3ff; }
+      ul { padding-left: 20px; color: #c8d6e9; line-height: 1.65; }
+      .status { color: #79e0a9; font-weight: 700; }
+      a { color: #9ec3ff; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">CATVERSE BASE LAB / REVIEW RELEASE</p>
+      <h1>Smart Wallet evidence pack</h1>
+      <p class="status">Read-only review surface. The evidence contract already exists; its duplicate deployment path is locked.</p>
+      <section>
+        <h2>What is independently checkable</h2>
+        <ul>
+          <li>Base Mainnet contract <code>0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999</code> has code and its immutable operator resolves to the application account.</li>
+          <li>The application account is <code>0xc01F74555938B414cF783973fEffcBE98323502e</code>, currently with zero operating balance and nonce.</li>
+          <li>The planned event id has an empty onchain root at the release readback, so a later manual record call can be duplicate-checked before review.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Next bounded chain action</h2>
+        <p>Only after a fresh review: manually fund the application account, then make one 0 ETH <code>record</code> call with the exact event root. Neither operation is started by this page, and neither is represented as completed here.</p>
+      </section>
+      <section>
+        <h2>Evidence API</h2>
+        <p><a href="/api/v1/smart-wallet-evidence-pack">Open sanitized JSON evidence</a>. This release has no wallet auto-connect, no token movement, no approval, no x402 payment, and no ERP write.</p>
+      </section>
+    </main>
+  </body>
+</html>
