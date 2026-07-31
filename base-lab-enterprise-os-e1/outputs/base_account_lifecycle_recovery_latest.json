@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE_ACCOUNT_LIFECYCLE_RECOVERY_20260730_01",
+  "generated_at": "2026-07-30T23:20:00+08:00",
+  "product": "CATVERSE Base Lab OS",
+  "status": "not_broadcast_locked",
+  "parent_account": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+  "application_account": "0xc01F74555938B414cF783973fEffcBE98323502e",
+  "network": {
+    "name": "Base Mainnet",
+    "chain_id": 8453
+  },
+  "lifecycle": {
+    "application_account_created": true,
+    "funding_mode": "manual_only",
+    "spend_permission": "zero",
+    "reviewed_anchor": {
+      "business_event_id": "BASE-LAB-AGENT-SUBACCOUNT-20260730-001",
+      "status": "not_broadcast",
+      "transaction_hash": null,
+      "reason": "Wallet review closed without a calls ID or transaction hash; client recovery recorded Failed to fetch.",
+      "replay_policy": "forbidden"
+    }
+  },
+  "controls": {
+    "wallet_auto_connect": false,
+    "wallet_auto_retry": false,
+    "token_transfer": false,
+    "token_approval": false,
+    "payment": false,
+    "deployment": false,
+    "erp_write": false,
+    "chain_receipt_verified": false
+  },
+  "operator_next_step": "Use a materially different, separately reviewed control only after a new explicit wallet review; do not replay this anchor request.",
+  "evidence_fingerprint_sha256": "48f6e71c183c2f34bf43dc047c9b479234e48183f6d781524acdd0cf7a30d7e4"
+}

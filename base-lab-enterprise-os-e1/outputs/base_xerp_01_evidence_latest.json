@@ -1,0 +1,235 @@
+{
+  "schema_id": "gayson.base.enterprise.cross_system_product_result",
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-XERP-01",
+  "generated_at": "2026-07-23T10:52:06.231Z",
+  "status": "six_lane_readonly_evidence_complete",
+  "classification": "product_result",
+  "contract_summary": {
+    "company": "AOXPET Base Lab",
+    "transaction_hash": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+    "payment_identifier": "0x9844e3b0b3f276d49715ca64cce56bac9ebccfb4d3e93a4b40107c9c3d5c4e8d",
+    "payment_entry": "ACC-PAY-2026-00003",
+    "bank_transaction": "ACC-BTN-2026-00001"
+  },
+  "lanes": {
+    "chain_fact": {
+      "network": "Base Mainnet",
+      "chain_id": 8453,
+      "transaction_hash": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+      "block_number": 48869388,
+      "block_hash": "0x1df0a2da8b903d6272927dc9767dfd9354e8a456614ea4d9e9568d9ad5e9962e",
+      "receipt_status": "success",
+      "finality_status": "base_rpc_finalized",
+      "confirmations_at_capture": 43368,
+      "removed": false,
+      "log_index": 149,
+      "registry": "0xd7ce8eced9cdda01365b2ead539581afd981880b",
+      "payment_identifier": "0x9844e3b0b3f276d49715ca64cce56bac9ebccfb4d3e93a4b40107c9c3d5c4e8d",
+      "payer": "0x63cdbf1918133716c67b28390f5c5d9250b113da",
+      "payee": "0xba36d092db2999bb1fabbaf281ac956a97189c25",
+      "asset": "USDC",
+      "asset_contract": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "amount_minor": 10,
+      "source_evidence_fingerprint": "48cc29216ca629740e278de0d4a05cd11176020bd54421d7459f7bb000f697a1"
+    },
+    "canonical_event": {
+      "schema_version": "1.0",
+      "business_event_id": "BASE-LAB-D09-BANK-RECON-202608-001",
+      "event_type": "base_settlement_to_erp_bank_reconciliation",
+      "chain_id": 8453,
+      "transaction_hash": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+      "payment_identifier": "0x9844e3b0b3f276d49715ca64cce56bac9ebccfb4d3e93a4b40107c9c3d5c4e8d",
+      "amount_minor": 10,
+      "asset": "USDC",
+      "erp_payment_entry": "ACC-PAY-2026-00003",
+      "erp_bank_transaction": "ACC-BTN-2026-00001",
+      "source_assurance": "verified_base_mainnet_finalized_self_controlled_technical_canary",
+      "payload_hash": "sha256:6bc6c06abb4fe29fe766da3d4c893d492b7944097fa7dd61ab3efbf45d86168e",
+      "idempotency_key": "BASE-XERP-01:8453:0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5:ACC-PAY-2026-00003",
+      "exception_status": "none"
+    },
+    "erp_business_result": {
+      "company": "AOXPET Base Lab",
+      "payment_entry": {
+        "name": "ACC-PAY-2026-00003",
+        "owner": "svc_base_lab_adapter@aoxpet.invalid",
+        "docstatus": 1,
+        "posting_date": "2026-08-01",
+        "payment_type": "Receive",
+        "party_type": "Customer",
+        "party": "CUS-CAT-DIST-0003",
+        "paid_from": "Debtors - ABL",
+        "paid_to": "Base USDC Clearing - ABL",
+        "paid_amount": 0.1,
+        "received_amount": 0.1,
+        "unallocated_amount": 0.1,
+        "reference_no": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+        "reference_date": "2026-07-20",
+        "business_event_present": true,
+        "payment_identifier_present": true
+      },
+      "bank_transaction": {
+        "name": "ACC-BTN-2026-00001",
+        "owner": "svc_base_lab_adapter@aoxpet.invalid",
+        "docstatus": 1,
+        "date": "2026-08-01",
+        "bank_account": "BASE-LAB-USDC-CLEARING - BASE-LAB-BASE-NETWORK",
+        "deposit": 0.1,
+        "withdrawal": 0,
+        "allocated_amount": 0.1,
+        "unallocated_amount": 0,
+        "status": "Reconciled",
+        "reference_number": "0xc6bc51bc8677cc3ecd496b5e417454e9c65c5a5c4ca4eec81ef5554e1d8e94a5",
+        "payment_entry_links": [
+          {
+            "payment_document": "Payment Entry",
+            "payment_entry": "ACC-PAY-2026-00003",
+            "allocated_amount": 0.1
+          }
+        ]
+      },
+      "replacement_sales_invoice": {
+        "name": "ACC-SINV-2026-00003",
+        "docstatus": 1,
+        "outstanding_amount": 3500,
+        "allocation_from_canary": 0
+      },
+      "source_evidence_class": "prior_technical_canary_not_independent_adoption"
+    },
+    "ledger_and_reconciliation": {
+      "gl_entries": [
+        {
+          "name": "ACC-GLE-2026-00016",
+          "posting_date": "2026-08-01",
+          "account": "Debtors - ABL",
+          "party_type": "Customer",
+          "party": "CUS-CAT-DIST-0003",
+          "voucher_type": "Payment Entry",
+          "voucher_no": "ACC-PAY-2026-00003",
+          "debit": 0,
+          "credit": 0.1,
+          "is_cancelled": 0
+        },
+        {
+          "name": "ACC-GLE-2026-00017",
+          "posting_date": "2026-08-01",
+          "account": "Base USDC Clearing - ABL",
+          "party_type": null,
+          "party": null,
+          "voucher_type": "Payment Entry",
+          "voucher_no": "ACC-PAY-2026-00003",
+          "debit": 0.1,
+          "credit": 0,
+          "is_cancelled": 0
+        }
+      ],
+      "gl_debit": 0.1,
+      "gl_credit": 0.1,
+      "gl_balanced": true,
+      "payment_ledger_entries": [
+        {
+          "name": "bd2a7s2jae",
+          "posting_date": "2026-08-01",
+          "account": "Debtors - ABL",
+          "party_type": "Customer",
+          "party": "CUS-CAT-DIST-0003",
+          "voucher_type": "Payment Entry",
+          "voucher_no": "ACC-PAY-2026-00003",
+          "against_voucher_type": "Payment Entry",
+          "against_voucher_no": "ACC-PAY-2026-00003",
+          "amount": -0.1,
+          "amount_in_account_currency": -0.1,
+          "delinked": 0
+        }
+      ],
+      "bank_reconciled": true,
+      "invoice_unallocated": true,
+      "duplicate_payment_entries": 0,
+      "duplicate_bank_transactions": 0
+    },
+    "bidirectional_evidence": {
+      "chain_to_erp": true,
+      "erp_to_chain": true,
+      "console_url": "https://catverse-base-lab-enterprise-os.onrender.com",
+      "current_evidence_endpoint": "https://catverse-base-lab-enterprise-os.onrender.com/api/v1/evidence",
+      "local_candidate_endpoint": "/api/v1/xerp-01",
+      "local_candidate_page": "/base-xerp-01.html",
+      "git_repository": "gaysonloser/baseproofpay",
+      "git_commit": "e792c2235ef5492f92db20ff9ccd329b6c19f2a7",
+      "online_evidence_root": "sha256:4f7e8cd2ca71a4ca630b0736a40ccfd9cbc9f901fea8bc938616fd549c384dda",
+      "release_package_root": "sha256:834fb7e683720a13158a0a1870607885bc98a181e9f9d33d13f09063ec6cc328",
+      "release_fingerprint_exact": true,
+      "publication_status": "current_release_verified_xerp_01_candidate_not_published"
+    },
+    "negative_controls": [
+      {
+        "id": "duplicate_event",
+        "passed": true,
+        "expected": "LEDGER_CONTROL_FAILED",
+        "observed": "LEDGER_CONTROL_FAILED"
+      },
+      {
+        "id": "wrong_chain",
+        "passed": true,
+        "expected": "WRONG_CHAIN",
+        "observed": "WRONG_CHAIN"
+      },
+      {
+        "id": "amount_mismatch",
+        "passed": true,
+        "expected": "CHAIN_AMOUNT_MISMATCH",
+        "observed": "CHAIN_AMOUNT_MISMATCH"
+      },
+      {
+        "id": "removed_log",
+        "passed": true,
+        "expected": "CHAIN_NOT_FINAL",
+        "observed": "CHAIN_NOT_FINAL"
+      },
+      {
+        "id": "wrong_erp_reference",
+        "passed": true,
+        "expected": "ERP_CHAIN_LINK_MISSING",
+        "observed": "ERP_CHAIN_LINK_MISSING"
+      },
+      {
+        "id": "missing_payment_ledger",
+        "passed": true,
+        "expected": "PAYMENT_LEDGER_READBACK_MISSING",
+        "observed": "PAYMENT_LEDGER_READBACK_MISSING"
+      }
+    ]
+  },
+  "controls": {
+    "erp_http_methods": [
+      "GET"
+    ],
+    "new_erp_writes": 0,
+    "new_chain_transactions": 0,
+    "wallet_connections": 0,
+    "git_pushes": 0,
+    "render_deploys": 0,
+    "credentials_emitted": false,
+    "prior_erp_asset_close_work_classification": "erp_prerequisite",
+    "superseded_standalone_gate": "BASE-LAB-D07-ASSET-SCHEDULE-C5-CONTINUE-1"
+  },
+  "boundaries": {
+    "source_is_self_controlled_technical_canary": true,
+    "independent_adoption_claim": false,
+    "new_chain_transaction": false,
+    "new_erp_write": false,
+    "git_push": false,
+    "render_deploy": false,
+    "credentials_keychain_only": true
+  },
+  "lane_status": {
+    "chain_fact": "passed",
+    "canonical_event": "passed",
+    "erp_business_result": "passed",
+    "ledger_and_reconciliation": "passed",
+    "bidirectional_evidence": "passed",
+    "negative_controls": "passed"
+  },
+  "result_fingerprint_sha256": "f189474535106b2775769f90900d672602f0ab9c547b6428a0baf3a056066209"
+}

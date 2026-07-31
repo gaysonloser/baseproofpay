@@ -17,6 +17,7 @@ const baseAppInteractionLabPath = join(projectRoot, "outputs/base_app_interactio
 const baseB20InventoryAgentPath = join(projectRoot, "outputs/base_b20_inventory_agentic_candidate_latest.json");
 const baseX402CatalogAnchorPath = join(projectRoot, "outputs/base_x402_catalog_anchor_20260727_latest.json");
 const baseLedgerSettlementPath = join(projectRoot, "outputs/base_ledger_settlement_mapping_latest.json");
+const baseAccountLifecycleRecoveryPath = join(projectRoot, "outputs/base_account_lifecycle_recovery_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -266,6 +267,53 @@ export function sanitizeBaseLedgerSettlement(mapping) {
   };
 }
 
+export function sanitizeBaseAccountLifecycleRecovery(evidence) {
+  return {
+    schema_version: evidence.schema_version,
+    evidence_id: evidence.evidence_id,
+    generated_at: evidence.generated_at,
+    product: evidence.product,
+    status: evidence.status,
+    parent_account: evidence.parent_account,
+    application_account: evidence.application_account,
+    network: evidence.network,
+    lifecycle: evidence.lifecycle,
+    controls: evidence.controls,
+    operator_next_step: evidence.operator_next_step,
+    evidence_fingerprint_sha256: evidence.evidence_fingerprint_sha256
+  };
+}
+
+export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, release}) {
+  const sources = [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent];
+  const missing = sources.filter((value) => !value).length;
+  return {
+    review_pack_id: "CATVERSE_BASE_REVIEW_PACK_V1",
+    review_status: missing === 0 ? "ready_for_read_only_review" : "incomplete_evidence",
+    release,
+    scope: {
+      wallet_connect: false,
+      wallet_signing: false,
+      chain_write: false,
+      erp_write: false
+    },
+    lanes: {
+      o2c: sanitizeBaseXerp01(xerp01),
+      inventory: sanitizeBaseAssetEvidence(inventory),
+      asset: sanitizeBaseAssetEvidence(asset),
+      agent_commerce: sanitizeBaseX402CatalogAnchor(catalog),
+      base_account: sanitizeBaseAccountLifecycleRecovery(lifecycle),
+      b20_inventory: sanitizeBaseB20InventoryAgent(b20InventoryAgent)
+    },
+    reviewer_controls: {
+      immutable_fingerprints: true,
+      receipt_readback_required: true,
+      replay_or_duplicate_actions: "not_available_from_this_console",
+      negative_control: "GET_HEAD_only; all non-read requests are denied"
+    }
+  };
+}
+
 export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultStaticRoot}={}) {
   const runtime = assertRuntime(env);
   const requests = new Map();
@@ -293,6 +341,27 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/b20-inventory-agent") return sendJson(req,res,200,sanitizeBaseB20InventoryAgent(JSON.parse(await readFile(baseB20InventoryAgentPath,"utf8"))));
       if (req.url === "/api/v1/x402-catalog-anchor") return sendJson(req,res,200,sanitizeBaseX402CatalogAnchor(JSON.parse(await readFile(baseX402CatalogAnchorPath,"utf8"))));
       if (req.url === "/api/v1/base-ledger-settlement") return sendJson(req,res,200,sanitizeBaseLedgerSettlement(JSON.parse(await readFile(baseLedgerSettlementPath,"utf8"))));
+      if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
+      if (req.url === "/api/v1/review-pack") {
+        const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([
+          readFile(baseXerp01Path,"utf8"),
+          readFile(baseInventoryRootPath,"utf8"),
+          readFile(baseAssetEvidencePath,"utf8"),
+          readFile(baseX402CatalogAnchorPath,"utf8"),
+          readFile(baseAccountLifecycleRecoveryPath,"utf8"),
+          readFile(baseB20InventoryAgentPath,"utf8")
+        ]);
+        return sendJson(req,res,200,buildReviewPack({
+          xerp01: JSON.parse(xerp01),
+          inventory: JSON.parse(inventory),
+          asset: JSON.parse(asset),
+          catalog: JSON.parse(catalog),
+          lifecycle: JSON.parse(lifecycle),
+          b20InventoryAgent: JSON.parse(b20InventoryAgent),
+          release: releaseIdentity(env)
+        }));
+      }
+      if (req.url === "/api/v1/base-ledger-settlement") return sendJson(req,res,200,sanitizeBaseLedgerSettlement(JSON.parse(await readFile(baseLedgerSettlementPath,"utf8"))));
       if (req.url === "/api/v1/topology") {
         const topology=JSON.parse(await readFile(topologyPath,"utf8"));
         return sendJson(req,res,200,sanitizeTopology(topology));
@@ -303,7 +372,11 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (!filePath.startsWith(staticRoot)) return sendJson(req,res,403,{error:"invalid_path"});
       await stat(filePath);
       const body=await readFile(filePath);
-      const headers = rawPath === "/base-app-interaction-lab.html" ? interactionSecurityHeaders : securityHeaders;
+      const headers = [
+        "/base-app-interaction-lab.html",
+        "/base-agent-subaccount-console.html",
+        "/base-subaccount-agent-anchor.html"
+      ].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
       res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});
       if (req.method === "HEAD") return res.end();
       res.end(body);

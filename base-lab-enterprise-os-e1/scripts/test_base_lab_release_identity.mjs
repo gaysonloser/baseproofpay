@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
-import { createBaseLabConsoleServer, releaseIdentity } from "./base_lab_console_server.mjs";
+import { buildReviewPack, createBaseLabConsoleServer, releaseIdentity } from "./base_lab_console_server.mjs";
 
 let server;
 let baseUrl;
@@ -64,4 +64,40 @@ test("Base Ledger settlement mapping is public, sanitized and read-only", async 
   assert.equal(mapping.lanes.length, 3);
   assert.equal(mapping.negative_controls.includes("no ERP credential or ERP write"), true);
   assert.equal(JSON.stringify(mapping).includes("private_key"), false);
+});
+
+test("Base Account lifecycle evidence is sanitized and locked", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-account-lifecycle`);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  const evidence = await response.json();
+  assert.equal(evidence.status, "not_broadcast_locked");
+  assert.equal(evidence.lifecycle.reviewed_anchor.transaction_hash, null);
+  assert.equal(evidence.lifecycle.reviewed_anchor.replay_policy, "forbidden");
+  assert.equal(evidence.controls.wallet_auto_retry, false);
+  assert.equal(evidence.controls.erp_write, false);
+});
+
+test("review pack combines Base lanes without adding a write surface", () => {
+  const lane = {schema_id:"e",status:"verified",result_fingerprint_sha256:"0xproof"};
+  const catalog = {schema_version:"1",result_unit_id:"catalog",status:"verified",network:"base",chain_id:8453,transaction_hash:"0xtx",block_number:1,registry:"0xregistry",business_event_id:"event",evidence_id:"evidence",evidence_root:"0xroot",parent_inventory_root:"0xparent",release_commit:"abc",builder_code:"bc",verification:{},boundaries:{}};
+  const lifecycle = {schema_version:"1",evidence_id:"lifecycle",generated_at:"now",product:"CATVERSE",status:"locked",parent_account:"0xparent",application_account:"0xchild",network:"base",lifecycle:{},controls:{},operator_next_step:"manual",evidence_fingerprint_sha256:"0xlifecycle"};
+  const b20InventoryAgent = {schema_id:"b20",schema_version:"1.1",result_unit_id:"b20",generated_at:"now",status:"testnet_verified_mainnet_pending",activation:{target:"Base Mainnet"},token:{symbol:"CATBOX"},six_lanes:{erp_reconciliation:{quantity_conserved:true}},state_machine:{},deployment_gate:{},boundaries:{},result_fingerprint_sha256:"0xb20"};
+  const pack = buildReviewPack({xerp01:lane,inventory:lane,asset:lane,catalog,lifecycle,b20InventoryAgent,release:{commit:"abc"}});
+  assert.equal(pack.review_status,"ready_for_read_only_review");
+  assert.deepEqual(pack.scope,{wallet_connect:false,wallet_signing:false,chain_write:false,erp_write:false});
+  assert.equal(pack.lanes.base_account.status,"locked");
+  assert.equal(pack.lanes.b20_inventory.token.symbol,"CATBOX");
+});
+
+test("review pack serves each lane and denies writes", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/review-pack`);
+  assert.equal(response.status, 200);
+  const pack = await response.json();
+  assert.equal(pack.review_status, "ready_for_read_only_review");
+  assert.equal(pack.scope.chain_write, false);
+  assert.equal(pack.lanes.o2c.result_unit_id, "BASE-XERP-01");
+  assert.equal(pack.lanes.b20_inventory.token.symbol, "CATBOX");
+  const write = await fetch(`${baseUrl}/api/v1/review-pack`, { method: "POST" });
+  assert.equal(write.status, 405);
 });
