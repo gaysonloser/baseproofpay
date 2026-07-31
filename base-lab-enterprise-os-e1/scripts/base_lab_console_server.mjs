@@ -21,6 +21,7 @@ const baseVibenetDeveloperAssetsPath = join(projectRoot, "outputs/base_vibenet_d
 const baseAccountExecutionGuardrailsPath = join(projectRoot, "outputs/base_account_execution_guardrails_latest.json");
 const baseAccountLifecycleRecoveryPath = join(projectRoot, "outputs/base_account_lifecycle_recovery_latest.json");
 const baseSmartWalletLifecyclePath = join(projectRoot, "outputs/base_smart_wallet_manual_subaccount_latest.json");
+const baseSmartWalletErpHandoffPath = join(projectRoot, "outputs/base_smart_wallet_erp_handoff_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -158,6 +159,10 @@ export function sanitizeBaseSmartWalletLifecycle(evidence) {
     official_sources: evidence.official_sources,
     evidence_fingerprint_sha256: evidence.evidence_fingerprint_sha256
   };
+}
+
+export function sanitizeBaseSmartWalletErpHandoff(evidence) {
+  return {schema_version:evidence.schema_version,result_unit_id:evidence.result_unit_id,status:evidence.status,source_lifecycle_evidence_id:evidence.source_lifecycle_evidence_id,source_application_account:evidence.source_application_account,canonical_business_event:evidence.canonical_business_event,erp_handoff:evidence.erp_handoff,controls:evidence.controls,negative_controls:evidence.negative_controls};
 }
 
 export function sanitizeBaseXerp01(evidence) {
@@ -402,6 +407,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/base-account-execution-guardrails") return sendJson(req,res,200,sanitizeBaseAccountExecutionGuardrails(JSON.parse(await readFile(baseAccountExecutionGuardrailsPath,"utf8"))));
       if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
       if (req.url === "/api/v1/base-smart-wallet-lifecycle") return sendJson(req,res,200,sanitizeBaseSmartWalletLifecycle(JSON.parse(await readFile(baseSmartWalletLifecyclePath,"utf8"))));
+      if (req.url === "/api/v1/base-smart-wallet-erp-handoff") return sendJson(req,res,200,sanitizeBaseSmartWalletErpHandoff(JSON.parse(await readFile(baseSmartWalletErpHandoffPath,"utf8"))));
       if (req.url === "/api/v1/review-pack") {
         const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([
           readFile(baseXerp01Path,"utf8"),

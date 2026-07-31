@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "result_unit_id": "BASE-SMART-WALLET-ERP-HANDOFF-20260730-01",
+  "status": "read_only_draft_handoff_verified",
+  "source_lifecycle_evidence_id": "BASE-SMART-WALLET-APPLICATION-ACCOUNT-20260730-18",
+  "source_application_account": "0xA1c79b59c5f1CD7c12B2805D9d9f621D122d07df",
+  "canonical_business_event": {
+    "business_event_id": "BASE-LAB-SMART-WALLET-ISOLATION-20260730-01",
+    "event_type": "base_application_account_isolation_verified",
+    "rail": "base",
+    "idempotency_key": "BASE-LAB-SW-HANDOFF-20260730-001",
+    "postable": false,
+    "human_review_required": true
+  },
+  "erp_handoff": {
+    "mode": "draft_only_design",
+    "target_company": "AOXPET Base Lab",
+    "document_type": "Journal Entry",
+    "write_executed": false,
+    "readback_executed": false
+  },
+  "controls": {
+    "automatic_spend_permission": false,
+    "wallet_transaction": false,
+    "wallet_signature": false,
+    "erp_write": false,
+    "replay_policy": "forbidden"
+  },
+  "negative_controls": [
+    "not a payment or settlement",
+    "not an ERP posting",
+    "no automatic ledger draft creation",
+    "no token approval or transfer",
+    "no duplicate lifecycle handoff"
+  ]
+}

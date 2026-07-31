@@ -119,6 +119,18 @@ test("Smart Wallet lifecycle evidence keeps funding and spend authority manual",
   assert.equal(write.status, 405);
 });
 
+test("Smart Wallet ERP handoff is draft-only and rejects writes", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-smart-wallet-erp-handoff`);
+  assert.equal(response.status, 200);
+  const handoff = await response.json();
+  assert.equal(handoff.status, "read_only_draft_handoff_verified");
+  assert.equal(handoff.canonical_business_event.postable, false);
+  assert.equal(handoff.erp_handoff.write_executed, false);
+  assert.equal(handoff.controls.erp_write, false);
+  const write = await fetch(`${baseUrl}/api/v1/base-smart-wallet-erp-handoff`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
+
 test("review pack combines Base lanes without adding a write surface", () => {
   const lane = {schema_id:"e",status:"verified",result_fingerprint_sha256:"0xproof"};
   const catalog = {schema_version:"1",result_unit_id:"catalog",status:"verified",network:"base",chain_id:8453,transaction_hash:"0xtx",block_number:1,registry:"0xregistry",business_event_id:"event",evidence_id:"evidence",evidence_root:"0xroot",parent_inventory_root:"0xparent",release_commit:"abc",builder_code:"bc",verification:{},boundaries:{}};
