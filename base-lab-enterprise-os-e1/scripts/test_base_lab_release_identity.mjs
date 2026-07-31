@@ -200,6 +200,8 @@ test("Smart Wallet evidence pack exposes one confirmed, replay-locked record", a
   assert.equal(pack.next_bounded_action.value_eth, "0");
   assert.equal(pack.next_bounded_action.requires.includes("manual final confirmation"), true);
   assert.equal(pack.publication_controls.partial_bundle_counts_as_publication, false);
+  assert.equal(pack.publication_controls.required_platforms.includes("x"), false);
+  assert.equal(pack.publication_controls.required_platforms.length, 8);
   assert.equal(JSON.stringify(pack).includes("private_key"), false);
   const write = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`, { method: "POST" });
   assert.equal(write.status, 405);
