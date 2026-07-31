@@ -84,6 +84,24 @@ test("Smart Wallet review release binds the existing app account before a call",
   assert.match(source, /wallet_sendCalls/);
 });
 
+test("Base App connection operator binds a fresh zero-value evidence event", async () => {
+  const [planText, page] = await Promise.all([
+    readFile(new URL("../dist-base-lab-enterprise-os/base-agent-evidence-operator-plan.json", import.meta.url), "utf8"),
+    readFile(new URL("../dist-base-lab-enterprise-os/base-agent-evidence-operator.html", import.meta.url), "utf8")
+  ]);
+  const plan = JSON.parse(planText);
+  assert.equal(plan.plan_id, "CATVERSE_BASE_APP_CONNECTION_EVIDENCE_OPERATOR_20260731_V1");
+  assert.equal(plan.network.chain_id, 8453);
+  assert.equal(plan.parent_account, "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25");
+  assert.equal(plan.application_account, "0xc01F74555938B414cF783973fEffcBE98323502e");
+  assert.equal(plan.record.value_wei, "0");
+  assert.equal(plan.record.event_id, "0x4f7779d2f286b35ae1ab50d712c2241d55728705463c29596dc6017a2a287584");
+  assert.equal(plan.record.calldata_hash, "0x9f2dabadfba4859146c9df5a5ee0a5a0fa9d5d70fa77ffaf5e684ef260c74ad5");
+  assert.equal(plan.controls.spend_permission_requested, false);
+  assert.equal(plan.controls.erp_write, false);
+  assert.match(page, /Review Base App connection evidence/);
+});
+
 test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
   const response = await fetch(`${baseUrl}/api/v1/base-ledger-settlement`);
   assert.equal(response.status, 200);
