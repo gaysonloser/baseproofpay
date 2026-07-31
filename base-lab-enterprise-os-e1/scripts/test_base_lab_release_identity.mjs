@@ -97,6 +97,9 @@ test("Base App connection operator binds a fresh zero-value evidence event", asy
   assert.equal(plan.record.value_wei, "0");
   assert.equal(plan.record.event_id, "0x4f7779d2f286b35ae1ab50d712c2241d55728705463c29596dc6017a2a287584");
   assert.equal(plan.record.calldata_hash, "0x9f2dabadfba4859146c9df5a5ee0a5a0fa9d5d70fa77ffaf5e684ef260c74ad5");
+  assert.equal(plan.record.calldata, `0xffffb390${plan.record.event_id.slice(2)}${plan.record.evidence_root.slice(2)}${plan.record.evidence_kind.slice(2)}`);
+  assert.equal(plan.record.to, plan.contract);
+  assert.equal(plan.record.from, plan.application_account);
   assert.equal(plan.controls.spend_permission_requested, false);
   assert.equal(plan.controls.erp_write, false);
   assert.match(page, /Review Base App connection evidence/);
