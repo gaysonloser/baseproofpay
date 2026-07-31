@@ -103,6 +103,10 @@ test("Base App connection operator binds a fresh zero-value evidence event", asy
   assert.equal(plan.controls.spend_permission_requested, false);
   assert.equal(plan.controls.erp_write, false);
   assert.match(page, /Review Base App connection evidence/);
+  assert.match(page, /Locked review packet/);
+  assert.match(page, new RegExp(plan.record.event_id));
+  assert.match(page, new RegExp(plan.record.calldata_hash));
+  assert.match(page, /0\.00002 ETH/);
 });
 
 test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
