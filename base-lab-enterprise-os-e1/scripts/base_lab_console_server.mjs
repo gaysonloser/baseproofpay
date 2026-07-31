@@ -176,6 +176,19 @@ export function sanitizeBaseSmartWalletEvidencePack(evidence) {
     smart_wallet: evidence.smart_wallet,
     contract: evidence.contract,
     confirmed_business_record: evidence.confirmed_business_record,
+    next_bounded_action: evidence.next_bounded_action ? {
+      status: evidence.next_bounded_action.status,
+      operation: evidence.next_bounded_action.operation,
+      from: evidence.next_bounded_action.from,
+      to: evidence.next_bounded_action.to,
+      event_id: evidence.next_bounded_action.event_id,
+      evidence_root: evidence.next_bounded_action.evidence_root,
+      calldata_hash: evidence.next_bounded_action.calldata_hash,
+      value_eth: evidence.next_bounded_action.value_eth,
+      fee_ceiling_eth: evidence.next_bounded_action.fee_ceiling_eth,
+      requires: evidence.next_bounded_action.requires,
+      boundaries: evidence.next_bounded_action.boundaries
+    } : null,
     publication_controls: evidence.publication_controls,
     negative_controls: evidence.negative_controls,
     material_fingerprint_sha256: evidence.material_fingerprint_sha256

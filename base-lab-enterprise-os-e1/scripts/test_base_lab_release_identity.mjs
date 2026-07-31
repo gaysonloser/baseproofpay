@@ -194,6 +194,11 @@ test("Smart Wallet evidence pack exposes one confirmed, replay-locked record", a
   assert.equal(pack.confirmed_business_record.receipt_status, 1);
   assert.equal(pack.confirmed_business_record.duplicate_check, "locked_after_confirmed_receipt");
   assert.equal(pack.confirmed_business_record.value_eth, "0");
+  assert.match(pack.confirmed_business_record.scope, /inventory-agent bootstrap/);
+  assert.equal(pack.next_bounded_action.status, "prepared_not_broadcast");
+  assert.equal(pack.next_bounded_action.operation, "record_base_app_connection_evidence");
+  assert.equal(pack.next_bounded_action.value_eth, "0");
+  assert.equal(pack.next_bounded_action.requires.includes("manual final confirmation"), true);
   assert.equal(pack.publication_controls.partial_bundle_counts_as_publication, false);
   assert.equal(JSON.stringify(pack).includes("private_key"), false);
   const write = await fetch(`${baseUrl}/api/v1/smart-wallet-evidence-pack`, { method: "POST" });
