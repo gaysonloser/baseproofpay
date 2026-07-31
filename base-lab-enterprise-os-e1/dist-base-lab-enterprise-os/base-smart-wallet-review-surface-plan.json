@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "plan_id": "CATVERSE_SMART_WALLET_REVIEW_SURFACE_20260731_V1",
+  "plan_id": "CATVERSE_SMART_WALLET_SESSION_BINDING_20260731_V2",
   "network": {
     "name": "Base Mainnet",
     "chain_id": 8453,
@@ -10,20 +10,20 @@
   "parent_account": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
   "application_account": "0xc01F74555938B414cF783973fEffcBE98323502e",
   "contract": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
-  "source_fingerprint": "sha256:1d1d9c3667fb6cc853e6a1f525aae0e5ea5682ea7f99a1ecb44d3385329faf03",
+  "source_fingerprint": "sha256:7a621d8578637e45a4fe9ae37027503e269c4c968b98c89e8478c4f67be8d858",
   "record": {
-    "operation": "record_smart_wallet_review_surface_release",
+    "operation": "record_smart_wallet_session_binding_control",
     "from": "0xc01F74555938B414cF783973fEffcBE98323502e",
     "to": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
     "value_wei": "0",
-    "calldata": "0xffffb390fe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437b65b3e627cd4bea62118b3ffc190aa34b3d9d208189d668ea528ec2349638c5f76480afac637210fc426776b943ce2f53047d3b51196877372da91c908040132",
-    "calldata_hash": "0x7ca85f2db825423c27018776637238774575d54044b71c43049119c01ff689ee",
-    "event_id": "0xfe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437",
-    "evidence_root": "0xb65b3e627cd4bea62118b3ffc190aa34b3d9d208189d668ea528ec2349638c5f",
-    "evidence_kind": "0x76480afac637210fc426776b943ce2f53047d3b51196877372da91c908040132",
-    "replay_read_calldata": "0x1c11ea9bfe2c56963d0e2e30bbd0609abb36ea1db232ef97bbd7c44c15e97dcf10f39437",
+    "calldata": "0xffffb390cfe740b4b5871472fad6744c151c14ad10aa5cb50cd94f92be60df3e124b3caa7976b627e836961b7de673266e96a867c566e94018b6d952242e215412942c06e8a7c86816ac5f66a0f134dc8ad3334669a220079c4ece6a98dd8db9e05de7e9",
+    "calldata_hash": "0x8bfc4e78022e04d03958a8b88e559e614c3d980cbe2046b6f622af13aaa8b767",
+    "event_id": "0xcfe740b4b5871472fad6744c151c14ad10aa5cb50cd94f92be60df3e124b3caa",
+    "evidence_root": "0x7976b627e836961b7de673266e96a867c566e94018b6d952242e215412942c06",
+    "evidence_kind": "0xe8a7c86816ac5f66a0f134dc8ad3334669a220079c4ece6a98dd8db9e05de7e9",
+    "replay_read_calldata": "0x1c11ea9bcfe740b4b5871472fad6744c151c14ad10aa5cb50cd94f92be60df3e124b3caa",
     "expected_empty_root": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "notes": "One immutable diagnostic release record for the hosted Base Account review surface. No token transfer, approval, x402 payment or ERP write."
+    "notes": "One immutable technical control record proving the documented per-session Base Account sub-account binding before the application account submits a record. No token transfer, approval, x402 payment or ERP write."
   },
   "controls": {
     "one_wallet_review_per_operation": true,

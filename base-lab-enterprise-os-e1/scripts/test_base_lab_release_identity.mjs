@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { after, before, test } from "node:test";
 import { buildReviewPack, createBaseLabConsoleServer, releaseIdentity } from "./base_lab_console_server.mjs";
 
@@ -64,6 +65,20 @@ test("Smart Wallet review surface permits only the required Base connections", a
   assert.equal(csp.includes("frame-src https://keys.coinbase.com"), true);
   assert.equal(response.headers.get("cross-origin-opener-policy"), "same-origin-allow-popups");
   assert.equal(response.headers.get("access-control-allow-origin"), null);
+});
+
+test("Smart Wallet review release binds the existing app account before a call", async () => {
+  const [planText, source] = await Promise.all([
+    readFile(new URL("../dist-base-lab-enterprise-os/base-smart-wallet-review-surface-plan.json", import.meta.url), "utf8"),
+    readFile(new URL("../dist-base-lab-enterprise-os/assets/base-smart-wallet-review-surface-pr83xb2J.js", import.meta.url), "utf8")
+  ]);
+  const plan = JSON.parse(planText);
+  assert.equal(plan.plan_id, "CATVERSE_SMART_WALLET_SESSION_BINDING_20260731_V2");
+  assert.equal(plan.record.value_wei, "0");
+  assert.equal(plan.controls.spend_permission_requested, false);
+  assert.equal(plan.controls.erp_write, false);
+  assert.match(source, /wallet_addSubAccount/);
+  assert.match(source, /wallet_sendCalls/);
 });
 
 test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
