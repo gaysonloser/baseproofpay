@@ -66,6 +66,19 @@ test("Base Ledger settlement mapping is public, sanitized and read-only", async 
   assert.equal(JSON.stringify(mapping).includes("private_key"), false);
 });
 
+test("Base Vibenet developer assets are testnet-scoped and deny writes", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-vibenet-developer-assets`);
+  assert.equal(response.status, 200);
+  const evidence = await response.json();
+  assert.equal(evidence.network, "Base Vibenet");
+  assert.equal(evidence.chain_id, 84538453);
+  assert.equal(evidence.asset_lanes.length, 3);
+  assert.equal(evidence.controls.wallet_connected, false);
+  assert.equal(evidence.negative_controls.includes("not a Base Mainnet balance or transaction"), true);
+  const write = await fetch(`${baseUrl}/api/v1/base-vibenet-developer-assets`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
+
 test("Base Account lifecycle evidence is sanitized and locked", async () => {
   const response = await fetch(`${baseUrl}/api/v1/base-account-lifecycle`);
   assert.equal(response.status, 200);

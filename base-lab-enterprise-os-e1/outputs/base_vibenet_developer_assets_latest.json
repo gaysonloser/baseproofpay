@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE-VIBENET-DEVELOPER-ASSETS-20260730-001",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "status": "official_testnet_assets_verified",
+  "network": "Base Vibenet",
+  "chain_id": 84538453,
+  "generated_at": "2026-07-31T11:02:00+08:00",
+  "recipient": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+  "official_sources": {
+    "faucet": "https://chain.base.org/vibenet/faucet",
+    "rpc": "https://rpc.vibes.base.org",
+    "account_demo": "https://chain.base.org/vibenet/demos/account"
+  },
+  "asset_lanes": [
+    {
+      "asset": "Vibenet ETH",
+      "purpose": "Gas-only developer balance for a future separately approved Vibenet account lifecycle.",
+      "transaction_hash": "0x4ee8efa437cbb82fcd60ecc872615b243b568c87834489762582f1e2a639bb7b",
+      "receipt_status": 1,
+      "recipient": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+      "amount": "0.1"
+    },
+    {
+      "asset": "USDV",
+      "purpose": "Stable-value test asset for a future separately approved testnet settlement lifecycle.",
+      "contract": "0x81a6c7626ce9ebc3f4bf898cbaa5599e993652a0",
+      "transaction_hash": "0x5fe82ec45777dce008d82e619c0aa4826069dfdf2f871daefc78b76cc38161a0",
+      "receipt_status": 1,
+      "recipient": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+      "amount": "1000"
+    },
+    {
+      "asset": "NFV",
+      "purpose": "Non-payment developer asset for a future separately approved evidence-object lifecycle.",
+      "contract": "0x0848fafba3e62699c2cfecb5f506c82079e88dc0",
+      "transaction_hash": "0x56b1d577cc52750cba6bec1d1acf1489c08f1a5b8e00080c1fe10f83797f5cc8",
+      "receipt_status": 1,
+      "recipient": "0x9903E1e8C871321ee2Ed80cea8a5899F0992ba9e",
+      "token_id": "10"
+    }
+  ],
+  "controls": {
+    "wallet_connected": false,
+    "wallet_signature": false,
+    "mainnet_action": false,
+    "erp_write": false,
+    "private_credentials": false,
+    "automatic_next_action": false
+  },
+  "negative_controls": [
+    "not a Base Mainnet balance or transaction",
+    "not a payment, x402 settlement, or ERP posting",
+    "not an account-creation, passkey, K1 or P-256 credential event",
+    "not permission to transfer USDV or NFV",
+    "not proof of production adoption"
+  ],
+  "next_gate": "Any Vibenet transfer, account creation, or payment-style test requires an independently reviewed scope and, if a wallet request is involved, a separate visible wallet approval."
+}

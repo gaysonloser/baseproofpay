@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="base:app_id" content="6a5c632cf364895c3c606518" />
+    <meta name="description" content="Read-only Base Vibenet developer-asset evidence for CATVERSE Enterprise OS." />
+    <title>Base Vibenet Developer Assets</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#0b1020; color:#e8eefc; }
+      body { margin:0; background:linear-gradient(135deg,#0b1020,#16365b); min-height:100vh; }
+      main { max-width:1040px; margin:auto; padding:48px 22px 72px; }
+      .eyebrow { color:#78e6ff; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+      h1 { font-size:clamp(2rem,5vw,4rem); margin:.45rem 0 1rem; line-height:1.05; }
+      .lede { max-width:760px; color:#b8c6e3; font-size:1.1rem; line-height:1.7; }
+      .status { display:inline-block; border:1px solid #2a9ac0; background:#102f48; color:#9eeaff; padding:7px 11px; border-radius:6px; font-size:.86rem; }
+      .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:30px; }
+      article, section { border:1px solid #274d70; background:rgba(10,25,46,.86); border-radius:8px; padding:20px; }
+      h2 { font-size:1.14rem; margin:0 0 12px; color:#fff; }
+      p { color:#c4d0e7; line-height:1.55; margin:.45rem 0; }
+      .label { color:#77d9ff; font-size:.75rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+      ul { padding-left:20px; color:#c4d0e7; line-height:1.6; }
+      code { color:#b9efff; overflow-wrap:anywhere; font-size:.82rem; }
+      a { color:#8de8ff; }
+      .notice { margin-top:14px; border-left:3px solid #f0b75a; background:#2b2115; color:#f6d9a7; padding:15px; }
+      @media (max-width:760px) { main { padding-top:32px; } .grid { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">CATVERSE · AOXPET Base Lab</div>
+      <h1>Base Vibenet Developer Assets</h1>
+      <p class="lede">A read-only, three-asset testnet evidence surface for the next Base developer lifecycle. It separates gas, stable-value settlement testing and non-payment asset evidence without presenting any Vibenet activity as a mainnet payment or production balance.</p>
+      <span class="status">Official Base Vibenet receipts verified · No wallet connected</span>
+      <div class="grid">
+        <article><h2>Vibenet ETH</h2><p class="label">Gas balance</p><p>0.1 test ETH received from the official faucet for a future separately approved developer account lifecycle.</p><code>0x4ee8…639bb7b</code></article>
+        <article><h2>USDV</h2><p class="label">Settlement test asset</p><p>1,000 USDV received for a future distinct testnet settlement workflow, never an ERP posting by itself.</p><code>0x5fe8…38161a0</code></article>
+        <article><h2>NFV</h2><p class="label">Evidence object</p><p>NFV token #10 received as a non-payment developer asset for a future evidence-object workflow.</p><code>0x56b1…797f5cc8</code></article>
+      </div>
+      <section style="margin-top:14px">
+        <h2>Enterprise boundary</h2>
+        <ul><li>All three receipts are on Base Vibenet, not Base Mainnet.</li><li>This page cannot connect a wallet, create a key, send a transaction, settle x402, or write to ERP.</li><li>Any future transfer, portable-account creation, or settlement simulation requires its own reviewed scope and visible approval where applicable.</li></ul>
+        <p class="notice">Developer assets make a test environment usable; they do not establish a payment, revenue, inventory movement, or production adoption claim.</p>
+        <p>Sources: <a href="https://chain.base.org/vibenet/faucet" target="_blank" rel="noreferrer">Base Vibenet Faucet</a> · <a href="https://chain.base.org/vibenet/demos/account" target="_blank" rel="noreferrer">EIP-8130 account demo</a> · machine-readable evidence: <code>/api/v1/base-vibenet-developer-assets</code></p>
+      </section>
+    </main>
+  </body>
+</html>
