@@ -79,6 +79,19 @@ test("Base Vibenet developer assets are testnet-scoped and deny writes", async (
   assert.equal(write.status, 405);
 });
 
+test("Base Account execution guardrails preserve manual funding and deny writes", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-account-execution-guardrails`);
+  assert.equal(response.status, 200);
+  const guardrails = await response.json();
+  assert.equal(guardrails.status, "official_sdk_control_map_verified");
+  assert.equal(guardrails.execution_roles.length, 4);
+  assert.equal(guardrails.control_defaults.sub_account_funding, "manual");
+  assert.equal(guardrails.control_defaults.automatic_spend_permission, false);
+  assert.equal(guardrails.control_defaults.wallet_auto_connect, false);
+  const write = await fetch(`${baseUrl}/api/v1/base-account-execution-guardrails`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
+
 test("Base Account lifecycle evidence is sanitized and locked", async () => {
   const response = await fetch(`${baseUrl}/api/v1/base-account-lifecycle`);
   assert.equal(response.status, 200);

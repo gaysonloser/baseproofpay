@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="base:app_id" content="6a5c632cf364895c3c606518" />
+    <meta name="description" content="Read-only Base Account execution guardrails for CATVERSE Enterprise OS." />
+    <title>Base Account Execution Guardrails</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:#0b1020; color:#e8eefc; }
+      body { margin:0; background:linear-gradient(135deg,#0b1020,#30235e); min-height:100vh; }
+      main { max-width:1080px; margin:auto; padding:48px 22px 72px; }
+      .eyebrow { color:#c7a2ff; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+      h1 { font-size:clamp(2rem,5vw,4rem); margin:.45rem 0 1rem; line-height:1.05; }
+      .lede { max-width:780px; color:#d3c9ee; font-size:1.1rem; line-height:1.7; }
+      .status { display:inline-block; border:1px solid #8057d4; background:#281c51; color:#d4bdff; padding:7px 11px; border-radius:6px; font-size:.86rem; }
+      .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:30px; }
+      article, section { border:1px solid #46356e; background:rgba(18,13,43,.88); border-radius:8px; padding:20px; }
+      h2 { font-size:1.14rem; margin:0 0 12px; color:#fff; }
+      p { color:#d3c9ee; line-height:1.55; margin:.45rem 0; }
+      .label { color:#caa9ff; font-size:.75rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+      ul { padding-left:20px; color:#d3c9ee; line-height:1.6; }
+      code { color:#e1d2ff; overflow-wrap:anywhere; }
+      a { color:#cfb5ff; }
+      .notice { margin-top:14px; border-left:3px solid #f0b75a; background:#2b2115; color:#f6d9a7; padding:15px; }
+      @media (max-width:760px) { main { padding-top:32px; } .grid { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">CATVERSE · AOXPET Base Lab</div>
+      <h1>Base Account Execution Guardrails</h1>
+      <p class="lede">A control surface for using Base Account sub-account architecture without quietly converting a user-controlled wallet into an automatic spending rail. The production account, app account, linked EOA and Vibenet assets each retain a different job.</p>
+      <span class="status">Official SDK model verified · Manual funding default · No wallet request</span>
+      <div class="grid">
+        <article><h2>Universal Base Account</h2><p class="label">Approval authority</p><p>Owns final, visible approval for any new production wallet action. It is never replaced by the app account or a linked EOA.</p></article>
+        <article><h2>Application Sub Account</h2><p class="label">Execution isolation</p><p>Designed for app-specific agentic workloads, but CATVERSE keeps creation and funding manual until a separately scoped approval exists.</p></article>
+        <article><h2>Linked EOA</h2><p class="label">Separate control plane</p><p>Can only send one owner-reviewed ordinary transaction at a time. It never represents the Base Account identity or a hidden batch sender.</p></article>
+        <article><h2>Vibenet Recipient</h2><p class="label">Test-only assets</p><p>Holds test ETH, USDV and NFV for a future explicitly reviewed developer lifecycle. It never produces a mainnet, payment or ERP claim.</p></article>
+      </div>
+      <section style="margin-top:14px">
+        <h2>Read-only first</h2>
+        <p>Before an optional app-account action, the only supported preflight is <code>wallet_getSubAccounts</code> with the Base Account and app domain. The method reads account state; it is not a request to create, fund or grant permissions.</p>
+        <ul><li>Sub-account creation: manual.</li><li>Funding: manual.</li><li>Automatic Spend Permission: disabled by product policy.</li><li>ERP handoff: draft-only and human-reviewed when separately authorized.</li></ul>
+        <p class="notice">This console cannot connect a wallet, create a sub account, request a spend permission, send a call, use a paymaster, or write to ERP.</p>
+        <p>Sources: <a href="https://docs.base.org/base-account/improve-ux/sub-accounts" target="_blank" rel="noreferrer">Base Account Sub Accounts</a> · <a href="https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getSubAccounts" target="_blank" rel="noreferrer">wallet_getSubAccounts</a> · machine-readable contract: <code>/api/v1/base-account-execution-guardrails</code></p>
+      </section>
+    </main>
+  </body>
+</html>

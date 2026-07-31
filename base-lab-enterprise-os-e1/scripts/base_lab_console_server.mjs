@@ -18,6 +18,7 @@ const baseB20InventoryAgentPath = join(projectRoot, "outputs/base_b20_inventory_
 const baseX402CatalogAnchorPath = join(projectRoot, "outputs/base_x402_catalog_anchor_20260727_latest.json");
 const baseLedgerSettlementPath = join(projectRoot, "outputs/base_ledger_settlement_mapping_latest.json");
 const baseVibenetDeveloperAssetsPath = join(projectRoot, "outputs/base_vibenet_developer_assets_latest.json");
+const baseAccountExecutionGuardrailsPath = join(projectRoot, "outputs/base_account_execution_guardrails_latest.json");
 const baseAccountLifecycleRecoveryPath = join(projectRoot, "outputs/base_account_lifecycle_recovery_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
@@ -286,6 +287,23 @@ export function sanitizeBaseVibenetDeveloperAssets(evidence) {
   };
 }
 
+export function sanitizeBaseAccountExecutionGuardrails(evidence) {
+  return {
+    schema_version: evidence.schema_version,
+    evidence_id: evidence.evidence_id,
+    product: evidence.product,
+    status: evidence.status,
+    generated_at: evidence.generated_at,
+    official_sources: evidence.official_sources,
+    business_event_id: evidence.business_event_id,
+    execution_roles: evidence.execution_roles,
+    read_only_preflight: evidence.read_only_preflight,
+    control_defaults: evidence.control_defaults,
+    negative_controls: evidence.negative_controls,
+    next_gate: evidence.next_gate
+  };
+}
+
 export function sanitizeBaseAccountLifecycleRecovery(evidence) {
   return {
     schema_version: evidence.schema_version,
@@ -361,6 +379,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/x402-catalog-anchor") return sendJson(req,res,200,sanitizeBaseX402CatalogAnchor(JSON.parse(await readFile(baseX402CatalogAnchorPath,"utf8"))));
       if (req.url === "/api/v1/base-ledger-settlement") return sendJson(req,res,200,sanitizeBaseLedgerSettlement(JSON.parse(await readFile(baseLedgerSettlementPath,"utf8"))));
       if (req.url === "/api/v1/base-vibenet-developer-assets") return sendJson(req,res,200,sanitizeBaseVibenetDeveloperAssets(JSON.parse(await readFile(baseVibenetDeveloperAssetsPath,"utf8"))));
+      if (req.url === "/api/v1/base-account-execution-guardrails") return sendJson(req,res,200,sanitizeBaseAccountExecutionGuardrails(JSON.parse(await readFile(baseAccountExecutionGuardrailsPath,"utf8"))));
       if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
       if (req.url === "/api/v1/review-pack") {
         const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([

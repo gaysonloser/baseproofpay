@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE-ACCOUNT-EXECUTION-GUARDRAILS-20260730-001",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS — AOXPET Base Lab",
+  "status": "official_sdk_control_map_verified",
+  "generated_at": "2026-07-31T11:18:00+08:00",
+  "official_sources": [
+    "https://docs.base.org/base-account/improve-ux/sub-accounts",
+    "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getSubAccounts",
+    "https://docs.base.org/base-account/reference/core/createBaseAccount"
+  ],
+  "business_event_id": "BASE-LAB-ACCOUNT-CONTROL-202608-001",
+  "execution_roles": [
+    {
+      "role": "universal_base_account",
+      "purpose": "User-controlled production identity and final approval authority.",
+      "allowed_surface": "Visible Base Account review only.",
+      "prohibited_surface": "No automatic transaction, approval, policy expansion or ERP posting."
+    },
+    {
+      "role": "application_sub_account",
+      "purpose": "App-specific execution isolation for CATVERSE evidence workloads.",
+      "allowed_surface": "Read existing account state; manual funding design only.",
+      "prohibited_surface": "No automatic Spend Permission, hidden parent-fund fallback or registry replay."
+    },
+    {
+      "role": "linked_external_eoa",
+      "purpose": "Separately controlled Base EOA for finite, owner-reviewed score batches or approved test actions.",
+      "allowed_surface": "One visible wallet review per ordinary transaction.",
+      "prohibited_surface": "No automatic batch broadcast, no use as Base Account substitute."
+    },
+    {
+      "role": "vibenet_test_recipient",
+      "purpose": "Test-only holder of official Vibenet developer assets.",
+      "allowed_surface": "Receipt readback and a separately reviewed testnet lifecycle.",
+      "prohibited_surface": "No mainnet, production settlement, ERP posting or browser-key creation by this console."
+    }
+  ],
+  "read_only_preflight": {
+    "method": "wallet_getSubAccounts",
+    "purpose": "Read app-domain sub-account state before any optional, separately approved account action.",
+    "required_parameters": ["account", "domain"],
+    "write_effect": false
+  },
+  "control_defaults": {
+    "sub_account_creation": "manual",
+    "sub_account_funding": "manual",
+    "automatic_spend_permission": false,
+    "wallet_auto_connect": false,
+    "chain_write": false,
+    "erp_write": false
+  },
+  "negative_controls": [
+    "no wallet RPC request sent from this page",
+    "no sub-account created or funded",
+    "no spend permission requested or granted",
+    "no transaction, signature, paymaster or registry anchor",
+    "no ERP credential, draft, submission or posting"
+  ],
+  "next_gate": "A new application-account action needs a separately scoped, visible Base Account review that names account, domain, chain, funding mode, permissions, target calls and maximum fee."
+}
