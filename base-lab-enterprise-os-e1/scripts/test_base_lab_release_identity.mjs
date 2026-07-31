@@ -56,6 +56,16 @@ test("release endpoint is read-only and carries security headers", async () => {
   assert.equal((await write.json()).error, "read_only_runtime");
 });
 
+test("Smart Wallet review surface permits only the required Base connections", async () => {
+  const response = await fetch(`${baseUrl}/base-smart-wallet-review-surface.html`);
+  assert.equal(response.status, 200);
+  const csp = response.headers.get("content-security-policy");
+  assert.equal(csp.includes("connect-src 'self' https://mainnet.base.org"), true);
+  assert.equal(csp.includes("frame-src https://keys.coinbase.com"), true);
+  assert.equal(response.headers.get("cross-origin-opener-policy"), "same-origin-allow-popups");
+  assert.equal(response.headers.get("access-control-allow-origin"), null);
+});
+
 test("Base Ledger settlement mapping is public, sanitized and read-only", async () => {
   const response = await fetch(`${baseUrl}/api/v1/base-ledger-settlement`);
   assert.equal(response.status, 200);
