@@ -441,6 +441,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       const headers = [
         "/base-app-interaction-lab.html",
         "/base-agent-subaccount-console.html",
+        "/base-agent-evidence-operator.html",
         "/base-subaccount-agent-anchor.html"
       ].includes(rawPath) ? interactionSecurityHeaders : securityHeaders;
       res.writeHead(200,{...headers,"content-type":types[extname(filePath)]||"application/octet-stream","cache-control":"public, max-age=300"});

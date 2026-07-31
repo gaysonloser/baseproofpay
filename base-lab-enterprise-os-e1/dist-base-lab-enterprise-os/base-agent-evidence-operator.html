@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CATVERSE Agent Evidence Operator</title>
+    <script type="module" crossorigin src="/assets/base-agent-evidence-operator-BzZ9tKOq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/utils-De7E53Fk.js">
+    <link rel="modulepreload" crossorigin href="/assets/localBatchGatewayRequest-C3tAqpQf.js">
+    <link rel="modulepreload" crossorigin href="/assets/secp256k1-Dozl9sDg.js">
+    <link rel="stylesheet" crossorigin href="/assets/base-agent-evidence-operator-CGvIk-ce.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">CATVERSE BASE LAB</p>
+        <h1>Agent evidence operator</h1>
+        <p class="status">Manual funding. No spend permission. One reviewed call at a time.</p>
+      </header>
+      <section class="facts" aria-label="Application evidence scope">
+        <dl>
+          <div><dt>Network</dt><dd>Base Mainnet (8453)</dd></div>
+          <div><dt>Parent account</dt><dd id="parent">Not connected</dd></div>
+          <div><dt>Application account</dt><dd id="child">Not resolved</dd></div>
+          <div><dt>Evidence contract</dt><dd id="contract">Loading plan</dd></div>
+          <div><dt>ERP authority</dt><dd>Read-only boundary; no ERP write</dd></div>
+          <div><dt>Token / payment</dt><dd>None</dd></div>
+        </dl>
+      </section>
+      <section class="actions" aria-label="Application evidence controls">
+        <div class="step"><span>1</span><button id="connect" type="button">Connect Base Account</button><output>Read-only connection</output></div>
+        <div class="step"><span>2</span><button id="inspect" type="button" disabled>Resolve application account</button><output>Manual child only</output></div>
+        <div class="step"><span>3</span><button id="deploy" type="button" disabled>Review evidence contract deployment</button><output>0 ETH value · Factory CREATE2</output></div>
+        <div class="step"><span>4</span><button id="fund" type="button" disabled>Review manual operating funding</button><output>0.00001 ETH to app account</output></div>
+        <div class="step"><span>5</span><button id="record" type="button" disabled>Review inventory evidence record</button><output>0 ETH value · One immutable record</output></div>
+      </section>
+      <section class="log" aria-label="Execution log">
+        <div class="log-heading"><h2>Execution log</h2><a href="/enterprise-os.html">Enterprise OS</a></div>
+        <pre id="log">Loading plan.</pre>
+      </section>
+    </main>
+  </body>
+</html>
