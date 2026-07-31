@@ -85,6 +85,12 @@ test("Smart Wallet review release binds the existing app account before a call",
 });
 
 test("Base App connection operator binds a fresh zero-value evidence event", async () => {
+  const response = await fetch(`${baseUrl}/base-agent-evidence-operator.html`);
+  assert.equal(response.status, 200);
+  const csp = response.headers.get("content-security-policy");
+  assert.equal(csp.includes("https://mainnet.base.org"), true);
+  assert.equal(csp.includes("frame-src https://keys.coinbase.com"), true);
+  assert.equal(response.headers.get("cross-origin-opener-policy"), "same-origin-allow-popups");
   const [planText, page] = await Promise.all([
     readFile(new URL("../dist-base-lab-enterprise-os/base-agent-evidence-operator-plan.json", import.meta.url), "utf8"),
     readFile(new URL("../dist-base-lab-enterprise-os/base-agent-evidence-operator.html", import.meta.url), "utf8")
