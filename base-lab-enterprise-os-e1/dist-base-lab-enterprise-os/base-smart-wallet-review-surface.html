@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CATVERSE Smart Wallet Review Surface</title>
+    <script type="module" crossorigin src="/assets/base-smart-wallet-review-surface-7vqDrgyF.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/utils-De7E53Fk.js">
+    <link rel="modulepreload" crossorigin href="/assets/localBatchGatewayRequest-C3tAqpQf.js">
+    <link rel="modulepreload" crossorigin href="/assets/secp256k1-Dozl9sDg.js">
+    <link rel="stylesheet" crossorigin href="/assets/base-smart-wallet-review-surface-CGvIk-ce.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">CATVERSE BASE LAB</p>
+        <h1>Smart Wallet review surface</h1>
+        <p class="status">Read first. One immutable release record only after a visible hosted review.</p>
+      </header>
+      <section class="facts" aria-label="Review-surface scope">
+        <dl>
+          <div><dt>Network</dt><dd>Base Mainnet (8453)</dd></div>
+          <div><dt>Base Account signer</dt><dd id="parent">Not connected</dd></div>
+          <div><dt>Application account</dt><dd id="child">Not resolved</dd></div>
+          <div><dt>Evidence contract</dt><dd id="contract">Loading plan</dd></div>
+          <div><dt>Wallet review surface</dt><dd id="surface">Not requested</dd></div>
+          <div><dt>Token / payment / ERP</dt><dd>None / none / no write</dd></div>
+        </dl>
+      </section>
+      <section class="actions" aria-label="Review surface controls">
+        <div class="step"><span>1</span><button id="connect" type="button">Connect Base Account</button><output>Read-only account and chain check</output></div>
+        <div class="step"><span>2</span><button id="verify" type="button" disabled>Verify release replay lock</button><output>Onchain read only</output></div>
+        <div class="step"><span>3</span><button id="review" type="button" disabled>Review diagnostic release record</button><output>0 ETH value · no token · no ERP write</output></div>
+        <div class="step"><span>4</span><button id="status" type="button" disabled>Read submitted call status</button><output>Read-only · never replays a call</output></div>
+      </section>
+      <section id="review-packet" class="facts" aria-label="Diagnostic record review packet" hidden>
+        <h2>Review packet</h2>
+        <dl>
+          <div><dt>Signer</dt><dd id="review-parent">Not connected</dd></div>
+          <div><dt>Execution account</dt><dd id="review-child">Not resolved</dd></div>
+          <div><dt>Target</dt><dd id="review-target">Not resolved</dd></div>
+          <div><dt>Action</dt><dd>Record one immutable Smart Wallet review-surface release root</dd></div>
+          <div><dt>ETH value</dt><dd>0 ETH</dd></div>
+          <div><dt>Calldata hash</dt><dd id="review-calldata">Not resolved</dd></div>
+          <div><dt>Fee ceiling</dt><dd id="review-fee">Not resolved</dd></div>
+          <div><dt>Replay lock</dt><dd id="review-replay">Verify before wallet review</dd></div>
+        </dl>
+      </section>
+      <section class="log" aria-label="Execution log">
+        <div class="log-heading"><h2>Execution log</h2><a href="/enterprise-os.html">Enterprise OS</a></div>
+        <pre id="log">Loading release plan. No wallet request has been made.</pre>
+      </section>
+    </main>
+  </body>
+</html>
