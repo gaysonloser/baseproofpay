@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "evidence_id": "BASE-SMART-WALLET-APPLICATION-ACCOUNT-20260730-18",
+  "generated_at": "2026-07-31T11:33:00+08:00",
+  "product": "CATVERSE Twin-Ledger Enterprise Finance OS - AOXPET Base Lab",
+  "status": "verified_manual_application_account_created",
+  "network": "Base Account application-account lifecycle",
+  "parent_account": "0xBa36D092dB2999bb1FaBbaf281AC956A97189C25",
+  "application_account": "0xA1c79b59c5f1CD7c12B2805D9d9f621D122d07df",
+  "factory": "0xBA5ED110eFDBa3D005bfC882d75358ACBbB85842",
+  "lifecycle": {
+    "creation_mode": "manual",
+    "funding": "manual",
+    "automatic_spend_permission": false,
+    "transaction_requested": false,
+    "signature_requested": false,
+    "erp_write": false,
+    "replay_policy": "forbidden"
+  },
+  "business_use": "A separate application account is available for a future, separately approved CATVERSE agent workflow. This result is not a payment, token transfer, ERP posting, or automatic execution mandate.",
+  "negative_controls": [
+    "no automatic funding",
+    "no automatic spend permission",
+    "no token approval",
+    "no transaction request",
+    "no message signature",
+    "no ERP credential or write",
+    "no repeated application-account creation"
+  ],
+  "official_sources": [
+    "https://docs.base.org/base-account/improve-ux/sub-accounts",
+    "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getSubAccounts"
+  ],
+  "evidence_fingerprint_sha256": "464af8f31ed40da8eabb088a766e02430714f4c51f35da464271d245d7a4124d"
+}

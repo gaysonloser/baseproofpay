@@ -20,6 +20,7 @@ const baseLedgerSettlementPath = join(projectRoot, "outputs/base_ledger_settleme
 const baseVibenetDeveloperAssetsPath = join(projectRoot, "outputs/base_vibenet_developer_assets_latest.json");
 const baseAccountExecutionGuardrailsPath = join(projectRoot, "outputs/base_account_execution_guardrails_latest.json");
 const baseAccountLifecycleRecoveryPath = join(projectRoot, "outputs/base_account_lifecycle_recovery_latest.json");
+const baseSmartWalletLifecyclePath = join(projectRoot, "outputs/base_smart_wallet_manual_subaccount_latest.json");
 const types = {".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".png":"image/png",".svg":"image/svg+xml"};
 const securityHeaders = {
   "content-security-policy":"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests",
@@ -137,6 +138,25 @@ export function sanitizeControlReadiness(readiness) {
     lanes: (readiness.lanes || []).map(({ id, label, status, decision, facts, controls, blocker }) => ({ id, label, status, decision, facts, controls, blocker })),
     controls: readiness.controls,
     evidence_fingerprint: readiness.evidence_fingerprint
+  };
+}
+
+export function sanitizeBaseSmartWalletLifecycle(evidence) {
+  return {
+    schema_version: evidence.schema_version,
+    evidence_id: evidence.evidence_id,
+    generated_at: evidence.generated_at,
+    product: evidence.product,
+    status: evidence.status,
+    network: evidence.network,
+    parent_account: evidence.parent_account,
+    application_account: evidence.application_account,
+    factory: evidence.factory,
+    lifecycle: evidence.lifecycle,
+    business_use: evidence.business_use,
+    negative_controls: evidence.negative_controls,
+    official_sources: evidence.official_sources,
+    evidence_fingerprint_sha256: evidence.evidence_fingerprint_sha256
   };
 }
 
@@ -381,6 +401,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/base-vibenet-developer-assets") return sendJson(req,res,200,sanitizeBaseVibenetDeveloperAssets(JSON.parse(await readFile(baseVibenetDeveloperAssetsPath,"utf8"))));
       if (req.url === "/api/v1/base-account-execution-guardrails") return sendJson(req,res,200,sanitizeBaseAccountExecutionGuardrails(JSON.parse(await readFile(baseAccountExecutionGuardrailsPath,"utf8"))));
       if (req.url === "/api/v1/base-account-lifecycle") return sendJson(req,res,200,sanitizeBaseAccountLifecycleRecovery(JSON.parse(await readFile(baseAccountLifecycleRecoveryPath,"utf8"))));
+      if (req.url === "/api/v1/base-smart-wallet-lifecycle") return sendJson(req,res,200,sanitizeBaseSmartWalletLifecycle(JSON.parse(await readFile(baseSmartWalletLifecyclePath,"utf8"))));
       if (req.url === "/api/v1/review-pack") {
         const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([
           readFile(baseXerp01Path,"utf8"),

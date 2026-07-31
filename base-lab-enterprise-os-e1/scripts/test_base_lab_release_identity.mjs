@@ -104,6 +104,21 @@ test("Base Account lifecycle evidence is sanitized and locked", async () => {
   assert.equal(evidence.controls.erp_write, false);
 });
 
+test("Smart Wallet lifecycle evidence keeps funding and spend authority manual", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/base-smart-wallet-lifecycle`);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  const evidence = await response.json();
+  assert.equal(evidence.status, "verified_manual_application_account_created");
+  assert.equal(evidence.lifecycle.funding, "manual");
+  assert.equal(evidence.lifecycle.automatic_spend_permission, false);
+  assert.equal(evidence.lifecycle.transaction_requested, false);
+  assert.equal(evidence.lifecycle.erp_write, false);
+  assert.equal(evidence.negative_controls.includes("no repeated application-account creation"), true);
+  const write = await fetch(`${baseUrl}/api/v1/base-smart-wallet-lifecycle`, { method: "POST" });
+  assert.equal(write.status, 405);
+});
+
 test("review pack combines Base lanes without adding a write surface", () => {
   const lane = {schema_id:"e",status:"verified",result_fingerprint_sha256:"0xproof"};
   const catalog = {schema_version:"1",result_unit_id:"catalog",status:"verified",network:"base",chain_id:8453,transaction_hash:"0xtx",block_number:1,registry:"0xregistry",business_event_id:"event",evidence_id:"evidence",evidence_root:"0xroot",parent_inventory_root:"0xparent",release_commit:"abc",builder_code:"bc",verification:{},boundaries:{}};

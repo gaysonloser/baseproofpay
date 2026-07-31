@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="base:app_id" content="6a5c632cf364895c3c606518" />
+    <meta name="description" content="Read-only evidence for a manual, no-spend Base Account application-account lifecycle." />
+    <title>Smart Wallet Lifecycle Evidence</title>
+    <style>
+      :root { color-scheme:dark; font-family:Inter,ui-sans-serif,system-ui,sans-serif; background:#0b1020; color:#e8eefc; }
+      body { margin:0; background:linear-gradient(135deg,#0b1020,#243d61); min-height:100vh; }
+      main { max-width:1020px; margin:auto; padding:48px 22px 72px; }
+      .eyebrow,.label { color:#8dd5ff; font-size:.76rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+      h1 { font-size:clamp(2rem,5vw,4rem); line-height:1.05; margin:.45rem 0 1rem; }
+      .lede { max-width:800px; color:#c6d9ed; font-size:1.1rem; line-height:1.7; }
+      .status { display:inline-block; padding:7px 11px; border:1px solid #3e8bb9; border-radius:6px; background:#102d46; color:#a7e1ff; font-size:.86rem; }
+      .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:30px; }
+      article,section { border:1px solid #294a68; background:rgba(11,25,42,.88); border-radius:8px; padding:20px; }
+      h2 { margin:0 0 12px; font-size:1.15rem; } p,li { color:#c6d9ed; line-height:1.55; } ul { padding-left:20px; }
+      code { color:#b9e7ff; overflow-wrap:anywhere; } a { color:#9edbff; }
+      .notice { margin-top:14px; border-left:3px solid #eab66d; background:#302618; padding:15px; color:#f5d7a5; }
+      @media(max-width:760px){main{padding-top:32px}.grid{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="eyebrow">CATVERSE · AOXPET Base Lab</div>
+      <h1>Smart Wallet Lifecycle Evidence</h1>
+      <p class="lede">A Base Account application account was created for future agent-workload isolation, while funding and any spend permission remain deliberately manual. This evidence page is read-only: it cannot connect a wallet or initiate a chain action.</p>
+      <span class="status">Verified lifecycle · Manual funding · No automatic spend permission</span>
+      <div class="grid">
+        <article><h2>Parent approval authority</h2><p class="label">Base Account</p><p><code>0xBa36D092dB2999bb1FaBbaf281AC956A97189C25</code> remains the user-controlled parent account. It is not replaced by the application account.</p></article>
+        <article><h2>Application isolation</h2><p class="label">Created account</p><p><code>0xA1c79b59c5f1CD7c12B2805D9d9f621D122d07df</code> is a separate app account, created through the Base Account lifecycle with manual funding.</p></article>
+        <article><h2>Execution boundary</h2><p class="label">No automatic rail</p><p>No transaction, token approval, message signature, or automatic spend permission was requested or granted in this lifecycle.</p></article>
+        <article><h2>Enterprise boundary</h2><p class="label">No ERP write</p><p>The application account is an execution-isolation fact only. It does not create a payment, ledger entry, settlement, or ERP posting.</p></article>
+      </div>
+      <section style="margin-top:14px">
+        <h2>Controls and evidence</h2>
+        <ul><li>Funding is manual and separately scoped.</li><li>Automatic Spend Permission is disabled.</li><li>Any future use requires an independent, user-reviewed action.</li><li>This lifecycle is replay-locked.</li></ul>
+        <p class="notice">The lifecycle proves account isolation, not financial activity. It must not be presented as a transfer, x402 payment, token action, or ERP transaction.</p>
+        <p>Machine-readable evidence: <code>/api/v1/base-smart-wallet-lifecycle</code>. Sources: <a href="https://docs.base.org/base-account/improve-ux/sub-accounts" target="_blank" rel="noreferrer">Base Account Sub Accounts</a> and <a href="https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getSubAccounts" target="_blank" rel="noreferrer">wallet_getSubAccounts</a>.</p>
+      </section>
+    </main>
+  </body>
+</html>
