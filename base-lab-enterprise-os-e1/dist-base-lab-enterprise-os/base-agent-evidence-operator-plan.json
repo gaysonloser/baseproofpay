@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "plan_id": "CATVERSE_BASE_AGENT_EVIDENCE_OPERATOR_20260731_V1",
+  "plan_id": "CATVERSE_BASE_AGENT_ASSET_EVIDENCE_OPERATOR_20260731_V2",
   "network": {
     "name": "Base Mainnet",
     "chain_id": 8453,
@@ -28,16 +28,16 @@
     "notes": "Manual parent-to-application-account operational funding; no spend permission."
   },
   "record": {
-    "operation": "record_inventory_agent_evidence",
+    "operation": "record_asset_evidence_release",
     "from": "0xc01F74555938B414cF783973fEffcBE98323502e",
     "to": "0x93fdE4011Ea0D5f94Bf5bCe1a75D011030D4b999",
     "value_wei": "0",
-    "calldata": "0xffffb390f4562e3a8244645cb827723788d82addac5377224e86a45bd4fc27da0da481a2d017416655e644cfcb7257ceb41f77ea18c84beb286a715169e4b70d5ee228f6692aeccdc3e698892f7a2b2e9c1f2a18972b4915ea7b67abc4bbe1b98ec72a30",
-    "calldata_hash": "0x1ca432b6cfceaf57fa0918daaaa1b6422e0863fe57807dee5ae3a11e38bc7232",
-    "event_id": "0xf4562e3a8244645cb827723788d82addac5377224e86a45bd4fc27da0da481a2",
-    "evidence_root": "0xd017416655e644cfcb7257ceb41f77ea18c84beb286a715169e4b70d5ee228f6",
-    "evidence_kind": "0x692aeccdc3e698892f7a2b2e9c1f2a18972b4915ea7b67abc4bbe1b98ec72a30",
-    "notes": "One immutable inventory-agent bootstrap evidence record; no token transfer, approval, x402 payment or ERP write."
+    "calldata": "0xffffb3903b6dcb51fb1e2061481d556e2473aed3efdbdac51f3f44144d0ca44431039108e519d2e1e9a728f9c97aea0a990106d5a0ecaf071f9b0e352cf5c9b8b276144ec47f4e81abb3d8579c8fe060e5449f4dceba5950e40003a481b10960556fe6f6",
+    "calldata_hash": "0x6e1c149e4391bfe2101991198a6d22c919bf657850d7731551a39cd5be81a9d2",
+    "event_id": "0x3b6dcb51fb1e2061481d556e2473aed3efdbdac51f3f44144d0ca44431039108",
+    "evidence_root": "0xe519d2e1e9a728f9c97aea0a990106d5a0ecaf071f9b0e352cf5c9b8b276144e",
+    "evidence_kind": "0xc47f4e81abb3d8579c8fe060e5449f4dceba5950e40003a481b10960556fe6f6",
+    "notes": "One immutable AssetEvidence release record that references the existing BaseAssetEvidence result; no token transfer, approval, x402 payment or ERP write."
   },
   "controls": {
     "atomic_batching": false,
