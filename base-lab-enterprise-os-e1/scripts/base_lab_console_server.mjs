@@ -381,8 +381,8 @@ export function sanitizeBaseAccountLifecycleRecovery(evidence) {
   };
 }
 
-export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, release}) {
-  const sources = [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent];
+export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, smartWalletEvidence, release}) {
+  const sources = [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, smartWalletEvidence];
   const missing = sources.filter((value) => !value).length;
   return {
     review_pack_id: "CATVERSE_BASE_REVIEW_PACK_V1",
@@ -400,6 +400,7 @@ export function buildReviewPack({xerp01, inventory, asset, catalog, lifecycle, b
       asset: sanitizeBaseAssetEvidence(asset),
       agent_commerce: sanitizeBaseX402CatalogAnchor(catalog),
       base_account: sanitizeBaseAccountLifecycleRecovery(lifecycle),
+      base_app_connection: sanitizeBaseSmartWalletEvidencePack(smartWalletEvidence),
       b20_inventory: sanitizeBaseB20InventoryAgent(b20InventoryAgent)
     },
     reviewer_controls: {
@@ -445,13 +446,14 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
       if (req.url === "/api/v1/base-smart-wallet-erp-handoff") return sendJson(req,res,200,sanitizeBaseSmartWalletErpHandoff(JSON.parse(await readFile(baseSmartWalletErpHandoffPath,"utf8"))));
       if (req.url === "/api/v1/smart-wallet-evidence-pack") return sendJson(req,res,200,sanitizeBaseSmartWalletEvidencePack(JSON.parse(await readFile(baseSmartWalletEvidencePackPath,"utf8"))));
       if (req.url === "/api/v1/review-pack") {
-        const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent] = await Promise.all([
+        const [xerp01, inventory, asset, catalog, lifecycle, b20InventoryAgent, smartWalletEvidence] = await Promise.all([
           readFile(baseXerp01Path,"utf8"),
           readFile(baseInventoryRootPath,"utf8"),
           readFile(baseAssetEvidencePath,"utf8"),
           readFile(baseX402CatalogAnchorPath,"utf8"),
           readFile(baseAccountLifecycleRecoveryPath,"utf8"),
-          readFile(baseB20InventoryAgentPath,"utf8")
+          readFile(baseB20InventoryAgentPath,"utf8"),
+          readFile(baseSmartWalletEvidencePackPath,"utf8")
         ]);
         return sendJson(req,res,200,buildReviewPack({
           xerp01: JSON.parse(xerp01),
@@ -460,6 +462,7 @@ export function createBaseLabConsoleServer({env=process.env,staticRoot=defaultSt
           catalog: JSON.parse(catalog),
           lifecycle: JSON.parse(lifecycle),
           b20InventoryAgent: JSON.parse(b20InventoryAgent),
+          smartWalletEvidence: JSON.parse(smartWalletEvidence),
           release: releaseIdentity(env)
         }));
       }
